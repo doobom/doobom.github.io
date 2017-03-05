@@ -4,70 +4,70 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>http://does.one/</loc>
-<lastmod>2017-03-05T14:27:27-00:00</lastmod>
+<loc>http://doobom.github.io/</loc>
+<lastmod>2017-03-05T14:47:56-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://does.one/archives.html</loc>
-<lastmod>2017-03-05T14:27:27-00:00</lastmod>
+<loc>http://doobom.github.io/archives.html</loc>
+<lastmod>2017-03-05T14:47:56-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://does.one/tags.html</loc>
-<lastmod>2017-03-05T14:27:27-00:00</lastmod>
+<loc>http://doobom.github.io/tags.html</loc>
+<lastmod>2017-03-05T14:47:56-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://does.one/categories.html</loc>
-<lastmod>2017-03-05T14:27:27-00:00</lastmod>
+<loc>http://doobom.github.io/categories.html</loc>
+<lastmod>2017-03-05T14:47:56-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://does.one/pages/that-is-me.html</loc>
+<loc>http://doobom.github.io/pages/that-is-me.html</loc>
 <lastmod>2017-03-02T01:36:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://does.one/hello-world.html</loc>
+<loc>http://doobom.github.io/hello-world.html</loc>
 <lastmod>2017-03-02T02:01:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://does.one/category/pelican.html</loc>
+<loc>http://doobom.github.io/category/pelican.html</loc>
 <lastmod>2017-03-02T02:01:00+07:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://does.one/tag/python.html</loc>
+<loc>http://doobom.github.io/tag/python.html</loc>
 <lastmod>2017-03-02T02:01:00+07:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://does.one/tag/pelican.html</loc>
+<loc>http://doobom.github.io/tag/pelican.html</loc>
 <lastmod>2017-03-02T02:01:00+07:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://does.one/author/pelican.html</loc>
+<loc>http://doobom.github.io/author/pelican.html</loc>
 <lastmod>2017-03-02T02:01:00+07:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>

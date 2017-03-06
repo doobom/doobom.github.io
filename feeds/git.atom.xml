@@ -63,4 +63,7 @@
 
 &lt;h2&gt;7.从gitHub上复制项目到本地localhost&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; git clone https://github.com/username/LearningPythonDiary.git master
-&lt;/pre&gt;&lt;/div&gt;</content><category term="git"></category><category term="github"></category></entry></feed>
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;&lt;em&gt;转自 https://github.com/username/LearningPythonDiary&lt;/em&gt;&lt;/em&gt;&lt;/p&gt;</content><category term="git"></category><category term="github"></category></entry></feed>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>oops: run - nginx</title><link href="/" rel="alternate"></link><link href="/feeds/nginx.atom.xml" rel="self"></link><id>/</id><updated>2020-01-28T16:36:00+08:00</updated><subtitle>keep running...</subtitle><entry><title>Nginx 配置跨域请求 Access-Control-Allow-Origin *</title><link href="/nginx-access-control-allow-origin" rel="alternate"></link><published>2020-01-28T16:36:00+08:00</published><updated>2020-01-28T16:36:00+08:00</updated><author><name>doobom</name></author><id>tag:None,2020-01-28:/nginx-access-control-allow-origin</id><summary type="html">&lt;p&gt;nginx&amp;nbsp;跨域请求&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;原文: &lt;a href="https://segmentfault.com/a/1190000012550346"&gt;https://segmentfault.com/a/1190000012550346&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;作者:&amp;nbsp;Developer&lt;/p&gt;
+&lt;p&gt;本作品系 原作者原创 ， 采用&lt;a href="https://creativecommons.org/licenses/by-nc-nd/4.0/"&gt;《署名-非商业性使用-禁止演绎 4.0&amp;nbsp;国际》许可协议&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;当出现 &lt;code&gt;403&lt;/code&gt; 跨域错误的时候 &lt;code&gt;No 'Access-Control-Allow-Origin' header is present on the requested resource&lt;/code&gt;，需要给 Nginx 服务器配置响应的 &lt;code&gt;header&lt;/code&gt;参数：&lt;/p&gt;
+&lt;h2 id="_1"&gt;一、 解决方案&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;只需要在Nginx的配置文件中配置以下参数：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;  &lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="n"&gt;add_header&lt;/span&gt; &lt;span class="k"&gt;Access&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Control&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Allow&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Origin&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="n"&gt;add_header&lt;/span&gt; &lt;span class="k"&gt;Access&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Control&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Allow&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Methods&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;GET, POST, OPTIONS&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="n"&gt;add_header&lt;/span&gt; &lt;span class="k"&gt;Access&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Control&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Allow&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Headers&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;request_method&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;OPTIONS&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;204&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="err"&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="err"&gt;}&lt;/span&gt; &lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;上面配置代码即可解决问题了，不想深入研究的，看到这里就可以啦=-=&lt;/p&gt;
+&lt;h2 id="_2"&gt;二、 解释&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;1.&amp;nbsp;Access-Control-Allow-Origin&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;服务器默认是不被允许跨域的。给 Nginx 服务器配置&lt;code&gt;Access-Control-Allow-Origin *&lt;/code&gt;后，表示服务器可以接受所有的请求源（Origin）,即接受所有跨域的请求。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2. Access-Control-Allow-Headers&amp;nbsp;是为了防止出现以下错误：&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Request header field Content-Type is not allowed by Access-Control-Allow-Headers in preflight response.&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这个错误表示当前请求 &lt;code&gt;Content-Type&lt;/code&gt; 的值不被支持。其实是我们发起了 &lt;code&gt;application/json&lt;/code&gt; 的类型请求导致的。这里涉及到一个概念：预检请求（preflight&amp;nbsp;request）,请看下面&amp;#8221;预检请求&amp;#8221;的介绍。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3. Access-Control-Allow-Methods&amp;nbsp;是为了防止出现以下错误：&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Content-Type is not allowed by Access-Control-Allow-Headers in preflight response.&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;4.给 &lt;code&gt;OPTIONS&lt;/code&gt; 添加 &lt;code&gt;204&lt;/code&gt; 的返回，是为了处理在发送 &lt;span class="caps"&gt;POST&lt;/span&gt; 请求时 Nginx&amp;nbsp;依然拒绝访问的错误&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;发送&amp;#8221;预检请求&amp;#8221;时，需要用到方法 &lt;code&gt;OPTIONS&lt;/code&gt; ,所以服务器需要允许该方法。&lt;/p&gt;
+&lt;h2 id="preflight-request"&gt;三、 预检请求（preflight request）&lt;a class="headerlink" href="#preflight-request" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;其实上面的配置涉及到了一个 &lt;span class="caps"&gt;W3C&lt;/span&gt; 标准： &lt;code&gt;CROS&lt;/code&gt;,全称是跨域资源共享 (Cross-origin resource&amp;nbsp;sharing)，它的提出就是为了解决跨域请求的。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;跨域资源共享(&lt;span class="caps"&gt;CORS&lt;/span&gt;)标准新增了一组 &lt;span class="caps"&gt;HTTP&lt;/span&gt; 首部字段，允许服务器声明哪些源站有权限访问哪些资源。另外，规范要求，&lt;strong&gt;对那些可能对服务器数据产生副作用的HTTP 请求方法（特别是 &lt;span class="caps"&gt;GET&lt;/span&gt; 以外的 &lt;span class="caps"&gt;HTTP&lt;/span&gt; 请求，或者搭配某些 &lt;span class="caps"&gt;MIME&lt;/span&gt; 类型的 &lt;span class="caps"&gt;POST&lt;/span&gt; 请求）&lt;/strong&gt;，浏览器必须首先使用 &lt;span class="caps"&gt;OPTIONS&lt;/span&gt; 方法发起一个预检请求（preflight request），从而获知服务端是否允许该跨域请求。服务器确认允许之后，才发起实际的 &lt;span class="caps"&gt;HTTP&lt;/span&gt; 请求。在预检请求的返回中，服务器端也可以通知客户端，是否需要携带身份凭证（包括 Cookies 和 &lt;span class="caps"&gt;HTTP&lt;/span&gt;&amp;nbsp;认证相关数据）。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;其实 &lt;code&gt;Content-Type&lt;/code&gt; 字段的类型为 &lt;code&gt;application/json&lt;/code&gt; 的请求就是上面所说的搭配某些 &lt;code&gt;MIME&lt;/code&gt; 类型的 &lt;code&gt;POST&lt;/code&gt; 请求,&lt;span class="caps"&gt;CORS&lt;/span&gt; 规定，&lt;code&gt;Content-Type&lt;/code&gt; 不属于以下 &lt;code&gt;MIME&lt;/code&gt; 类型的，都属于预检请求：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;application/x-www-form-urlencoded&lt;/span&gt;
+&lt;span class="code-line"&gt;multipart/form-data&lt;/span&gt;
+&lt;span class="code-line"&gt;text/plain&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;所以 &lt;code&gt;application/json&lt;/code&gt; 的请求 会在正式通信之前，增加一次&amp;#8221;预检&amp;#8221;请求，这次&amp;#8221;预检&amp;#8221;请求会带上头部信息 &lt;code&gt;Access-Control-Request-Headers: Content-Type&lt;/code&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;OPTIONS /api/test HTTP/1.1&lt;/span&gt;
+&lt;span class="code-line"&gt;Origin: http://foo.example&lt;/span&gt;
+&lt;span class="code-line"&gt;Access-Control-Request-Method: POST&lt;/span&gt;
+&lt;span class="code-line"&gt;Access-Control-Request-Headers: Content-Type&lt;/span&gt;
+&lt;span class="code-line"&gt;... 省略了一些&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;服务器回应时，返回的头部信息如果不包含 &lt;code&gt;Access-Control-Allow-Headers: Content-Type&lt;/code&gt; 则表示不接受非默认的的 &lt;code&gt;Content-Type&lt;/code&gt;。即出现以下错误：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Request header field Content-Type is not allowed by Access-Control-Allow-Headers in preflight response.&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="_3"&gt;参考文章：&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.ruanyifeng.com/blog/2016/04/cors.html"&gt;阮一峰【跨域资源共享 &lt;span class="caps"&gt;CORS&lt;/span&gt;&amp;nbsp;详解】&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://developer.mozilla.org/zh-CN/"&gt;&lt;span class="caps"&gt;MDN&lt;/span&gt; web docs【HTTP访问控制（&lt;span class="caps"&gt;CORS&lt;/span&gt;）】&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="nginx"></category><category term="nginx"></category><category term="header"></category><category term="cors"></category><category term="cross-site"></category></entry></feed>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>oops: run - Linux</title><link href="/" rel="alternate"></link><link href="/feeds/linux.atom.xml" rel="self"></link><id>/</id><updated>2019-05-09T16:01:00+08:00</updated><subtitle>keep running...</subtitle><entry><title>LINUX 暂停、继续进程</title><link href="/linux-stop-cont-ps" rel="alternate"></link><published>2019-05-09T16:01:00+08:00</published><updated>2019-05-09T16:01:00+08:00</updated><author><name>doobom</name></author><id>tag:None,2019-05-09:/linux-stop-cont-ps</id><summary type="html">&lt;p&gt;&lt;span class="caps"&gt;LINUX&lt;/span&gt;&amp;nbsp;如何暂停、继续进程&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;原文： &lt;a href="https://www.cnblogs.com/mfryf/archive/2012/09/24/2700042.html"&gt;https://www.cnblogs.com/mfryf/archive/2012/09/24/2700042.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;kill -STOP 1234&lt;/code&gt; 将该进程暂停。&lt;/p&gt;
+&lt;p&gt;如果要让它恢复到后台，用 &lt;code&gt;kill -CONT 1234&lt;/code&gt; （很多在前台运行的程序这样是不行的）&lt;/p&gt;
+&lt;p&gt;如果要恢复到前台，请在当时运行该进程的那个终端用 &lt;code&gt;jobs&lt;/code&gt; 命令查询暂停的进程。&lt;/p&gt;
+&lt;p&gt;然后用 &lt;code&gt;fg 〔job号〕&lt;/code&gt; 把进程恢复到前台。&lt;/p&gt;
+&lt;p&gt;如果 &lt;code&gt;jobs&lt;/code&gt; 只查询到一个进程，只用 &lt;code&gt;fg&lt;/code&gt; 即可。&lt;/p&gt;
+&lt;p&gt;例：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;root@dWorks:~# bc -q&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;+  Stopped                 bc -q&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;root@dWorks:~# bc -q&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;+  Stopped                 bc -q&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;root@dWorks:~# &lt;span class="nb"&gt;jobs&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;-  Stopped                 bc -q&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;+  Stopped                 bc -q&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;root@dWorks:~# &lt;span class="nb"&gt;fg&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;bc -q&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;1&lt;/span&gt;+1&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;A. Shell&amp;nbsp;支持作用控制，有以下命令：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;command&amp;amp;&lt;/code&gt; 让进程在后台运行&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;jobs&lt;/code&gt; 查看后台运行的进程&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;fg %n&lt;/code&gt; 让后台运行的进程n到前台来&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;bg %n&lt;/code&gt; 让进程 n&amp;nbsp;到后台去；  &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;span class="caps"&gt;PS&lt;/span&gt;:&amp;#8221;n&amp;#8221;为 jobs&amp;nbsp;查看到的进程编号.&lt;/p&gt;
+&lt;p&gt;B.下列转:http://blog.chinaunix.net/u/1604/showart_1079559.html&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;fg&lt;/code&gt;、&lt;code&gt;bg&lt;/code&gt;、&lt;code&gt;jobs&lt;/code&gt;、&amp;amp;、&lt;code&gt;ctrl + z&lt;/code&gt; 都是跟系统任务有关的，虽然现在基本上不怎么需要用到这些命令，但学会了也是很实用的&lt;/p&gt;
+&lt;p&gt;一。 &lt;code&gt;&amp;amp;&lt;/code&gt; 最经常被用到&lt;/p&gt;
+&lt;p&gt;这个用在一个命令的最后，可以把这个命令放到后台执行&lt;/p&gt;
+&lt;p&gt;二。&lt;code&gt;ctrl + z&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;可以将一个正在前台执行的命令放到后台，并且暂停&lt;/p&gt;
+&lt;p&gt;三。&lt;code&gt;jobs&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;查看当前有多少在后台运行的命令&lt;/p&gt;
+&lt;p&gt;四。&lt;code&gt;fg&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;将后台中的命令调至前台继续运行&lt;/p&gt;
+&lt;p&gt;如果后台中有多个命令，可以用 &lt;code&gt;fg %jobnumber&lt;/code&gt; 将选中的命令调出，&lt;code&gt;%jobnumber&lt;/code&gt; 是通过 &lt;code&gt;jobs&lt;/code&gt; 命令查到的后台正在执行的命令的序号(不是pid)&lt;/p&gt;
+&lt;p&gt;五。&lt;code&gt;bg&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;将一个在后台暂停的命令，变成继续执行&lt;/p&gt;
+&lt;p&gt;如果后台中有多个命令，可以用 &lt;code&gt;bg %jobnumber&lt;/code&gt; 将选中的命令调出，&lt;code&gt;%jobnumber&lt;/code&gt; 是通过 &lt;code&gt;jobs&lt;/code&gt; 命令查到的后台正在执行的命令的序号(不是pid)&lt;/p&gt;
+&lt;h2 id="linuxshelljobs"&gt;Linux下使用Shell命令控制任务Jobs执行&lt;a class="headerlink" href="#linuxshelljobs" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;下列命令可以用来操纵进程任务：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ps&lt;/code&gt; 列出系统中正在运行的进程；&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;kill&lt;/code&gt; 发送信号给一个或多个进程（经常用来杀死一个进程）；&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;jobs&lt;/code&gt; 列出当前 shell 环境中已启动的任务状态，若未指定 jobsid，则显示所有活动的任务状态信息；如果报告了一个任务的终止(即任务的状态被标记为 Terminated)，shell 从当前的 shell&amp;nbsp;环境已知的列表中删除任务的进程标识；&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;bg&lt;/code&gt; 将进程搬到后台运行（Background）；&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;fg&lt;/code&gt; 将进程搬到前台运行（Foreground）；&lt;/p&gt;
+&lt;p&gt;将 job&amp;nbsp;转移到后台运行&lt;/p&gt;
+&lt;p&gt;如果你经常在X图形下工作，你可能有这样的经历：通过终端命令运行一个 &lt;span class="caps"&gt;GUI&lt;/span&gt; 程序，&lt;span class="caps"&gt;GUI&lt;/span&gt; 界面出来了，但是你的终端还停留在原地，你不能在 shell 中继续执行其他命令了，除非将 &lt;span class="caps"&gt;GUI&lt;/span&gt; 程序关掉。
+　　为了使程序执行后终端还能继续接受命令，你可以将进程移到后台运行，使用如下命令运行程序：&amp;nbsp;#假设要运行xmms&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;$xmms&lt;/span&gt; &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这样打开 xmms 后，终端的提示又回来了。现在 xmms 在后台运行着呢；但万一你运行程序时忘记使用 “&amp;amp;” 了，又不想重新执行；你可以先使用 &lt;code&gt;ctrl+z&lt;/code&gt; 挂起程序，然后敲入 &lt;code&gt;bg&lt;/code&gt; 命令，这样程序就在后台继续运行了。&lt;/p&gt;
+&lt;h3 id="_1"&gt;概念：当前任务&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;p&gt;如果后台的任务号有2个，[1],[2]；如果当第一个后台任务顺利执行完毕，第二个后台任务还在执行中时，当前任务便会自动变成后台任务号码“[2]”的后台任务。所以可以得出一点，即当前任务是会变动的。当用户输入 &lt;code&gt;fg&lt;/code&gt;、&lt;code&gt;bg&lt;/code&gt; 和 &lt;code&gt;stop&lt;/code&gt; 等命令时，如果不加任何引号，则所变动的均是当前任务。&lt;/p&gt;
+&lt;h3 id="jobs"&gt;察看 jobs&lt;a class="headerlink" href="#jobs" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;p&gt;使用 &lt;code&gt;jobs&lt;/code&gt; 或 &lt;code&gt;ps&lt;/code&gt; 命令可以察看正在执行的&amp;nbsp;jobs。&lt;/p&gt;
+&lt;p&gt;jobs 命令执行的结果，&lt;code&gt;＋&lt;/code&gt; 表示是一个当前的作业，&lt;code&gt;-&lt;/code&gt; 表是是一个当前作业之后的一个作业，&lt;code&gt;jobs -l&lt;/code&gt; 选项可显示所有任务的 &lt;span class="caps"&gt;PID&lt;/span&gt;, jobs 的状态可以是 running, stopped, Terminated,但是如果任务被终止了（kill），shell 从当前的 shell 环境已知的列表中删除任务的进程标识；也就是说，jobs&amp;nbsp;命令显示的是当前shell环境中所起的后台正在运行或者被挂起的任务信息；&lt;/p&gt;
+&lt;h3 id="_2"&gt;进程的挂起&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;h4 id="_3"&gt;后台进程的挂起：&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;在 solaris 中通过 &lt;code&gt;stop&lt;/code&gt; 命令执行，通过 &lt;code&gt;jobs&lt;/code&gt; 命令查看 job 号(假设为 num)，然后执行&lt;code&gt;stop %num&lt;/code&gt;；&lt;/p&gt;
+&lt;p&gt;在 redhat 中，不存在 &lt;code&gt;stop&lt;/code&gt; 命令，可通过执行命令 &lt;code&gt;kill -stop PID&lt;/code&gt;，将进程挂起；&lt;/p&gt;
+&lt;p&gt;当要重新执行当前被挂起的任务时，通过 &lt;code&gt;bg %num&lt;/code&gt; 即可将挂起的 job 的状态由 stopped 改为running，仍在后台执行；当需要改为在前台执行时，执行命令 &lt;code&gt;fg %num&lt;/code&gt; 即可；&lt;/p&gt;
+&lt;h4 id="_4"&gt;前台进程的挂起：&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;ctrl+Z&lt;/code&gt; 进程的终止&lt;/p&gt;
+&lt;h4 id="_5"&gt;后台进程的终止：&lt;a class="headerlink" href="#_5" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;方法一：
+　　通过 &lt;code&gt;jobs&lt;/code&gt; 命令查看 job 号（假设为 num ），然后执行 &lt;code&gt;kill %num&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;方法二：
+　　通过 &lt;code&gt;ps&lt;/code&gt; 命令查看 job 的进程号（&lt;span class="caps"&gt;PID&lt;/span&gt;，假设为pid），然后执行 &lt;code&gt;kill pid&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id="_6"&gt;前台进程的终止：&lt;a class="headerlink" href="#_6" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;ctrl+c&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;kill的其他作用&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;kill&lt;/code&gt; 除了可以终止进程，还能给进程发送其它信号，使用 &lt;code&gt;kill -l&lt;/code&gt; 可以察看 &lt;code&gt;kill&lt;/code&gt; 支持的信号。&lt;/p&gt;
+&lt;p&gt;&lt;span class="caps"&gt;SIGTERM&lt;/span&gt; 是不带参数时 &lt;code&gt;kill&lt;/code&gt; 发送的信号，意思是要进程终止运行，但执行与否还得看进程是否支持。如果进程还没有终止，可以使用 &lt;code&gt;kill -SIGKILL pid&lt;/code&gt; ，这是由内核来终止进程，进程不能监听这个信号。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Unix/Linux 下一般想让某个程序在后台运行，很多都是使用 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt;&amp;nbsp;在程序结尾来让程序自动运行。比如我们要运行mysql在后台：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;/usr/local/mysql/bin/mysqld_safe --user&lt;span class="o"&gt;=&lt;/span&gt;mysql &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;但是我们很多程序并不象 mysqld 一样可以做成守护进程，可能我们的程序只是普通程序而已，一般这种程序即使使用 &lt;code&gt;&amp;amp;&lt;/code&gt; 结尾，如果终端关闭，那么程序也会被关闭。为了能够后台运行，我们需要使用&lt;code&gt;nohup&lt;/code&gt; 这个命令，比如我们有个 &lt;code&gt;start.sh&lt;/code&gt; 需要在后台运行，并且希望在后台能够一直运行，那么就使用 &lt;code&gt;nohup&lt;/code&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;nohup /root/start.sh &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;在 shell&amp;nbsp;中回车后提示：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;[&lt;/span&gt;~&lt;span class="o"&gt;]&lt;/span&gt;$ appending output to nohup.out&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;原程序的的标准输出被自动改向到当前目录下的 &lt;code&gt;nohup.out&lt;/code&gt; 文件，起到了 log&amp;nbsp;的作用。&lt;/p&gt;
+&lt;p&gt;但是有时候在这一步会有问题，当把终端关闭后，进程会自动被关闭，察看 &lt;code&gt;nohup.out&lt;/code&gt; 可以看到在关闭终端瞬间服务自动关闭。&lt;/p&gt;
+&lt;p&gt;咨询红旗 Linux&amp;nbsp;工程师后，他也不得其解，在我的终端上执行后，他启动的进程竟然在关闭终端后依然运行。&lt;/p&gt;
+&lt;p&gt;在第二遍给我演示时，我才发现我和他操作终端时的一个细节不同：他是在当 shell 中提示了 &lt;code&gt;nohup&lt;/code&gt; 成功后还需要按终端上键盘任意键退回到 shell 输入命令窗口，然后通过在 shell 中输入 &lt;code&gt;exit&lt;/code&gt; 来退出终端；而我是每次在 &lt;code&gt;nohup&lt;/code&gt; 执行成功后直接点关闭程序按钮关闭终端.。所以这时候会断掉该命令所对应的 session，导致 &lt;code&gt;nohup&lt;/code&gt; 对应的进程被通知需要一起&amp;nbsp;shutdown。&lt;/p&gt;
+&lt;p&gt;这个细节有人和我一样没注意到，所以在这儿记录一下了。&lt;/p&gt;
+&lt;h2 id="nohup"&gt;附：nohup命令参考&lt;a class="headerlink" href="#nohup" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;nohup&amp;nbsp;命令&lt;/p&gt;
+&lt;p&gt;用途：不挂断地运行命令。&lt;/p&gt;
+&lt;p&gt;语法：&lt;code&gt;nohup Command [ Arg ... ] [　&amp;amp; ]&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;描述：nohup 命令运行由 Command 参数和任何相关的 Arg 参数指定的命令，忽略所有挂断（&lt;span class="caps"&gt;SIGHUP&lt;/span&gt;）信号。在注销后使用 nohup 命令运行后台中的程序。要运行后台中的 nohup 命令，添加 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt;&amp;nbsp;（表示&amp;#8221;and&amp;#8221;的符号）到命令的尾部。&lt;/p&gt;
+&lt;p&gt;无论是否将 nohup 命令的输出重定向到终端，输出都将附加到当前目录的 &lt;code&gt;nohup.out&lt;/code&gt; 文件中。如果当前目录的 &lt;code&gt;nohup.out&lt;/code&gt; 文件不可写，输出重定向到 &lt;code&gt;$HOME/nohup.out&lt;/code&gt; 文件中。如果没有文件能创建或打开以用于追加，那么 Command&amp;nbsp;参数指定的命令不可调用。如果标准错误是一个终端，那么把指定的命令写给标准错误的所有输出作为标准输出重定向到相同的文件描述符。&lt;/p&gt;
+&lt;p&gt;退出状态：该命令返回下列出口值：&lt;/p&gt;
+&lt;p&gt;126 可以查找但不能调用 Command&amp;nbsp;参数指定的命令。&lt;/p&gt;
+&lt;p&gt;127 nohup 命令发生错误或不能查找由 Command&amp;nbsp;参数指定的命令。&lt;/p&gt;
+&lt;p&gt;否则，nohup 命令的退出状态是 Command&amp;nbsp;参数指定命令的退出状态。&lt;/p&gt;
+&lt;p&gt;nohup命令及其输出文件&lt;/p&gt;
+&lt;p&gt;nohup命令：如果你正在运行一个进程，而且你觉得在退出帐户时该进程还不会结束，那么可以使用nohup命令。该命令可以在你退出帐户/关闭终端之后继续运行相应的进程。nohup就是不挂起的意思( n ohang&amp;nbsp;up)。&lt;/p&gt;
+&lt;p&gt;该命令的一般形式为：&lt;code&gt;nohup command &amp;amp;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;使用nohup命令提交作业&lt;/p&gt;
+&lt;p&gt;如果使用nohup命令提交作业，那么在缺省情况下该作业的所有输出都被重定向到一个名为 &lt;code&gt;nohup.out&lt;/code&gt; 的文件中，除非另外指定了输出文件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;nohup &lt;span class="nb"&gt;command&lt;/span&gt; &amp;gt; myout.file &lt;span class="m"&gt;2&lt;/span&gt;&amp;gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;在上面的例子中，输出被重定向到 &lt;code&gt;myout.file&lt;/code&gt; 文件中。&lt;/p&gt;
+&lt;p&gt;使用 jobs&amp;nbsp;查看任务。&lt;/p&gt;
+&lt;p&gt;使用 &lt;code&gt;fg %n&lt;/code&gt;　关闭。&lt;/p&gt;
+&lt;p&gt;另外有两个常用的 ftp 工具 &lt;code&gt;ncftpget&lt;/code&gt; 和 &lt;code&gt;ncftpput&lt;/code&gt;，可以实现后台的 ftp&amp;nbsp;上传和下载，这样就可以利用这些命令在后台上传和下载文件了。&lt;/p&gt;
+&lt;p&gt;简单而有用的 &lt;code&gt;nohup&lt;/code&gt; 命令在 &lt;span class="caps"&gt;UNIX&lt;/span&gt;/&lt;span class="caps"&gt;LINUX&lt;/span&gt; 中，普通进程用&amp;amp;符号放到后台运行，如果启动该程序的控制台&amp;nbsp;logout，则该进程随即终止。&lt;/p&gt;
+&lt;p&gt;要实现守护进程，一种方法是按守护进程的规则去编程（本站有文章介绍过），比较麻烦；另一种方法是仍然用普通方法编程，然后用nohup命令启动程序：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;nohup＜程序名＞&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;则控制台logout后，进程仍然继续运行，起到守护进程的作用（虽然它不是严格意义上的守护进程）。&lt;/p&gt;
+&lt;p&gt;使用nohup命令后，原程序的的标准输出被自动改向到当前目录下的 &lt;code&gt;nohup.out&lt;/code&gt; 文件，起到了 log&amp;nbsp;的作用，实现了完整的守护进程功能。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;ygwu @ 2005年04月18日&amp;nbsp;上午10:03&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;For&amp;nbsp;example：&lt;/p&gt;
+&lt;p&gt;如何远程启动 WebLogic&amp;nbsp;服务?&lt;/p&gt;
+&lt;p&gt;用 telnet 远程控制服务器，远程启动 &lt;span class="caps"&gt;WEBLOGIC&lt;/span&gt; 服务，启动后关闭 telnet，WebLogic 服务也跟着停止，这是因为使用 telnet 启动的进程会随着 telnet 进程的关闭而关闭。所以我们可以使用一些 &lt;span class="caps"&gt;UNIX&lt;/span&gt;&amp;nbsp;下的命令来做到不关闭。&lt;/p&gt;
+&lt;p&gt;使用如下命令：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;nohup startWeblogic.sh&amp;amp;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;如果想要监控标准输出可以使用：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;tail -f nohup.out&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;当在后台运行了程序的时候，可以用 &lt;code&gt;jobs&lt;/code&gt; 命令来查看后台作业的状态。在有多个后台程序时，要使用来参数的 &lt;code&gt;fg&lt;/code&gt; 命令将不同序号的后台作业切换到前台上运行。&lt;/p&gt;
+&lt;p&gt;当用户启动一个进程的时候，这个进程是运行在前台，使用与相应控制终端相联系的标准输入、输出进行输入和输出。即使将进程的输入输出重定向，并将进程放在后台执行，进程仍然和当前终端设备有关系。正因为如此，在当前的登录会话结束时，控制终端设备将和登录进程相脱离，那么系统就向所有与这个终端相联系的进程发送 &lt;span class="caps"&gt;SIGHUP&lt;/span&gt; 的信号，通知进程线路已经挂起了，如果程序没有接管这个信号的处理，那么缺省的反应是进程结束。因此普通的程序并不能真正脱离登录会话而运行进程，为了使得在系统登录后还可以正常执行，只有使用命令 &lt;code&gt;nohup&lt;/code&gt; 来启动相应程序。&lt;/p&gt;
+&lt;p&gt;使用命令 &lt;code&gt;nohup&lt;/code&gt; 当然可以启动这样的程序，但 &lt;code&gt;nohup&lt;/code&gt; 启动的程序在进程执行完毕就退出，而常见的一些服务进程通常永久的运行在后台，不向屏幕输出结果。在 Unix&amp;nbsp;中这些永久的后台进程称为守护进程（daemon）。守护进程通常从系统启动时自动开始执行，系统关闭时才停止。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;-=- &lt;span class="caps"&gt;END&lt;/span&gt;&amp;nbsp;-=-&lt;/p&gt;</content><category term="Linux"></category><category term="Linux"></category><category term="Shell"></category></entry></feed>

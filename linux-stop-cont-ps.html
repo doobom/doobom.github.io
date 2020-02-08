@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.prod.9e9d5ce754.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+
+        <meta name="author" content="doobom" />
+
+        <meta name="description" content="LINUX 如何暂停、继续进程
+" />
+        <meta name="twitter:creator" content="@d8boom">
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="Linux, Shell, Linux, " />
+
+<meta property="og:title" content="LINUX 暂停、继续进程"/>
+<meta property="og:url" content="/linux-stop-cont-ps" />
+<meta property="og:description" content="LINUX 如何暂停、继续进程" />
+<meta property="og:site_name" content="oops: run" />
+<meta property="og:article:author" content="doobom" />
+<meta property="og:article:published_time" content="2019-05-09T16:01:00+08:00" />
+<meta property="og:article:modified_time" content="2019-05-09T16:01:00+08:00" />
+<meta name="twitter:title" content="LINUX 暂停、继续进程">
+<meta name="twitter:description" content="LINUX 如何暂停、继续进程">
+<meta property="og:image" content="https://oops.run/theme/images/apple-touch-icon-152x152.png" />
+<meta name="twitter:image" content="https://oops.run/theme/images/apple-touch-icon-152x152.png" >
+
+        <title>LINUX 暂停、继续进程 · oops: run
+</title>
+        <link rel="shortcut icon" href="/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/theme/images/apple-touch-icon-152x152.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon.png"  type="image/png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="/theme/images/apple-touch-icon-57x57.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="/theme/images/apple-touch-icon-72x72.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="/theme/images/apple-touch-icon-76x76.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="/theme/images/apple-touch-icon-114x114.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="/theme/images/apple-touch-icon-120x120.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="/theme/images/apple-touch-icon-144x144.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/theme/images/apple-touch-icon-152x152.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/theme/images/apple-touch-icon-180x180.png" type="image/png" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="oops: run - Full Atom Feed" />
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-132322603-1', 'auto');
+    ga('send', 'pageview');
+</script>
+
+
+    </head>
+    <body>
+        <div id="content">
+            <div class="navbar navbar-static-top">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="brand" href="/"><span class=site-name>oops: run</span></a>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav pull-right top-menu">
+                                <li >
+                                    <a href=
+                                       "/"
+                                    >Home</a>
+                                </li>
+                                <li ><a href="/categories">Categories</a></li>
+                                <li ><a href="/tags">Tags</a></li>
+                                <li ><a href="/archives">Archives</a></li>
+                                <li><form class="navbar-search" action="/search" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span1"></div>
+                    <div class="span10">
+<article itemscope>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+        <h1>
+            <a href="/linux-stop-cont-ps">
+                <span class="caps">LINUX</span>&nbsp;暂停、继续进程
+            </a>
+        </h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+            
+            <blockquote>
+<p>原文： <a href="https://www.cnblogs.com/mfryf/archive/2012/09/24/2700042.html">https://www.cnblogs.com/mfryf/archive/2012/09/24/2700042.html</a></p>
+</blockquote>
+<p><code>kill -STOP 1234</code> 将该进程暂停。</p>
+<p>如果要让它恢复到后台，用 <code>kill -CONT 1234</code> （很多在前台运行的程序这样是不行的）</p>
+<p>如果要恢复到前台，请在当时运行该进程的那个终端用 <code>jobs</code> 命令查询暂停的进程。</p>
+<p>然后用 <code>fg 〔job号〕</code> 把进程恢复到前台。</p>
+<p>如果 <code>jobs</code> 只查询到一个进程，只用 <code>fg</code> 即可。</p>
+<p>例：</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code>root@dWorks:~# bc -q</span>
+<span class="code-line"><span class="o">[</span><span class="m">1</span><span class="o">]</span>+  Stopped                 bc -q</span>
+<span class="code-line"></span>
+<span class="code-line">root@dWorks:~# bc -q</span>
+<span class="code-line"><span class="o">[</span><span class="m">2</span><span class="o">]</span>+  Stopped                 bc -q</span>
+<span class="code-line"></span>
+<span class="code-line">root@dWorks:~# <span class="nb">jobs</span></span>
+<span class="code-line"><span class="o">[</span><span class="m">1</span><span class="o">]</span>-  Stopped                 bc -q</span>
+<span class="code-line"><span class="o">[</span><span class="m">2</span><span class="o">]</span>+  Stopped                 bc -q</span>
+<span class="code-line"></span>
+<span class="code-line">root@dWorks:~# <span class="nb">fg</span> <span class="m">2</span></span>
+<span class="code-line">bc -q</span>
+<span class="code-line"><span class="m">1</span>+1</span>
+<span class="code-line"><span class="m">2</span></span>
+<span class="code-line"></code></pre></div>
+
+
+<p>A. Shell&nbsp;支持作用控制，有以下命令：</p>
+<ol>
+<li>
+<p><code>command&amp;</code> 让进程在后台运行</p>
+</li>
+<li>
+<p><code>jobs</code> 查看后台运行的进程</p>
+</li>
+<li>
+<p><code>fg %n</code> 让后台运行的进程n到前台来</p>
+</li>
+<li>
+<p><code>bg %n</code> 让进程 n&nbsp;到后台去；  </p>
+</li>
+</ol>
+<p><span class="caps">PS</span>:&#8221;n&#8221;为 jobs&nbsp;查看到的进程编号.</p>
+<p>B.下列转:http://blog.chinaunix.net/u/1604/showart_1079559.html</p>
+<p><code>fg</code>、<code>bg</code>、<code>jobs</code>、&amp;、<code>ctrl + z</code> 都是跟系统任务有关的，虽然现在基本上不怎么需要用到这些命令，但学会了也是很实用的</p>
+<p>一。 <code>&amp;</code> 最经常被用到</p>
+<p>这个用在一个命令的最后，可以把这个命令放到后台执行</p>
+<p>二。<code>ctrl + z</code></p>
+<p>可以将一个正在前台执行的命令放到后台，并且暂停</p>
+<p>三。<code>jobs</code></p>
+<p>查看当前有多少在后台运行的命令</p>
+<p>四。<code>fg</code></p>
+<p>将后台中的命令调至前台继续运行</p>
+<p>如果后台中有多个命令，可以用 <code>fg %jobnumber</code> 将选中的命令调出，<code>%jobnumber</code> 是通过 <code>jobs</code> 命令查到的后台正在执行的命令的序号(不是pid)</p>
+<p>五。<code>bg</code></p>
+<p>将一个在后台暂停的命令，变成继续执行</p>
+<p>如果后台中有多个命令，可以用 <code>bg %jobnumber</code> 将选中的命令调出，<code>%jobnumber</code> 是通过 <code>jobs</code> 命令查到的后台正在执行的命令的序号(不是pid)</p>
+<h2 id="linuxshelljobs">Linux下使用Shell命令控制任务Jobs执行<a class="headerlink" href="#linuxshelljobs" title="Permanent link"> </a></h2>
+<hr />
+<p>下列命令可以用来操纵进程任务：</p>
+<p><code>ps</code> 列出系统中正在运行的进程；</p>
+<p><code>kill</code> 发送信号给一个或多个进程（经常用来杀死一个进程）；</p>
+<p><code>jobs</code> 列出当前 shell 环境中已启动的任务状态，若未指定 jobsid，则显示所有活动的任务状态信息；如果报告了一个任务的终止(即任务的状态被标记为 Terminated)，shell 从当前的 shell&nbsp;环境已知的列表中删除任务的进程标识；</p>
+<p><code>bg</code> 将进程搬到后台运行（Background）；</p>
+<p><code>fg</code> 将进程搬到前台运行（Foreground）；</p>
+<p>将 job&nbsp;转移到后台运行</p>
+<p>如果你经常在X图形下工作，你可能有这样的经历：通过终端命令运行一个 <span class="caps">GUI</span> 程序，<span class="caps">GUI</span> 界面出来了，但是你的终端还停留在原地，你不能在 shell 中继续执行其他命令了，除非将 <span class="caps">GUI</span> 程序关掉。
+　　为了使程序执行后终端还能继续接受命令，你可以将进程移到后台运行，使用如下命令运行程序：&nbsp;#假设要运行xmms</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="nv">$xmms</span> <span class="p">&amp;</span></span>
+<span class="code-line"></code></pre></div>
+
+
+<p>这样打开 xmms 后，终端的提示又回来了。现在 xmms 在后台运行着呢；但万一你运行程序时忘记使用 “&amp;” 了，又不想重新执行；你可以先使用 <code>ctrl+z</code> 挂起程序，然后敲入 <code>bg</code> 命令，这样程序就在后台继续运行了。</p>
+<h3 id="_1">概念：当前任务<a class="headerlink" href="#_1" title="Permanent link"> </a></h3>
+<hr />
+<p>如果后台的任务号有2个，[1],[2]；如果当第一个后台任务顺利执行完毕，第二个后台任务还在执行中时，当前任务便会自动变成后台任务号码“[2]”的后台任务。所以可以得出一点，即当前任务是会变动的。当用户输入 <code>fg</code>、<code>bg</code> 和 <code>stop</code> 等命令时，如果不加任何引号，则所变动的均是当前任务。</p>
+<h3 id="jobs">察看 jobs<a class="headerlink" href="#jobs" title="Permanent link"> </a></h3>
+<hr />
+<p>使用 <code>jobs</code> 或 <code>ps</code> 命令可以察看正在执行的&nbsp;jobs。</p>
+<p>jobs 命令执行的结果，<code>＋</code> 表示是一个当前的作业，<code>-</code> 表是是一个当前作业之后的一个作业，<code>jobs -l</code> 选项可显示所有任务的 <span class="caps">PID</span>, jobs 的状态可以是 running, stopped, Terminated,但是如果任务被终止了（kill），shell 从当前的 shell 环境已知的列表中删除任务的进程标识；也就是说，jobs&nbsp;命令显示的是当前shell环境中所起的后台正在运行或者被挂起的任务信息；</p>
+<h3 id="_2">进程的挂起<a class="headerlink" href="#_2" title="Permanent link"> </a></h3>
+<hr />
+<h4 id="_3">后台进程的挂起：<a class="headerlink" href="#_3" title="Permanent link"> </a></h4>
+<p>在 solaris 中通过 <code>stop</code> 命令执行，通过 <code>jobs</code> 命令查看 job 号(假设为 num)，然后执行<code>stop %num</code>；</p>
+<p>在 redhat 中，不存在 <code>stop</code> 命令，可通过执行命令 <code>kill -stop PID</code>，将进程挂起；</p>
+<p>当要重新执行当前被挂起的任务时，通过 <code>bg %num</code> 即可将挂起的 job 的状态由 stopped 改为running，仍在后台执行；当需要改为在前台执行时，执行命令 <code>fg %num</code> 即可；</p>
+<h4 id="_4">前台进程的挂起：<a class="headerlink" href="#_4" title="Permanent link"> </a></h4>
+<p><code>ctrl+Z</code> 进程的终止</p>
+<h4 id="_5">后台进程的终止：<a class="headerlink" href="#_5" title="Permanent link"> </a></h4>
+<p>方法一：
+　　通过 <code>jobs</code> 命令查看 job 号（假设为 num ），然后执行 <code>kill %num</code></p>
+<p>方法二：
+　　通过 <code>ps</code> 命令查看 job 的进程号（<span class="caps">PID</span>，假设为pid），然后执行 <code>kill pid</code></p>
+<h4 id="_6">前台进程的终止：<a class="headerlink" href="#_6" title="Permanent link"> </a></h4>
+<p><code>ctrl+c</code></p>
+<p><strong>kill的其他作用</strong></p>
+<p><code>kill</code> 除了可以终止进程，还能给进程发送其它信号，使用 <code>kill -l</code> 可以察看 <code>kill</code> 支持的信号。</p>
+<p><span class="caps">SIGTERM</span> 是不带参数时 <code>kill</code> 发送的信号，意思是要进程终止运行，但执行与否还得看进程是否支持。如果进程还没有终止，可以使用 <code>kill -SIGKILL pid</code> ，这是由内核来终止进程，进程不能监听这个信号。</p>
+<hr />
+<p>Unix/Linux 下一般想让某个程序在后台运行，很多都是使用 <span class="amp">&amp;</span>&nbsp;在程序结尾来让程序自动运行。比如我们要运行mysql在后台：</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code>/usr/local/mysql/bin/mysqld_safe --user<span class="o">=</span>mysql <span class="p">&amp;</span></span>
+<span class="code-line"></code></pre></div>
+
+
+<p>但是我们很多程序并不象 mysqld 一样可以做成守护进程，可能我们的程序只是普通程序而已，一般这种程序即使使用 <code>&amp;</code> 结尾，如果终端关闭，那么程序也会被关闭。为了能够后台运行，我们需要使用<code>nohup</code> 这个命令，比如我们有个 <code>start.sh</code> 需要在后台运行，并且希望在后台能够一直运行，那么就使用 <code>nohup</code>：</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code>nohup /root/start.sh <span class="p">&amp;</span></span>
+<span class="code-line"></code></pre></div>
+
+
+<p>在 shell&nbsp;中回车后提示：</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="o">[</span>~<span class="o">]</span>$ appending output to nohup.out</span>
+<span class="code-line"></code></pre></div>
+
+
+<p>原程序的的标准输出被自动改向到当前目录下的 <code>nohup.out</code> 文件，起到了 log&nbsp;的作用。</p>
+<p>但是有时候在这一步会有问题，当把终端关闭后，进程会自动被关闭，察看 <code>nohup.out</code> 可以看到在关闭终端瞬间服务自动关闭。</p>
+<p>咨询红旗 Linux&nbsp;工程师后，他也不得其解，在我的终端上执行后，他启动的进程竟然在关闭终端后依然运行。</p>
+<p>在第二遍给我演示时，我才发现我和他操作终端时的一个细节不同：他是在当 shell 中提示了 <code>nohup</code> 成功后还需要按终端上键盘任意键退回到 shell 输入命令窗口，然后通过在 shell 中输入 <code>exit</code> 来退出终端；而我是每次在 <code>nohup</code> 执行成功后直接点关闭程序按钮关闭终端.。所以这时候会断掉该命令所对应的 session，导致 <code>nohup</code> 对应的进程被通知需要一起&nbsp;shutdown。</p>
+<p>这个细节有人和我一样没注意到，所以在这儿记录一下了。</p>
+<h2 id="nohup">附：nohup命令参考<a class="headerlink" href="#nohup" title="Permanent link"> </a></h2>
+<hr />
+<p>nohup&nbsp;命令</p>
+<p>用途：不挂断地运行命令。</p>
+<p>语法：<code>nohup Command [ Arg ... ] [　&amp; ]</code></p>
+<p>描述：nohup 命令运行由 Command 参数和任何相关的 Arg 参数指定的命令，忽略所有挂断（<span class="caps">SIGHUP</span>）信号。在注销后使用 nohup 命令运行后台中的程序。要运行后台中的 nohup 命令，添加 <span class="amp">&amp;</span>&nbsp;（表示&#8221;and&#8221;的符号）到命令的尾部。</p>
+<p>无论是否将 nohup 命令的输出重定向到终端，输出都将附加到当前目录的 <code>nohup.out</code> 文件中。如果当前目录的 <code>nohup.out</code> 文件不可写，输出重定向到 <code>$HOME/nohup.out</code> 文件中。如果没有文件能创建或打开以用于追加，那么 Command&nbsp;参数指定的命令不可调用。如果标准错误是一个终端，那么把指定的命令写给标准错误的所有输出作为标准输出重定向到相同的文件描述符。</p>
+<p>退出状态：该命令返回下列出口值：</p>
+<p>126 可以查找但不能调用 Command&nbsp;参数指定的命令。</p>
+<p>127 nohup 命令发生错误或不能查找由 Command&nbsp;参数指定的命令。</p>
+<p>否则，nohup 命令的退出状态是 Command&nbsp;参数指定命令的退出状态。</p>
+<p>nohup命令及其输出文件</p>
+<p>nohup命令：如果你正在运行一个进程，而且你觉得在退出帐户时该进程还不会结束，那么可以使用nohup命令。该命令可以在你退出帐户/关闭终端之后继续运行相应的进程。nohup就是不挂起的意思( n ohang&nbsp;up)。</p>
+<p>该命令的一般形式为：<code>nohup command &amp;</code></p>
+<p>使用nohup命令提交作业</p>
+<p>如果使用nohup命令提交作业，那么在缺省情况下该作业的所有输出都被重定向到一个名为 <code>nohup.out</code> 的文件中，除非另外指定了输出文件：</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code>nohup <span class="nb">command</span> &gt; myout.file <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span></span>
+<span class="code-line"></code></pre></div>
+
+
+<p>在上面的例子中，输出被重定向到 <code>myout.file</code> 文件中。</p>
+<p>使用 jobs&nbsp;查看任务。</p>
+<p>使用 <code>fg %n</code>　关闭。</p>
+<p>另外有两个常用的 ftp 工具 <code>ncftpget</code> 和 <code>ncftpput</code>，可以实现后台的 ftp&nbsp;上传和下载，这样就可以利用这些命令在后台上传和下载文件了。</p>
+<p>简单而有用的 <code>nohup</code> 命令在 <span class="caps">UNIX</span>/<span class="caps">LINUX</span> 中，普通进程用&amp;符号放到后台运行，如果启动该程序的控制台&nbsp;logout，则该进程随即终止。</p>
+<p>要实现守护进程，一种方法是按守护进程的规则去编程（本站有文章介绍过），比较麻烦；另一种方法是仍然用普通方法编程，然后用nohup命令启动程序：</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code>nohup＜程序名＞<span class="p">&amp;</span></span>
+<span class="code-line"></code></pre></div>
+
+
+<p>则控制台logout后，进程仍然继续运行，起到守护进程的作用（虽然它不是严格意义上的守护进程）。</p>
+<p>使用nohup命令后，原程序的的标准输出被自动改向到当前目录下的 <code>nohup.out</code> 文件，起到了 log&nbsp;的作用，实现了完整的守护进程功能。</p>
+<blockquote>
+<p><strong>ygwu @ 2005年04月18日&nbsp;上午10:03</strong></p>
+<p>For&nbsp;example：</p>
+<p>如何远程启动 WebLogic&nbsp;服务?</p>
+<p>用 telnet 远程控制服务器，远程启动 <span class="caps">WEBLOGIC</span> 服务，启动后关闭 telnet，WebLogic 服务也跟着停止，这是因为使用 telnet 启动的进程会随着 telnet 进程的关闭而关闭。所以我们可以使用一些 <span class="caps">UNIX</span>&nbsp;下的命令来做到不关闭。</p>
+<p>使用如下命令：</p>
+<p><code>nohup startWeblogic.sh&amp;</code></p>
+<p>如果想要监控标准输出可以使用：</p>
+<p><code>tail -f nohup.out</code></p>
+<p>当在后台运行了程序的时候，可以用 <code>jobs</code> 命令来查看后台作业的状态。在有多个后台程序时，要使用来参数的 <code>fg</code> 命令将不同序号的后台作业切换到前台上运行。</p>
+<p>当用户启动一个进程的时候，这个进程是运行在前台，使用与相应控制终端相联系的标准输入、输出进行输入和输出。即使将进程的输入输出重定向，并将进程放在后台执行，进程仍然和当前终端设备有关系。正因为如此，在当前的登录会话结束时，控制终端设备将和登录进程相脱离，那么系统就向所有与这个终端相联系的进程发送 <span class="caps">SIGHUP</span> 的信号，通知进程线路已经挂起了，如果程序没有接管这个信号的处理，那么缺省的反应是进程结束。因此普通的程序并不能真正脱离登录会话而运行进程，为了使得在系统登录后还可以正常执行，只有使用命令 <code>nohup</code> 来启动相应程序。</p>
+<p>使用命令 <code>nohup</code> 当然可以启动这样的程序，但 <code>nohup</code> 启动的程序在进程执行完毕就退出，而常见的一些服务进程通常永久的运行在后台，不向屏幕输出结果。在 Unix&nbsp;中这些永久的后台进程称为守护进程（daemon）。守护进程通常从系统启动时自动开始执行，系统关闭时才停止。</p>
+</blockquote>
+<p>-=- <span class="caps">END</span>&nbsp;-=-</p>
+
+
+            
+
+
+<div class="applause_button">
+    <applause-button url=/linux-stop-cont-ps> </applause-button>
+</div>
+
+
+                <p id="post-share-links">
+    Like this post? Share on:
+      <a href="https://twitter.com/intent/tweet?text=LINUX%C2%A0%E6%9A%82%E5%81%9C%E3%80%81%E7%BB%A7%E7%BB%AD%E8%BF%9B%E7%A8%8B&url=/linux-stop-cont-ps&via=d8boom&hashtags=linux,shell" target="_blank" rel="nofollow noopener noreferrer" title="Share on Twitter">Twitter</a>
+ ❄       <a href="https://www.facebook.com/sharer/sharer.php?u=/linux-stop-cont-ps" target="_blank" rel="nofollow noopener noreferrer" title="Share on Facebook">Facebook</a>
+ ❄       <a href="mailto:?subject=LINUX%C2%A0%E6%9A%82%E5%81%9C%E3%80%81%E7%BB%A7%E7%BB%AD%E8%BF%9B%E7%A8%8B&amp;body=/linux-stop-cont-ps" target="_blank" rel="nofollow noopener noreferrer" title="Share via Email">Email</a>
+
+                <hr />
+    <div class="author-blurb">
+        <a href="https://doobom.github.io/" target="_blank" rel="nofollow noopener noreferrer">
+            <img src=/images/avatars/ce6eb1b67b2cc18c608d69e8849079cc.jpeg alt="doobom Avatar" title="doobom">
+            <span class="author-name">doobom</span>
+        </a>
+        is write a bug.
+    </div>
+
+            
+
+
+
+
+
+
+
+<section>
+    <h6 style="display:none;">Comments</h6>
+    <p id="comment-message">So what do you think? Did I miss something? Is any part unclear? Leave your comments below. </p>
+
+    <div class="accordion" id="accordion2">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle disqus-comment-count comment-count collapsed"
+                   data-toggle="collapse"
+                   data-parent="#accordion2"
+                   href="/linux-stop-cont-ps#comment_thread"
+                   id="comment-accordion-toggle">
+                    Comments
+                </a>
+            </div>
+            <div id="comment_thread" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <div class="comments">
+                        <div id="disquscomments"></div>
+                        <link rel="stylesheet" href="https://disqus.def.run/dist/iDisqus.min.css" />
+<script type="text/javascript" src="https://disqus.def.run/dist/iDisqus.js"></script>
+<script type="text/javascript">
+    var disq = new iDisqus('disquscomments',{
+        forum: 'oopsrun',
+        site: '',
+        api: 'https://disqus.def.run/oops.run',
+        url: '/linux-stop-cont-ps',
+        mode: 3,
+        timeout: 3000,
+        init: true,
+        emojiPreview: true
+    });
+    disq.count();
+</script>
+<noscript>Please enable JavaScript to view the comments.</noscript>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+            <hr/>
+<section>
+    <h2>Keep Reading</h2>
+<ul class="related-posts-list">
+<li><a href="/send-mail-via-smtp-in-telnet" title="Telnet 中使用 smtp 发送邮件">Telnet 中使用 smtp 发送邮件</a></li>
+<li><a href="/get-string-in-shell-via-grep-sed-awk" title="使用 grep/sed/awk 提取字符串">使用 grep/sed/awk 提取字符串</a></li>
+</ul>
+<hr />
+</section>
+            <aside>
+            <nav>
+            <ul class="articles-timeline">
+                <li class="previous-article">« <a href="/send-mail-via-smtp-in-telnet" title="Previous: Telnet 中使用 smtp 发送邮件">Telnet 中使用 smtp 发送邮件</a></li>
+                <li class="next-article"><a href="/get-url-info-via-javascript" title="Next: 如何用 js 准确获取当前页面url网址信息">如何用 js 准确获取当前页面url网址信息</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section id="article-sidebar" class="span2">
+            <h4>Published</h4>
+            <time itemprop="dateCreated" datetime="2019-05-09T16:01:00+08:00">2019-05-09</time>
+
+            <h4>Category</h4>
+            <a class="category-link" href="/categories#linux-ref">Linux</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="/tags#linux-ref">Linux
+                    <span class="superscript">1</span>
+</a></li>
+                <li><a href="/tags#shell-ref">Shell
+                    <span class="superscript">3</span>
+</a></li>
+            </ul>
+<h4>Stay in Touch</h4>
+<div id="sidebar-social-link">
+    <a href="https://github.com/doobom" title="doobom's github profile" target="_blank" rel="nofollow noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="GitHub" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#1B1817"/><path fill="#fff" d="M335 499c14 0 12 17 12 17H165s-2-17 12-17c13 0 16-6 16-12l-1-50c-71 16-86-28-86-28-12-30-28-37-28-37-24-16 1-16 1-16 26 2 40 26 40 26 22 39 59 28 74 22 2-17 9-28 16-35-57-6-116-28-116-126 0-28 10-51 26-69-3-6-11-32 3-67 0 0 21-7 70 26 42-12 86-12 128 0 49-33 70-26 70-26 14 35 6 61 3 67 16 18 26 41 26 69 0 98-60 120-117 126 10 8 18 24 18 48l-1 70c0 6 3 12 16 12z"/></svg>
+    </a>
+    <a href="https://oops.run/feeds/all.atom.xml" title="" target="_blank" rel="nofollow noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="RSS" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#f80"/><circle cx="145" cy="367" r="35" fill="#fff"/><path fill="none" stroke="#fff" stroke-width="60" d="M109 241c89 0 162 73 162 162M109 127c152 0 276 124 276 276"/></svg>
+    </a>
+    <a href="https://twitter.com/d8boom" title="twitter" target="_blank" rel="nofollow noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="Twitter" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#1da1f3"/><path fill="#fff" d="M437 152a72 72 0 0 1-40 12 72 72 0 0 0 32-40 72 72 0 0 1-45 17 72 72 0 0 0-122 65 200 200 0 0 1-145-74 72 72 0 0 0 22 94 72 72 0 0 1-32-7 72 72 0 0 0 56 69 72 72 0 0 1-32 1 72 72 0 0 0 67 50 200 200 0 0 1-105 29 200 200 0 0 0 309-179 200 200 0 0 0 35-37"/></svg>
+    </a>
+</div>
+            
+
+
+
+<!-- Begin MailChimp Signup Form -->
+<div id="mc-embed-signup">
+<form action="https://run.us4.list-manage.com/subscribe/post?u=1fd2b4e2122c947a7de2b8b83&amp;id=d95df12a8a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+<h4>Get New Release Alert</h4>
+<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Enter your email..." required>
+<div class="clear"><input type="submit" value="Notify me" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+</form>
+</div>
+<!--End mc_embed_signup-->
+
+
+
+
+            
+
+
+
+        </section>
+</div>
+</article>
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides.
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>                    </div>
+                    <div class="span1"></div>
+                </div>
+            </div>
+        </div>
+<footer>
+    <div>
+        Content licensed under <a rel="license nofollow noopener noreferrer"
+    href="http://creativecommons.org/licenses/by/4.0/" target="_blank">
+    Creative Commons Attribution 4.0 International License</a>.
+    </div>
+
+    <div>
+        <span class="site-name">oops: run</span> - keep running...
+    </div>
+
+
+
+    <div id="fpowered">
+        Powered by: <a href="http://getpelican.com/" title="Pelican Home Page" target="_blank" rel="nofollow noopener noreferrer">Pelican</a>
+        Theme: <a href="https://elegant.oncrashreboot.com/" title="Theme Elegant Home Page" target="_blank" rel="nofollow noopener noreferrer">Elegant</a>
+        Hosted on:
+        <a href="https://www.alibabacloud.com/referral?referralCode=dm9poc" target="_blank" rel="nofollow noopener noreferrer">
+            Alibaba Cloud
+        </a>
+    </div>
+</footer>            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script src="/theme/js/elegant.prod.9e9d5ce754.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    <script>
+    (function () {
+        if (window.location.hash.match(/^#comment-\d+$/)) {
+            $('#comment_thread').collapse('show');
+        }
+    })();
+    window.onhashchange=function(){
+        if (window.location.hash.match(/^#comment-\d+$/))
+            window.location.reload(true);
+    }
+    $('#comment_thread').on('shown', function () {
+        var link = document.getElementById('comment-accordion-toggle');
+        var old_innerHTML = link.innerHTML;
+        $(link).fadeOut(200, function() {
+            $(this).text('Click here to hide comments').fadeIn(200);
+        });
+        $('#comment_thread').on('hidden', function () {
+            $(link).fadeOut(200, function() {
+                $(this).text(old_innerHTML).fadeIn(200);
+            });
+        })
+    })
+</script>
+
+    </body>
+    <!-- Theme: Elegant built for Pelican
+        License : MIT -->
+</html>

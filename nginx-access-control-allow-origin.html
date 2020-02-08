@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.prod.9e9d5ce754.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+
+        <meta name="author" content="doobom" />
+
+        <meta name="description" content="nginx 跨域请求
+" />
+        <meta name="twitter:creator" content="@d8boom">
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="nginx, header, cors, cross-site, nginx, " />
+
+<meta property="og:title" content="Nginx 配置跨域请求 Access-Control-Allow-Origin *"/>
+<meta property="og:url" content="/nginx-access-control-allow-origin" />
+<meta property="og:description" content="nginx 跨域请求" />
+<meta property="og:site_name" content="oops: run" />
+<meta property="og:article:author" content="doobom" />
+<meta property="og:article:published_time" content="2020-01-28T16:36:00+08:00" />
+<meta property="og:article:modified_time" content="2020-01-28T16:36:00+08:00" />
+<meta name="twitter:title" content="Nginx 配置跨域请求 Access-Control-Allow-Origin *">
+<meta name="twitter:description" content="nginx 跨域请求">
+<meta property="og:image" content="https://oops.run/theme/images/apple-touch-icon-152x152.png" />
+<meta name="twitter:image" content="https://oops.run/theme/images/apple-touch-icon-152x152.png" >
+
+        <title>Nginx 配置跨域请求 Access-Control-Allow-Origin * · oops: run
+</title>
+        <link rel="shortcut icon" href="/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/theme/images/apple-touch-icon-152x152.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon.png"  type="image/png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="/theme/images/apple-touch-icon-57x57.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="/theme/images/apple-touch-icon-72x72.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="/theme/images/apple-touch-icon-76x76.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="/theme/images/apple-touch-icon-114x114.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="/theme/images/apple-touch-icon-120x120.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="/theme/images/apple-touch-icon-144x144.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/theme/images/apple-touch-icon-152x152.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/theme/images/apple-touch-icon-180x180.png" type="image/png" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="oops: run - Full Atom Feed" />
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-132322603-1', 'auto');
+    ga('send', 'pageview');
+</script>
+
+
+    </head>
+    <body>
+        <div id="content">
+            <div class="navbar navbar-static-top">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="brand" href="/"><span class=site-name>oops: run</span></a>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav pull-right top-menu">
+                                <li >
+                                    <a href=
+                                       "/"
+                                    >Home</a>
+                                </li>
+                                <li ><a href="/categories">Categories</a></li>
+                                <li ><a href="/tags">Tags</a></li>
+                                <li ><a href="/archives">Archives</a></li>
+                                <li><form class="navbar-search" action="/search" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span1"></div>
+                    <div class="span10">
+<article itemscope>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+        <h1>
+            <a href="/nginx-access-control-allow-origin">
+                Nginx 配置跨域请求 Access-Control-Allow-Origin&nbsp;*
+            </a>
+        </h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+            
+            <blockquote>
+<p>原文: <a href="https://segmentfault.com/a/1190000012550346">https://segmentfault.com/a/1190000012550346</a></p>
+<p>作者:&nbsp;Developer</p>
+<p>本作品系 原作者原创 ， 采用<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">《署名-非商业性使用-禁止演绎 4.0&nbsp;国际》许可协议</a></p>
+</blockquote>
+<p>当出现 <code>403</code> 跨域错误的时候 <code>No 'Access-Control-Allow-Origin' header is present on the requested resource</code>，需要给 Nginx 服务器配置响应的 <code>header</code>参数：</p>
+<h2 id="_1">一、 解决方案<a class="headerlink" href="#_1" title="Permanent link"> </a></h2>
+<p>只需要在Nginx的配置文件中配置以下参数：</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="k">location</span> <span class="o">/</span> <span class="err">{</span>  </span>
+<span class="code-line">    <span class="n">add_header</span> <span class="k">Access</span><span class="o">-</span><span class="n">Control</span><span class="o">-</span><span class="n">Allow</span><span class="o">-</span><span class="n">Origin</span> <span class="o">*</span><span class="p">;</span></span>
+<span class="code-line">    <span class="n">add_header</span> <span class="k">Access</span><span class="o">-</span><span class="n">Control</span><span class="o">-</span><span class="n">Allow</span><span class="o">-</span><span class="n">Methods</span> <span class="s1">&#39;GET, POST, OPTIONS&#39;</span><span class="p">;</span></span>
+<span class="code-line">    <span class="n">add_header</span> <span class="k">Access</span><span class="o">-</span><span class="n">Control</span><span class="o">-</span><span class="n">Allow</span><span class="o">-</span><span class="n">Headers</span> <span class="s1">&#39;DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization&#39;</span><span class="p">;</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="k">if</span> <span class="p">(</span><span class="err">$</span><span class="n">request_method</span> <span class="o">=</span> <span class="s1">&#39;OPTIONS&#39;</span><span class="p">)</span> <span class="err">{</span></span>
+<span class="code-line">        <span class="k">return</span> <span class="mi">204</span><span class="p">;</span></span>
+<span class="code-line">    <span class="err">}</span></span>
+<span class="code-line"><span class="err">}</span> </span>
+<span class="code-line"></code></pre></div>
+
+
+<p>上面配置代码即可解决问题了，不想深入研究的，看到这里就可以啦=-=</p>
+<h2 id="_2">二、 解释<a class="headerlink" href="#_2" title="Permanent link"> </a></h2>
+<p><strong>1.&nbsp;Access-Control-Allow-Origin</strong></p>
+<p>服务器默认是不被允许跨域的。给 Nginx 服务器配置<code>Access-Control-Allow-Origin *</code>后，表示服务器可以接受所有的请求源（Origin）,即接受所有跨域的请求。</p>
+<p><strong>2. Access-Control-Allow-Headers&nbsp;是为了防止出现以下错误：</strong></p>
+<div class="highlight"><pre><span class="code-line"><span></span><code>Request header field Content-Type is not allowed by Access-Control-Allow-Headers in preflight response.</span>
+<span class="code-line"></code></pre></div>
+
+
+<p>这个错误表示当前请求 <code>Content-Type</code> 的值不被支持。其实是我们发起了 <code>application/json</code> 的类型请求导致的。这里涉及到一个概念：预检请求（preflight&nbsp;request）,请看下面&#8221;预检请求&#8221;的介绍。</p>
+<p><strong>3. Access-Control-Allow-Methods&nbsp;是为了防止出现以下错误：</strong></p>
+<div class="highlight"><pre><span class="code-line"><span></span><code>Content-Type is not allowed by Access-Control-Allow-Headers in preflight response.</span>
+<span class="code-line"></code></pre></div>
+
+
+<p><strong>4.给 <code>OPTIONS</code> 添加 <code>204</code> 的返回，是为了处理在发送 <span class="caps">POST</span> 请求时 Nginx&nbsp;依然拒绝访问的错误</strong></p>
+<p>发送&#8221;预检请求&#8221;时，需要用到方法 <code>OPTIONS</code> ,所以服务器需要允许该方法。</p>
+<h2 id="preflight-request">三、 预检请求（preflight request）<a class="headerlink" href="#preflight-request" title="Permanent link"> </a></h2>
+<p>其实上面的配置涉及到了一个 <span class="caps">W3C</span> 标准： <code>CROS</code>,全称是跨域资源共享 (Cross-origin resource&nbsp;sharing)，它的提出就是为了解决跨域请求的。</p>
+<blockquote>
+<p>跨域资源共享(<span class="caps">CORS</span>)标准新增了一组 <span class="caps">HTTP</span> 首部字段，允许服务器声明哪些源站有权限访问哪些资源。另外，规范要求，<strong>对那些可能对服务器数据产生副作用的HTTP 请求方法（特别是 <span class="caps">GET</span> 以外的 <span class="caps">HTTP</span> 请求，或者搭配某些 <span class="caps">MIME</span> 类型的 <span class="caps">POST</span> 请求）</strong>，浏览器必须首先使用 <span class="caps">OPTIONS</span> 方法发起一个预检请求（preflight request），从而获知服务端是否允许该跨域请求。服务器确认允许之后，才发起实际的 <span class="caps">HTTP</span> 请求。在预检请求的返回中，服务器端也可以通知客户端，是否需要携带身份凭证（包括 Cookies 和 <span class="caps">HTTP</span>&nbsp;认证相关数据）。</p>
+</blockquote>
+<p>其实 <code>Content-Type</code> 字段的类型为 <code>application/json</code> 的请求就是上面所说的搭配某些 <code>MIME</code> 类型的 <code>POST</code> 请求,<span class="caps">CORS</span> 规定，<code>Content-Type</code> 不属于以下 <code>MIME</code> 类型的，都属于预检请求：</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code>application/x-www-form-urlencoded</span>
+<span class="code-line">multipart/form-data</span>
+<span class="code-line">text/plain</span>
+<span class="code-line"></code></pre></div>
+
+
+<p>所以 <code>application/json</code> 的请求 会在正式通信之前，增加一次&#8221;预检&#8221;请求，这次&#8221;预检&#8221;请求会带上头部信息 <code>Access-Control-Request-Headers: Content-Type</code>：</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code>OPTIONS /api/test HTTP/1.1</span>
+<span class="code-line">Origin: http://foo.example</span>
+<span class="code-line">Access-Control-Request-Method: POST</span>
+<span class="code-line">Access-Control-Request-Headers: Content-Type</span>
+<span class="code-line">... 省略了一些</span>
+<span class="code-line"></code></pre></div>
+
+
+<p>服务器回应时，返回的头部信息如果不包含 <code>Access-Control-Allow-Headers: Content-Type</code> 则表示不接受非默认的的 <code>Content-Type</code>。即出现以下错误：</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code>Request header field Content-Type is not allowed by Access-Control-Allow-Headers in preflight response.</span>
+<span class="code-line"></code></pre></div>
+
+
+<h2 id="_3">参考文章：<a class="headerlink" href="#_3" title="Permanent link"> </a></h2>
+<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2016/04/cors.html">阮一峰【跨域资源共享 <span class="caps">CORS</span>&nbsp;详解】</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/"><span class="caps">MDN</span> web docs【HTTP访问控制（<span class="caps">CORS</span>）】</a></li>
+</ul>
+
+
+            
+
+
+<div class="applause_button">
+    <applause-button url=/nginx-access-control-allow-origin> </applause-button>
+</div>
+
+
+                <p id="post-share-links">
+    Like this post? Share on:
+      <a href="https://twitter.com/intent/tweet?text=Nginx%20%E9%85%8D%E7%BD%AE%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%20Access-Control-Allow-Origin%C2%A0%2A&url=/nginx-access-control-allow-origin&via=d8boom&hashtags=nginx,header,cors,cross-site" target="_blank" rel="nofollow noopener noreferrer" title="Share on Twitter">Twitter</a>
+ ❄       <a href="https://www.facebook.com/sharer/sharer.php?u=/nginx-access-control-allow-origin" target="_blank" rel="nofollow noopener noreferrer" title="Share on Facebook">Facebook</a>
+ ❄       <a href="mailto:?subject=Nginx%20%E9%85%8D%E7%BD%AE%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%20Access-Control-Allow-Origin%C2%A0%2A&amp;body=/nginx-access-control-allow-origin" target="_blank" rel="nofollow noopener noreferrer" title="Share via Email">Email</a>
+
+                <hr />
+    <div class="author-blurb">
+        <a href="https://doobom.github.io/" target="_blank" rel="nofollow noopener noreferrer">
+            <img src=/images/avatars/ce6eb1b67b2cc18c608d69e8849079cc.jpeg alt="doobom Avatar" title="doobom">
+            <span class="author-name">doobom</span>
+        </a>
+        is write a bug.
+    </div>
+
+            
+
+
+
+
+
+
+
+<section>
+    <h6 style="display:none;">Comments</h6>
+    <p id="comment-message">So what do you think? Did I miss something? Is any part unclear? Leave your comments below. </p>
+
+    <div class="accordion" id="accordion2">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle disqus-comment-count comment-count collapsed"
+                   data-toggle="collapse"
+                   data-parent="#accordion2"
+                   href="/nginx-access-control-allow-origin#comment_thread"
+                   id="comment-accordion-toggle">
+                    Comments
+                </a>
+            </div>
+            <div id="comment_thread" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <div class="comments">
+                        <div id="disquscomments"></div>
+                        <link rel="stylesheet" href="https://disqus.def.run/dist/iDisqus.min.css" />
+<script type="text/javascript" src="https://disqus.def.run/dist/iDisqus.js"></script>
+<script type="text/javascript">
+    var disq = new iDisqus('disquscomments',{
+        forum: 'oopsrun',
+        site: '',
+        api: 'https://disqus.def.run/oops.run',
+        url: '/nginx-access-control-allow-origin',
+        mode: 3,
+        timeout: 3000,
+        init: true,
+        emojiPreview: true
+    });
+    disq.count();
+</script>
+<noscript>Please enable JavaScript to view the comments.</noscript>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+            <hr/>
+            <aside>
+            <nav>
+            <ul class="articles-timeline">
+                <li class="previous-article">« <a href="/mariadb-master-slave-server-sync" title="Previous: MariaDB 主从数据库同步">MariaDB 主从数据库同步</a></li>
+                <li class="next-article"><a href="/git-auth-via-ssh-key" title="Next: git ssh 配置">git ssh 配置</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section id="article-sidebar" class="span2">
+            <h4>Published</h4>
+            <time itemprop="dateCreated" datetime="2020-01-28T16:36:00+08:00">2020-01-28</time>
+
+            <h4>Category</h4>
+            <a class="category-link" href="/categories#nginx-ref">nginx</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="/tags#cors-ref">cors
+                    <span class="superscript">1</span>
+</a></li>
+                <li><a href="/tags#cross-site-ref">cross-site
+                    <span class="superscript">1</span>
+</a></li>
+                <li><a href="/tags#header-ref">header
+                    <span class="superscript">1</span>
+</a></li>
+                <li><a href="/tags#nginx-ref">nginx
+                    <span class="superscript">1</span>
+</a></li>
+            </ul>
+<h4>Stay in Touch</h4>
+<div id="sidebar-social-link">
+    <a href="https://github.com/doobom" title="doobom's github profile" target="_blank" rel="nofollow noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="GitHub" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#1B1817"/><path fill="#fff" d="M335 499c14 0 12 17 12 17H165s-2-17 12-17c13 0 16-6 16-12l-1-50c-71 16-86-28-86-28-12-30-28-37-28-37-24-16 1-16 1-16 26 2 40 26 40 26 22 39 59 28 74 22 2-17 9-28 16-35-57-6-116-28-116-126 0-28 10-51 26-69-3-6-11-32 3-67 0 0 21-7 70 26 42-12 86-12 128 0 49-33 70-26 70-26 14 35 6 61 3 67 16 18 26 41 26 69 0 98-60 120-117 126 10 8 18 24 18 48l-1 70c0 6 3 12 16 12z"/></svg>
+    </a>
+    <a href="https://oops.run/feeds/all.atom.xml" title="" target="_blank" rel="nofollow noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="RSS" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#f80"/><circle cx="145" cy="367" r="35" fill="#fff"/><path fill="none" stroke="#fff" stroke-width="60" d="M109 241c89 0 162 73 162 162M109 127c152 0 276 124 276 276"/></svg>
+    </a>
+    <a href="https://twitter.com/d8boom" title="twitter" target="_blank" rel="nofollow noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="Twitter" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#1da1f3"/><path fill="#fff" d="M437 152a72 72 0 0 1-40 12 72 72 0 0 0 32-40 72 72 0 0 1-45 17 72 72 0 0 0-122 65 200 200 0 0 1-145-74 72 72 0 0 0 22 94 72 72 0 0 1-32-7 72 72 0 0 0 56 69 72 72 0 0 1-32 1 72 72 0 0 0 67 50 200 200 0 0 1-105 29 200 200 0 0 0 309-179 200 200 0 0 0 35-37"/></svg>
+    </a>
+</div>
+            
+
+
+
+<!-- Begin MailChimp Signup Form -->
+<div id="mc-embed-signup">
+<form action="https://run.us4.list-manage.com/subscribe/post?u=1fd2b4e2122c947a7de2b8b83&amp;id=d95df12a8a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+<h4>Get New Release Alert</h4>
+<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Enter your email..." required>
+<div class="clear"><input type="submit" value="Notify me" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+</form>
+</div>
+<!--End mc_embed_signup-->
+
+
+
+
+            
+
+
+
+        </section>
+</div>
+</article>
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides.
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>                    </div>
+                    <div class="span1"></div>
+                </div>
+            </div>
+        </div>
+<footer>
+    <div>
+        Content licensed under <a rel="license nofollow noopener noreferrer"
+    href="http://creativecommons.org/licenses/by/4.0/" target="_blank">
+    Creative Commons Attribution 4.0 International License</a>.
+    </div>
+
+    <div>
+        <span class="site-name">oops: run</span> - keep running...
+    </div>
+
+
+
+    <div id="fpowered">
+        Powered by: <a href="http://getpelican.com/" title="Pelican Home Page" target="_blank" rel="nofollow noopener noreferrer">Pelican</a>
+        Theme: <a href="https://elegant.oncrashreboot.com/" title="Theme Elegant Home Page" target="_blank" rel="nofollow noopener noreferrer">Elegant</a>
+        Hosted on:
+        <a href="https://www.alibabacloud.com/referral?referralCode=dm9poc" target="_blank" rel="nofollow noopener noreferrer">
+            Alibaba Cloud
+        </a>
+    </div>
+</footer>            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script src="/theme/js/elegant.prod.9e9d5ce754.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    <script>
+    (function () {
+        if (window.location.hash.match(/^#comment-\d+$/)) {
+            $('#comment_thread').collapse('show');
+        }
+    })();
+    window.onhashchange=function(){
+        if (window.location.hash.match(/^#comment-\d+$/))
+            window.location.reload(true);
+    }
+    $('#comment_thread').on('shown', function () {
+        var link = document.getElementById('comment-accordion-toggle');
+        var old_innerHTML = link.innerHTML;
+        $(link).fadeOut(200, function() {
+            $(this).text('Click here to hide comments').fadeIn(200);
+        });
+        $('#comment_thread').on('hidden', function () {
+            $(link).fadeOut(200, function() {
+                $(this).text(old_innerHTML).fadeIn(200);
+            });
+        })
+    })
+</script>
+
+    </body>
+    <!-- Theme: Elegant built for Pelican
+        License : MIT -->
+</html>

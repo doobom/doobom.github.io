@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>oops: run - Shell</title><link href="/" rel="alternate"></link><link href="/feeds/shell.atom.xml" rel="self"></link><id>/</id><updated>2019-07-17T10:23:00+08:00</updated><subtitle>keep running...</subtitle><entry><title>使用 grep/sed/awk 提取字符串</title><link href="/get-string-in-shell-via-grep-sed-awk" rel="alternate"></link><published>2019-07-17T10:23:00+08:00</published><updated>2019-07-17T10:23:00+08:00</updated><author><name>doobom</name></author><id>tag:None,2019-07-17:/get-string-in-shell-via-grep-sed-awk</id><summary type="html">&lt;p&gt;使用 grep/sed/awk&amp;nbsp;提取字符串&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;原文: &lt;a href="http://curryhuang.com/2015/07/18/extract-string-by-grep-sed-awk/"&gt;http://curryhuang.com/2015/07/18/extract-string-by-grep-sed-awk/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;最近需要对日志进行分析，顺便学习了一下以前一直都没弄得太明白的awk和sed。&lt;/p&gt;
+&lt;h2 id="_1"&gt;任务描述&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;日志是一个 tsv 文件，这里以 sample.log 为例，每一行大致长成下面这样，需要查看某个 api 的最长 10 次查询时间。根据记录格式，需要提取最后一个字段 &lt;code&gt;ts=&lt;/code&gt; 之后的字符串，然后进行排序，排序和求 &lt;code&gt;top&lt;/code&gt; 比较容易，&lt;code&gt;sort -nr | head -n 10&lt;/code&gt; 即可，比较麻烦的是从字符串中提取数字。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2015&lt;/span&gt;-07-18 &lt;span class="m"&gt;11&lt;/span&gt;:00:01,807&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="se"&gt;\t&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;service_name&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="se"&gt;\t&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;INFO&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="se"&gt;\t&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;172&lt;/span&gt;.0.0.1&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="se"&gt;\t&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;api/mock_api1&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="se"&gt;\t&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;ts&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;239&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="_2"&gt;解决方案&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Google 了一番以后，发现 grep/sed/awk&amp;nbsp;均可以，下面分别说一下每一种方案。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;以下方案均在CentOS6上测试通过&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="grep"&gt;grep&lt;a class="headerlink" href="#grep" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;grep &lt;span class="s2"&gt;&amp;quot;api/mock_api1&amp;quot;&lt;/span&gt; sample.log &lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;grep -Eo &lt;span class="s1"&gt;&amp;#39;\[ts=[0-9]+\]&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;grep -Eo &lt;span class="s1"&gt;&amp;#39;[0-9]+&amp;#39;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;grep 参数说明：
+&lt;code&gt;E&lt;/code&gt; 使用正则表达式
+&lt;code&gt;o&lt;/code&gt; 只返回匹配的部分&lt;/p&gt;
+&lt;p&gt;分两部匹配，第一步提取出&lt;code&gt;[ts=xxxx]&lt;/code&gt;，第二步提取出数字&lt;/p&gt;
+&lt;h3 id="sed"&gt;sed&lt;a class="headerlink" href="#sed" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;grep &lt;span class="s2"&gt;&amp;quot;api/mock_api1&amp;quot;&lt;/span&gt; sample.log &lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;grep -Eo &lt;span class="s1"&gt;&amp;#39;\[ts=[0-9]+\]&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;sed -r &lt;span class="s1"&gt;&amp;#39;s/\[ts=([0-9]+)\]/\1/g&amp;#39;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;sed参数说明：
+&lt;code&gt;r&lt;/code&gt; 使用正则表达式&lt;/p&gt;
+&lt;p&gt;使用 &lt;code&gt;sed&lt;/code&gt; 也需要通过 &lt;code&gt;grep&lt;/code&gt; 先匹配出最后一个字段，再使用 &lt;code&gt;sed&lt;/code&gt; 提取数字部分，&lt;code&gt;\1&lt;/code&gt;表示正则表达式中的分组1&lt;/p&gt;
+&lt;h3 id="gawk"&gt;gawk&lt;a class="headerlink" href="#gawk" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;grep &lt;span class="s2"&gt;&amp;quot;api/mock_api1&amp;quot;&lt;/span&gt; sample.log &lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;gawk -F&lt;span class="s1"&gt;&amp;#39;\t&amp;#39;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;match($6, /\[ts=([0-9]+)\]/, arr) { print arr[1] }&amp;#39;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;gawk 参数说明：
+&lt;code&gt;F&lt;/code&gt; 指定分隔符，这里指定为tab
+&lt;code&gt;match&lt;/code&gt; 的函数参数分别为：待匹配字符串，模式，匹配后的字符串分组&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;awk&lt;/code&gt; 比较强大，可以直接提取出字段信息，这里使用的是 &lt;code&gt;gawk&lt;/code&gt;，&lt;code&gt;gawk&lt;/code&gt; 兼容 &lt;code&gt;awk&lt;/code&gt; 语法，经测试，同样的语法 &lt;code&gt;awk&lt;/code&gt; 无法满足需求，应该是 &lt;code&gt;gawk&lt;/code&gt; 和 &lt;code&gt;awk&lt;/code&gt; 实现有细微区别。&lt;/p&gt;
+&lt;h2 id="_3"&gt;总结&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;如果仅仅是提取一个字段信息，三个工具都可以满足需求，相比起来，awk的功能更强大，完成字符串提取，&lt;code&gt;grep&lt;/code&gt; 和 &lt;code&gt;sed&lt;/code&gt; 的能力更多依赖正则表达式，如果需要同时处理一行记录中的多个字段，比如找出访问请求最长的 10 个 ip，&lt;code&gt;grep&lt;/code&gt; 和 &lt;code&gt;sed&lt;/code&gt; 就需要很复杂的正则表达式去匹配。&lt;/p&gt;</content><category term="Shell"></category><category term="shell"></category><category term="grep"></category><category term="sed"></category><category term="awk"></category></entry><entry><title>Telnet 中使用 smtp 发送邮件</title><link href="/send-mail-via-smtp-in-telnet" rel="alternate"></link><published>2019-04-15T16:01:00+08:00</published><updated>2019-04-15T16:01:00+08:00</updated><author><name>doobom</name></author><id>tag:None,2019-04-15:/send-mail-via-smtp-in-telnet</id><summary type="html">&lt;p&gt;Telnet 中使用 smtp&amp;nbsp;发送邮件&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;原文作者：litreily&lt;/p&gt;
+&lt;p&gt;原文链接：&lt;a href="https://www.litreily.top/2017/08/17/telnet-smtp/"&gt;https://www.litreily.top/2017/08/17/telnet-smtp/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;这两天在折腾 javascript 发送邮件的事情,&amp;nbsp;然后就看到了这个.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Telnet是远程登录服务的标准协议和主要方式，工作于TCP/IP协议族的应用层，常用于远程登录web服务器，其中便包括SMTP，POP3等邮件服务器。&lt;/p&gt;
+&lt;p&gt;这几天参考书籍《计算机网络-自顶向下方法》学习计算机网络知识，顺便尝试了如何使用Telnet登录smtp发送邮件，下面通过一个简单示例介绍具体的发送过程。&lt;/p&gt;
+&lt;h2 id="telnet-smtp163com-25"&gt;Telnet smtp.163.com 25&lt;a class="headerlink" href="#telnet-smtp163com-25" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;smtp对应的端口号为25，以163邮箱为例，下面是邮件发送过程。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;→ ~ telnet smtp.163.com &lt;span class="m"&gt;25&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;Trying &lt;span class="m"&gt;220&lt;/span&gt;.181.12.15...&lt;/span&gt;
+&lt;span class="code-line"&gt;Connected to smtp.163.com.&lt;/span&gt;
+&lt;span class="code-line"&gt;Escape character is ^&lt;span class="o"&gt;]&lt;/span&gt;.&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;220&lt;/span&gt; &lt;span class="m"&gt;163&lt;/span&gt;.com Anti-spam GT &lt;span class="k"&gt;for&lt;/span&gt; Coremail System &lt;span class="o"&gt;(&lt;/span&gt;163com&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;20141201&lt;/span&gt;&lt;span class="o"&gt;])&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;helo &lt;span class="m"&gt;163&lt;/span&gt;.com&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;250&lt;/span&gt; OK&lt;/span&gt;
+&lt;span class="code-line"&gt;auth login&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;334&lt;/span&gt; dXNlcm5hbWU6&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="nv"&gt;MTgyNjY2MzI4NzJAMTYzLmNvbQ&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;334&lt;/span&gt; UGFzc3dvcmQ6&lt;/span&gt;
+&lt;span class="code-line"&gt;****************&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;235&lt;/span&gt; Authentication successful&lt;/span&gt;
+&lt;span class="code-line"&gt;mail from:&amp;lt;&lt;span class="m"&gt;182&lt;/span&gt;****2872@163.com&amp;gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;250&lt;/span&gt; Mail OK&lt;/span&gt;
+&lt;span class="code-line"&gt;rcpt to:&amp;lt;&lt;span class="m"&gt;707&lt;/span&gt;***098@qq.com&amp;gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;250&lt;/span&gt; Mail OK&lt;/span&gt;
+&lt;span class="code-line"&gt;data&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;354&lt;/span&gt; End data with &amp;lt;CR&amp;gt;&amp;lt;LF&amp;gt;.&amp;lt;CR&amp;gt;&amp;lt;LF&amp;gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;From: &lt;span class="m"&gt;182&lt;/span&gt;****2872@163.com&lt;/span&gt;
+&lt;span class="code-line"&gt;To: &lt;span class="m"&gt;707&lt;/span&gt;***098@qq.com&lt;/span&gt;
+&lt;span class="code-line"&gt;Subject: Test the use of smtp&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;  Hello, litreily.                          &lt;/span&gt;
+&lt;span class="code-line"&gt;  This is a message edit with telnet.&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;Best wish to you.&lt;/span&gt;
+&lt;span class="code-line"&gt;Litreily&lt;/span&gt;
+&lt;span class="code-line"&gt;.&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;250&lt;/span&gt; Mail OK queued as smtp11,D8CowAAnjlqKlZVZXa4QAQ--.18342S2 &lt;span class="m"&gt;1502975693&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;quit&lt;/span&gt;
+&lt;span class="code-line"&gt;Connection closed by foreign host.&lt;/span&gt;
+&lt;span class="code-line"&gt;→ ~&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;下面分开对每个过程进行解析，C代表客户端，即本机，S代表远程服务器端。整个过程分为以下几步：
+* 打招呼
+* 账户认证
+* 声明邮箱地址
+* 书写邮件内容
+*&amp;nbsp;退出Telnet&lt;/p&gt;
+&lt;h3 id="_1"&gt;招呼语&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;S &lt;span class="m"&gt;220&lt;/span&gt; &lt;span class="m"&gt;163&lt;/span&gt;.com Anti-spam GT &lt;span class="k"&gt;for&lt;/span&gt; Coremail System &lt;span class="o"&gt;(&lt;/span&gt;163com&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;20141201&lt;/span&gt;&lt;span class="o"&gt;])&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;C helo &lt;span class="m"&gt;163&lt;/span&gt;.com&lt;/span&gt;
+&lt;span class="code-line"&gt;S &lt;span class="m"&gt;250&lt;/span&gt; OK&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;220&lt;/code&gt;代表服务器已准备好，客户端首先向服务器打一声招呼&lt;code&gt;helo&lt;/code&gt;，服务器接收到后返回一个&lt;code&gt;250&lt;/code&gt;应答信号，代表打招呼成功，下面可以进行账户的密码认证。&lt;/p&gt;
+&lt;h3 id="_2"&gt;账户认证&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;C auth login&lt;/span&gt;
+&lt;span class="code-line"&gt;S &lt;span class="m"&gt;334&lt;/span&gt; dXNlcm5hbWU6&lt;/span&gt;
+&lt;span class="code-line"&gt;C &lt;span class="nv"&gt;MTgyNjY2MzI4NzJAMTYzLmNvbQ&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;S &lt;span class="m"&gt;334&lt;/span&gt; UGFzc3dvcmQ6&lt;/span&gt;
+&lt;span class="code-line"&gt;C ****************&lt;/span&gt;
+&lt;span class="code-line"&gt;S &lt;span class="m"&gt;235&lt;/span&gt; Authentication successful&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;客户端发送&lt;code&gt;auth login&lt;/code&gt;声明自己将进行邮箱账户的用户名认证和密码认证。服务器端返回一个以&lt;code&gt;334&lt;/code&gt;代码开头的提示信息，不必追究其语义，而后用户依次输入通过Base64加密的邮箱名和密码，加密网址见后续参考资料。当输入的账号密码无误时，服务端将返回认证成功的提示语。&lt;/p&gt;
+&lt;h3 id="_3"&gt;声明邮箱地址&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;C mail from:&amp;lt;&lt;span class="m"&gt;182&lt;/span&gt;****2872@163.com&amp;gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;S &lt;span class="m"&gt;250&lt;/span&gt; Mail OK&lt;/span&gt;
+&lt;span class="code-line"&gt;C rcpt to:&amp;lt;&lt;span class="m"&gt;707&lt;/span&gt;***098@qq.com&amp;gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;S &lt;span class="m"&gt;250&lt;/span&gt; Mail OK&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;账户密码认证结束后，客户端通过&lt;code&gt;mail from:&amp;lt;emailName&amp;gt;&lt;/code&gt;以及&lt;code&gt;rcpt to:&amp;lt;nameEmail&amp;gt;&lt;/code&gt;声明邮箱的源地址和目的地址。&lt;/p&gt;
+&lt;h3 id="_4"&gt;书写邮件内容&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;C data&lt;/span&gt;
+&lt;span class="code-line"&gt;S &lt;span class="m"&gt;354&lt;/span&gt; End data with &amp;lt;CR&amp;gt;&amp;lt;LF&amp;gt;.&amp;lt;CR&amp;gt;&amp;lt;LF&amp;gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;C From: &lt;span class="m"&gt;182&lt;/span&gt;****2872@163.com&lt;/span&gt;
+&lt;span class="code-line"&gt;C To: &lt;span class="m"&gt;707&lt;/span&gt;***098@qq.com&lt;/span&gt;
+&lt;span class="code-line"&gt;C Subject: Test the use of smtp&lt;/span&gt;
+&lt;span class="code-line"&gt;C &lt;/span&gt;
+&lt;span class="code-line"&gt;C   Hello, litreily.                          &lt;/span&gt;
+&lt;span class="code-line"&gt;C   This is a message edit with telnet.&lt;/span&gt;
+&lt;span class="code-line"&gt;C &lt;/span&gt;
+&lt;span class="code-line"&gt;C Best wish to you.&lt;/span&gt;
+&lt;span class="code-line"&gt;C Litreily&lt;/span&gt;
+&lt;span class="code-line"&gt;C .&lt;/span&gt;
+&lt;span class="code-line"&gt;S &lt;span class="m"&gt;250&lt;/span&gt; Mail OK queued as smtp11,D8CowAAnjlqKlZVZXa4QAQ--.18342S2 &lt;span class="m"&gt;1502975693&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;写明邮件地址后，使用指令&lt;code&gt;data&lt;/code&gt;进入邮件编辑状态，服务器端会提示当输入&lt;code&gt;&amp;lt;CR&amp;gt;&amp;lt;LF&amp;gt;.&amp;lt;CR&amp;gt;&amp;lt;LF&amp;gt;&lt;/code&gt;时退出编辑状态。&lt;/p&gt;
+&lt;p&gt;邮件内容有一定的格式要求，不按要求随意书写有可能被当成垃圾邮件或不合法邮件而退信。通常需要指定邮件主题 &lt;strong&gt;Subject&lt;/strong&gt;，其它相关信息包括时间 &lt;strong&gt;Date&lt;/strong&gt;，邮件地址 &lt;strong&gt;From&lt;/strong&gt;，&lt;strong&gt;To&lt;/strong&gt; 等，然后再书写邮件主体内容，更详细的格式可以参考文档【&lt;span class="caps"&gt;RFC&lt;/span&gt; 821】。编辑结束后，以单行的点号&lt;code&gt;.&lt;/code&gt;结束。如果一切正常，服务器端将返回以&lt;code&gt;250&lt;/code&gt;开头的应答信息，并提示邮件以进入smtp的发送队列。此时便可以查收邮件予以验证了。&lt;/p&gt;
+&lt;h3 id="telnet"&gt;退出Telnet&lt;a class="headerlink" href="#telnet" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;C quit&lt;/span&gt;
+&lt;span class="code-line"&gt;S Connection closed by foreign host.&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;当邮件发送结束后，客户端通过&lt;code&gt;quit&lt;/code&gt;退出Telnet。&lt;/p&gt;
+&lt;h2 id="smtp-code"&gt;&lt;span class="caps"&gt;SMTP&lt;/span&gt; Code&lt;a class="headerlink" href="#smtp-code" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;211&amp;nbsp;系统状态或系统帮助响应&lt;/li&gt;
+&lt;li&gt;214&amp;nbsp;帮助信息&lt;/li&gt;
+&lt;li&gt;220&amp;nbsp;服务就绪&lt;/li&gt;
+&lt;li&gt;221&amp;nbsp;服务关闭传输信道&lt;/li&gt;
+&lt;li&gt;235&amp;nbsp;用户验证成功&lt;/li&gt;
+&lt;li&gt;250&amp;nbsp;要求的邮件操作完成&lt;/li&gt;
+&lt;li&gt;251&amp;nbsp;用户非本地，将转发向&lt;/li&gt;
+&lt;li&gt;334&amp;nbsp;等待用户输入验证信息&lt;/li&gt;
+&lt;li&gt;354&amp;nbsp;开始邮件输入，以单行.结束&lt;/li&gt;
+&lt;li&gt;421&amp;nbsp;服务未就绪，关闭传输信道（当必须关闭时，此应答可以作为对任何命令的响应）&lt;/li&gt;
+&lt;li&gt;450&amp;nbsp;要求的邮件操作未完成，邮箱不可用（例如，邮箱忙）&lt;/li&gt;
+&lt;li&gt;451&amp;nbsp;放弃要求的操作；处理过程中出错&lt;/li&gt;
+&lt;li&gt;452&amp;nbsp;系统存储不足，要求的操作未执行&lt;/li&gt;
+&lt;li&gt;500&amp;nbsp;格式错误，命令不可识别（此错误也包括命令行过长）&lt;/li&gt;
+&lt;li&gt;501&amp;nbsp;参数格式错误&lt;/li&gt;
+&lt;li&gt;502&amp;nbsp;命令不可实现&lt;/li&gt;
+&lt;li&gt;503&amp;nbsp;错误的命令序列&lt;/li&gt;
+&lt;li&gt;504&amp;nbsp;命令参数不可实现&lt;/li&gt;
+&lt;li&gt;535&amp;nbsp;用户验证失败&lt;/li&gt;
+&lt;li&gt;550&amp;nbsp;要求的邮件操作未完成，邮箱不可用（例如，邮箱未找到，或不可访问）&lt;/li&gt;
+&lt;li&gt;551&amp;nbsp;用户非本地，请尝试&lt;/li&gt;
+&lt;li&gt;552&amp;nbsp;过量的存储分配，要求的操作未执行&lt;/li&gt;
+&lt;li&gt;553&amp;nbsp;邮箱名不可用，要求的操作未执行（例如邮箱格式错误）&lt;/li&gt;
+&lt;li&gt;554&amp;nbsp;操作失败&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="_5"&gt;参考资料&lt;a class="headerlink" href="#_5" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;SMTP文档(&lt;span class="caps"&gt;RFC&lt;/span&gt; 821) : &lt;a href="https://tools.ietf.org/pdf/rfc821.pdf"&gt;https://tools.ietf.org/pdf/rfc821.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="caps"&gt;SMTP&lt;/span&gt; Code : &lt;a href="http://bbs.csdn.net/topics/80275246"&gt;http://bbs.csdn.net/topics/80275246&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;163.com 邮件退信代码 : &lt;a href="http://help.163.com/09/1224/17/5RAJ4LMH00753VB8.html"&gt;http://help.163.com/09/1224/17/&lt;span class="caps"&gt;5RAJ4LMH00753VB8&lt;/span&gt;.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</content><category term="Shell"></category><category term="smtp"></category><category term="shell"></category><category term="mail"></category><category term="telnet"></category></entry></feed>

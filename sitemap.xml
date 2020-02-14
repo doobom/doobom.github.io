@@ -4,161 +4,161 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>/</loc>
-<lastmod>2020-02-10T11:49:19-00:00</lastmod>
+<loc>https://doobom.me/</loc>
+<lastmod>2020-02-14T17:23:36-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tags</loc>
-<lastmod>2020-02-10T11:49:19-00:00</lastmod>
+<loc>https://doobom.me/tags</loc>
+<lastmod>2020-02-14T17:23:36-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/categories</loc>
-<lastmod>2020-02-10T11:49:19-00:00</lastmod>
+<loc>https://doobom.me/categories</loc>
+<lastmod>2020-02-14T17:23:36-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/archives</loc>
-<lastmod>2020-02-10T11:49:19-00:00</lastmod>
+<loc>https://doobom.me/archives</loc>
+<lastmod>2020-02-14T17:23:36-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/search</loc>
-<lastmod>2020-02-10T11:49:19-00:00</lastmod>
+<loc>https://doobom.me/search</loc>
+<lastmod>2020-02-14T17:23:36-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/404.html</loc>
-<lastmod>2020-02-10T11:49:19-00:00</lastmod>
+<loc>https://doobom.me/404.html</loc>
+<lastmod>2020-02-14T17:23:36-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/how-to-install-and-configure-askbot-with-nginx-on-centos-7</loc>
+<loc>https://doobom.me/how-to-install-and-configure-askbot-with-nginx-on-centos-7</loc>
 <lastmod>2020-02-10T10:56:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/git-auth-via-ssh-key</loc>
+<loc>https://doobom.me/git-auth-via-ssh-key</loc>
 <lastmod>2020-02-06T15:09:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/nginx-access-control-allow-origin</loc>
+<loc>https://doobom.me/nginx-access-control-allow-origin</loc>
 <lastmod>2020-01-28T16:36:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/mariadb-master-slave-server-sync</loc>
+<loc>https://doobom.me/mariadb-master-slave-server-sync</loc>
 <lastmod>2020-01-15T16:15:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/get-string-in-shell-via-grep-sed-awk</loc>
+<loc>https://doobom.me/get-string-in-shell-via-grep-sed-awk</loc>
 <lastmod>2019-07-17T10:23:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/get-url-info-via-javascript</loc>
+<loc>https://doobom.me/get-url-info-via-javascript</loc>
 <lastmod>2019-05-16T09:58:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/linux-stop-cont-ps</loc>
+<loc>https://doobom.me/linux-stop-cont-ps</loc>
 <lastmod>2019-05-09T16:01:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/send-mail-via-smtp-in-telnet</loc>
+<loc>https://doobom.me/send-mail-via-smtp-in-telnet</loc>
 <lastmod>2019-04-15T16:01:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/string-number-to-define-length</loc>
+<loc>https://doobom.me/string-number-to-define-length</loc>
 <lastmod>2019-04-15T16:01:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/string-number-to-define-length-foo</loc>
+<loc>https://doobom.me/string-number-to-define-length-foo</loc>
 <lastmod>2019-04-15T16:01:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/git-set-gitignore</loc>
+<loc>https://doobom.me/git-set-gitignore</loc>
 <lastmod>2019-02-13T19:01:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/use-buffer-edit-multi-files-in-vim</loc>
+<loc>https://doobom.me/use-buffer-edit-multi-files-in-vim</loc>
 <lastmod>2019-02-08T23:01:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/use-tagpages-edit-multi-files-in-vim</loc>
+<loc>https://doobom.me/use-tagpages-edit-multi-files-in-vim</loc>
 <lastmod>2019-02-08T23:01:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/use-windows-edit-multi-files-in-vim</loc>
+<loc>https://doobom.me/use-windows-edit-multi-files-in-vim</loc>
 <lastmod>2019-02-08T23:01:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/search-and-replace-in-vim</loc>
+<loc>https://doobom.me/search-and-replace-in-vim</loc>
 <lastmod>2019-02-05T23:01:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/how-to-used-git</loc>
+<loc>https://doobom.me/how-to-used-git</loc>
 <lastmod>2017-03-05T19:01:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/hello-world</loc>
+<loc>https://doobom.me/hello-world</loc>
 <lastmod>2017-03-02T02:01:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>

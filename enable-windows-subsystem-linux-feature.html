@@ -106,17 +106,8 @@
         <div class="toc">
 <ul>
 <li><a href="#enable-windows-subsystem-for-linux-wsl-on-windows-10">Enable Windows Subsystem for Linux (<span class="caps">WSL</span>) on Windows 10</a></li>
-<li><a href="#step-by-step-installation-with-screenshots">Step by step installation with screenshots</a><ul>
-<li><a href="#step-1-click-on-the-start-menu-of-windows-and-navigate-to-open-the-control-panel">Step 1: Click on the Start menu of Windows and navigate to open the control panel.</a></li>
-<li><a href="#step-2-from-the-control-panel-first-click-on-the-turn-windows-features-on-or-off-option-one-can-also-search-directly-for-it-from-the-search-box-of-windows">Step 2: From the Control Panel, first click on the “Turn Windows features on or off” option. One can also search directly for it from the Search box of Windows.</a></li>
-<li><a href="#step-3-scroll-down-and-you-will-find-an-option-windows-subsystem-for-linux-a-box-is-given-in-front-of-that-click-on-that-to-check-and-then-the-ok-button-to-install-the-wsl-on-windows-10">Step 3: Scroll down and you will find an option Windows Subsystem for Linux. A box is given in front of that click on that to check and then the <span class="caps">OK</span> button to install the <span class="caps">WSL</span> on Windows 10.</a></li>
-<li><a href="#step-4-when-it-asks-to-restart-the-system-do-that">Step 4: When it asks to restart the system do that.</a></li>
-<li><a href="#step-5-after-the-installation-go-to-the-microsoft-store-and-download-the-linux-app-to-play-with">Step 5: After the installation, go to the Microsoft store and download the Linux app to play with.</a></li>
-<li><a href="#step-6-when-you-search-for-the-term-linux-run-linux-of-windows-debian-ubuntu-opensuse-enterprise-server-kali-linux-environments-will-appear-choose-the-one-you-want-to-work-with-to-download-and-install-here-we-are-installing-ubuntu-1804">Step 6: When you search for the term Linux: Run Linux of Windows, Debian, Ubuntu, OpenSuse enterprise server, Kali Linux environments will appear. Choose the one you want to work with to download and install. Here we are installing Ubuntu 18.04.</a></li>
-<li><a href="#step-7-once-we-installed-ubuntu-or-other-linux-apps-on-windows-then-just-go-to-search-box-and-type-its-name-for-example-we-have-installed-ubuntu-so-we-typed-ubuntu">Step 7: Once we installed Ubuntu or other Linux apps on Windows then just go to search box and type its name. For example, we have installed Ubuntu, so we typed Ubuntu.</a></li>
-<li><a href="#step-8-as-soon-as-you-open-the-bash-of-ubuntu-on-windows-you-can-run-the-native-linux-commands-directly-on-windows-10-systems-you-can-now-setup-apache-lamp-web-server-without-the-need-of-wamp-or-xampp-like-servers-all-the-files-of-the-linux-apps-will-save-on-your-c-drive-without-any-contradiction-with-windows-files">Step 8: As soon as you open the bash of Ubuntu on Windows you can run the native Linux commands directly on Windows 10 systems. You can now setup Apache (<span class="caps">LAMP</span>) web server without the need of <span class="caps">WAMP</span> or <span class="caps">XAMPP</span> like servers.  All the files of the Linux apps will save on your C Drive without any contradiction with Windows files.</a></li>
-</ul>
-</li>
+<li><a href="#step-by-step-installation-with-screenshots">Step by step installation with screenshots</a></li>
+<li><a href="#use-powershell-command-to-install-wsl">Use PowerShell command to Install <span class="caps">WSL</span></a></li>
 </ul>
 </div>
         </nav>
@@ -145,21 +136,38 @@
 <li>Install any of the available open-source Linux apps on Windows 10</li>
 </ul>
 <h1 id="step-by-step-installation-with-screenshots">Step by step installation with screenshots<a class="headerlink" href="#step-by-step-installation-with-screenshots" title="Permanent link"> </a></h1>
-<h2 id="step-1-click-on-the-start-menu-of-windows-and-navigate-to-open-the-control-panel">Step 1: Click on the Start menu of Windows and navigate to open the control panel.<a class="headerlink" href="#step-1-click-on-the-start-menu-of-windows-and-navigate-to-open-the-control-panel" title="Permanent link"> </a></h2>
-<h2 id="step-2-from-the-control-panel-first-click-on-the-turn-windows-features-on-or-off-option-one-can-also-search-directly-for-it-from-the-search-box-of-windows">Step 2: From the Control Panel, first click on the “Turn Windows features on or off” option. One can also search directly for it from the Search box of Windows.<a class="headerlink" href="#step-2-from-the-control-panel-first-click-on-the-turn-windows-features-on-or-off-option-one-can-also-search-directly-for-it-from-the-search-box-of-windows" title="Permanent link"> </a></h2>
+<p><strong>Step 1</strong>: Click on the Start menu of Windows and navigate to open the control panel.</p>
+<p><strong>Step 2</strong>: From the Control Panel, first click on the “Turn Windows features on or off” option. One can also search directly for it from the Search box of Windows.</p>
 <p><img alt="Turns windows features turn on or off from control panel" src="images/8001-1.jpg"/></p>
-<h2 id="step-3-scroll-down-and-you-will-find-an-option-windows-subsystem-for-linux-a-box-is-given-in-front-of-that-click-on-that-to-check-and-then-the-ok-button-to-install-the-wsl-on-windows-10">Step 3: Scroll down and you will find an option Windows Subsystem for Linux. A box is given in front of that click on that to check and then the <span class="caps">OK</span> button to install the <span class="caps">WSL</span> on Windows 10.<a class="headerlink" href="#step-3-scroll-down-and-you-will-find-an-option-windows-subsystem-for-linux-a-box-is-given-in-front-of-that-click-on-that-to-check-and-then-the-ok-button-to-install-the-wsl-on-windows-10" title="Permanent link"> </a></h2>
+<p><strong>Step 3</strong>: Scroll down and you will find an option Windows Subsystem for Linux. A box is given in front of that click on that to check and then the <span class="caps">OK</span> button to install the <span class="caps">WSL</span> on Windows 10.</p>
 <p><img alt="subsystem for Linux" src="images/8001-2.jpg"/></p>
-<h2 id="step-4-when-it-asks-to-restart-the-system-do-that">Step 4: When it asks to restart the system do that.<a class="headerlink" href="#step-4-when-it-asks-to-restart-the-system-do-that" title="Permanent link"> </a></h2>
-<h2 id="step-5-after-the-installation-go-to-the-microsoft-store-and-download-the-linux-app-to-play-with">Step 5: After the installation, go to the Microsoft store and download the Linux app to play with.<a class="headerlink" href="#step-5-after-the-installation-go-to-the-microsoft-store-and-download-the-linux-app-to-play-with" title="Permanent link"> </a></h2>
-<h2 id="step-6-when-you-search-for-the-term-linux-run-linux-of-windows-debian-ubuntu-opensuse-enterprise-server-kali-linux-environments-will-appear-choose-the-one-you-want-to-work-with-to-download-and-install-here-we-are-installing-ubuntu-1804">Step 6: When you search for the term Linux: Run Linux of Windows, Debian, Ubuntu, OpenSuse enterprise server, Kali Linux environments will appear. Choose the one you want to work with to download and install. Here we are installing Ubuntu 18.04.<a class="headerlink" href="#step-6-when-you-search-for-the-term-linux-run-linux-of-windows-debian-ubuntu-opensuse-enterprise-server-kali-linux-environments-will-appear-choose-the-one-you-want-to-work-with-to-download-and-install-here-we-are-installing-ubuntu-1804" title="Permanent link"> </a></h2>
+<p><strong>Step 4</strong>: When it asks to restart the system do that.</p>
+<p><strong>Step 5</strong>: After the installation, go to the Microsoft store and download the Linux app to play with.</p>
+<p><strong>Step 6</strong>: When you search for the term Linux: Run Linux of Windows, Debian, Ubuntu, OpenSuse enterprise server, Kali Linux environments will appear. Choose the one you want to work with to download and install. Here we are installing Ubuntu 18.04.</p>
 <p><img alt="Run linux on WIndows" src="images/8001-3.jpg"/></p>
-<h2 id="step-7-once-we-installed-ubuntu-or-other-linux-apps-on-windows-then-just-go-to-search-box-and-type-its-name-for-example-we-have-installed-ubuntu-so-we-typed-ubuntu">Step 7: Once we installed Ubuntu or other Linux apps on Windows then just go to search box and type its name. For example, we have installed Ubuntu, so we typed Ubuntu.<a class="headerlink" href="#step-7-once-we-installed-ubuntu-or-other-linux-apps-on-windows-then-just-go-to-search-box-and-type-its-name-for-example-we-have-installed-ubuntu-so-we-typed-ubuntu" title="Permanent link"> </a></h2>
+<p><strong>Step 7</strong>: Once we installed Ubuntu or other Linux apps on Windows then just go to search box and type its name. For example, we have installed Ubuntu, so we typed Ubuntu.</p>
 <p><img alt="Ubuntu 18.04 on windows WSL" src="images/8001-4.jpg"/></p>
-<h2 id="step-8-as-soon-as-you-open-the-bash-of-ubuntu-on-windows-you-can-run-the-native-linux-commands-directly-on-windows-10-systems-you-can-now-setup-apache-lamp-web-server-without-the-need-of-wamp-or-xampp-like-servers-all-the-files-of-the-linux-apps-will-save-on-your-c-drive-without-any-contradiction-with-windows-files">Step 8: As soon as you open the bash of Ubuntu on Windows you can run the native Linux commands directly on Windows 10 systems. You can now setup Apache (<span class="caps">LAMP</span>) web server without the need of <span class="caps">WAMP</span> or <span class="caps">XAMPP</span> like servers.  All the files of the Linux apps will save on your C Drive without any contradiction with Windows files.<a class="headerlink" href="#step-8-as-soon-as-you-open-the-bash-of-ubuntu-on-windows-you-can-run-the-native-linux-commands-directly-on-windows-10-systems-you-can-now-setup-apache-lamp-web-server-without-the-need-of-wamp-or-xampp-like-servers-all-the-files-of-the-linux-apps-will-save-on-your-c-drive-without-any-contradiction-with-windows-files" title="Permanent link"> </a></h2>
+<p><strong>Step 8</strong>: As soon as you open the bash of Ubuntu on Windows you can run the native Linux commands directly on Windows 10 systems. You can now setup Apache (<span class="caps">LAMP</span>) web server without the need of <span class="caps">WAMP</span> or <span class="caps">XAMPP</span> like servers.  All the files of the Linux apps will save on your C Drive without any contradiction with Windows files.</p>
 <p>We tried to set up Apache and <span class="caps">PHP</span> on Ubuntu on Windows 10 subsystem for Linux and it worked perfectly. It was smooth and performed better than installing a virtual machine using VirtualBox or other Virtualization software.</p>
 <p><img alt="Installing PHP on Windows subsystem Linux" src="images/8001-5.jpg"/></p>
 <p>So, in this way, anyone can enable the subsystem for Linux on Windows to test different Linux commands without compromising much on hardware resources.</p>
+<hr/>
+<h1 id="use-powershell-command-to-install-wsl">Use PowerShell command to Install <span class="caps">WSL</span><a class="headerlink" href="#use-powershell-command-to-install-wsl" title="Permanent link"> </a></h1>
+<blockquote>
+<p>原文： <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">Windows Subsystem for Linux Installation Guide for Windows 10</a></p>
+</blockquote>
+<p><strong>Install the Windows Subsystem for Linux</strong></p>
+<p>Before installing any Linux distros for <span class="caps">WSL</span>, you must ensure that the “Windows Subsystem for Linux” optional feature is enabled:</p>
+<ul>
+<li>
+<p>Open PowerShell as Administrator and run:</p>
+<p>:shell
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux</p>
+</li>
+<li>
+<p>Restart your computer when prompted.</p>
+</li>
+</ul>
 
 
             

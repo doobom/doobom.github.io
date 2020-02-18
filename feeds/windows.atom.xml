@@ -46,8 +46,7 @@
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Open PowerShell as Administrator and run:&lt;/p&gt;
-&lt;p&gt;::shell
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux&lt;/p&gt;
+&lt;p&gt;Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Restart your computer when prompted.&lt;/p&gt;

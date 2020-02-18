@@ -44,13 +44,12 @@
 &lt;p&gt;&lt;strong&gt;Install the Windows Subsystem for Linux&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Before installing any Linux distros for &lt;span class="caps"&gt;WSL&lt;/span&gt;, you must ensure that the “Windows Subsystem for Linux” optional feature is enabled:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Open PowerShell as Administrator and run:&lt;/p&gt;
-&lt;p&gt;Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Restart your computer when prompted.&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;Open PowerShell as Administrator and run:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Restart your computer when prompted.&lt;/li&gt;
 &lt;/ul&gt;</content><category term="Windows"></category><category term="windows"></category><category term="wsl"></category><category term="linux"></category></entry><entry><title>How to Install and Configure Askbot with Nginx on CentOS 7</title><link href="https://doobom.me/how-to-install-and-configure-askbot-with-nginx-on-centos-7" rel="alternate"></link><published>2020-02-10T10:56:00+08:00</published><updated>2020-02-10T10:56:00+08:00</updated><author><name>doobom</name></author><id>tag:doobom.me,2020-02-10:/how-to-install-and-configure-askbot-with-nginx-on-centos-7</id><summary type="html">&lt;p&gt;Askbot is an open source software for creating Q&amp;amp;A forums based on Python Django Framework. It&amp;#8217;s basically a Q&amp;amp;A system like StackOverflow, Yahoo Answers, and others. Created by Mike Chan and Sailing Cai on 2009, and it&amp;#8217;s easy to install and configure on Linux systems like Ubuntu and CentOS. Many large open source software projects like Fedora and LibreOffice are using&amp;nbsp;it.&lt;/p&gt;</summary><content type="html">
 &lt;blockquote&gt;
 &lt;p&gt;原文: &lt;a href="https://www.howtoforge.com/tutorial/how-to-install-and-configure-askbot-with-nginx-on-centos-7/"&gt;How to Install and Configure Askbot with Nginx on CentOS 7&lt;/a&gt;

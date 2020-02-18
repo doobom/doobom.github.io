@@ -44,11 +44,10 @@
 &lt;p&gt;&lt;strong&gt;Install the Windows Subsystem for Linux&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Before installing any Linux distros for &lt;span class="caps"&gt;WSL&lt;/span&gt;, you must ensure that the “Windows Subsystem for Linux” optional feature is enabled:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Open PowerShell as Administrator and run:&lt;/p&gt;
-&lt;p&gt;Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Restart your computer when prompted.&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;Open PowerShell as Administrator and run:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Restart your computer when prompted.&lt;/li&gt;
 &lt;/ul&gt;</content><category term="Windows"></category><category term="windows"></category><category term="wsl"></category><category term="linux"></category></entry></feed>

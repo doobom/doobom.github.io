@@ -1,5 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>oops: run - Linux</title><link href="https://doobom.me/" rel="alternate"></link><link href="https://doobom.me/feeds/linux.atom.xml" rel="self"></link><id>https://doobom.me/</id><updated>2020-02-10T10:56:00+08:00</updated><subtitle>keep running...</subtitle><entry><title>How to Install and Configure Askbot with Nginx on CentOS 7</title><link href="https://doobom.me/how-to-install-and-configure-askbot-with-nginx-on-centos-7" rel="alternate"></link><published>2020-02-10T10:56:00+08:00</published><updated>2020-02-10T10:56:00+08:00</updated><author><name>doobom</name></author><id>tag:doobom.me,2020-02-10:/how-to-install-and-configure-askbot-with-nginx-on-centos-7</id><summary type="html">&lt;p&gt;Askbot is an open source software for creating Q&amp;amp;A forums based on Python Django Framework. It&amp;#8217;s basically a Q&amp;amp;A system like StackOverflow, Yahoo Answers, and others. Created by Mike Chan and Sailing Cai on 2009, and it&amp;#8217;s easy to install and configure on Linux systems like Ubuntu and CentOS. Many large open source software projects like Fedora and LibreOffice are using&amp;nbsp;it.&lt;/p&gt;</summary><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>oops: run - Linux</title><link href="https://doobom.me/" rel="alternate"></link><link href="https://doobom.me/feeds/linux.atom.xml" rel="self"></link><id>https://doobom.me/</id><updated>2020-03-17T16:01:00+08:00</updated><subtitle>keep running...</subtitle><entry><title>How to Install EPEL and REMI Repository on CentOS/RedHat 7/6</title><link href="https://doobom.me/how-to-install-epel-and-remi-repository-on-centos" rel="alternate"></link><published>2020-03-17T12:01:00+08:00</published><updated>2020-03-17T16:01:00+08:00</updated><author><name>doobom</name></author><id>tag:doobom.me,2020-03-17:/how-to-install-epel-and-remi-repository-on-centos</id><summary type="html">&lt;p&gt;How to Install &lt;span class="caps"&gt;EPEL&lt;/span&gt; and &lt;span class="caps"&gt;REMI&lt;/span&gt; Repository on CentOS/RedHat&amp;nbsp;7/6&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;原文： &lt;a href="https://tecadmin.net/install-epel-and-remi-repository-on-centos-and-redhat/"&gt;How to Install &lt;span class="caps"&gt;EPEL&lt;/span&gt; and &lt;span class="caps"&gt;REMI&lt;/span&gt; Repository on CentOS/RedHat&amp;nbsp;7/6&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span class="caps"&gt;EPEL&lt;/span&gt;&lt;/strong&gt; is known as &lt;strong&gt;Extra Packages for Enterprise Linux&lt;/strong&gt; repository having lots of extra packages which is not added in official repositories. &lt;strong&gt;&lt;span class="caps"&gt;REMI&lt;/span&gt;&lt;/strong&gt; is a third party repository provides latest version of packages which is already included in official repositories of CentOS and Red&amp;nbsp;Hat.&lt;/p&gt;
+&lt;p&gt;This article will help you to install &lt;strong&gt;&lt;span class="caps"&gt;EPEL&lt;/span&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;span class="caps"&gt;REMI&lt;/span&gt;&lt;/strong&gt; repository on CentOS and Red Hat 7/6/5&amp;nbsp;systems.&lt;/p&gt;
+&lt;h1 id="install-epel-repository"&gt;Install &lt;span class="caps"&gt;EPEL&lt;/span&gt; Repository&lt;a class="headerlink" href="#install-epel-repository" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;span class="caps"&gt;EPEL&lt;/span&gt; release package is available under default CentOS repositories. So use the following command to install &lt;span class="caps"&gt;EPEL&lt;/span&gt; yum repository on your CentOS/&lt;span class="caps"&gt;RHEL&lt;/span&gt; 7/6/5&amp;nbsp;systems.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;yum install epel-release&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In the case of command doesn’t work for you, use one of below&amp;nbsp;commands.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;### For CentOS/RHEL 7 ###&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;### For CentOS/RHEL 6 ###&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1 id="install-remi-repository"&gt;Install &lt;span class="caps"&gt;REMI&lt;/span&gt; Repository&lt;a class="headerlink" href="#install-remi-repository" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;Use following commands to install &lt;span class="caps"&gt;REMI&lt;/span&gt; yum repository on your CentOS/&lt;span class="caps"&gt;RHEL&lt;/span&gt; 7/6/5 systems. Make sure you already have installed &lt;span class="caps"&gt;EPEL&lt;/span&gt; repository before installing &lt;span class="caps"&gt;REMI&lt;/span&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;### For CentOS/RHEL 7 ###&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;### For CentOS/RHEL 6 ###&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1 id="list-all-installed-repository"&gt;List all Installed Repository&lt;a class="headerlink" href="#list-all-installed-repository" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;Use following command to list all installed yum repositories in your&amp;nbsp;system.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;yum repolist&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Sample&amp;nbsp;Output&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Loaded plugins: fastestmirror&lt;/span&gt;
+&lt;span class="code-line"&gt;Loading mirror speeds from cached hostfile&lt;/span&gt;
+&lt;span class="code-line"&gt; * base: pubmirrors.dal.corespace.com&lt;/span&gt;
+&lt;span class="code-line"&gt; * epel: linux.mirrors.es.net&lt;/span&gt;
+&lt;span class="code-line"&gt; * extras: mirrors.easynews.com&lt;/span&gt;
+&lt;span class="code-line"&gt; * remi: mirrors.mediatemple.net&lt;/span&gt;
+&lt;span class="code-line"&gt; * updates: mirrors.easynews.com&lt;/span&gt;
+&lt;span class="code-line"&gt;repo id                 repo name                                             status&lt;/span&gt;
+&lt;span class="code-line"&gt;base                    CentOS-6 - Base                                        &lt;span class="m"&gt;6&lt;/span&gt;,518&lt;/span&gt;
+&lt;span class="code-line"&gt;epel                    Extra Packages &lt;span class="k"&gt;for&lt;/span&gt; Enterprise Linux &lt;span class="m"&gt;6&lt;/span&gt; - x86_64        &lt;span class="m"&gt;11&lt;/span&gt;,153&lt;/span&gt;
+&lt;span class="code-line"&gt;extras                  CentOS-6 - Extras                                         &lt;span class="m"&gt;37&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;pgdg91                  PostgreSQL &lt;span class="m"&gt;9&lt;/span&gt;.1 &lt;span class="m"&gt;6&lt;/span&gt; - x86_64                                &lt;span class="m"&gt;279&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;pgdg93                  PostgreSQL &lt;span class="m"&gt;9&lt;/span&gt;.3 &lt;span class="m"&gt;6&lt;/span&gt; - x86_64                                &lt;span class="m"&gt;307&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;puppetlabs-deps         Puppet Labs Dependencies El &lt;span class="m"&gt;6&lt;/span&gt; - x86_64                    &lt;span class="m"&gt;77&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;puppetlabs-products     Puppet Labs Products El &lt;span class="m"&gt;6&lt;/span&gt; - x86_64                       &lt;span class="m"&gt;475&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;remi                    Les RPM de remi pour Enterprise Linux &lt;span class="m"&gt;6&lt;/span&gt; - x86_64       &lt;span class="m"&gt;2&lt;/span&gt;,407&lt;/span&gt;
+&lt;span class="code-line"&gt;updates                 CentOS-6 - Updates                                       &lt;span class="m"&gt;748&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;repolist: &lt;span class="m"&gt;22&lt;/span&gt;,001&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"></category><category term="Linux"></category><category term="epel"></category><category term="repository"></category></entry><entry><title>How to Install and Configure Askbot with Nginx on CentOS 7</title><link href="https://doobom.me/how-to-install-and-configure-askbot-with-nginx-on-centos-7" rel="alternate"></link><published>2020-02-10T10:56:00+08:00</published><updated>2020-02-10T10:56:00+08:00</updated><author><name>doobom</name></author><id>tag:doobom.me,2020-02-10:/how-to-install-and-configure-askbot-with-nginx-on-centos-7</id><summary type="html">&lt;p&gt;Askbot is an open source software for creating Q&amp;amp;A forums based on Python Django Framework. It&amp;#8217;s basically a Q&amp;amp;A system like StackOverflow, Yahoo Answers, and others. Created by Mike Chan and Sailing Cai on 2009, and it&amp;#8217;s easy to install and configure on Linux systems like Ubuntu and CentOS. Many large open source software projects like Fedora and LibreOffice are using&amp;nbsp;it.&lt;/p&gt;</summary><content type="html">
 &lt;blockquote&gt;
 &lt;p&gt;原文: &lt;a href="https://www.howtoforge.com/tutorial/how-to-install-and-configure-askbot-with-nginx-on-centos-7/"&gt;How to Install and Configure Askbot with Nginx on CentOS 7&lt;/a&gt;
 &lt;/p&gt;

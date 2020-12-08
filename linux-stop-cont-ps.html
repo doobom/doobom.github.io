@@ -20,19 +20,19 @@
 
 <meta name="keywords" content="Linux, Shell, Linux, " />
 
-<meta property="og:title" content="LINUX 暂停、继续进程"/>
+<meta property="og:title" content="LINUX 暂停、继续进程 "/>
 <meta property="og:url" content="https://doobom.me/linux-stop-cont-ps" />
 <meta property="og:description" content="LINUX 如何暂停、继续进程" />
 <meta property="og:site_name" content="oops: run" />
 <meta property="og:article:author" content="doobom" />
 <meta property="og:article:published_time" content="2019-05-09T16:01:00+08:00" />
 <meta property="og:article:modified_time" content="2019-05-09T16:01:00+08:00" />
-<meta name="twitter:title" content="LINUX 暂停、继续进程">
+<meta name="twitter:title" content="LINUX 暂停、继续进程 ">
 <meta name="twitter:description" content="LINUX 如何暂停、继续进程">
-<meta property="og:image" content="https://oops.run/theme/images/apple-touch-icon-152x152.png" />
-<meta name="twitter:image" content="https://oops.run/theme/images/apple-touch-icon-152x152.png" >
+<meta property="og:image" content="https://doobom.me/theme/images/apple-touch-icon-152x152.png" />
+<meta name="twitter:image" content="https://doobom.me/theme/images/apple-touch-icon-152x152.png" >
 
-        <title>LINUX 暂停、继续进程 · oops: run
+        <title>LINUX 暂停、继续进程  · oops: run
 </title>
         <link rel="shortcut icon" href="https://doobom.me/theme/images/favicon.ico" type="image/x-icon" />
         <link rel="icon" href="https://doobom.me/theme/images/apple-touch-icon-152x152.png" type="image/png" />
@@ -127,7 +127,6 @@
 <span class="code-line"><span class="m">2</span></span>
 <span class="code-line"></code></pre></div>
 
-
 <p>A. Shell&nbsp;支持作用控制，有以下命令：</p>
 <ol>
 <li>
@@ -172,7 +171,6 @@
 <div class="highlight"><pre><span class="code-line"><span></span><code><span class="nv">$xmms</span> <span class="p">&amp;</span></span>
 <span class="code-line"></code></pre></div>
 
-
 <p>这样打开 xmms 后，终端的提示又回来了。现在 xmms 在后台运行着呢；但万一你运行程序时忘记使用 “&amp;” 了，又不想重新执行；你可以先使用 <code>ctrl+z</code> 挂起程序，然后敲入 <code>bg</code> 命令，这样程序就在后台继续运行了。</p>
 <h3 id="_1">概念：当前任务<a class="headerlink" href="#_1" title="Permanent link"> </a></h3>
 <hr />
@@ -204,16 +202,13 @@
 <div class="highlight"><pre><span class="code-line"><span></span><code>/usr/local/mysql/bin/mysqld_safe --user<span class="o">=</span>mysql <span class="p">&amp;</span></span>
 <span class="code-line"></code></pre></div>
 
-
 <p>但是我们很多程序并不象 mysqld 一样可以做成守护进程，可能我们的程序只是普通程序而已，一般这种程序即使使用 <code>&amp;</code> 结尾，如果终端关闭，那么程序也会被关闭。为了能够后台运行，我们需要使用<code>nohup</code> 这个命令，比如我们有个 <code>start.sh</code> 需要在后台运行，并且希望在后台能够一直运行，那么就使用 <code>nohup</code>：</p>
 <div class="highlight"><pre><span class="code-line"><span></span><code>nohup /root/start.sh <span class="p">&amp;</span></span>
 <span class="code-line"></code></pre></div>
 
-
 <p>在 shell&nbsp;中回车后提示：</p>
 <div class="highlight"><pre><span class="code-line"><span></span><code><span class="o">[</span>~<span class="o">]</span>$ appending output to nohup.out</span>
 <span class="code-line"></code></pre></div>
-
 
 <p>原程序的的标准输出被自动改向到当前目录下的 <code>nohup.out</code> 文件，起到了 log&nbsp;的作用。</p>
 <p>但是有时候在这一步会有问题，当把终端关闭后，进程会自动被关闭，察看 <code>nohup.out</code> 可以看到在关闭终端瞬间服务自动关闭。</p>
@@ -239,7 +234,6 @@
 <div class="highlight"><pre><span class="code-line"><span></span><code>nohup <span class="nb">command</span> &gt; myout.file <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span></span>
 <span class="code-line"></code></pre></div>
 
-
 <p>在上面的例子中，输出被重定向到 <code>myout.file</code> 文件中。</p>
 <p>使用 jobs&nbsp;查看任务。</p>
 <p>使用 <code>fg %n</code>　关闭。</p>
@@ -248,7 +242,6 @@
 <p>要实现守护进程，一种方法是按守护进程的规则去编程（本站有文章介绍过），比较麻烦；另一种方法是仍然用普通方法编程，然后用nohup命令启动程序：</p>
 <div class="highlight"><pre><span class="code-line"><span></span><code>nohup＜程序名＞<span class="p">&amp;</span></span>
 <span class="code-line"></code></pre></div>
-
 
 <p>则控制台logout后，进程仍然继续运行，起到守护进程的作用（虽然它不是严格意义上的守护进程）。</p>
 <p>使用nohup命令后，原程序的的标准输出被自动改向到当前目录下的 <code>nohup.out</code> 文件，起到了 log&nbsp;的作用，实现了完整的守护进程功能。</p>
@@ -268,14 +261,14 @@
 <p>-=- <span class="caps">END</span>&nbsp;-=-</p>
 
 
-            
+             
 
 
 <div class="applause_button">
     <applause-button url=https://doobom.me/linux-stop-cont-ps> </applause-button>
 </div>
 
-
+ 
                 <p id="post-share-links" style="text-align:left">
     Like this post? Share on:
       <a href="https://twitter.com/intent/tweet?text=LINUX%C2%A0%E6%9A%82%E5%81%9C%E3%80%81%E7%BB%A7%E7%BB%AD%E8%BF%9B%E7%A8%8B&url=https%3A//doobom.me/linux-stop-cont-ps&via=d8boom&hashtags=linux,shell" target="_blank" rel="nofollow noopener noreferrer" title="Share on Twitter"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
@@ -288,14 +281,14 @@
 	C46.496,446.88,101.6,464,161.024,464c193.152,0,298.752-160,298.752-298.688c0-4.64-0.16-9.12-0.384-13.568
 	C480.224,136.96,497.728,118.496,512,97.248z"></path>
 </svg></a>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//doobom.me/linux-stop-cont-ps" target="_blank" rel="nofollow noopener noreferrer" title="Share on Facebook"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
+       <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//doobom.me/linux-stop-cont-ps" target="_blank" rel="nofollow noopener noreferrer" title="Share on Facebook"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
 <path style="fill:#1976D2;" d="M448,0H64C28.704,0,0,28.704,0,64v384c0,35.296,28.704,64,64,64h384c35.296,0,64-28.704,64-64V64
 	C512,28.704,483.296,0,448,0z"></path>
 <path style="fill:#FAFAFA;" d="M432,256h-80v-64c0-17.664,14.336-16,32-16h32V96h-64l0,0c-53.024,0-96,42.976-96,96v64h-64v80h64
 	v176h96V336h48L432,256z"></path>
 </svg></a>
-      <a href="https://news.ycombinator.com/submitlink?t=LINUX%C2%A0%E6%9A%82%E5%81%9C%E3%80%81%E7%BB%A7%E7%BB%AD%E8%BF%9B%E7%A8%8B&u=https%3A//doobom.me/linux-stop-cont-ps" target="_blank" rel="nofollow noopener noreferrer" title="Share on Hacker-News"><svg id="Layer_1" version="1.1" viewBox="0 0 512 512" width="31" height="31" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"><defs id="defs12"></defs><g id="g3045"><path d="m -0.003935,-0.0039375 512.007865,0 0,512.0078775 -512.007865,0 z" id="path3032" style="fill:#f68423;fill-opacity:1;fill-rule:nonzero;stroke:none"></path><path d="m 108.74016,65.990163 122.49212,242.503937 0,137.51574 49.8189,0 0,-137.51574 122.20866,-242.503937 -54.1063,0 -93.11811,182.586607 -89.5748,-182.586607 -57.72047,0 z" id="path3034" style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"></path></g></svg></a>
-      <a href="https://www.reddit.com/submit?url=https%3A//doobom.me/linux-stop-cont-ps&title=LINUX%C2%A0%E6%9A%82%E5%81%9C%E3%80%81%E7%BB%A7%E7%BB%AD%E8%BF%9B%E7%A8%8B" target="_blank" rel="nofollow noopener noreferrer" title="Share on reddit"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 514.24 514.24" style="enable-background:new 0 0 514.24 514.24;" xml:space="preserve" width="31" height="31">
+       <a href="https://news.ycombinator.com/submitlink?t=LINUX%C2%A0%E6%9A%82%E5%81%9C%E3%80%81%E7%BB%A7%E7%BB%AD%E8%BF%9B%E7%A8%8B&u=https%3A//doobom.me/linux-stop-cont-ps" target="_blank" rel="nofollow noopener noreferrer" title="Share on Hacker-News"><svg id="Layer_1" version="1.1" viewBox="0 0 512 512" width="31" height="31" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"><defs id="defs12"></defs><g id="g3045"><path d="m -0.003935,-0.0039375 512.007865,0 0,512.0078775 -512.007865,0 z" id="path3032" style="fill:#f68423;fill-opacity:1;fill-rule:nonzero;stroke:none"></path><path d="m 108.74016,65.990163 122.49212,242.503937 0,137.51574 49.8189,0 0,-137.51574 122.20866,-242.503937 -54.1063,0 -93.11811,182.586607 -89.5748,-182.586607 -57.72047,0 z" id="path3034" style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"></path></g></svg></a>
+       <a href="https://www.reddit.com/submit?url=https%3A//doobom.me/linux-stop-cont-ps&title=LINUX%C2%A0%E6%9A%82%E5%81%9C%E3%80%81%E7%BB%A7%E7%BB%AD%E8%BF%9B%E7%A8%8B" target="_blank" rel="nofollow noopener noreferrer" title="Share on reddit"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 514.24 514.24" style="enable-background:new 0 0 514.24 514.24;" xml:space="preserve" width="31" height="31">
 <g>
 	<polygon style="fill:#FAFAFA;" points="192,289.121 176,289.089 176,289.121 	"></polygon>
 	<polygon style="fill:#FAFAFA;" points="336,289.121 352,289.121 336,289.089 	"></polygon>
@@ -316,7 +309,7 @@
 	<circle style="fill:#FAFAFA;" cx="336" cy="289.121" r="32"></circle>
 </g>
 </svg></a>
-      <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//doobom.me/linux-stop-cont-ps&title=LINUX%C2%A0%E6%9A%82%E5%81%9C%E3%80%81%E7%BB%A7%E7%BB%AD%E8%BF%9B%E7%A8%8B&summary=LINUX%C2%A0%E5%A6%82%E4%BD%95%E6%9A%82%E5%81%9C%E3%80%81%E7%BB%A7%E7%BB%AD%E8%BF%9B%E7%A8%8B&source=https%3A//doobom.me/linux-stop-cont-ps" target="_blank" rel="nofollow noopener noreferrer" title="Share on linkedin"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
+       <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//doobom.me/linux-stop-cont-ps&title=LINUX%C2%A0%E6%9A%82%E5%81%9C%E3%80%81%E7%BB%A7%E7%BB%AD%E8%BF%9B%E7%A8%8B&summary=LINUX%C2%A0%E5%A6%82%E4%BD%95%E6%9A%82%E5%81%9C%E3%80%81%E7%BB%A7%E7%BB%AD%E8%BF%9B%E7%A8%8B&source=https%3A//doobom.me/linux-stop-cont-ps" target="_blank" rel="nofollow noopener noreferrer" title="Share on linkedin"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
 <g>
 	<rect y="160" style="fill:#1976D2;" width="114.496" height="352"></rect>
 	<path style="fill:#1976D2;" d="M426.368,164.128c-1.216-0.384-2.368-0.8-3.648-1.152c-1.536-0.352-3.072-0.64-4.64-0.896
@@ -325,7 +318,7 @@
 	<circle style="fill:#1976D2;" cx="56" cy="56" r="56"></circle>
 </g>
 </svg></a>
-      <a href="mailto:?subject=LINUX%C2%A0%E6%9A%82%E5%81%9C%E3%80%81%E7%BB%A7%E7%BB%AD%E8%BF%9B%E7%A8%8B&amp;body=https%3A//doobom.me/linux-stop-cont-ps" target="_blank" rel="nofollow noopener noreferrer" title="Share via Email"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
+       <a href="mailto:?subject=LINUX%C2%A0%E6%9A%82%E5%81%9C%E3%80%81%E7%BB%A7%E7%BB%AD%E8%BF%9B%E7%A8%8B&amp;body=https%3A//doobom.me/linux-stop-cont-ps" target="_blank" rel="nofollow noopener noreferrer" title="Share via Email"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
 <path style="fill:#1E88E5;" d="M480,432H32c-17.664,0-32-14.336-32-32V112c0-17.664,14.336-32,32-32h448c17.664,0,32,14.336,32,32
 	v288C512,417.664,497.664,432,480,432z"></path>
 <path style="fill:#2196F3;" d="M480,432H32c-17.952,0-32-14.048-32-32c0-5.088,2.432-9.888,6.528-12.896l240-160
@@ -445,7 +438,7 @@
     <a href="https://github.com/doobom" title="doobom's github profile" target="_blank" rel="nofollow noopener noreferrer">
         <svg xmlns="http://www.w3.org/2000/svg" aria-label="GitHub" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#1B1817"/><path fill="#fff" d="M335 499c14 0 12 17 12 17H165s-2-17 12-17c13 0 16-6 16-12l-1-50c-71 16-86-28-86-28-12-30-28-37-28-37-24-16 1-16 1-16 26 2 40 26 40 26 22 39 59 28 74 22 2-17 9-28 16-35-57-6-116-28-116-126 0-28 10-51 26-69-3-6-11-32 3-67 0 0 21-7 70 26 42-12 86-12 128 0 49-33 70-26 70-26 14 35 6 61 3 67 16 18 26 41 26 69 0 98-60 120-117 126 10 8 18 24 18 48l-1 70c0 6 3 12 16 12z"/></svg>
     </a>
-    <a href="https://oops.run/feeds/all.atom.xml" title="" target="_blank" rel="nofollow noopener noreferrer">
+    <a href="https://doobom.me/feeds/all.atom.xml" title="" target="_blank" rel="nofollow noopener noreferrer">
         <svg xmlns="http://www.w3.org/2000/svg" aria-label="RSS" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#f80"/><circle cx="145" cy="367" r="35" fill="#fff"/><path fill="none" stroke="#fff" stroke-width="60" d="M109 241c89 0 162 73 162 162M109 127c152 0 276 124 276 276"/></svg>
     </a>
     <a href="https://twitter.com/d8boom" title="twitter" target="_blank" rel="nofollow noopener noreferrer">

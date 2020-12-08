@@ -17,7 +17,6 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;vim&lt;/span&gt; &lt;span class="k"&gt;a&lt;/span&gt;.txt &lt;span class="k"&gt;b&lt;/span&gt;.txt&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;blockquote&gt;
 &lt;p&gt;当你使用&lt;code&gt;:q&lt;/code&gt;关闭文件时？是否看到过&lt;code&gt;1 more file to edit&lt;/code&gt;的警告？那就是缓冲区中的文件。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -34,7 +33,6 @@
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;b&lt;/span&gt; {&lt;span class="k"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; expression}     跳转到指定缓冲区&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;&lt;code&gt;:b&lt;/code&gt;接受缓冲区编号，或者部分文件名。例如：
 * &lt;code&gt;:b2&lt;/code&gt;将会跳转到编号为2的缓冲区，如果你正在用&lt;code&gt;:ls&lt;/code&gt;列出缓冲区，这时只需要输入编号回车即可。
 * &lt;code&gt;:b exa&lt;/code&gt;将会跳转到最匹配&lt;code&gt;exa&lt;/code&gt;的文件名，比如&lt;code&gt;example.html&lt;/code&gt;，&lt;strong&gt;模糊匹配打开文件正是Vim缓冲区的强大之处&lt;/strong&gt;&amp;nbsp;。&lt;/p&gt;
@@ -46,12 +44,10 @@
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;vertical&lt;/span&gt; &lt;span class="k"&gt;rightbelow&lt;/span&gt; &lt;span class="k"&gt;sfind&lt;/span&gt; &lt;span class="k"&gt;file&lt;/span&gt;.txt&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;注意&lt;code&gt;sfind&lt;/code&gt;可以打开在Vim PATH中的任何文件。这当然需要我们设置PATH，一个通用的做法是在&lt;code&gt;~/.vimrc&lt;/code&gt;中添加：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;&amp;quot; 将当前工作路径设为Vim PATH&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nb"&gt;path&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;$PWD/**&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h3 id="_4"&gt;利用通配符进行缓冲区跳转&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;hr /&gt;
@@ -60,11 +56,9 @@
 &lt;span class="code-line"&gt;&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nb"&gt;wildchar&lt;/span&gt;&lt;span class="p"&gt;=&amp;lt;&lt;/span&gt;Tab&lt;span class="p"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;wildcharm&lt;/span&gt;&lt;span class="p"&gt;=&amp;lt;&lt;/span&gt;C&lt;span class="p"&gt;-&lt;/span&gt;Z&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;比如现在按下打开这些文件：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;vehicle.&lt;span class="k"&gt;c&lt;/span&gt; vehicle.&lt;span class="k"&gt;h&lt;/span&gt; car.&lt;span class="k"&gt;c&lt;/span&gt; car.&lt;span class="k"&gt;h&lt;/span&gt; jet.&lt;span class="k"&gt;c&lt;/span&gt; jet.&lt;span class="k"&gt;h&lt;/span&gt; jetcar.&lt;span class="k"&gt;c&lt;/span&gt; jetcar.&lt;span class="k"&gt;h&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;然后按下&lt;code&gt;:b &amp;lt;Tab&amp;gt;&lt;/code&gt;便可看到Vim提供的备选文件列表了， 按下&lt;code&gt;&amp;lt;Tab&amp;gt;&lt;/code&gt;选择下一个，按下回车打开当前文件。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;b&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;Tab&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;       &lt;span class="c"&gt;&amp;quot; 显示所有Buffer中的文件&lt;/span&gt;&lt;/span&gt;
@@ -76,11 +70,9 @@
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;b&lt;/span&gt; &lt;span class="k"&gt;j&lt;/span&gt;*&lt;span class="k"&gt;c&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;Tab&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;    &lt;span class="c"&gt;&amp;quot; 显示 jet.c jetcar.c jetcar.h&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;我们可以为&lt;code&gt;:b &amp;lt;Tab&amp;gt;&lt;/code&gt;设置一个快捷键&lt;code&gt;&amp;lt;c-n&amp;gt;&lt;/code&gt;，这时便用到上文中设置的&lt;code&gt;wildcharm&lt;/code&gt;了：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;noremap&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="k"&gt;c&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="k"&gt;n&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt; :&lt;span class="k"&gt;b&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="k"&gt;c&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;z&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;-= 完&amp;nbsp;=-&lt;/p&gt;</content><category term="VIM"></category><category term="VIM"></category><category term="buffer"></category><category term="edit multi files"></category></entry><entry><title>Vim 多文件编辑：标签页</title><link href="https://doobom.me/use-tagpages-edit-multi-files-in-vim" rel="alternate"></link><published>2019-02-08T23:01:00+08:00</published><updated>2019-02-08T23:01:00+08:00</updated><author><name>doobom</name></author><id>tag:doobom.me,2019-02-08:/use-tagpages-edit-multi-files-in-vim</id><summary type="html">&lt;p&gt;Vim&amp;nbsp;多文件编辑：标签页.&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
 &lt;p&gt;原文链接: &lt;a href="https://harttle.land/2015/11/12/vim-tabpage.html"&gt;https://harttle.land/2015/11/12/vim-tabpage.html&lt;/a&gt;&lt;/p&gt;
@@ -95,7 +87,6 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;vim&lt;/span&gt; &lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="k"&gt;p&lt;/span&gt; main.cpp my&lt;span class="p"&gt;-&lt;/span&gt;oj&lt;span class="p"&gt;-&lt;/span&gt;toolkit.&lt;span class="k"&gt;h&lt;/span&gt; &lt;span class="sr"&gt;/private/&lt;/span&gt;etc/hosts&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;&lt;img alt="vim-tab" src="images/vim-tab@2x.png" /&gt;&lt;/p&gt;
 &lt;p&gt;在Vim中也可以打开和关闭标签：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;tabe&lt;/span&gt;[dit] {&lt;span class="k"&gt;file&lt;/span&gt;}   edit specified &lt;span class="k"&gt;file&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="k"&gt;a&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="k"&gt;tab&lt;/span&gt;&lt;/span&gt;
@@ -104,7 +95,6 @@
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;tabc&lt;/span&gt;[lose] {&lt;span class="k"&gt;i&lt;/span&gt;}     &lt;span class="k"&gt;close&lt;/span&gt; &lt;span class="k"&gt;i&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="k"&gt;th&lt;/span&gt; &lt;span class="k"&gt;tab&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;tabo&lt;/span&gt;[nly]          &lt;span class="k"&gt;close&lt;/span&gt; &lt;span class="k"&gt;all&lt;/span&gt; other &lt;span class="k"&gt;tabs&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;show &lt;span class="k"&gt;only&lt;/span&gt; the current &lt;span class="k"&gt;tab&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;blockquote&gt;
 &lt;p&gt;中括号中的部分可以省略，在Vim中&lt;code&gt;:h tabedit&lt;/code&gt;可以查看命令帮助。&lt;/p&gt;
@@ -117,7 +107,6 @@
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;tabm&lt;/span&gt; {&lt;span class="k"&gt;i&lt;/span&gt;}     move current &lt;span class="k"&gt;tab&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; position &lt;span class="k"&gt;i&lt;/span&gt;&lt;span class="p"&gt;+&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3 id="_3"&gt;标签跳转&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;hr /&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;tabn&lt;/span&gt;         &lt;span class="k"&gt;go&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; next &lt;span class="k"&gt;tab&lt;/span&gt;&lt;/span&gt;
@@ -126,19 +115,16 @@
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;tablast&lt;/span&gt;      &lt;span class="k"&gt;go&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; last &lt;span class="k"&gt;tab&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;在正常模式（normal）下，还可以使用快捷键：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;gt            &lt;span class="k"&gt;go&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; next &lt;span class="k"&gt;tab&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;gT            &lt;span class="k"&gt;go&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="k"&gt;previous&lt;/span&gt; &lt;span class="k"&gt;tab&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;{&lt;span class="k"&gt;i&lt;/span&gt;}gt         &lt;span class="k"&gt;go&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="k"&gt;tab&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; position &lt;span class="k"&gt;i&lt;/span&gt; &lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;可以设置更通用的切换标签页快捷键，比如我的&lt;code&gt;~/.vimrc&lt;/code&gt;是这样设置的:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;noremap&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;C&lt;span class="p"&gt;-&lt;/span&gt;L&lt;span class="p"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;Esc&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;:tabnext&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;CR&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="nb"&gt;noremap&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;C&lt;span class="p"&gt;-&lt;/span&gt;H&lt;span class="p"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;Esc&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;:&lt;span class="k"&gt;tabprevious&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;CR&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;-= 完&amp;nbsp;=-&lt;/p&gt;</content><category term="VIM"></category><category term="VIM"></category><category term="tag"></category><category term="edit multi files"></category></entry><entry><title>Vim 多文件编辑：窗口</title><link href="https://doobom.me/use-windows-edit-multi-files-in-vim" rel="alternate"></link><published>2019-02-08T23:01:00+08:00</published><updated>2019-02-08T23:01:00+08:00</updated><author><name>doobom</name></author><id>tag:doobom.me,2019-02-08:/use-windows-edit-multi-files-in-vim</id><summary type="html">&lt;p&gt;Vim&amp;nbsp;多文件编辑：窗口.&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
 &lt;p&gt;原文链接: &lt;a href="https://harttle.land/2015/11/14/vim-window.html"&gt;https://harttle.land/2015/11/14/vim-window.html&lt;/a&gt;&lt;/p&gt;
@@ -155,7 +141,6 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;vim&lt;/span&gt; &lt;span class="p"&gt;-&lt;/span&gt;O main.cpp my&lt;span class="p"&gt;-&lt;/span&gt;oj&lt;span class="p"&gt;-&lt;/span&gt;toolkit.&lt;span class="k"&gt;h&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;blockquote&gt;
 &lt;p&gt;使用小写的-o可以水平分屏。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -168,7 +153,6 @@
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;vs&lt;/span&gt;[plit] {&lt;span class="k"&gt;file&lt;/span&gt;}    垂直分屏&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;clo&lt;/span&gt;[&lt;span class="k"&gt;se&lt;/span&gt;]            关闭当前窗口&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;blockquote&gt;
 &lt;p&gt;上述命令中，如未指定file则打开当前文件。&lt;/p&gt;
@@ -184,7 +168,6 @@
 &lt;span class="code-line"&gt;Ctrl&lt;span class="p"&gt;+&lt;/span&gt;&lt;span class="k"&gt;w&lt;/span&gt; T        当前窗口移动到新标签页&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3 id="_4"&gt;切换窗口&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;hr /&gt;
 &lt;p&gt;切换窗口的快捷键就是&lt;code&gt;Ctrl+w&lt;/code&gt;前缀 + &lt;code&gt;hjkl&lt;/code&gt;：&lt;/p&gt;
@@ -194,7 +177,6 @@
 &lt;span class="code-line"&gt;Ctrl&lt;span class="p"&gt;+&lt;/span&gt;&lt;span class="k"&gt;w&lt;/span&gt; &lt;span class="k"&gt;l&lt;/span&gt;        切换到右边窗口&lt;/span&gt;
 &lt;span class="code-line"&gt;Ctrl&lt;span class="p"&gt;+&lt;/span&gt;&lt;span class="k"&gt;w&lt;/span&gt; &lt;span class="k"&gt;w&lt;/span&gt;        遍历切换窗口&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;blockquote&gt;
 &lt;p&gt;还有&lt;code&gt;t&lt;/code&gt;切换到最上方的窗口，&lt;code&gt;b&lt;/code&gt;切换到最下方的窗口。&lt;/p&gt;
@@ -208,7 +190,6 @@
 &lt;span class="code-line"&gt;Ctrl&lt;span class="p"&gt;+&lt;/span&gt;&lt;span class="k"&gt;w&lt;/span&gt; L        向右移动当前窗口&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3 id="_6"&gt;调整大小&lt;a class="headerlink" href="#_6" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;hr /&gt;
 &lt;p&gt;调整窗口大小的快捷键仍然有&lt;code&gt;Ctrl+W&lt;/code&gt;前缀：&lt;/p&gt;
@@ -216,7 +197,6 @@
 &lt;span class="code-line"&gt;Ctrl&lt;span class="p"&gt;+&lt;/span&gt;&lt;span class="k"&gt;w&lt;/span&gt; &lt;span class="p"&gt;-&lt;/span&gt;        减小窗口高度&lt;/span&gt;
 &lt;span class="code-line"&gt;Ctrl&lt;span class="p"&gt;+&lt;/span&gt;&lt;span class="k"&gt;w&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt;        统一窗口高度&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;-= 完&amp;nbsp;=-&lt;/p&gt;</content><category term="VIM"></category><category term="VIM"></category><category term="window"></category><category term="edit multi files"></category></entry><entry><title>在 Vim 中优雅地查找和替换</title><link href="https://doobom.me/search-and-replace-in-vim" rel="alternate"></link><published>2019-02-05T23:01:00+08:00</published><updated>2019-02-05T23:01:00+08:00</updated><author><name>doobom</name></author><id>tag:doobom.me,2019-02-05:/search-and-replace-in-vim</id><summary type="html">&lt;p&gt;&lt;span class="caps"&gt;VIM&lt;/span&gt; 中的查找及替换,&amp;nbsp;可以用正则式进行.&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
 &lt;p&gt;本文来源:&amp;nbsp;https://harttle.land/2016/08/08/vim-search-in-file.html&lt;/p&gt;
@@ -235,7 +215,6 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;/foo\&lt;span class="k"&gt;c&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;将会查找所有的&amp;#8221;&lt;code&gt;foo&lt;/code&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;,&amp;#8221;&lt;code&gt;FOO&lt;/code&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;,&amp;#8221;&lt;code&gt;Foo&lt;/code&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;等字符串。&lt;/p&gt;
 &lt;h2 id="_3"&gt;大小写敏感配置&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;hr /&gt;
@@ -245,7 +224,6 @@
 &lt;span class="code-line"&gt;&lt;span class="c"&gt;&amp;quot; 如果有一个大写字母，则切换到大小写敏感查找&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nb"&gt;smartcase&lt;/span&gt; &lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;blockquote&gt;
 &lt;p&gt;将上述设置粘贴到你的&lt;code&gt;~/.vimrc&lt;/code&gt;，重新打开Vim即可生效。&lt;/p&gt;
@@ -260,7 +238,6 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;{作用范围}s&lt;span class="sr"&gt;/{目标}/&lt;/span&gt;{替换}/{替换标志}&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;例如&lt;code&gt;:%s/foo/bar/g&lt;/code&gt;会在全局范围(&lt;code&gt;%&lt;/code&gt;)查找&lt;code&gt;foo&lt;/code&gt;并替换为&lt;code&gt;bar&lt;/code&gt;，所有出现都会被替换（&lt;code&gt;g&lt;/code&gt;）。&lt;/p&gt;
 &lt;h2 id="_6"&gt;作用范围&lt;a class="headerlink" href="#_6" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;hr /&gt;
@@ -269,26 +246,21 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;s&lt;span class="sr"&gt;/foo/&lt;/span&gt;bar/&lt;span class="k"&gt;g&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;全文：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;%s&lt;span class="sr"&gt;/foo/&lt;/span&gt;bar/&lt;span class="k"&gt;g&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;选区，在Visual模式下选择区域后输入&lt;code&gt;:&lt;/code&gt;，Vim即可自动补全为 &lt;code&gt;:'&amp;lt;,'&amp;gt;&lt;/code&gt;。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;lt;,&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;s&lt;span class="sr"&gt;/foo/&lt;/span&gt;bar/&lt;span class="k"&gt;g&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;2-11行：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;12&lt;/span&gt;s&lt;span class="sr"&gt;/foo/&lt;/span&gt;bar/&lt;span class="k"&gt;g&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;当前行.与接下来两行+2：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;.&lt;span class="p"&gt;,+&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;s&lt;span class="sr"&gt;/foo/&lt;/span&gt;bar/&lt;span class="k"&gt;g&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h2 id="_7"&gt;替换标志&lt;a class="headerlink" href="#_7" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;hr /&gt;
@@ -297,23 +269,19 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;%s&lt;span class="sr"&gt;/foo/&lt;/span&gt;bar&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;&lt;code&gt;i&lt;/code&gt;表示大小写不敏感查找，&lt;code&gt;I&lt;/code&gt;表示大小写敏感：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;%s&lt;span class="sr"&gt;/foo/&lt;/span&gt;bar/&lt;span class="k"&gt;i&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;# 等效于模式中的\&lt;span class="k"&gt;c&lt;/span&gt;（不敏感）或\C（敏感）&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;:&lt;/span&gt;%s&lt;span class="sr"&gt;/foo\c/&lt;/span&gt;bar&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;&lt;code&gt;c&lt;/code&gt;表示需要确认，例如全局查找&amp;#8221;&lt;code&gt;foo&lt;/code&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;替换为&amp;#8221;&lt;code&gt;bar&lt;/code&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;并且需要确认：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;%s&lt;span class="sr"&gt;/foo/&lt;/span&gt;bar/gc&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;回车后Vim会将光标移动到每一次&amp;#8221;&lt;code&gt;foo&lt;/code&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;出现的位置，并提示&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;replace with bar &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;y&lt;/span&gt;&lt;span class="sr"&gt;/n/&lt;/span&gt;&lt;span class="k"&gt;a&lt;/span&gt;&lt;span class="sr"&gt;/q/&lt;/span&gt;&lt;span class="k"&gt;l&lt;/span&gt;&lt;span class="sr"&gt;/^E/&lt;/span&gt;^Y&lt;span class="p"&gt;)&lt;/span&gt;?&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;按下&lt;code&gt;y&lt;/code&gt;表示替换，&lt;code&gt;n&lt;/code&gt;表示不替换，&lt;code&gt;a&lt;/code&gt;表示替换所有，&lt;code&gt;q&lt;/code&gt;表示退出查找模式， &lt;code&gt;l&lt;/code&gt;表示替换当前位置并退出。&lt;code&gt;^E&lt;/code&gt;与&lt;code&gt;^Y&lt;/code&gt;是光标移动快捷键，参考： &lt;a href="https://harttle.land/2015/11/07/vim-cursor.html"&gt;Vim中如何快速进行光标移动&lt;/a&gt;。&lt;/p&gt;
 &lt;h2 id="_8"&gt;高亮设置&lt;a class="headerlink" href="#_8" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
@@ -326,7 +294,6 @@
 &lt;span class="code-line"&gt;&lt;span class="nb"&gt;highlight&lt;/span&gt; MatchParen cterm&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;underline&lt;/span&gt; ctermbg&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;NONE&lt;/span&gt; ctermfg&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;NONE&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;上述配置指定 Search 结果的前景色（foreground）为黑色，背景色（background）为灰色；&amp;nbsp;渐进搜索的前景色为黑色，背景色为黄色；光标处的字符加下划线。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;更多的CTERM颜色可以查阅：&lt;a href="http://vim.wikia.com/wiki/Xterm256_color_names_for_console_Vim"&gt;http://vim.wikia.com/wiki/Xterm256_color_names_for_console_Vim&lt;/a&gt;&lt;/p&gt;
@@ -338,7 +305,6 @@
 &lt;span class="code-line"&gt;&lt;span class="c"&gt;&amp;quot; 等效于&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;nohl&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;其实上述命令禁用了所有高亮，只禁用搜索高亮的命令是&lt;code&gt;:set nohlsearch&lt;/code&gt;。 下次搜索时需要&lt;code&gt;:set hlsearch&lt;/code&gt;再次启动搜索高亮。&lt;/p&gt;
 &lt;h4 id="_11"&gt;&lt;em&gt;延时禁用&lt;/em&gt;&lt;a class="headerlink" href="#_11" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
@@ -353,7 +319,6 @@
 &lt;span class="code-line"&gt;&lt;span class="nb"&gt;noremap&lt;/span&gt; ? :&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nb"&gt;hlsearch&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="k"&gt;cr&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;?&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="nb"&gt;noremap&lt;/span&gt; * *:&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nb"&gt;hlsearch&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="k"&gt;cr&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;blockquote&gt;
 &lt;p&gt;将上述配置粘贴到&lt;code&gt;~/.vimrc&lt;/code&gt;，重新打开vim即可生效。&lt;/p&gt;
@@ -372,7 +337,6 @@
 &lt;span class="code-line"&gt;    &lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="k"&gt;nohlsearch&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;endfunc&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;希望关闭高亮时只需要按下 &lt;code&gt;Ctrl+H&lt;/code&gt;，当发生下次搜索时又会自动启用。&lt;/p&gt;
 &lt;h2 id="_13"&gt;参考阅读&lt;a class="headerlink" href="#_13" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;

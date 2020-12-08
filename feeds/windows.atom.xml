@@ -5,7 +5,6 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Failed to get D-Bus connection Operation not permitted&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;查了一下，意思就是 wsl&amp;nbsp;并不支持。&lt;/p&gt;
 &lt;p&gt;不过 github 上有人解决了, &lt;a href="https://github.com/DDoSolitary/LxRunOffline/issues/88"&gt;这里&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;大概就是这样：&lt;/p&gt;
@@ -13,7 +12,6 @@
 &lt;span class="code-line"&gt;curl https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl.py &amp;gt; /usr/bin/systemctl&lt;/span&gt;
 &lt;span class="code-line"&gt;chmod +x /usr/bin/systemctl&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;有一个介绍 wsl 的写的很详细，推友 塔Q 分享的 &lt;a href="https://dowww.spencerwoo.com/1.0/1-preparations/1-0-intro.html"&gt;Dev on Windows with &lt;span class="caps"&gt;WSL&lt;/span&gt;&lt;/a&gt;，值得一读.&lt;/p&gt;
 &lt;p&gt;另一个设置自动运行一文章： &lt;a href="https://dev.to/ironfroggy/wsl-tips-starting-linux-background-services-on-windows-login-3o98"&gt;&lt;span class="caps"&gt;WSL&lt;/span&gt; Tips: Starting Linux Background Services on Windows&amp;nbsp;Login&lt;/a&gt;&lt;/p&gt;

@@ -8,7 +8,6 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;MariaDB &lt;span class="o"&gt;[(&lt;/span&gt;none&lt;span class="o"&gt;)]&lt;/span&gt;&amp;gt; GRANT FILE, REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO &lt;span class="s1"&gt;&amp;#39;sync_account&amp;#39;&lt;/span&gt;@&lt;span class="s1"&gt;&amp;#39;%&amp;#39;&lt;/span&gt; IDENTIFIED BY &lt;span class="s1"&gt;&amp;#39;123456&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="mycnf"&gt;修改服务端 my.cnf 配置文件：&lt;a class="headerlink" href="#mycnf" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;server-id = 1              #Server标识, 不能重复&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="err"&gt;log-bin = mysql-bin        #日志文件名&lt;/span&gt;&lt;/span&gt;
@@ -19,31 +18,25 @@
 &lt;span class="code-line"&gt;&lt;span class="err"&gt;replicate-do-db = testdb   #指定从端需要同步的数据库，多个加一行，不需要就注释&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="mariadb"&gt;重启 MariaDB:&lt;a class="headerlink" href="#mariadb" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;service mariadb restart&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;配置过程中为了防止突然的主机数据写入 导致配置主从失败 可以将机器锁定只允许读 注意千万不要将从机配成锁定&amp;nbsp;否则无法同步数据了&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;MariaDB &lt;span class="o"&gt;[(&lt;/span&gt;none&lt;span class="o"&gt;)]&lt;/span&gt;&amp;gt; FLUSH TABLES WITH READ LOCK&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;配置完从端解锁：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;MariaDB &lt;span class="o"&gt;[(&lt;/span&gt;none&lt;span class="o"&gt;)]&lt;/span&gt;&amp;gt; UNLOCK TABLES&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h2 id="_3"&gt;备份数据库：&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;mysql -u root -p --quick --all-databases --flush-logs --delete-master-logs --single-transaction &amp;gt; sync.sql&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="_4"&gt;查看服务端状态&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;MariaDB &lt;span class="o"&gt;[(&lt;/span&gt;none&lt;span class="o"&gt;)]&lt;/span&gt;&amp;gt; SHOW MASTER STATUS&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;显示类似如下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;+------------------+----------+-------------------------------------+------------------+&lt;/span&gt;
@@ -54,11 +47,9 @@
 &lt;span class="code-line"&gt;&lt;span class="m"&gt;1&lt;/span&gt; row in &lt;span class="nb"&gt;set&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;.00 sec&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="_5"&gt;从端导入数据库&lt;a class="headerlink" href="#_5" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;mysql -u root -p &amp;lt; sync.sql&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h2 id="mycnf_1"&gt;修改从端 my.cnf 配置文件：&lt;a class="headerlink" href="#mycnf_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;server-id = 2&lt;/span&gt;&lt;/span&gt;
@@ -66,7 +57,6 @@
 &lt;span class="code-line"&gt;&lt;span class="err"&gt;auto_increment_offset=1&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="err"&gt;#其余项目与服务端一致就可以了, 完了重启 MariaDB&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h2 id="_6"&gt;配置从端主服务器信息：&lt;a class="headerlink" href="#_6" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;MariaDB &lt;span class="o"&gt;[(&lt;/span&gt;none&lt;span class="o"&gt;)]&lt;/span&gt;&amp;gt; CHANGE MASTER TO &lt;span class="nv"&gt;MASTER_HOST&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;master.host.name&amp;#39;&lt;/span&gt;,&lt;span class="se"&gt;\ &lt;/span&gt; &lt;span class="c1"&gt;#主服务器主机名称&lt;/span&gt;&lt;/span&gt;
@@ -79,11 +69,9 @@
 &lt;span class="code-line"&gt;    -&amp;gt; &lt;span class="nv"&gt;MASTER_HEARTBEAT_PERIOD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;                                    &lt;span class="c1"&gt;#心跳间隔时间&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="_7"&gt;启动从端数据库同步&lt;a class="headerlink" href="#_7" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;MariaDB &lt;span class="o"&gt;[(&lt;/span&gt;none&lt;span class="o"&gt;)]&lt;/span&gt;&amp;gt; START SLAVE&lt;span class="p"&gt;;&lt;/span&gt;                            &lt;span class="c1"&gt;#启动同步进程&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h2 id="_8"&gt;查看同步信息&lt;a class="headerlink" href="#_8" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;MariaDB &lt;span class="o"&gt;[(&lt;/span&gt;none&lt;span class="o"&gt;)]&lt;/span&gt;&amp;gt; SHOW SLAVE STATUS&lt;span class="se"&gt;\G&lt;/span&gt;                     &lt;span class="c1"&gt;#查看从服务器线程的关键参数的信息&lt;/span&gt;&lt;/span&gt;
@@ -103,7 +91,6 @@
 &lt;span class="code-line"&gt;            ...&lt;/span&gt;
 &lt;span class="code-line"&gt;             Master_Server_Id: &lt;span class="m"&gt;2&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;查看从端 &lt;code&gt;MASTER&lt;/code&gt; 状态，然后在主端启动服务器同步就可以实现相互同步了。&lt;/p&gt;
 &lt;h2 id="_9"&gt;参考：&lt;a class="headerlink" href="#_9" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;

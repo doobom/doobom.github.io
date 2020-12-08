@@ -18,7 +18,6 @@
 &lt;span class="code-line"&gt;&lt;span class="err"&gt;}&lt;/span&gt; &lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;上面配置代码即可解决问题了，不想深入研究的，看到这里就可以啦=-=&lt;/p&gt;
 &lt;h2 id="_2"&gt;二、 解释&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;1.&amp;nbsp;Access-Control-Allow-Origin&lt;/strong&gt;&lt;/p&gt;
@@ -27,12 +26,10 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Request header field Content-Type is not allowed by Access-Control-Allow-Headers in preflight response.&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;这个错误表示当前请求 &lt;code&gt;Content-Type&lt;/code&gt; 的值不被支持。其实是我们发起了 &lt;code&gt;application/json&lt;/code&gt; 的类型请求导致的。这里涉及到一个概念：预检请求（preflight&amp;nbsp;request）,请看下面&amp;#8221;预检请求&amp;#8221;的介绍。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;3. Access-Control-Allow-Methods&amp;nbsp;是为了防止出现以下错误：&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Content-Type is not allowed by Access-Control-Allow-Headers in preflight response.&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;&lt;strong&gt;4.给 &lt;code&gt;OPTIONS&lt;/code&gt; 添加 &lt;code&gt;204&lt;/code&gt; 的返回，是为了处理在发送 &lt;span class="caps"&gt;POST&lt;/span&gt; 请求时 Nginx&amp;nbsp;依然拒绝访问的错误&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;发送&amp;#8221;预检请求&amp;#8221;时，需要用到方法 &lt;code&gt;OPTIONS&lt;/code&gt; ,所以服务器需要允许该方法。&lt;/p&gt;
@@ -47,7 +44,6 @@
 &lt;span class="code-line"&gt;text/plain&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;所以 &lt;code&gt;application/json&lt;/code&gt; 的请求 会在正式通信之前，增加一次&amp;#8221;预检&amp;#8221;请求，这次&amp;#8221;预检&amp;#8221;请求会带上头部信息 &lt;code&gt;Access-Control-Request-Headers: Content-Type&lt;/code&gt;：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;OPTIONS /api/test HTTP/1.1&lt;/span&gt;
 &lt;span class="code-line"&gt;Origin: http://foo.example&lt;/span&gt;
@@ -56,11 +52,9 @@
 &lt;span class="code-line"&gt;... 省略了一些&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;服务器回应时，返回的头部信息如果不包含 &lt;code&gt;Access-Control-Allow-Headers: Content-Type&lt;/code&gt; 则表示不接受非默认的的 &lt;code&gt;Content-Type&lt;/code&gt;。即出现以下错误：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Request header field Content-Type is not allowed by Access-Control-Allow-Headers in preflight response.&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h2 id="_3"&gt;参考文章：&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;

@@ -9,7 +9,6 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;yum install epel-release&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;In the case of command doesn’t work for you, use one of below&amp;nbsp;commands.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;### For CentOS/RHEL 7 ###&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm&lt;/span&gt;
@@ -17,7 +16,6 @@
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;### For CentOS/RHEL 6 ###&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h1 id="install-remi-repository"&gt;Install &lt;span class="caps"&gt;REMI&lt;/span&gt; Repository&lt;a class="headerlink" href="#install-remi-repository" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;Use following commands to install &lt;span class="caps"&gt;REMI&lt;/span&gt; yum repository on your CentOS/&lt;span class="caps"&gt;RHEL&lt;/span&gt; 7/6/5 systems. Make sure you already have installed &lt;span class="caps"&gt;EPEL&lt;/span&gt; repository before installing &lt;span class="caps"&gt;REMI&lt;/span&gt;.&lt;/p&gt;
@@ -28,12 +26,10 @@
 &lt;span class="code-line"&gt;rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h1 id="list-all-installed-repository"&gt;List all Installed Repository&lt;a class="headerlink" href="#list-all-installed-repository" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;Use following command to list all installed yum repositories in your&amp;nbsp;system.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;yum repolist&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Sample&amp;nbsp;Output&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Loaded plugins: fastestmirror&lt;/span&gt;
@@ -60,7 +56,6 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Failed to get D-Bus connection Operation not permitted&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;查了一下，意思就是 wsl&amp;nbsp;并不支持。&lt;/p&gt;
 &lt;p&gt;不过 github 上有人解决了, &lt;a href="https://github.com/DDoSolitary/LxRunOffline/issues/88"&gt;这里&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;大概就是这样：&lt;/p&gt;
@@ -68,7 +63,6 @@
 &lt;span class="code-line"&gt;curl https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl.py &amp;gt; /usr/bin/systemctl&lt;/span&gt;
 &lt;span class="code-line"&gt;chmod +x /usr/bin/systemctl&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;有一个介绍 wsl 的写的很详细，推友 塔Q 分享的 &lt;a href="https://dowww.spencerwoo.com/1.0/1-preparations/1-0-intro.html"&gt;Dev on Windows with &lt;span class="caps"&gt;WSL&lt;/span&gt;&lt;/a&gt;，值得一读.&lt;/p&gt;
 &lt;p&gt;另一个设置自动运行一文章： &lt;a href="https://dev.to/ironfroggy/wsl-tips-starting-linux-background-services-on-windows-login-3o98"&gt;&lt;span class="caps"&gt;WSL&lt;/span&gt; Tips: Starting Linux Background Services on Windows&amp;nbsp;Login&lt;/a&gt;&lt;/p&gt;
@@ -370,23 +364,19 @@
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# Sets the default email for git to use when you commit&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3 id="ssh"&gt;生成 ssh 密钥文件（已有证书就忽略&lt;a class="headerlink" href="#ssh" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;1. 邮箱改成你的 github&amp;nbsp;邮件，根据提示操作创建密钥&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;ssh-keygen -t rsa -b &lt;span class="m"&gt;4096&lt;/span&gt; -C &lt;span class="s2"&gt;&amp;quot;your_email@example.com&amp;quot;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;&lt;strong&gt;2. 提示 &lt;code&gt;nter a file in which to save the key,&lt;/code&gt; 输入文件保存的路径，直接回车就保存到提示的目录&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Enter a file in which to save the key &lt;span class="o"&gt;(&lt;/span&gt;/c/Users/you/.ssh/id_rsa&lt;span class="o"&gt;)&lt;/span&gt;:&lt;span class="o"&gt;[&lt;/span&gt;Press enter&lt;span class="o"&gt;]&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;&lt;strong&gt;3.&amp;nbsp;如果需要添加密码就在出现下面提示时输入&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Enter passphrase &lt;span class="o"&gt;(&lt;/span&gt;empty &lt;span class="k"&gt;for&lt;/span&gt; no passphrase&lt;span class="o"&gt;)&lt;/span&gt;: &lt;span class="o"&gt;[&lt;/span&gt;Type a passphrase&lt;span class="o"&gt;]&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;Enter same passphrase again: &lt;span class="o"&gt;[&lt;/span&gt;Type passphrase again&lt;span class="o"&gt;]&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h3 id="ssh_1"&gt;设置 ssh&lt;a class="headerlink" href="#ssh_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;1. 修改 &lt;code&gt;/etc/ssh/ssh_config&lt;/code&gt;,&amp;nbsp;在文件末尾添加&lt;/strong&gt;&lt;/p&gt;
@@ -396,7 +386,6 @@
 &lt;span class="code-line"&gt;&lt;span class="err"&gt;    IdentityFile /etc/ssh/github-ecdsa-521&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;&lt;strong&gt;2. 将公钥添加到 github&amp;nbsp;帐户&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;复制公钥文件到剪贴板&lt;/li&gt;
@@ -405,14 +394,12 @@
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# Copies the contents of the id_rsa.pub file to your clipboard&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;ul&gt;
 &lt;li&gt;然后点击 你的头像 -&amp;gt; &lt;code&gt;Setting&lt;/code&gt; -&amp;gt; &lt;code&gt;SSH and GPG keys&lt;/code&gt; -&amp;gt; &lt;code&gt;New SSH key&lt;/code&gt; -&amp;gt; 取个名字，粘贴上公钥 -&amp;gt; &lt;code&gt;Add SSH key&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;3.&amp;nbsp;用命令测试一下&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;ssh -T git@github.com&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;如果提示信息里面能看到你的用户名就说明成功了&lt;/p&gt;
 &lt;h3 id="_1"&gt;参考&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
@@ -438,7 +425,6 @@
 &lt;span class="code-line"&gt;&lt;span class="err"&gt;}&lt;/span&gt; &lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;上面配置代码即可解决问题了，不想深入研究的，看到这里就可以啦=-=&lt;/p&gt;
 &lt;h2 id="_2"&gt;二、 解释&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;1.&amp;nbsp;Access-Control-Allow-Origin&lt;/strong&gt;&lt;/p&gt;
@@ -447,12 +433,10 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Request header field Content-Type is not allowed by Access-Control-Allow-Headers in preflight response.&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;这个错误表示当前请求 &lt;code&gt;Content-Type&lt;/code&gt; 的值不被支持。其实是我们发起了 &lt;code&gt;application/json&lt;/code&gt; 的类型请求导致的。这里涉及到一个概念：预检请求（preflight&amp;nbsp;request）,请看下面&amp;#8221;预检请求&amp;#8221;的介绍。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;3. Access-Control-Allow-Methods&amp;nbsp;是为了防止出现以下错误：&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Content-Type is not allowed by Access-Control-Allow-Headers in preflight response.&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;&lt;strong&gt;4.给 &lt;code&gt;OPTIONS&lt;/code&gt; 添加 &lt;code&gt;204&lt;/code&gt; 的返回，是为了处理在发送 &lt;span class="caps"&gt;POST&lt;/span&gt; 请求时 Nginx&amp;nbsp;依然拒绝访问的错误&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;发送&amp;#8221;预检请求&amp;#8221;时，需要用到方法 &lt;code&gt;OPTIONS&lt;/code&gt; ,所以服务器需要允许该方法。&lt;/p&gt;
@@ -467,7 +451,6 @@
 &lt;span class="code-line"&gt;text/plain&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;所以 &lt;code&gt;application/json&lt;/code&gt; 的请求 会在正式通信之前，增加一次&amp;#8221;预检&amp;#8221;请求，这次&amp;#8221;预检&amp;#8221;请求会带上头部信息 &lt;code&gt;Access-Control-Request-Headers: Content-Type&lt;/code&gt;：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;OPTIONS /api/test HTTP/1.1&lt;/span&gt;
 &lt;span class="code-line"&gt;Origin: http://foo.example&lt;/span&gt;
@@ -476,11 +459,9 @@
 &lt;span class="code-line"&gt;... 省略了一些&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;服务器回应时，返回的头部信息如果不包含 &lt;code&gt;Access-Control-Allow-Headers: Content-Type&lt;/code&gt; 则表示不接受非默认的的 &lt;code&gt;Content-Type&lt;/code&gt;。即出现以下错误：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Request header field Content-Type is not allowed by Access-Control-Allow-Headers in preflight response.&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h2 id="_3"&gt;参考文章：&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
@@ -495,7 +476,6 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;MariaDB &lt;span class="o"&gt;[(&lt;/span&gt;none&lt;span class="o"&gt;)]&lt;/span&gt;&amp;gt; GRANT FILE, REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO &lt;span class="s1"&gt;&amp;#39;sync_account&amp;#39;&lt;/span&gt;@&lt;span class="s1"&gt;&amp;#39;%&amp;#39;&lt;/span&gt; IDENTIFIED BY &lt;span class="s1"&gt;&amp;#39;123456&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="mycnf"&gt;修改服务端 my.cnf 配置文件：&lt;a class="headerlink" href="#mycnf" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;server-id = 1              #Server标识, 不能重复&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="err"&gt;log-bin = mysql-bin        #日志文件名&lt;/span&gt;&lt;/span&gt;
@@ -506,31 +486,25 @@
 &lt;span class="code-line"&gt;&lt;span class="err"&gt;replicate-do-db = testdb   #指定从端需要同步的数据库，多个加一行，不需要就注释&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="mariadb"&gt;重启 MariaDB:&lt;a class="headerlink" href="#mariadb" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;service mariadb restart&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;配置过程中为了防止突然的主机数据写入 导致配置主从失败 可以将机器锁定只允许读 注意千万不要将从机配成锁定&amp;nbsp;否则无法同步数据了&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;MariaDB &lt;span class="o"&gt;[(&lt;/span&gt;none&lt;span class="o"&gt;)]&lt;/span&gt;&amp;gt; FLUSH TABLES WITH READ LOCK&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;配置完从端解锁：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;MariaDB &lt;span class="o"&gt;[(&lt;/span&gt;none&lt;span class="o"&gt;)]&lt;/span&gt;&amp;gt; UNLOCK TABLES&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h2 id="_3"&gt;备份数据库：&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;mysql -u root -p --quick --all-databases --flush-logs --delete-master-logs --single-transaction &amp;gt; sync.sql&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="_4"&gt;查看服务端状态&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;MariaDB &lt;span class="o"&gt;[(&lt;/span&gt;none&lt;span class="o"&gt;)]&lt;/span&gt;&amp;gt; SHOW MASTER STATUS&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;显示类似如下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;+------------------+----------+-------------------------------------+------------------+&lt;/span&gt;
@@ -541,11 +515,9 @@
 &lt;span class="code-line"&gt;&lt;span class="m"&gt;1&lt;/span&gt; row in &lt;span class="nb"&gt;set&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;.00 sec&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="_5"&gt;从端导入数据库&lt;a class="headerlink" href="#_5" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;mysql -u root -p &amp;lt; sync.sql&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h2 id="mycnf_1"&gt;修改从端 my.cnf 配置文件：&lt;a class="headerlink" href="#mycnf_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;server-id = 2&lt;/span&gt;&lt;/span&gt;
@@ -553,7 +525,6 @@
 &lt;span class="code-line"&gt;&lt;span class="err"&gt;auto_increment_offset=1&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="err"&gt;#其余项目与服务端一致就可以了, 完了重启 MariaDB&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h2 id="_6"&gt;配置从端主服务器信息：&lt;a class="headerlink" href="#_6" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;MariaDB &lt;span class="o"&gt;[(&lt;/span&gt;none&lt;span class="o"&gt;)]&lt;/span&gt;&amp;gt; CHANGE MASTER TO &lt;span class="nv"&gt;MASTER_HOST&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;master.host.name&amp;#39;&lt;/span&gt;,&lt;span class="se"&gt;\ &lt;/span&gt; &lt;span class="c1"&gt;#主服务器主机名称&lt;/span&gt;&lt;/span&gt;
@@ -566,11 +537,9 @@
 &lt;span class="code-line"&gt;    -&amp;gt; &lt;span class="nv"&gt;MASTER_HEARTBEAT_PERIOD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;                                    &lt;span class="c1"&gt;#心跳间隔时间&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="_7"&gt;启动从端数据库同步&lt;a class="headerlink" href="#_7" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;MariaDB &lt;span class="o"&gt;[(&lt;/span&gt;none&lt;span class="o"&gt;)]&lt;/span&gt;&amp;gt; START SLAVE&lt;span class="p"&gt;;&lt;/span&gt;                            &lt;span class="c1"&gt;#启动同步进程&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h2 id="_8"&gt;查看同步信息&lt;a class="headerlink" href="#_8" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;MariaDB &lt;span class="o"&gt;[(&lt;/span&gt;none&lt;span class="o"&gt;)]&lt;/span&gt;&amp;gt; SHOW SLAVE STATUS&lt;span class="se"&gt;\G&lt;/span&gt;                     &lt;span class="c1"&gt;#查看从服务器线程的关键参数的信息&lt;/span&gt;&lt;/span&gt;
@@ -591,7 +560,6 @@
 &lt;span class="code-line"&gt;             Master_Server_Id: &lt;span class="m"&gt;2&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;查看从端 &lt;code&gt;MASTER&lt;/code&gt; 状态，然后在主端启动服务器同步就可以实现相互同步了。&lt;/p&gt;
 &lt;h2 id="_9"&gt;参考：&lt;a class="headerlink" href="#_9" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
@@ -609,7 +577,6 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2015&lt;/span&gt;-07-18 &lt;span class="m"&gt;11&lt;/span&gt;:00:01,807&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="se"&gt;\t&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;service_name&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="se"&gt;\t&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;INFO&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="se"&gt;\t&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;172&lt;/span&gt;.0.0.1&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="se"&gt;\t&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;api/mock_api1&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="se"&gt;\t&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;ts&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;239&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="_2"&gt;解决方案&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Google 了一番以后，发现 grep/sed/awk&amp;nbsp;均可以，下面分别说一下每一种方案。&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;以下方案均在CentOS6上测试通过&lt;/em&gt;&lt;/p&gt;
@@ -618,7 +585,6 @@
 &lt;span class="code-line"&gt;grep -Eo &lt;span class="s1"&gt;&amp;#39;\[ts=[0-9]+\]&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;grep -Eo &lt;span class="s1"&gt;&amp;#39;[0-9]+&amp;#39;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;grep 参数说明：
 &lt;code&gt;E&lt;/code&gt; 使用正则表达式
@@ -630,7 +596,6 @@
 &lt;span class="code-line"&gt;sed -r &lt;span class="s1"&gt;&amp;#39;s/\[ts=([0-9]+)\]/\1/g&amp;#39;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;sed参数说明：
 &lt;code&gt;r&lt;/code&gt; 使用正则表达式&lt;/p&gt;
 &lt;p&gt;使用 &lt;code&gt;sed&lt;/code&gt; 也需要通过 &lt;code&gt;grep&lt;/code&gt; 先匹配出最后一个字段，再使用 &lt;code&gt;sed&lt;/code&gt; 提取数字部分，&lt;code&gt;\1&lt;/code&gt;表示正则表达式中的分组1&lt;/p&gt;
@@ -638,7 +603,6 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;grep &lt;span class="s2"&gt;&amp;quot;api/mock_api1&amp;quot;&lt;/span&gt; sample.log &lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;gawk -F&lt;span class="s1"&gt;&amp;#39;\t&amp;#39;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;match($6, /\[ts=([0-9]+)\]/, arr) { print arr[1] }&amp;#39;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;gawk 参数说明：
 &lt;code&gt;F&lt;/code&gt; 指定分隔符，这里指定为tab
@@ -656,13 +620,11 @@
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;//返回：http://i.cnblogs.com/EditPosts.aspx?opt=1&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="2windowlocationprotocol-url"&gt;2、window.location.protocol(设置或获取 &lt;span class="caps"&gt;URL&lt;/span&gt; 的协议部分)&lt;a class="headerlink" href="#2windowlocationprotocol-url" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;test&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;window&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;location&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;protocol&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="nx"&gt;alert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;test&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;//返回：http:&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h2 id="3windowlocationhost-url"&gt;3、window.location.host(设置或获取 &lt;span class="caps"&gt;URL&lt;/span&gt; 的主机部分)&lt;a class="headerlink" href="#3windowlocationhost-url" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;test&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;window&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;location&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;host&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;/span&gt;
@@ -670,13 +632,11 @@
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;//返回：i.cnblogs.com&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="4windowlocationport-url"&gt;4、window.location.port(设置或获取与 &lt;span class="caps"&gt;URL&lt;/span&gt; 关联的端口号码)&lt;a class="headerlink" href="#4windowlocationport-url" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;test&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;window&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;location&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;port&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="nx"&gt;alert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;test&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;//返回：空字符(如果采用默认的80端口(update:即使添加了:80)，那么返回值并不是默认的80而是空字符)&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h2 id="5windowlocationpathname-url"&gt;5、window.location.pathname(设置或获取与 &lt;span class="caps"&gt;URL&lt;/span&gt; 的路径部分（就是文件地址）)&lt;a class="headerlink" href="#5windowlocationpathname-url" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;test&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;window&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;location&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;pathname&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;/span&gt;
@@ -684,13 +644,11 @@
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;//返回：/EditPosts.aspx&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="6windowlocationsearch-href"&gt;6、window.location.search(设置或获取 href 属性中跟在问号后面的部分)&lt;a class="headerlink" href="#6windowlocationsearch-href" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;test&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;window&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;location&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;search&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="nx"&gt;alert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;test&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;//返回：?opt=1&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;&lt;span class="caps"&gt;PS&lt;/span&gt;：获得查询（参数）部分，除了给动态语言赋值以外，我们同样可以给静态页面，并使用 javascript&amp;nbsp;来获得相信应的参数值。&lt;/p&gt;
 &lt;h2 id="7windowlocationhash-href"&gt;7、window.location.hash(设置或获取 href 属性中在井号“#”后面的分段)&lt;a class="headerlink" href="#7windowlocationhash-href" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
@@ -699,14 +657,13 @@
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;//返回：空字符(因为url中没有)&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="8jsurl"&gt;8、js获取url中的参数值&lt;a class="headerlink" href="#8jsurl" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;h3 id="_1"&gt;一、正则法&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;getQueryString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;  &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;reg&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nb"&gt;RegExp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;(^|&amp;amp;)&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nx"&gt;name&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;=([^&amp;amp;]*)(&amp;amp;|$)&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;i&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;  &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;r&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;window&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;location&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;search&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;substr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;match&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;reg&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;  &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;r&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;window&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;location&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;search&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;substr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;1&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;match&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;reg&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;r&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;unescape&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;r&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;unescape&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;r&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mf"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;  &lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;
@@ -718,16 +675,15 @@
 &lt;span class="code-line"&gt;&lt;span class="nx"&gt;alert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;GetQueryString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;参数名3&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3 id="split"&gt;二、split拆分法&lt;a class="headerlink" href="#split" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;GetRequest&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;  &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;location&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;search&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;//获取url中&amp;quot;?&amp;quot;符后的字串&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;  &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;theRequest&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nb"&gt;Object&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;url&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;indexOf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;?&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;str&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;url&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;substr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;url&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;indexOf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;?&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;str&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;url&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;substr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;    &lt;span class="nx"&gt;strs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;str&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;amp;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;    &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nx"&gt;strs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;      &lt;span class="nx"&gt;theRequest&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;strs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;=&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;unescape&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;strs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;=&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nx"&gt;strs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;      &lt;span class="nx"&gt;theRequest&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;strs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;=&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mf"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;unescape&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;strs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;=&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mf"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;    &lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;  &lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;theRequest&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
@@ -741,15 +697,14 @@
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;// 参数N = Request[&amp;#39;参数N&amp;#39;];&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3 id="_2"&gt;三、指定取&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;比如说一个 url：http://i.cnblogs.com/?j=js&amp;nbsp;,我们想得到参数j的值，可以通过以下函数调用。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;GetQueryString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;/span&gt;
 &lt;span class="code-line"&gt;  &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;reg&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nb"&gt;RegExp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;(^|&amp;amp;)&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nx"&gt;name&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;=([^&amp;amp;]*)(&amp;amp;|$)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;i&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;/span&gt;
-&lt;span class="code-line"&gt;  &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;r&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;window&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;location&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;search&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;substr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;match&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;reg&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;//获取url中&amp;quot;?&amp;quot;符后的字符串并正则匹配&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;  &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;r&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;window&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;location&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;search&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;substr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;1&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;match&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;reg&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;//获取url中&amp;quot;?&amp;quot;符后的字符串并正则匹配&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;  &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;/span&gt;
 &lt;span class="code-line"&gt;  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;r&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;/span&gt;
-&lt;span class="code-line"&gt;     &lt;span class="nx"&gt;context&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;r&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt; &lt;/span&gt;
+&lt;span class="code-line"&gt;     &lt;span class="nx"&gt;context&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;r&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mf"&gt;2&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt; &lt;/span&gt;
 &lt;span class="code-line"&gt;  &lt;span class="nx"&gt;reg&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;/span&gt;
 &lt;span class="code-line"&gt;  &lt;span class="nx"&gt;r&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;/span&gt;
 &lt;span class="code-line"&gt;  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;undefined&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;context&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;/span&gt;
@@ -757,18 +712,16 @@
 &lt;span class="code-line"&gt;&lt;span class="nx"&gt;alert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;GetQueryString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;j&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3 id="_3"&gt;四、单个参数的获取方法&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;GetRequest&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;  &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;location&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;search&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;//获取url中&amp;quot;?&amp;quot;符后的字串&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;url&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;indexOf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;?&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;  &lt;span class="c1"&gt;//判断是否有参数&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;   &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;str&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;url&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;substr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;//从第一个字符开始 因为第0个是?号 获取所有除问号的所有符串&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;url&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;indexOf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;?&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;  &lt;span class="c1"&gt;//判断是否有参数&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;   &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;str&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;url&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;substr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;//从第一个字符开始 因为第0个是?号 获取所有除问号的所有符串&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;   &lt;span class="nx"&gt;strs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;str&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;=&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;  &lt;span class="c1"&gt;//用等号进行分隔 （因为知道只有一个参数 所以直接用等号进分隔 如果有多个参数 要用&amp;amp;号分隔 再用等号进行分隔）&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;   &lt;span class="nx"&gt;alert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;strs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;     &lt;span class="c1"&gt;//直接弹出第一个参数 （如果有多个参数 还要进行循环的）&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;   &lt;span class="nx"&gt;alert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;strs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mf"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;     &lt;span class="c1"&gt;//直接弹出第一个参数 （如果有多个参数 还要进行循环的）&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;  &lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;以上就是本文的全部内容，希望对大家理解如何获取当前页面 url&amp;nbsp;网址信息有所帮助。&lt;/p&gt;
 &lt;p&gt;-= &lt;span class="caps"&gt;END&lt;/span&gt;&amp;nbsp;=-&lt;/p&gt;</content><category term="Javascript"></category><category term="javascript"></category><category term="string"></category><category term="url"></category></entry><entry><title>LINUX 暂停、继续进程</title><link href="https://doobom.me/linux-stop-cont-ps" rel="alternate"></link><published>2019-05-09T16:01:00+08:00</published><updated>2019-05-09T16:01:00+08:00</updated><author><name>doobom</name></author><id>tag:doobom.me,2019-05-09:/linux-stop-cont-ps</id><summary type="html">&lt;p&gt;&lt;span class="caps"&gt;LINUX&lt;/span&gt;&amp;nbsp;如何暂停、继续进程&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
@@ -795,7 +748,6 @@
 &lt;span class="code-line"&gt;&lt;span class="m"&gt;1&lt;/span&gt;+1&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;A. Shell&amp;nbsp;支持作用控制，有以下命令：&lt;/p&gt;
 &lt;ol&gt;
@@ -841,7 +793,6 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;$xmms&lt;/span&gt; &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;这样打开 xmms 后，终端的提示又回来了。现在 xmms 在后台运行着呢；但万一你运行程序时忘记使用 “&amp;amp;” 了，又不想重新执行；你可以先使用 &lt;code&gt;ctrl+z&lt;/code&gt; 挂起程序，然后敲入 &lt;code&gt;bg&lt;/code&gt; 命令，这样程序就在后台继续运行了。&lt;/p&gt;
 &lt;h3 id="_1"&gt;概念：当前任务&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;hr /&gt;
@@ -873,16 +824,13 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;/usr/local/mysql/bin/mysqld_safe --user&lt;span class="o"&gt;=&lt;/span&gt;mysql &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;但是我们很多程序并不象 mysqld 一样可以做成守护进程，可能我们的程序只是普通程序而已，一般这种程序即使使用 &lt;code&gt;&amp;amp;&lt;/code&gt; 结尾，如果终端关闭，那么程序也会被关闭。为了能够后台运行，我们需要使用&lt;code&gt;nohup&lt;/code&gt; 这个命令，比如我们有个 &lt;code&gt;start.sh&lt;/code&gt; 需要在后台运行，并且希望在后台能够一直运行，那么就使用 &lt;code&gt;nohup&lt;/code&gt;：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;nohup /root/start.sh &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;在 shell&amp;nbsp;中回车后提示：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;[&lt;/span&gt;~&lt;span class="o"&gt;]&lt;/span&gt;$ appending output to nohup.out&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;原程序的的标准输出被自动改向到当前目录下的 &lt;code&gt;nohup.out&lt;/code&gt; 文件，起到了 log&amp;nbsp;的作用。&lt;/p&gt;
 &lt;p&gt;但是有时候在这一步会有问题，当把终端关闭后，进程会自动被关闭，察看 &lt;code&gt;nohup.out&lt;/code&gt; 可以看到在关闭终端瞬间服务自动关闭。&lt;/p&gt;
@@ -908,7 +856,6 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;nohup &lt;span class="nb"&gt;command&lt;/span&gt; &amp;gt; myout.file &lt;span class="m"&gt;2&lt;/span&gt;&amp;gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;在上面的例子中，输出被重定向到 &lt;code&gt;myout.file&lt;/code&gt; 文件中。&lt;/p&gt;
 &lt;p&gt;使用 jobs&amp;nbsp;查看任务。&lt;/p&gt;
 &lt;p&gt;使用 &lt;code&gt;fg %n&lt;/code&gt;　关闭。&lt;/p&gt;
@@ -917,7 +864,6 @@
 &lt;p&gt;要实现守护进程，一种方法是按守护进程的规则去编程（本站有文章介绍过），比较麻烦；另一种方法是仍然用普通方法编程，然后用nohup命令启动程序：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;nohup＜程序名＞&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;则控制台logout后，进程仍然继续运行，起到守护进程的作用（虽然它不是严格意义上的守护进程）。&lt;/p&gt;
 &lt;p&gt;使用nohup命令后，原程序的的标准输出被自动改向到当前目录下的 &lt;code&gt;nohup.out&lt;/code&gt; 文件，起到了 log&amp;nbsp;的作用，实现了完整的守护进程功能。&lt;/p&gt;
@@ -978,7 +924,6 @@
 &lt;span class="code-line"&gt;→ ~&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;下面分开对每个过程进行解析，C代表客户端，即本机，S代表远程服务器端。整个过程分为以下几步：
 * 打招呼
 * 账户认证
@@ -991,7 +936,6 @@
 &lt;span class="code-line"&gt;S &lt;span class="m"&gt;250&lt;/span&gt; OK&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;&lt;code&gt;220&lt;/code&gt;代表服务器已准备好，客户端首先向服务器打一声招呼&lt;code&gt;helo&lt;/code&gt;，服务器接收到后返回一个&lt;code&gt;250&lt;/code&gt;应答信号，代表打招呼成功，下面可以进行账户的密码认证。&lt;/p&gt;
 &lt;h3 id="_2"&gt;账户认证&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;C auth login&lt;/span&gt;
@@ -1002,7 +946,6 @@
 &lt;span class="code-line"&gt;S &lt;span class="m"&gt;235&lt;/span&gt; Authentication successful&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;客户端发送&lt;code&gt;auth login&lt;/code&gt;声明自己将进行邮箱账户的用户名认证和密码认证。服务器端返回一个以&lt;code&gt;334&lt;/code&gt;代码开头的提示信息，不必追究其语义，而后用户依次输入通过Base64加密的邮箱名和密码，加密网址见后续参考资料。当输入的账号密码无误时，服务端将返回认证成功的提示语。&lt;/p&gt;
 &lt;h3 id="_3"&gt;声明邮箱地址&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;C mail from:&amp;lt;&lt;span class="m"&gt;182&lt;/span&gt;****2872@163.com&amp;gt;&lt;/span&gt;
@@ -1010,7 +953,6 @@
 &lt;span class="code-line"&gt;C rcpt to:&amp;lt;&lt;span class="m"&gt;707&lt;/span&gt;***098@qq.com&amp;gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;S &lt;span class="m"&gt;250&lt;/span&gt; Mail OK&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;账户密码认证结束后，客户端通过&lt;code&gt;mail from:&amp;lt;emailName&amp;gt;&lt;/code&gt;以及&lt;code&gt;rcpt to:&amp;lt;nameEmail&amp;gt;&lt;/code&gt;声明邮箱的源地址和目的地址。&lt;/p&gt;
 &lt;h3 id="_4"&gt;书写邮件内容&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
@@ -1029,14 +971,12 @@
 &lt;span class="code-line"&gt;S &lt;span class="m"&gt;250&lt;/span&gt; Mail OK queued as smtp11,D8CowAAnjlqKlZVZXa4QAQ--.18342S2 &lt;span class="m"&gt;1502975693&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;写明邮件地址后，使用指令&lt;code&gt;data&lt;/code&gt;进入邮件编辑状态，服务器端会提示当输入&lt;code&gt;&amp;lt;CR&amp;gt;&amp;lt;LF&amp;gt;.&amp;lt;CR&amp;gt;&amp;lt;LF&amp;gt;&lt;/code&gt;时退出编辑状态。&lt;/p&gt;
 &lt;p&gt;邮件内容有一定的格式要求，不按要求随意书写有可能被当成垃圾邮件或不合法邮件而退信。通常需要指定邮件主题 &lt;strong&gt;Subject&lt;/strong&gt;，其它相关信息包括时间 &lt;strong&gt;Date&lt;/strong&gt;，邮件地址 &lt;strong&gt;From&lt;/strong&gt;，&lt;strong&gt;To&lt;/strong&gt; 等，然后再书写邮件主体内容，更详细的格式可以参考文档【&lt;span class="caps"&gt;RFC&lt;/span&gt; 821】。编辑结束后，以单行的点号&lt;code&gt;.&lt;/code&gt;结束。如果一切正常，服务器端将返回以&lt;code&gt;250&lt;/code&gt;开头的应答信息，并提示邮件以进入smtp的发送队列。此时便可以查收邮件予以验证了。&lt;/p&gt;
 &lt;h3 id="telnet"&gt;退出Telnet&lt;a class="headerlink" href="#telnet" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;C quit&lt;/span&gt;
 &lt;span class="code-line"&gt;S Connection closed by foreign host.&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;当邮件发送结束后，客户端通过&lt;code&gt;quit&lt;/code&gt;退出Telnet。&lt;/p&gt;
 &lt;h2 id="smtp-code"&gt;&lt;span class="caps"&gt;SMTP&lt;/span&gt; Code&lt;a class="headerlink" href="#smtp-code" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
@@ -1079,10 +1019,9 @@
 &lt;h3 id="_2"&gt;解决方法：&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;h4 id="1"&gt;方法1&lt;a class="headerlink" href="#1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;fn1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;num&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;  &lt;/span&gt;
-&lt;span class="code-line"&gt;    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;num&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nb"&gt;Math&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;pow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;)).&lt;/span&gt;&lt;span class="nx"&gt;toFixed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;substr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;  &lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;num&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nb"&gt;Math&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;pow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;)).&lt;/span&gt;&lt;span class="nx"&gt;toFixed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;substr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;2&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;  &lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;}&lt;/span&gt;  &lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h4 id="2"&gt;方法2&lt;a class="headerlink" href="#2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;fn2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;num&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;  &lt;/span&gt;
@@ -1090,13 +1029,11 @@
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;}&lt;/span&gt;  &lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h4 id="3"&gt;方法3&lt;a class="headerlink" href="#3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;fn3&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;num&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;  &lt;/span&gt;
 &lt;span class="code-line"&gt;    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;Array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nx"&gt;num&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;slice&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;  &lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;}&lt;/span&gt;  &lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h3 id="_3"&gt;上述三种方法的效率如下：&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nx"&gt;console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;time&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;time1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;  &lt;/span&gt;
@@ -1104,18 +1041,15 @@
 &lt;span class="code-line"&gt;&lt;span class="nx"&gt;console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;timeEnd&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;time1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="c1"&gt;//chrome返回值：time1: 0.126953125ms  &lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nx"&gt;console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;time&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;time2&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;  &lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="nx"&gt;fn2&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;  &lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="nx"&gt;console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;timeEnd&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;time2&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;//chrome返回值：time2: 0.0810546875ms  &lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nx"&gt;console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;time&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;3&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;  &lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="nx"&gt;fn3&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;  &lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="nx"&gt;console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;timeEnd&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;time3&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;//chrome返回值：time3: 0ms  &lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;-=- &lt;span class="caps"&gt;END&lt;/span&gt;&amp;nbsp;-=-&lt;/p&gt;</content><category term="Javascript"></category><category term="javascript"></category><category term="string"></category></entry><entry><title>JavaScript 字符串/数字左补位，右补位，取固定长度，截位扩展函数代码</title><link href="https://doobom.me/string-number-to-define-length-foo" rel="alternate"></link><published>2019-04-15T16:01:00+08:00</published><updated>2019-04-15T16:01:00+08:00</updated><author><name>doobom</name></author><id>tag:doobom.me,2019-04-15:/string-number-to-define-length-foo</id><summary type="html">&lt;p&gt;JavaScript&amp;nbsp;字符串/数字左补位，右补位，取固定长度，截位扩展函数代码&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
 &lt;p&gt;原文： &lt;a href="https://www.jb51.net/article/109523.htm"&gt;https://www.jb51.net/article/109523.htm&lt;/a&gt;&lt;/p&gt;
@@ -1124,23 +1058,21 @@
 &lt;p&gt;这个大家应该都很明白了，就不废话了，代码如下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;String&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;prototype&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;padLeft&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="nb"&gt;Number&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;prototype&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;padLeft&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;total&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;pad&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;Array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;total&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;pad&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;slice&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;total&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;Array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;total&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;pad&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="mf"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;slice&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;total&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;测试代码：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;//补位&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="s2"&gt;&amp;quot;X&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;padLeft&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Y&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;//返回：YYYYX&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;padLeft&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;   &lt;span class="c1"&gt;//返回：00050&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;&amp;quot;X&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;padLeft&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Y&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;//返回：YYYYX&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;50&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;padLeft&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;5&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;   &lt;span class="c1"&gt;//返回：00050&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;padLeft&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;     &lt;span class="c1"&gt;//返回：01&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;padLeft&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;2&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;     &lt;span class="c1"&gt;//返回：01&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;//截位&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;123&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;padLeft&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;   &lt;span class="c1"&gt;//返回：23&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;123&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;padLeft&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;2&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;   &lt;span class="c1"&gt;//返回：23&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;更多代码&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="cm"&gt;/**&lt;/span&gt;&lt;/span&gt;
@@ -1152,7 +1084,7 @@
 &lt;span class="code-line"&gt;&lt;span class="cm"&gt; */&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt; &lt;span class="kr"&gt;public&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;subString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;oriStr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="nx"&gt;beginIndex&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="nx"&gt;len&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt; &lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="nx"&gt;strlen&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;oriStr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt; &lt;span class="nx"&gt;beginIndex&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;beginIndex&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt; &lt;span class="nx"&gt;beginIndex&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;beginIndex&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;strlen&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="nx"&gt;beginIndex&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;  &lt;span class="nx"&gt;System&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;out&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;out of &amp;quot;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nx"&gt;oriStr&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;#39;s length, please recheck!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt; &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;strlen&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="nx"&gt;beginIndex&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nx"&gt;len&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;&lt;/span&gt;
@@ -1173,7 +1105,7 @@
 &lt;span class="code-line"&gt; &lt;span class="kr"&gt;public&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;padRight&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;oriStr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="nx"&gt;len&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kr"&gt;char&lt;/span&gt; &lt;span class="nx"&gt;alexin&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt; &lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="nx"&gt;strlen&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;oriStr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;strlen&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nx"&gt;len&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;  &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;len&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;strlen&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;  &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;len&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;strlen&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;  &lt;span class="nx"&gt;str&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;str&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nx"&gt;alexin&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;  &lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt; &lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;
@@ -1191,7 +1123,7 @@
 &lt;span class="code-line"&gt; &lt;span class="kr"&gt;public&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;padLeft&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="nx"&gt;oriStr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="nx"&gt;len&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kr"&gt;char&lt;/span&gt; &lt;span class="nx"&gt;alexin&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt; &lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="nx"&gt;strlen&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;oriStr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;strlen&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nx"&gt;len&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;  &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;len&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;strlen&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;  &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;len&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;strlen&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;  &lt;span class="nx"&gt;str&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;str&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nx"&gt;alexin&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;  &lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt; &lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;
@@ -1199,7 +1131,6 @@
 &lt;span class="code-line"&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;str&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt; &lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;-=- &lt;span class="caps"&gt;END&lt;/span&gt;&amp;nbsp;-=-&lt;/p&gt;</content><category term="Javascript"></category><category term="javascript"></category><category term="string"></category></entry><entry><title>.gitignore 设置 git 忽略跟踪文件和文件夹</title><link href="https://doobom.me/git-set-gitignore" rel="alternate"></link><published>2019-02-13T19:01:00+08:00</published><updated>2019-02-13T19:01:00+08:00</updated><author><name>doobom</name></author><id>tag:doobom.me,2019-02-13:/git-set-gitignore</id><summary type="html">&lt;p&gt;.gitignore 设置 git&amp;nbsp;忽略跟踪文件和文件夹&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;在项目的根目录（跟 &lt;code&gt;.git&lt;/code&gt; 文件夹所在目录同层）建立 &lt;code&gt;.gitignore&lt;/code&gt; 文件，在里面声明即可。 &lt;/strong&gt;&lt;/p&gt;
 &lt;h3 id="_1"&gt;配置语法&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
@@ -1220,39 +1151,37 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git config --global core.excludesfile .gitignore_global &lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3 id="_3"&gt;栗子&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Github 给出的 Android 开发中使用的&lt;code&gt;.gitignore&lt;/code&gt;模板&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# Built application files&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;*.apk&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;*.ap_&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;# Files for the Dalvik VM&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;*.dex&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;# Java class files&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;*.class&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;# Generated files&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;bin/&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;gen/&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;out/&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;# Gradle files&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;.gradle/&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;build/&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;# Local configuration file (sdk path, etc)&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;local.properties&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;# Proguard folder generated by Eclipse&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;proguard/&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;# Log Files&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;*.log&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;# Android Studio Navigation editor temp files&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;.navigation/&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;# Android Studio captures folder&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;captures/&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;# Intellij&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;*.iml&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;# Keystore files&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="err"&gt;*.jks&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Built application files&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="err"&gt;*&lt;/span&gt;&lt;span class="na"&gt;.apk&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="err"&gt;*&lt;/span&gt;&lt;span class="na"&gt;.ap_&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# Files for the Dalvik VM&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="err"&gt;*&lt;/span&gt;&lt;span class="na"&gt;.dex&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# Java class files&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="err"&gt;*&lt;/span&gt;&lt;span class="na"&gt;.class&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# Generated files&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="nf"&gt;bin&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="nf"&gt;gen&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="nf"&gt;out&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# Gradle files&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="na"&gt;.gradle&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="nf"&gt;build&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# Local configuration file (sdk path, etc)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="nf"&gt;local.properties&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# Proguard folder generated by Eclipse&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="nf"&gt;proguard&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# Log Files&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="err"&gt;*&lt;/span&gt;&lt;span class="na"&gt;.log&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# Android Studio Navigation editor temp files&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="na"&gt;.navigation&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# Android Studio captures folder&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="nf"&gt;captures&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# Intellij&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="err"&gt;*&lt;/span&gt;&lt;span class="na"&gt;.iml&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# Keystore files&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="err"&gt;*&lt;/span&gt;&lt;span class="na"&gt;.jks&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h3 id="_4"&gt;参考&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;blockquote&gt;
@@ -1279,7 +1208,6 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;vim&lt;/span&gt; &lt;span class="k"&gt;a&lt;/span&gt;.txt &lt;span class="k"&gt;b&lt;/span&gt;.txt&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;blockquote&gt;
 &lt;p&gt;当你使用&lt;code&gt;:q&lt;/code&gt;关闭文件时？是否看到过&lt;code&gt;1 more file to edit&lt;/code&gt;的警告？那就是缓冲区中的文件。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1296,7 +1224,6 @@
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;b&lt;/span&gt; {&lt;span class="k"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; expression}     跳转到指定缓冲区&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;&lt;code&gt;:b&lt;/code&gt;接受缓冲区编号，或者部分文件名。例如：
 * &lt;code&gt;:b2&lt;/code&gt;将会跳转到编号为2的缓冲区，如果你正在用&lt;code&gt;:ls&lt;/code&gt;列出缓冲区，这时只需要输入编号回车即可。
 * &lt;code&gt;:b exa&lt;/code&gt;将会跳转到最匹配&lt;code&gt;exa&lt;/code&gt;的文件名，比如&lt;code&gt;example.html&lt;/code&gt;，&lt;strong&gt;模糊匹配打开文件正是Vim缓冲区的强大之处&lt;/strong&gt;&amp;nbsp;。&lt;/p&gt;
@@ -1308,12 +1235,10 @@
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;vertical&lt;/span&gt; &lt;span class="k"&gt;rightbelow&lt;/span&gt; &lt;span class="k"&gt;sfind&lt;/span&gt; &lt;span class="k"&gt;file&lt;/span&gt;.txt&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;注意&lt;code&gt;sfind&lt;/code&gt;可以打开在Vim PATH中的任何文件。这当然需要我们设置PATH，一个通用的做法是在&lt;code&gt;~/.vimrc&lt;/code&gt;中添加：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;&amp;quot; 将当前工作路径设为Vim PATH&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nb"&gt;path&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;$PWD/**&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h3 id="_4"&gt;利用通配符进行缓冲区跳转&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;hr /&gt;
@@ -1322,11 +1247,9 @@
 &lt;span class="code-line"&gt;&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nb"&gt;wildchar&lt;/span&gt;&lt;span class="p"&gt;=&amp;lt;&lt;/span&gt;Tab&lt;span class="p"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;wildcharm&lt;/span&gt;&lt;span class="p"&gt;=&amp;lt;&lt;/span&gt;C&lt;span class="p"&gt;-&lt;/span&gt;Z&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;比如现在按下打开这些文件：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;vehicle.&lt;span class="k"&gt;c&lt;/span&gt; vehicle.&lt;span class="k"&gt;h&lt;/span&gt; car.&lt;span class="k"&gt;c&lt;/span&gt; car.&lt;span class="k"&gt;h&lt;/span&gt; jet.&lt;span class="k"&gt;c&lt;/span&gt; jet.&lt;span class="k"&gt;h&lt;/span&gt; jetcar.&lt;span class="k"&gt;c&lt;/span&gt; jetcar.&lt;span class="k"&gt;h&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;然后按下&lt;code&gt;:b &amp;lt;Tab&amp;gt;&lt;/code&gt;便可看到Vim提供的备选文件列表了， 按下&lt;code&gt;&amp;lt;Tab&amp;gt;&lt;/code&gt;选择下一个，按下回车打开当前文件。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;b&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;Tab&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;       &lt;span class="c"&gt;&amp;quot; 显示所有Buffer中的文件&lt;/span&gt;&lt;/span&gt;
@@ -1338,11 +1261,9 @@
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;b&lt;/span&gt; &lt;span class="k"&gt;j&lt;/span&gt;*&lt;span class="k"&gt;c&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;Tab&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;    &lt;span class="c"&gt;&amp;quot; 显示 jet.c jetcar.c jetcar.h&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;我们可以为&lt;code&gt;:b &amp;lt;Tab&amp;gt;&lt;/code&gt;设置一个快捷键&lt;code&gt;&amp;lt;c-n&amp;gt;&lt;/code&gt;，这时便用到上文中设置的&lt;code&gt;wildcharm&lt;/code&gt;了：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;noremap&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="k"&gt;c&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="k"&gt;n&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt; :&lt;span class="k"&gt;b&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="k"&gt;c&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;z&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;-= 完&amp;nbsp;=-&lt;/p&gt;</content><category term="VIM"></category><category term="VIM"></category><category term="buffer"></category><category term="edit multi files"></category></entry><entry><title>Vim 多文件编辑：标签页</title><link href="https://doobom.me/use-tagpages-edit-multi-files-in-vim" rel="alternate"></link><published>2019-02-08T23:01:00+08:00</published><updated>2019-02-08T23:01:00+08:00</updated><author><name>doobom</name></author><id>tag:doobom.me,2019-02-08:/use-tagpages-edit-multi-files-in-vim</id><summary type="html">&lt;p&gt;Vim&amp;nbsp;多文件编辑：标签页.&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
 &lt;p&gt;原文链接: &lt;a href="https://harttle.land/2015/11/12/vim-tabpage.html"&gt;https://harttle.land/2015/11/12/vim-tabpage.html&lt;/a&gt;&lt;/p&gt;
@@ -1357,7 +1278,6 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;vim&lt;/span&gt; &lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="k"&gt;p&lt;/span&gt; main.cpp my&lt;span class="p"&gt;-&lt;/span&gt;oj&lt;span class="p"&gt;-&lt;/span&gt;toolkit.&lt;span class="k"&gt;h&lt;/span&gt; &lt;span class="sr"&gt;/private/&lt;/span&gt;etc/hosts&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;&lt;img alt="vim-tab" src="images/vim-tab@2x.png" /&gt;&lt;/p&gt;
 &lt;p&gt;在Vim中也可以打开和关闭标签：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;tabe&lt;/span&gt;[dit] {&lt;span class="k"&gt;file&lt;/span&gt;}   edit specified &lt;span class="k"&gt;file&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="k"&gt;a&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="k"&gt;tab&lt;/span&gt;&lt;/span&gt;
@@ -1366,7 +1286,6 @@
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;tabc&lt;/span&gt;[lose] {&lt;span class="k"&gt;i&lt;/span&gt;}     &lt;span class="k"&gt;close&lt;/span&gt; &lt;span class="k"&gt;i&lt;/span&gt;&lt;span class="p"&gt;-&lt;/span&gt;&lt;span class="k"&gt;th&lt;/span&gt; &lt;span class="k"&gt;tab&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;tabo&lt;/span&gt;[nly]          &lt;span class="k"&gt;close&lt;/span&gt; &lt;span class="k"&gt;all&lt;/span&gt; other &lt;span class="k"&gt;tabs&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;show &lt;span class="k"&gt;only&lt;/span&gt; the current &lt;span class="k"&gt;tab&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;blockquote&gt;
 &lt;p&gt;中括号中的部分可以省略，在Vim中&lt;code&gt;:h tabedit&lt;/code&gt;可以查看命令帮助。&lt;/p&gt;
@@ -1379,7 +1298,6 @@
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;tabm&lt;/span&gt; {&lt;span class="k"&gt;i&lt;/span&gt;}     move current &lt;span class="k"&gt;tab&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; position &lt;span class="k"&gt;i&lt;/span&gt;&lt;span class="p"&gt;+&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3 id="_3"&gt;标签跳转&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;hr /&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;tabn&lt;/span&gt;         &lt;span class="k"&gt;go&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; next &lt;span class="k"&gt;tab&lt;/span&gt;&lt;/span&gt;
@@ -1388,19 +1306,16 @@
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;tablast&lt;/span&gt;      &lt;span class="k"&gt;go&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; last &lt;span class="k"&gt;tab&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;在正常模式（normal）下，还可以使用快捷键：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;gt            &lt;span class="k"&gt;go&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; next &lt;span class="k"&gt;tab&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;gT            &lt;span class="k"&gt;go&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="k"&gt;previous&lt;/span&gt; &lt;span class="k"&gt;tab&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;{&lt;span class="k"&gt;i&lt;/span&gt;}gt         &lt;span class="k"&gt;go&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="k"&gt;tab&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; position &lt;span class="k"&gt;i&lt;/span&gt; &lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;可以设置更通用的切换标签页快捷键，比如我的&lt;code&gt;~/.vimrc&lt;/code&gt;是这样设置的:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;noremap&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;C&lt;span class="p"&gt;-&lt;/span&gt;L&lt;span class="p"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;Esc&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;:tabnext&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;CR&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="nb"&gt;noremap&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;C&lt;span class="p"&gt;-&lt;/span&gt;H&lt;span class="p"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;Esc&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;:&lt;span class="k"&gt;tabprevious&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;CR&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;-= 完&amp;nbsp;=-&lt;/p&gt;</content><category term="VIM"></category><category term="VIM"></category><category term="tag"></category><category term="edit multi files"></category></entry><entry><title>Vim 多文件编辑：窗口</title><link href="https://doobom.me/use-windows-edit-multi-files-in-vim" rel="alternate"></link><published>2019-02-08T23:01:00+08:00</published><updated>2019-02-08T23:01:00+08:00</updated><author><name>doobom</name></author><id>tag:doobom.me,2019-02-08:/use-windows-edit-multi-files-in-vim</id><summary type="html">&lt;p&gt;Vim&amp;nbsp;多文件编辑：窗口.&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
 &lt;p&gt;原文链接: &lt;a href="https://harttle.land/2015/11/14/vim-window.html"&gt;https://harttle.land/2015/11/14/vim-window.html&lt;/a&gt;&lt;/p&gt;
@@ -1417,7 +1332,6 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;vim&lt;/span&gt; &lt;span class="p"&gt;-&lt;/span&gt;O main.cpp my&lt;span class="p"&gt;-&lt;/span&gt;oj&lt;span class="p"&gt;-&lt;/span&gt;toolkit.&lt;span class="k"&gt;h&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;blockquote&gt;
 &lt;p&gt;使用小写的-o可以水平分屏。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1430,7 +1344,6 @@
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;vs&lt;/span&gt;[plit] {&lt;span class="k"&gt;file&lt;/span&gt;}    垂直分屏&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;clo&lt;/span&gt;[&lt;span class="k"&gt;se&lt;/span&gt;]            关闭当前窗口&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;blockquote&gt;
 &lt;p&gt;上述命令中，如未指定file则打开当前文件。&lt;/p&gt;
@@ -1446,7 +1359,6 @@
 &lt;span class="code-line"&gt;Ctrl&lt;span class="p"&gt;+&lt;/span&gt;&lt;span class="k"&gt;w&lt;/span&gt; T        当前窗口移动到新标签页&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3 id="_4"&gt;切换窗口&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;hr /&gt;
 &lt;p&gt;切换窗口的快捷键就是&lt;code&gt;Ctrl+w&lt;/code&gt;前缀 + &lt;code&gt;hjkl&lt;/code&gt;：&lt;/p&gt;
@@ -1456,7 +1368,6 @@
 &lt;span class="code-line"&gt;Ctrl&lt;span class="p"&gt;+&lt;/span&gt;&lt;span class="k"&gt;w&lt;/span&gt; &lt;span class="k"&gt;l&lt;/span&gt;        切换到右边窗口&lt;/span&gt;
 &lt;span class="code-line"&gt;Ctrl&lt;span class="p"&gt;+&lt;/span&gt;&lt;span class="k"&gt;w&lt;/span&gt; &lt;span class="k"&gt;w&lt;/span&gt;        遍历切换窗口&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;blockquote&gt;
 &lt;p&gt;还有&lt;code&gt;t&lt;/code&gt;切换到最上方的窗口，&lt;code&gt;b&lt;/code&gt;切换到最下方的窗口。&lt;/p&gt;
@@ -1470,7 +1381,6 @@
 &lt;span class="code-line"&gt;Ctrl&lt;span class="p"&gt;+&lt;/span&gt;&lt;span class="k"&gt;w&lt;/span&gt; L        向右移动当前窗口&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h3 id="_6"&gt;调整大小&lt;a class="headerlink" href="#_6" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;hr /&gt;
 &lt;p&gt;调整窗口大小的快捷键仍然有&lt;code&gt;Ctrl+W&lt;/code&gt;前缀：&lt;/p&gt;
@@ -1478,7 +1388,6 @@
 &lt;span class="code-line"&gt;Ctrl&lt;span class="p"&gt;+&lt;/span&gt;&lt;span class="k"&gt;w&lt;/span&gt; &lt;span class="p"&gt;-&lt;/span&gt;        减小窗口高度&lt;/span&gt;
 &lt;span class="code-line"&gt;Ctrl&lt;span class="p"&gt;+&lt;/span&gt;&lt;span class="k"&gt;w&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt;        统一窗口高度&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;-= 完&amp;nbsp;=-&lt;/p&gt;</content><category term="VIM"></category><category term="VIM"></category><category term="window"></category><category term="edit multi files"></category></entry><entry><title>在 Vim 中优雅地查找和替换</title><link href="https://doobom.me/search-and-replace-in-vim" rel="alternate"></link><published>2019-02-05T23:01:00+08:00</published><updated>2019-02-05T23:01:00+08:00</updated><author><name>doobom</name></author><id>tag:doobom.me,2019-02-05:/search-and-replace-in-vim</id><summary type="html">&lt;p&gt;&lt;span class="caps"&gt;VIM&lt;/span&gt; 中的查找及替换,&amp;nbsp;可以用正则式进行.&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
 &lt;p&gt;本文来源:&amp;nbsp;https://harttle.land/2016/08/08/vim-search-in-file.html&lt;/p&gt;
@@ -1497,7 +1406,6 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;/foo\&lt;span class="k"&gt;c&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;将会查找所有的&amp;#8221;&lt;code&gt;foo&lt;/code&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;,&amp;#8221;&lt;code&gt;FOO&lt;/code&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;,&amp;#8221;&lt;code&gt;Foo&lt;/code&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;等字符串。&lt;/p&gt;
 &lt;h2 id="_3"&gt;大小写敏感配置&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;hr /&gt;
@@ -1507,7 +1415,6 @@
 &lt;span class="code-line"&gt;&lt;span class="c"&gt;&amp;quot; 如果有一个大写字母，则切换到大小写敏感查找&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nb"&gt;smartcase&lt;/span&gt; &lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;blockquote&gt;
 &lt;p&gt;将上述设置粘贴到你的&lt;code&gt;~/.vimrc&lt;/code&gt;，重新打开Vim即可生效。&lt;/p&gt;
@@ -1522,7 +1429,6 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;{作用范围}s&lt;span class="sr"&gt;/{目标}/&lt;/span&gt;{替换}/{替换标志}&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;例如&lt;code&gt;:%s/foo/bar/g&lt;/code&gt;会在全局范围(&lt;code&gt;%&lt;/code&gt;)查找&lt;code&gt;foo&lt;/code&gt;并替换为&lt;code&gt;bar&lt;/code&gt;，所有出现都会被替换（&lt;code&gt;g&lt;/code&gt;）。&lt;/p&gt;
 &lt;h2 id="_6"&gt;作用范围&lt;a class="headerlink" href="#_6" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;hr /&gt;
@@ -1531,26 +1437,21 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;s&lt;span class="sr"&gt;/foo/&lt;/span&gt;bar/&lt;span class="k"&gt;g&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;全文：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;%s&lt;span class="sr"&gt;/foo/&lt;/span&gt;bar/&lt;span class="k"&gt;g&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;选区，在Visual模式下选择区域后输入&lt;code&gt;:&lt;/code&gt;，Vim即可自动补全为 &lt;code&gt;:'&amp;lt;,'&amp;gt;&lt;/code&gt;。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;lt;,&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;s&lt;span class="sr"&gt;/foo/&lt;/span&gt;bar/&lt;span class="k"&gt;g&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;2-11行：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;12&lt;/span&gt;s&lt;span class="sr"&gt;/foo/&lt;/span&gt;bar/&lt;span class="k"&gt;g&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;当前行.与接下来两行+2：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;.&lt;span class="p"&gt;,+&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;s&lt;span class="sr"&gt;/foo/&lt;/span&gt;bar/&lt;span class="k"&gt;g&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h2 id="_7"&gt;替换标志&lt;a class="headerlink" href="#_7" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;hr /&gt;
@@ -1559,23 +1460,19 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;%s&lt;span class="sr"&gt;/foo/&lt;/span&gt;bar&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;&lt;code&gt;i&lt;/code&gt;表示大小写不敏感查找，&lt;code&gt;I&lt;/code&gt;表示大小写敏感：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;%s&lt;span class="sr"&gt;/foo/&lt;/span&gt;bar/&lt;span class="k"&gt;i&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;# 等效于模式中的\&lt;span class="k"&gt;c&lt;/span&gt;（不敏感）或\C（敏感）&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;:&lt;/span&gt;%s&lt;span class="sr"&gt;/foo\c/&lt;/span&gt;bar&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;&lt;code&gt;c&lt;/code&gt;表示需要确认，例如全局查找&amp;#8221;&lt;code&gt;foo&lt;/code&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;替换为&amp;#8221;&lt;code&gt;bar&lt;/code&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;并且需要确认：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;%s&lt;span class="sr"&gt;/foo/&lt;/span&gt;bar/gc&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;回车后Vim会将光标移动到每一次&amp;#8221;&lt;code&gt;foo&lt;/code&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;出现的位置，并提示&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;replace with bar &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;y&lt;/span&gt;&lt;span class="sr"&gt;/n/&lt;/span&gt;&lt;span class="k"&gt;a&lt;/span&gt;&lt;span class="sr"&gt;/q/&lt;/span&gt;&lt;span class="k"&gt;l&lt;/span&gt;&lt;span class="sr"&gt;/^E/&lt;/span&gt;^Y&lt;span class="p"&gt;)&lt;/span&gt;?&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;按下&lt;code&gt;y&lt;/code&gt;表示替换，&lt;code&gt;n&lt;/code&gt;表示不替换，&lt;code&gt;a&lt;/code&gt;表示替换所有，&lt;code&gt;q&lt;/code&gt;表示退出查找模式， &lt;code&gt;l&lt;/code&gt;表示替换当前位置并退出。&lt;code&gt;^E&lt;/code&gt;与&lt;code&gt;^Y&lt;/code&gt;是光标移动快捷键，参考： &lt;a href="https://harttle.land/2015/11/07/vim-cursor.html"&gt;Vim中如何快速进行光标移动&lt;/a&gt;。&lt;/p&gt;
 &lt;h2 id="_8"&gt;高亮设置&lt;a class="headerlink" href="#_8" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
@@ -1588,7 +1485,6 @@
 &lt;span class="code-line"&gt;&lt;span class="nb"&gt;highlight&lt;/span&gt; MatchParen cterm&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;underline&lt;/span&gt; ctermbg&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;NONE&lt;/span&gt; ctermfg&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;NONE&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;上述配置指定 Search 结果的前景色（foreground）为黑色，背景色（background）为灰色；&amp;nbsp;渐进搜索的前景色为黑色，背景色为黄色；光标处的字符加下划线。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;更多的CTERM颜色可以查阅：&lt;a href="http://vim.wikia.com/wiki/Xterm256_color_names_for_console_Vim"&gt;http://vim.wikia.com/wiki/Xterm256_color_names_for_console_Vim&lt;/a&gt;&lt;/p&gt;
@@ -1600,7 +1496,6 @@
 &lt;span class="code-line"&gt;&lt;span class="c"&gt;&amp;quot; 等效于&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;nohl&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;其实上述命令禁用了所有高亮，只禁用搜索高亮的命令是&lt;code&gt;:set nohlsearch&lt;/code&gt;。 下次搜索时需要&lt;code&gt;:set hlsearch&lt;/code&gt;再次启动搜索高亮。&lt;/p&gt;
 &lt;h4 id="_11"&gt;&lt;em&gt;延时禁用&lt;/em&gt;&lt;a class="headerlink" href="#_11" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
@@ -1615,7 +1510,6 @@
 &lt;span class="code-line"&gt;&lt;span class="nb"&gt;noremap&lt;/span&gt; ? :&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nb"&gt;hlsearch&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="k"&gt;cr&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;?&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="nb"&gt;noremap&lt;/span&gt; * *:&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nb"&gt;hlsearch&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="k"&gt;cr&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;blockquote&gt;
 &lt;p&gt;将上述配置粘贴到&lt;code&gt;~/.vimrc&lt;/code&gt;，重新打开vim即可生效。&lt;/p&gt;
@@ -1635,7 +1529,6 @@
 &lt;span class="code-line"&gt;endfunc&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;希望关闭高亮时只需要按下 &lt;code&gt;Ctrl+H&lt;/code&gt;，当发生下次搜索时又会自动启用。&lt;/p&gt;
 &lt;h2 id="_13"&gt;参考阅读&lt;a class="headerlink" href="#_13" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;hr /&gt;
@@ -1652,31 +1545,26 @@
 &lt;span class="code-line"&gt;&lt;span class="err"&gt; mkdir LearningPythonDiary&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="2"&gt;2.初始化代码仓库&lt;a class="headerlink" href="#2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt; git init&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h2 id="3"&gt;3.添加一个文件到仓库的缓存区（从工作目录添加到缓存区）&lt;a class="headerlink" href="#3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt; git add filename&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="4head"&gt;4.将添加的文件从缓存区提交到HEAD（最近一次提交后的结果）&lt;a class="headerlink" href="#4head" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt; git commit -m &amp;quot;代码提交信息&amp;quot;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="5pushgithub"&gt;5.将本地代码仓库中代码push到gitHub上&lt;a class="headerlink" href="#5pushgithub" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;首先需要用我们在gitHub上的邮箱与用户名生成一个.ssh（id_rsa.pub） &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;--global user.name &amp;quot;Your Name Here&amp;quot;  &lt;/span&gt;&lt;/span&gt;
+&lt;li&gt;首先需要用我们在gitHub上的邮箱与用户名生成一个.ssh（id_rsa.pub） &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="k"&gt;global&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;Your Name Here&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;Sets&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;default&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;use&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;when&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;commit&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;--global user.email &amp;quot;your_email@example.com&amp;quot;   &lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="k"&gt;global&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;email&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;your_email@example.com&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;Sets&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;default&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;email&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;use&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;when&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;commit&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -1687,11 +1575,9 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt; git remote add origin git@github.com:username/LearningPythonDiary.git&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;也可以这样创建（https方式）：    &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt; git remote add origin https://github.com/username/LearningPythonDiary.git&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;不过这样创建就是每次提交的时候都要输入用户名与密码，比较繁琐。   &lt;/p&gt;
 &lt;/li&gt;
@@ -1700,18 +1586,15 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt; git push origin master&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="6github"&gt;6.将gitHub上的代码更新到本地&lt;a class="headerlink" href="#6github" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt; git pull origin master&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2 id="7githublocalhost"&gt;7.从gitHub上复制项目到本地localhost&lt;a class="headerlink" href="#7githublocalhost" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt; git clone https://github.com/username/LearningPythonDiary.git master&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;&lt;em&gt;&lt;em&gt;转自https://github.com/peterluo/LearningPythonDiary&lt;/em&gt;&lt;/em&gt;&lt;/p&gt;</content><category term="git"></category><category term="git"></category><category term="github"></category></entry><entry><title>Hello World</title><link href="https://doobom.me/hello-world" rel="alternate"></link><published>2017-03-02T02:01:00+08:00</published><updated>2017-03-02T02:01:00+08:00</updated><author><name>Pelican</name></author><id>tag:doobom.me,2017-03-02:/hello-world</id><summary type="html">&lt;p&gt;The first post for&amp;nbsp;Pelican.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Hello World, Hello&amp;nbsp;Pelican.&lt;/p&gt;
-&lt;p&gt;and&amp;nbsp;oops.run&lt;/p&gt;</content><category term="Pelican"></category><category term="Pelican"></category><category term="Python"></category></entry></feed>
+&lt;p&gt;and ~oops.run~&amp;nbsp;doobom.me&lt;/p&gt;</content><category term="Pelican"></category><category term="Pelican"></category><category term="Python"></category></entry></feed>

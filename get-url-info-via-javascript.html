@@ -20,19 +20,19 @@
 
 <meta name="keywords" content="javascript, string, url, Javascript, " />
 
-<meta property="og:title" content="如何用 js 准确获取当前页面url网址信息"/>
+<meta property="og:title" content="如何用 js 准确获取当前页面url网址信息 "/>
 <meta property="og:url" content="https://doobom.me/get-url-info-via-javascript" />
 <meta property="og:description" content="在 WEB 开发中，时常会用到 javascript 来获取当前页面的 url 网址信息，在这里是我的一些获取 url 信息的小总结。" />
 <meta property="og:site_name" content="oops: run" />
 <meta property="og:article:author" content="doobom" />
 <meta property="og:article:published_time" content="2019-05-16T09:58:00+08:00" />
 <meta property="og:article:modified_time" content="2019-05-16T09:58:00+08:00" />
-<meta name="twitter:title" content="如何用 js 准确获取当前页面url网址信息">
+<meta name="twitter:title" content="如何用 js 准确获取当前页面url网址信息 ">
 <meta name="twitter:description" content="在 WEB 开发中，时常会用到 javascript 来获取当前页面的 url 网址信息，在这里是我的一些获取 url 信息的小总结。">
-<meta property="og:image" content="https://oops.run/theme/images/apple-touch-icon-152x152.png" />
-<meta name="twitter:image" content="https://oops.run/theme/images/apple-touch-icon-152x152.png" >
+<meta property="og:image" content="https://doobom.me/theme/images/apple-touch-icon-152x152.png" />
+<meta name="twitter:image" content="https://doobom.me/theme/images/apple-touch-icon-152x152.png" >
 
-        <title>如何用 js 准确获取当前页面url网址信息 · oops: run
+        <title>如何用 js 准确获取当前页面url网址信息  · oops: run
 </title>
         <link rel="shortcut icon" href="https://doobom.me/theme/images/favicon.ico" type="image/x-icon" />
         <link rel="icon" href="https://doobom.me/theme/images/apple-touch-icon-152x152.png" type="image/png" />
@@ -113,13 +113,11 @@
 <span class="code-line"><span class="c1">//返回：http://i.cnblogs.com/EditPosts.aspx?opt=1</span></span>
 <span class="code-line"></code></pre></div>
 
-
 <h2 id="2windowlocationprotocol-url">2、window.location.protocol(设置或获取 <span class="caps">URL</span> 的协议部分)<a class="headerlink" href="#2windowlocationprotocol-url" title="Permanent link"> </a></h2>
 <div class="highlight"><pre><span class="code-line"><span></span><code><span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">protocol</span><span class="p">;</span> </span>
 <span class="code-line"><span class="nx">alert</span><span class="p">(</span><span class="nx">test</span><span class="p">);</span> </span>
 <span class="code-line"><span class="c1">//返回：http:</span></span>
 <span class="code-line"></code></pre></div>
-
 
 <h2 id="3windowlocationhost-url">3、window.location.host(设置或获取 <span class="caps">URL</span> 的主机部分)<a class="headerlink" href="#3windowlocationhost-url" title="Permanent link"> </a></h2>
 <div class="highlight"><pre><span class="code-line"><span></span><code><span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">host</span><span class="p">;</span> </span>
@@ -127,13 +125,11 @@
 <span class="code-line"><span class="c1">//返回：i.cnblogs.com</span></span>
 <span class="code-line"></code></pre></div>
 
-
 <h2 id="4windowlocationport-url">4、window.location.port(设置或获取与 <span class="caps">URL</span> 关联的端口号码)<a class="headerlink" href="#4windowlocationport-url" title="Permanent link"> </a></h2>
 <div class="highlight"><pre><span class="code-line"><span></span><code><span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">port</span><span class="p">;</span> </span>
 <span class="code-line"><span class="nx">alert</span><span class="p">(</span><span class="nx">test</span><span class="p">);</span> </span>
 <span class="code-line"><span class="c1">//返回：空字符(如果采用默认的80端口(update:即使添加了:80)，那么返回值并不是默认的80而是空字符)</span></span>
 <span class="code-line"></code></pre></div>
-
 
 <h2 id="5windowlocationpathname-url">5、window.location.pathname(设置或获取与 <span class="caps">URL</span> 的路径部分（就是文件地址）)<a class="headerlink" href="#5windowlocationpathname-url" title="Permanent link"> </a></h2>
 <div class="highlight"><pre><span class="code-line"><span></span><code><span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span><span class="p">;</span> </span>
@@ -141,13 +137,11 @@
 <span class="code-line"><span class="c1">//返回：/EditPosts.aspx</span></span>
 <span class="code-line"></code></pre></div>
 
-
 <h2 id="6windowlocationsearch-href">6、window.location.search(设置或获取 href 属性中跟在问号后面的部分)<a class="headerlink" href="#6windowlocationsearch-href" title="Permanent link"> </a></h2>
 <div class="highlight"><pre><span class="code-line"><span></span><code><span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">;</span> </span>
 <span class="code-line"><span class="nx">alert</span><span class="p">(</span><span class="nx">test</span><span class="p">);</span> </span>
 <span class="code-line"><span class="c1">//返回：?opt=1</span></span>
 <span class="code-line"></code></pre></div>
-
 
 <p><span class="caps">PS</span>：获得查询（参数）部分，除了给动态语言赋值以外，我们同样可以给静态页面，并使用 javascript&nbsp;来获得相信应的参数值。</p>
 <h2 id="7windowlocationhash-href">7、window.location.hash(设置或获取 href 属性中在井号“#”后面的分段)<a class="headerlink" href="#7windowlocationhash-href" title="Permanent link"> </a></h2>
@@ -156,14 +150,13 @@
 <span class="code-line"><span class="c1">//返回：空字符(因为url中没有)</span></span>
 <span class="code-line"></code></pre></div>
 
-
 <h2 id="8jsurl">8、js获取url中的参数值<a class="headerlink" href="#8jsurl" title="Permanent link"> </a></h2>
 <h3 id="_1">一、正则法<a class="headerlink" href="#_1" title="Permanent link"> </a></h3>
 <div class="highlight"><pre><span class="code-line"><span></span><code><span class="kd">function</span> <span class="nx">getQueryString</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span></span>
 <span class="code-line">  <span class="kd">var</span> <span class="nx">reg</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s1">&#39;(^|&amp;)&#39;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39;=([^&amp;]*)(&amp;|$)&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">);</span></span>
-<span class="code-line">  <span class="kd">var</span> <span class="nx">r</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">match</span><span class="p">(</span><span class="nx">reg</span><span class="p">);</span></span>
+<span class="code-line">  <span class="kd">var</span> <span class="nx">r</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mf">1</span><span class="p">).</span><span class="nx">match</span><span class="p">(</span><span class="nx">reg</span><span class="p">);</span></span>
 <span class="code-line">  <span class="k">if</span> <span class="p">(</span><span class="nx">r</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span></span>
-<span class="code-line">    <span class="k">return</span> <span class="nx">unescape</span><span class="p">(</span><span class="nx">r</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span></span>
+<span class="code-line">    <span class="k">return</span> <span class="nx">unescape</span><span class="p">(</span><span class="nx">r</span><span class="p">[</span><span class="mf">2</span><span class="p">]);</span></span>
 <span class="code-line">  <span class="p">}</span></span>
 <span class="code-line">  <span class="k">return</span> <span class="kc">null</span><span class="p">;</span></span>
 <span class="code-line"><span class="p">}</span></span>
@@ -175,16 +168,15 @@
 <span class="code-line"><span class="nx">alert</span><span class="p">(</span><span class="nx">GetQueryString</span><span class="p">(</span><span class="s2">&quot;参数名3&quot;</span><span class="p">));</span></span>
 <span class="code-line"></code></pre></div>
 
-
 <h3 id="split">二、split拆分法<a class="headerlink" href="#split" title="Permanent link"> </a></h3>
 <div class="highlight"><pre><span class="code-line"><span></span><code><span class="kd">function</span> <span class="nx">GetRequest</span><span class="p">()</span> <span class="p">{</span></span>
 <span class="code-line">  <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">;</span> <span class="c1">//获取url中&quot;?&quot;符后的字串</span></span>
 <span class="code-line">  <span class="kd">var</span> <span class="nx">theRequest</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span></span>
-<span class="code-line">  <span class="k">if</span> <span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&quot;?&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span></span>
-<span class="code-line">    <span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span></span>
+<span class="code-line">  <span class="k">if</span> <span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&quot;?&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mf">1</span><span class="p">)</span> <span class="p">{</span></span>
+<span class="code-line">    <span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span></span>
 <span class="code-line">    <span class="nx">strs</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;&amp;&quot;</span><span class="p">);</span></span>
-<span class="code-line">    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">strs</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">++</span><span class="p">)</span> <span class="p">{</span></span>
-<span class="code-line">      <span class="nx">theRequest</span><span class="p">[</span><span class="nx">strs</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="nx">unescape</span><span class="p">(</span><span class="nx">strs</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]);</span></span>
+<span class="code-line">    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">strs</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">++</span><span class="p">)</span> <span class="p">{</span></span>
+<span class="code-line">      <span class="nx">theRequest</span><span class="p">[</span><span class="nx">strs</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)[</span><span class="mf">0</span><span class="p">]]</span> <span class="o">=</span> <span class="nx">unescape</span><span class="p">(</span><span class="nx">strs</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)[</span><span class="mf">1</span><span class="p">]);</span></span>
 <span class="code-line">    <span class="p">}</span></span>
 <span class="code-line">  <span class="p">}</span></span>
 <span class="code-line">  <span class="k">return</span> <span class="nx">theRequest</span><span class="p">;</span></span>
@@ -198,15 +190,14 @@
 <span class="code-line"><span class="c1">// 参数N = Request[&#39;参数N&#39;];</span></span>
 <span class="code-line"></code></pre></div>
 
-
 <h3 id="_2">三、指定取<a class="headerlink" href="#_2" title="Permanent link"> </a></h3>
 <p>比如说一个 url：http://i.cnblogs.com/?j=js&nbsp;,我们想得到参数j的值，可以通过以下函数调用。</p>
 <div class="highlight"><pre><span class="code-line"><span></span><code><span class="kd">function</span> <span class="nx">GetQueryString</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span> </span>
 <span class="code-line">  <span class="kd">var</span> <span class="nx">reg</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s2">&quot;(^|&amp;)&quot;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot;=([^&amp;]*)(&amp;|$)&quot;</span><span class="p">,</span> <span class="s2">&quot;i&quot;</span><span class="p">);</span> </span>
-<span class="code-line">  <span class="kd">var</span> <span class="nx">r</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">match</span><span class="p">(</span><span class="nx">reg</span><span class="p">);</span> <span class="c1">//获取url中&quot;?&quot;符后的字符串并正则匹配</span></span>
+<span class="code-line">  <span class="kd">var</span> <span class="nx">r</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mf">1</span><span class="p">).</span><span class="nx">match</span><span class="p">(</span><span class="nx">reg</span><span class="p">);</span> <span class="c1">//获取url中&quot;?&quot;符后的字符串并正则匹配</span></span>
 <span class="code-line">  <span class="kd">var</span> <span class="nx">context</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span> </span>
 <span class="code-line">  <span class="k">if</span> <span class="p">(</span><span class="nx">r</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> </span>
-<span class="code-line">     <span class="nx">context</span> <span class="o">=</span> <span class="nx">r</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span> </span>
+<span class="code-line">     <span class="nx">context</span> <span class="o">=</span> <span class="nx">r</span><span class="p">[</span><span class="mf">2</span><span class="p">];</span> </span>
 <span class="code-line">  <span class="nx">reg</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span> </span>
 <span class="code-line">  <span class="nx">r</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span> </span>
 <span class="code-line">  <span class="k">return</span> <span class="nx">context</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="nx">context</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span> <span class="o">||</span> <span class="nx">context</span> <span class="o">==</span> <span class="s2">&quot;undefined&quot;</span> <span class="o">?</span> <span class="s2">&quot;&quot;</span> <span class="o">:</span> <span class="nx">context</span><span class="p">;</span> </span>
@@ -214,31 +205,29 @@
 <span class="code-line"><span class="nx">alert</span><span class="p">(</span><span class="nx">GetQueryString</span><span class="p">(</span><span class="s2">&quot;j&quot;</span><span class="p">));</span></span>
 <span class="code-line"></code></pre></div>
 
-
 <h3 id="_3">四、单个参数的获取方法<a class="headerlink" href="#_3" title="Permanent link"> </a></h3>
 <div class="highlight"><pre><span class="code-line"><span></span><code><span class="kd">function</span> <span class="nx">GetRequest</span><span class="p">()</span> <span class="p">{</span></span>
 <span class="code-line">  <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">;</span> <span class="c1">//获取url中&quot;?&quot;符后的字串</span></span>
-<span class="code-line">  <span class="k">if</span> <span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&quot;?&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">//判断是否有参数</span></span>
-<span class="code-line">   <span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1">//从第一个字符开始 因为第0个是?号 获取所有除问号的所有符串</span></span>
+<span class="code-line">  <span class="k">if</span> <span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&quot;?&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mf">1</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">//判断是否有参数</span></span>
+<span class="code-line">   <span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span> <span class="c1">//从第一个字符开始 因为第0个是?号 获取所有除问号的所有符串</span></span>
 <span class="code-line">   <span class="nx">strs</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">);</span>  <span class="c1">//用等号进行分隔 （因为知道只有一个参数 所以直接用等号进分隔 如果有多个参数 要用&amp;号分隔 再用等号进行分隔）</span></span>
-<span class="code-line">   <span class="nx">alert</span><span class="p">(</span><span class="nx">strs</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>     <span class="c1">//直接弹出第一个参数 （如果有多个参数 还要进行循环的）</span></span>
+<span class="code-line">   <span class="nx">alert</span><span class="p">(</span><span class="nx">strs</span><span class="p">[</span><span class="mf">1</span><span class="p">]);</span>     <span class="c1">//直接弹出第一个参数 （如果有多个参数 还要进行循环的）</span></span>
 <span class="code-line">  <span class="p">}</span></span>
 <span class="code-line"><span class="p">}</span></span>
 <span class="code-line"></code></pre></div>
-
 
 <p>以上就是本文的全部内容，希望对大家理解如何获取当前页面 url&nbsp;网址信息有所帮助。</p>
 <p>-= <span class="caps">END</span>&nbsp;=-</p>
 
 
-            
+             
 
 
 <div class="applause_button">
     <applause-button url=https://doobom.me/get-url-info-via-javascript> </applause-button>
 </div>
 
-
+ 
                 <p id="post-share-links" style="text-align:left">
     Like this post? Share on:
       <a href="https://twitter.com/intent/tweet?text=%E5%A6%82%E4%BD%95%E7%94%A8%20js%C2%A0%E5%87%86%E7%A1%AE%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2url%E7%BD%91%E5%9D%80%E4%BF%A1%E6%81%AF&url=https%3A//doobom.me/get-url-info-via-javascript&via=d8boom&hashtags=javascript,string,url" target="_blank" rel="nofollow noopener noreferrer" title="Share on Twitter"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
@@ -251,14 +240,14 @@
 	C46.496,446.88,101.6,464,161.024,464c193.152,0,298.752-160,298.752-298.688c0-4.64-0.16-9.12-0.384-13.568
 	C480.224,136.96,497.728,118.496,512,97.248z"></path>
 </svg></a>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//doobom.me/get-url-info-via-javascript" target="_blank" rel="nofollow noopener noreferrer" title="Share on Facebook"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
+       <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//doobom.me/get-url-info-via-javascript" target="_blank" rel="nofollow noopener noreferrer" title="Share on Facebook"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
 <path style="fill:#1976D2;" d="M448,0H64C28.704,0,0,28.704,0,64v384c0,35.296,28.704,64,64,64h384c35.296,0,64-28.704,64-64V64
 	C512,28.704,483.296,0,448,0z"></path>
 <path style="fill:#FAFAFA;" d="M432,256h-80v-64c0-17.664,14.336-16,32-16h32V96h-64l0,0c-53.024,0-96,42.976-96,96v64h-64v80h64
 	v176h96V336h48L432,256z"></path>
 </svg></a>
-      <a href="https://news.ycombinator.com/submitlink?t=%E5%A6%82%E4%BD%95%E7%94%A8%20js%C2%A0%E5%87%86%E7%A1%AE%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2url%E7%BD%91%E5%9D%80%E4%BF%A1%E6%81%AF&u=https%3A//doobom.me/get-url-info-via-javascript" target="_blank" rel="nofollow noopener noreferrer" title="Share on Hacker-News"><svg id="Layer_1" version="1.1" viewBox="0 0 512 512" width="31" height="31" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"><defs id="defs12"></defs><g id="g3045"><path d="m -0.003935,-0.0039375 512.007865,0 0,512.0078775 -512.007865,0 z" id="path3032" style="fill:#f68423;fill-opacity:1;fill-rule:nonzero;stroke:none"></path><path d="m 108.74016,65.990163 122.49212,242.503937 0,137.51574 49.8189,0 0,-137.51574 122.20866,-242.503937 -54.1063,0 -93.11811,182.586607 -89.5748,-182.586607 -57.72047,0 z" id="path3034" style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"></path></g></svg></a>
-      <a href="https://www.reddit.com/submit?url=https%3A//doobom.me/get-url-info-via-javascript&title=%E5%A6%82%E4%BD%95%E7%94%A8%20js%C2%A0%E5%87%86%E7%A1%AE%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2url%E7%BD%91%E5%9D%80%E4%BF%A1%E6%81%AF" target="_blank" rel="nofollow noopener noreferrer" title="Share on reddit"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 514.24 514.24" style="enable-background:new 0 0 514.24 514.24;" xml:space="preserve" width="31" height="31">
+       <a href="https://news.ycombinator.com/submitlink?t=%E5%A6%82%E4%BD%95%E7%94%A8%20js%C2%A0%E5%87%86%E7%A1%AE%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2url%E7%BD%91%E5%9D%80%E4%BF%A1%E6%81%AF&u=https%3A//doobom.me/get-url-info-via-javascript" target="_blank" rel="nofollow noopener noreferrer" title="Share on Hacker-News"><svg id="Layer_1" version="1.1" viewBox="0 0 512 512" width="31" height="31" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"><defs id="defs12"></defs><g id="g3045"><path d="m -0.003935,-0.0039375 512.007865,0 0,512.0078775 -512.007865,0 z" id="path3032" style="fill:#f68423;fill-opacity:1;fill-rule:nonzero;stroke:none"></path><path d="m 108.74016,65.990163 122.49212,242.503937 0,137.51574 49.8189,0 0,-137.51574 122.20866,-242.503937 -54.1063,0 -93.11811,182.586607 -89.5748,-182.586607 -57.72047,0 z" id="path3034" style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"></path></g></svg></a>
+       <a href="https://www.reddit.com/submit?url=https%3A//doobom.me/get-url-info-via-javascript&title=%E5%A6%82%E4%BD%95%E7%94%A8%20js%C2%A0%E5%87%86%E7%A1%AE%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2url%E7%BD%91%E5%9D%80%E4%BF%A1%E6%81%AF" target="_blank" rel="nofollow noopener noreferrer" title="Share on reddit"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 514.24 514.24" style="enable-background:new 0 0 514.24 514.24;" xml:space="preserve" width="31" height="31">
 <g>
 	<polygon style="fill:#FAFAFA;" points="192,289.121 176,289.089 176,289.121 	"></polygon>
 	<polygon style="fill:#FAFAFA;" points="336,289.121 352,289.121 336,289.089 	"></polygon>
@@ -279,7 +268,7 @@
 	<circle style="fill:#FAFAFA;" cx="336" cy="289.121" r="32"></circle>
 </g>
 </svg></a>
-      <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//doobom.me/get-url-info-via-javascript&title=%E5%A6%82%E4%BD%95%E7%94%A8%20js%C2%A0%E5%87%86%E7%A1%AE%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2url%E7%BD%91%E5%9D%80%E4%BF%A1%E6%81%AF&summary=%E5%9C%A8%20WEB%20%E5%BC%80%E5%8F%91%E4%B8%AD%EF%BC%8C%E6%97%B6%E5%B8%B8%E4%BC%9A%E7%94%A8%E5%88%B0%20javascript%20%E6%9D%A5%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2%E7%9A%84%20url%20%E7%BD%91%E5%9D%80%E4%BF%A1%E6%81%AF%EF%BC%8C%E5%9C%A8%E8%BF%99%E9%87%8C%E6%98%AF%E6%88%91%E7%9A%84%E4%B8%80%E4%BA%9B%E8%8E%B7%E5%8F%96%20url%C2%A0%E4%BF%A1%E6%81%AF%E7%9A%84%E5%B0%8F%E6%80%BB%E7%BB%93%E3%80%82&source=https%3A//doobom.me/get-url-info-via-javascript" target="_blank" rel="nofollow noopener noreferrer" title="Share on linkedin"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
+       <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//doobom.me/get-url-info-via-javascript&title=%E5%A6%82%E4%BD%95%E7%94%A8%20js%C2%A0%E5%87%86%E7%A1%AE%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2url%E7%BD%91%E5%9D%80%E4%BF%A1%E6%81%AF&summary=%E5%9C%A8%20WEB%20%E5%BC%80%E5%8F%91%E4%B8%AD%EF%BC%8C%E6%97%B6%E5%B8%B8%E4%BC%9A%E7%94%A8%E5%88%B0%20javascript%20%E6%9D%A5%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2%E7%9A%84%20url%20%E7%BD%91%E5%9D%80%E4%BF%A1%E6%81%AF%EF%BC%8C%E5%9C%A8%E8%BF%99%E9%87%8C%E6%98%AF%E6%88%91%E7%9A%84%E4%B8%80%E4%BA%9B%E8%8E%B7%E5%8F%96%20url%C2%A0%E4%BF%A1%E6%81%AF%E7%9A%84%E5%B0%8F%E6%80%BB%E7%BB%93%E3%80%82&source=https%3A//doobom.me/get-url-info-via-javascript" target="_blank" rel="nofollow noopener noreferrer" title="Share on linkedin"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
 <g>
 	<rect y="160" style="fill:#1976D2;" width="114.496" height="352"></rect>
 	<path style="fill:#1976D2;" d="M426.368,164.128c-1.216-0.384-2.368-0.8-3.648-1.152c-1.536-0.352-3.072-0.64-4.64-0.896
@@ -288,7 +277,7 @@
 	<circle style="fill:#1976D2;" cx="56" cy="56" r="56"></circle>
 </g>
 </svg></a>
-      <a href="mailto:?subject=%E5%A6%82%E4%BD%95%E7%94%A8%20js%C2%A0%E5%87%86%E7%A1%AE%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2url%E7%BD%91%E5%9D%80%E4%BF%A1%E6%81%AF&amp;body=https%3A//doobom.me/get-url-info-via-javascript" target="_blank" rel="nofollow noopener noreferrer" title="Share via Email"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
+       <a href="mailto:?subject=%E5%A6%82%E4%BD%95%E7%94%A8%20js%C2%A0%E5%87%86%E7%A1%AE%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2url%E7%BD%91%E5%9D%80%E4%BF%A1%E6%81%AF&amp;body=https%3A//doobom.me/get-url-info-via-javascript" target="_blank" rel="nofollow noopener noreferrer" title="Share via Email"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
 <path style="fill:#1E88E5;" d="M480,432H32c-17.664,0-32-14.336-32-32V112c0-17.664,14.336-32,32-32h448c17.664,0,32,14.336,32,32
 	v288C512,417.664,497.664,432,480,432z"></path>
 <path style="fill:#2196F3;" d="M480,432H32c-17.952,0-32-14.048-32-32c0-5.088,2.432-9.888,6.528-12.896l240-160
@@ -409,7 +398,7 @@
     <a href="https://github.com/doobom" title="doobom's github profile" target="_blank" rel="nofollow noopener noreferrer">
         <svg xmlns="http://www.w3.org/2000/svg" aria-label="GitHub" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#1B1817"/><path fill="#fff" d="M335 499c14 0 12 17 12 17H165s-2-17 12-17c13 0 16-6 16-12l-1-50c-71 16-86-28-86-28-12-30-28-37-28-37-24-16 1-16 1-16 26 2 40 26 40 26 22 39 59 28 74 22 2-17 9-28 16-35-57-6-116-28-116-126 0-28 10-51 26-69-3-6-11-32 3-67 0 0 21-7 70 26 42-12 86-12 128 0 49-33 70-26 70-26 14 35 6 61 3 67 16 18 26 41 26 69 0 98-60 120-117 126 10 8 18 24 18 48l-1 70c0 6 3 12 16 12z"/></svg>
     </a>
-    <a href="https://oops.run/feeds/all.atom.xml" title="" target="_blank" rel="nofollow noopener noreferrer">
+    <a href="https://doobom.me/feeds/all.atom.xml" title="" target="_blank" rel="nofollow noopener noreferrer">
         <svg xmlns="http://www.w3.org/2000/svg" aria-label="RSS" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#f80"/><circle cx="145" cy="367" r="35" fill="#fff"/><path fill="none" stroke="#fff" stroke-width="60" d="M109 241c89 0 162 73 162 162M109 127c152 0 276 124 276 276"/></svg>
     </a>
     <a href="https://twitter.com/d8boom" title="twitter" target="_blank" rel="nofollow noopener noreferrer">

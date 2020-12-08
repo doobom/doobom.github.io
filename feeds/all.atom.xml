@@ -62,7 +62,7 @@
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;</summary><content type="html">&lt;blockquote&gt;
-&lt;p&gt;原文：&amp;nbsp;(https://stackoverflow.com/questions/7341865/checking-if-jquery-is-loaded-using-javascript)
+&lt;p&gt;原文： &lt;a href="https://stackoverflow.com/questions/7341865/checking-if-jquery-is-loaded-using-javascript"&gt;https://stackoverflow.com/questions/7341865/checking-if-jquery-is-loaded-using-javascript&lt;/a&gt;
 &lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Well, you are using jQuery to check for the presence of jQuery. If jQuery isn&amp;#8217;t loaded then &lt;code&gt;$()&lt;/code&gt; won&amp;#8217;t even run at all and your callback won&amp;#8217;t execute, unless you&amp;#8217;re using another library and that library happens to share the same &lt;code&gt;$()&lt;/code&gt; syntax.&lt;/p&gt;

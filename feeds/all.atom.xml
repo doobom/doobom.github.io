@@ -1,5 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>oops: run</title><link href="https://doobom.me/" rel="alternate"></link><link href="https://doobom.me/feeds/all.atom.xml" rel="self"></link><id>https://doobom.me/</id><updated>2020-03-17T16:01:00+08:00</updated><subtitle>keep running...</subtitle><entry><title>How to Install EPEL and REMI Repository on CentOS/RedHat 7/6</title><link href="https://doobom.me/how-to-install-epel-and-remi-repository-on-centos" rel="alternate"></link><published>2020-03-17T12:01:00+08:00</published><updated>2020-03-17T16:01:00+08:00</updated><author><name>doobom</name></author><id>tag:doobom.me,2020-03-17:/how-to-install-epel-and-remi-repository-on-centos</id><summary type="html">&lt;p&gt;How to Install &lt;span class="caps"&gt;EPEL&lt;/span&gt; and &lt;span class="caps"&gt;REMI&lt;/span&gt; Repository on CentOS/RedHat&amp;nbsp;7/6&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>oops: run</title><link href="https://doobom.me/" rel="alternate"></link><link href="https://doobom.me/feeds/all.atom.xml" rel="self"></link><id>https://doobom.me/</id><updated>2020-12-08T23:58:00+08:00</updated><subtitle>keep running...</subtitle><entry><title>Checking if jquery is loaded using Javascript</title><link href="https://doobom.me/checking-if-jquery-is-loaded" rel="alternate"></link><published>2020-12-08T23:58:00+08:00</published><updated>2020-12-08T23:58:00+08:00</updated><author><name>doobom</name></author><id>tag:doobom.me,2020-12-08:/checking-if-jquery-is-loaded</id><summary type="html">&lt;p&gt;If jQuery isn&amp;#8217;t loaded then \&lt;span class="math"&gt;\(() won't even run at all and your callback won't execute, unless you're using another library and that library happens to share the same \\)&lt;/span&gt;()&amp;nbsp;syntax.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;原文：&amp;nbsp;(https://stackoverflow.com/questions/7341865/checking-if-jquery-is-loaded-using-javascript)
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Well, you are using jQuery to check for the presence of jQuery. If jQuery isn&amp;#8217;t loaded then &lt;code&gt;$()&lt;/code&gt; won&amp;#8217;t even run at all and your callback won&amp;#8217;t execute, unless you&amp;#8217;re using another library and that library happens to share the same &lt;code&gt;$()&lt;/code&gt; syntax.&lt;/p&gt;
+&lt;p&gt;Remove your &lt;code&gt;$(document).ready()&lt;/code&gt; (use something like &lt;code&gt;window.onload&lt;/code&gt; instead):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;window&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;onload&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;window&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;jQuery&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;  &lt;/span&gt;
+&lt;span class="code-line"&gt;        &lt;span class="c1"&gt;// jQuery is loaded  &lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;        &lt;span class="nx"&gt;alert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Yeah!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;        &lt;span class="c1"&gt;// jQuery is not loaded&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;        &lt;span class="nx"&gt;alert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Doesn&amp;#39;t Work&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Javascript"></category><category term="javascript"></category><category term="jQuery"></category></entry><entry><title>Run jQuery in Chrome Console</title><link href="https://doobom.me/run-jquery-in-chrome-console" rel="alternate"></link><published>2020-12-08T09:58:00+08:00</published><updated>2020-12-08T09:58:00+08:00</updated><author><name>doobom</name></author><id>tag:doobom.me,2020-12-08:/run-jquery-in-chrome-console</id><summary type="html">&lt;p&gt;Many a times we run into the need to testing some elements in some webpages which we don’t own. May be to do some reverse engineering or just to test&amp;nbsp;something.&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;原文： &lt;a href="https://blog.wplauncher.com/run-jquery-in-chrome-console/"&gt;https://blog.wplauncher.com/run-jquery-in-chrome-console/&lt;/a&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I’ve run into numerous situations where I need to loop through data on a website that I do not own (typically &lt;span class="caps"&gt;API&lt;/span&gt; documentation) so that I can reformat it and make it usable.  For example, &lt;span class="caps"&gt;AWS&lt;/span&gt; Route 53 includes a list of top-level domains (TLDs) in a page with related data for each &lt;span class="caps"&gt;TLD&lt;/span&gt; but it’s in an &lt;span class="caps"&gt;HTML&lt;/span&gt; format. You can use JavaScript by default in the chrome console but jQuery allows me to create these one-off scripts more&amp;nbsp;quickly.&lt;/p&gt;
+&lt;h2 id="step-1-copy-the-code-below"&gt;Step 1: Copy the code below&lt;a class="headerlink" href="#step-1-copy-the-code-below" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Load jQuery into your current page by copying and pasting the following code into your Chrome&amp;nbsp;Console.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;jqry&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;createElement&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;script&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="nx"&gt;jqry&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;src&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;https://code.jquery.com/jquery-3.3.1.min.js&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getElementsByTagName&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;head&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mf"&gt;0&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;appendChild&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;jqry&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="nx"&gt;jQuery&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;noConflict&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;It may take a bit of time for jQuery to load. But, once jQuery is loaded, you can run your custom jQuery functions in chrome console. There may be some conflicts with other jQuery versions that may have been loaded on the&amp;nbsp;page.&lt;/p&gt;
+&lt;h2 id="step-2-paste-the-code-in-your-browsers-console"&gt;Step 2: Paste the code in your Browser’s Console&lt;a class="headerlink" href="#step-2-paste-the-code-in-your-browsers-console" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;If you don’t know how to get to your browser’s console, make sure you right click on the page that you want to scrape and click on&amp;nbsp;Inspect.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="get console" src="images/4004-1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Then, click on the Console tab, paste the code that you copied above it into the console, and click enter to run the code. It’ll look like the picture&amp;nbsp;below:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="paste the code" src="images/4004-2.png" /&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以下来自： &lt;a href="https://www.voidcanvas.com/how-to-insert-run-jquery-in-chrome-console/"&gt;https://www.voidcanvas.com/how-to-insert-run-jquery-in-chrome-console/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="better-way-for-regular-users"&gt;Better way for regular users&lt;a class="headerlink" href="#better-way-for-regular-users" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;If you often come across this situation and have to insert jQuery in multiple pages, you can probably save it as a bookmarklet and include it in the page just by clicking on that bookmarklet. Follow the steps below to create a&amp;nbsp;bookmarklet.&lt;/p&gt;
+&lt;p&gt;Step 1: Open an empty tab in your browser.
+Step 2: Bookmark that empty tab with a name.
+Step 3: Now edit that saved bookmark and save the following code in the place of url or&amp;nbsp;location.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nx"&gt;javascript&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;jqry&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;createElement&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;script&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="nx"&gt;jqry&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;src&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;https://code.jquery.com/jquery-3.3.1.min.js&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getElementsByTagName&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;head&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mf"&gt;0&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;appendChild&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;jqry&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="nx"&gt;jQuery&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;noConflict&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Step 4: Save the bookmark.
+Step 5: Now you can include jQuery in any of the webpages you want, just by clicking on the bookmarklet after the required webpage is&amp;nbsp;loaded.&lt;/p&gt;
+&lt;h2 id="caution"&gt;Caution&lt;a class="headerlink" href="#caution" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;There are some webpages (Eg: gmail) who strictly doesn’t allow loading of external scripts. On those pages the approach mentioned above will not&amp;nbsp;work.&lt;/p&gt;</content><category term="Javascript"></category><category term="javascript"></category><category term="jQuery"></category><category term="Chrome"></category></entry><entry><title>How to Install EPEL and REMI Repository on CentOS/RedHat 7/6</title><link href="https://doobom.me/how-to-install-epel-and-remi-repository-on-centos" rel="alternate"></link><published>2020-03-17T12:01:00+08:00</published><updated>2020-03-17T16:01:00+08:00</updated><author><name>doobom</name></author><id>tag:doobom.me,2020-03-17:/how-to-install-epel-and-remi-repository-on-centos</id><summary type="html">&lt;p&gt;How to Install &lt;span class="caps"&gt;EPEL&lt;/span&gt; and &lt;span class="caps"&gt;REMI&lt;/span&gt; Repository on CentOS/RedHat&amp;nbsp;7/6&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
 &lt;p&gt;原文： &lt;a href="https://tecadmin.net/install-epel-and-remi-repository-on-centos-and-redhat/"&gt;How to Install &lt;span class="caps"&gt;EPEL&lt;/span&gt; and &lt;span class="caps"&gt;REMI&lt;/span&gt; Repository on CentOS/RedHat&amp;nbsp;7/6&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;&lt;span class="caps"&gt;EPEL&lt;/span&gt;&lt;/strong&gt; is known as &lt;strong&gt;Extra Packages for Enterprise Linux&lt;/strong&gt; repository having lots of extra packages which is not added in official repositories. &lt;strong&gt;&lt;span class="caps"&gt;REMI&lt;/span&gt;&lt;/strong&gt; is a third party repository provides latest version of packages which is already included in official repositories of CentOS and Red&amp;nbsp;Hat.&lt;/p&gt;

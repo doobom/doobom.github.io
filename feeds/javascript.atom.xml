@@ -6,22 +6,23 @@
 &lt;/blockquote&gt;
 &lt;p&gt;You need to use a different check, not with &lt;a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match"&gt;String#match&lt;/a&gt;, that returns an array or &lt;code&gt;null&lt;/code&gt; which is not usable with strict comparison like in a &lt;a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch"&gt;switch statement&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;You may use &lt;a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test"&gt;RegExp#test&lt;/a&gt; and check with&amp;nbsp;true:&lt;/p&gt;
-&lt;p&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;`#!javascript
-var regex1 = /a/,
-    regex2 = /b/,
-    regex3 = /c/,
-    samplestring =&amp;nbsp;&amp;#8216;b&amp;#8217;;&lt;/p&gt;
-&lt;p&gt;switch (true) {
-    case regex1.test(samplestring):
-        console.log(&amp;#8220;regex1&amp;#8221;);
-        break;
-    case regex2.test(samplestring):
-        console.log(&amp;#8220;regex2&amp;#8221;);
-        break;
-    case regex3.test(samplestring):
-        console.log(&amp;#8220;regex3&amp;#8221;);
-        break;
-}&amp;nbsp;&amp;#8220;`&lt;/p&gt;</content><category term="Javascript"></category><category term="javascript"></category><category term="regex"></category></entry><entry><title>Checking if jquery is loaded using Javascript</title><link href="https://doobom.me/checking-if-jquery-is-loaded" rel="alternate"></link><published>2020-12-08T23:58:00+08:00</published><updated>2020-12-08T23:58:00+08:00</updated><author><name>doobom</name></author><id>tag:doobom.me,2020-12-08:/checking-if-jquery-is-loaded</id><summary type="html">&lt;p&gt;If jQuery isn&amp;#8217;t loaded then \&lt;span class="math"&gt;\(() won't even run at all and your callback won't execute, unless you're using another library and that library happens to share the same \\)&lt;/span&gt;()&amp;nbsp;syntax.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;regex1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sr"&gt;/a/&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="nx"&gt;regex2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sr"&gt;/b/&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="nx"&gt;regex3&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sr"&gt;/c/&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="nx"&gt;samplestring&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;b&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="k"&gt;switch&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="nx"&gt;regex1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;test&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;samplestring&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;        &lt;span class="nx"&gt;console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;regex1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;        &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="nx"&gt;regex2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;test&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;samplestring&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;        &lt;span class="nx"&gt;console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;regex2&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;        &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="nx"&gt;regex3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;test&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;samplestring&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;        &lt;span class="nx"&gt;console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;regex3&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;        &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Javascript"></category><category term="javascript"></category><category term="regex"></category></entry><entry><title>Checking if jquery is loaded using Javascript</title><link href="https://doobom.me/checking-if-jquery-is-loaded" rel="alternate"></link><published>2020-12-08T23:58:00+08:00</published><updated>2020-12-08T23:58:00+08:00</updated><author><name>doobom</name></author><id>tag:doobom.me,2020-12-08:/checking-if-jquery-is-loaded</id><summary type="html">&lt;p&gt;If jQuery isn&amp;#8217;t loaded then \&lt;span class="math"&gt;\(() won't even run at all and your callback won't execute, unless you're using another library and that library happens to share the same \\)&lt;/span&gt;()&amp;nbsp;syntax.&lt;/p&gt;
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",

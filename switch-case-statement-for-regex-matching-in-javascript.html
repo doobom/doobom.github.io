@@ -109,22 +109,23 @@
 </blockquote>
 <p>You need to use a different check, not with <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match">String#match</a>, that returns an array or <code>null</code> which is not usable with strict comparison like in a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch">switch statement</a>.</p>
 <p>You may use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test">RegExp#test</a> and check with&nbsp;true:</p>
-<p><span class="dquo">&#8220;</span>`#!javascript
-var regex1 = /a/,
-    regex2 = /b/,
-    regex3 = /c/,
-    samplestring =&nbsp;&#8216;b&#8217;;</p>
-<p>switch (true) {
-    case regex1.test(samplestring):
-        console.log(&#8220;regex1&#8221;);
-        break;
-    case regex2.test(samplestring):
-        console.log(&#8220;regex2&#8221;);
-        break;
-    case regex3.test(samplestring):
-        console.log(&#8220;regex3&#8221;);
-        break;
-}&nbsp;&#8220;`</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="kd">var</span> <span class="nx">regex1</span> <span class="o">=</span> <span class="sr">/a/</span><span class="p">,</span></span>
+<span class="code-line">    <span class="nx">regex2</span> <span class="o">=</span> <span class="sr">/b/</span><span class="p">,</span></span>
+<span class="code-line">    <span class="nx">regex3</span> <span class="o">=</span> <span class="sr">/c/</span><span class="p">,</span></span>
+<span class="code-line">    <span class="nx">samplestring</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span><span class="p">;</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="k">switch</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span></span>
+<span class="code-line">    <span class="k">case</span> <span class="nx">regex1</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">samplestring</span><span class="p">)</span><span class="o">:</span></span>
+<span class="code-line">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;regex1&quot;</span><span class="p">);</span></span>
+<span class="code-line">        <span class="k">break</span><span class="p">;</span></span>
+<span class="code-line">    <span class="k">case</span> <span class="nx">regex2</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">samplestring</span><span class="p">)</span><span class="o">:</span></span>
+<span class="code-line">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;regex2&quot;</span><span class="p">);</span></span>
+<span class="code-line">        <span class="k">break</span><span class="p">;</span></span>
+<span class="code-line">    <span class="k">case</span> <span class="nx">regex3</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">samplestring</span><span class="p">)</span><span class="o">:</span></span>
+<span class="code-line">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;regex3&quot;</span><span class="p">);</span></span>
+<span class="code-line">        <span class="k">break</span><span class="p">;</span></span>
+<span class="code-line"><span class="p">}</span></span>
+<span class="code-line"></code></pre></div>
 
 
              

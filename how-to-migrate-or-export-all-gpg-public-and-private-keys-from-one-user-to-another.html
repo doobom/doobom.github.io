@@ -109,41 +109,36 @@
 </p>
 </blockquote>
 <ol>
-<li>As the original user, use the following command to export all public keys to a base64-encoded text&nbsp;file:</li>
-</ol>
-<div class="highlight"><pre><span class="code-line"><span></span><code>gpg -a --export &gt;mypubkeys.asc</span>
-<span class="code-line"></code></pre></div>
-
+<li>
+<p>As the original user, use the following command to export all public keys to a base64-encoded text&nbsp;file:</p>
+<p>:::bash
+gpg -a &#8212;export&nbsp;&gt;mypubkeys.asc</p>
 <p>Use the following command to export all encrypted private keys (which will also include corresponding public keys) to a text&nbsp;file:</p>
-<div class="highlight"><pre><span class="code-line"><span></span><code>gpg -a --export-secret-keys &gt;myprivatekeys.asc</span>
-<span class="code-line"></code></pre></div>
-
+<p>:::bash
+gpg -a &#8212;export-secret-keys&nbsp;&gt;myprivatekeys.asc</p>
 <p>Optionally export gpg&#8217;s trustdb to a text&nbsp;file:</p>
-<div class="highlight"><pre><span class="code-line"><span></span><code>gpg --export-ownertrust &gt;otrust.txt</span>
-<span class="code-line"></code></pre></div>
-
-<ol>
+<p>:::bash
+gpg &#8212;export-ownertrust&nbsp;&gt;otrust.txt</p>
+</li>
 <li>
 <p>Transfer those files to a place that the new user can read, keeping in mind that it&#8217;s bad practice to share private keys (e.g., via email or in a world-readable directory like <code>/tmp</code>), despite the fact that they are encrypted and require the passphrase to be&nbsp;used</p>
 </li>
 <li>
 <p>As the new user, execute gpg &#8212;import commands against the two asc files and then check for the new keys with gpg -k and gpg -K,&nbsp;e.g.:</p>
-</li>
-</ol>
-<div class="highlight"><pre><span class="code-line"><span></span><code>gpg --import myprivatekeys.asc</span>
-<span class="code-line">gpg --import mypubkeys.asc</span>
-<span class="code-line">gpg -K</span>
-<span class="code-line">gpg -k</span>
-<span class="code-line"></code></pre></div>
-
+<p>:::bash
+gpg &#8212;import myprivatekeys.asc
+gpg &#8212;import mypubkeys.asc
+gpg -K
+gpg&nbsp;-k</p>
 <p>Optionally import the trustdb file as&nbsp;well:</p>
-<div class="highlight"><pre><span class="code-line"><span></span><code>gpg --import-ownertrust otrust.txt</span>
-<span class="code-line"></code></pre></div>
-
-<ol>
-<li>As the new user, test encryption and decryption with <code>gpg -er USERID</code> and <code>gpg -d</code> commands
+<p>:::bash
+gpg &#8212;import-ownertrust&nbsp;otrust.txt</p>
+</li>
+<li>
+<p>As the new user, test encryption and decryption with <code>gpg -er USERID</code> and <code>gpg -d</code> commands
 Keep in mind that decryption and signing will likely fail unless the user running <code>gpg</code> owns the terminal it is running on
-(Translation: don&#8217;t <code>su</code> over to the new user; login directly via ssh or&nbsp;console)</li>
+(Translation: don&#8217;t <code>su</code> over to the new user; login directly via ssh or&nbsp;console)</p>
+</li>
 </ol>
 <h2 id="telling-git-about-your-gpg-key">Telling Git about your <span class="caps">GPG</span> key<a class="headerlink" href="#telling-git-about-your-gpg-key" title="Permanent link"> </a></h2>
 <blockquote>
@@ -151,31 +146,30 @@ Keep in mind that decryption and signing will likely fail unless the user runnin
 <a href="https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/telling-git-about-your-signing-key">Github Docs: Telling Git about your <span class="caps">GPG</span>&nbsp;key</a></p>
 </blockquote>
 <ol>
-<li>Use the <code>gpg --list-secret-keys --keyid-format LONG</code> command to list <span class="caps">GPG</span> keys for which you have both a public and private key. A private key is required for signing commits or&nbsp;tags.</li>
-</ol>
-<div class="highlight"><pre><span class="code-line"><span></span><code>$ gpg --list-secret-keys --keyid-format LONG</span>
-<span class="code-line"></code></pre></div>
-
+<li>
+<p>Use the <code>gpg --list-secret-keys --keyid-format LONG</code> command to list <span class="caps">GPG</span> keys for which you have both a public and private key. A private key is required for signing commits or&nbsp;tags.</p>
+<p>:::bash
+$ gpg &#8212;list-secret-keys &#8212;keyid-format <span class="caps">LONG</span></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Note: Some <span class="caps">GPG</span> installations on Linux may require you to use <code>gpg2 --list-keys --keyid-format LONG</code> to view a list of your existing keys instead. In this case you will also need to configure Git to use <code>gpg2 by running git config --global gpg.program gpg2</code>.</p>
 </div>
-<ol>
-<li>From the list of <span class="caps">GPG</span> keys, copy the <span class="caps">GPG</span> key <span class="caps">ID</span> you&#8217;d like to use. In this example, the <span class="caps">GPG</span> key <span class="caps">ID</span> is <code>3AA5C34371567BD2</code>:</li>
+</li>
+<li>
+<p>From the list of <span class="caps">GPG</span> keys, copy the <span class="caps">GPG</span> key <span class="caps">ID</span> you&#8217;d like to use. In this example, the <span class="caps">GPG</span> key <span class="caps">ID</span> is <code>3AA5C34371567BD2</code>:</p>
+<p>:::bash
+$ gpg &#8212;list-secret-keys &#8212;keyid-format <span class="caps">LONG</span>&nbsp;/Users/hubot/.gnupg/secring.gpg</p>
+<hr />
+<p>sec   4096R/<span class="caps">3AA5C34371567BD2</span> 2016-03-10 [expires:2017-03-10]
+uid                          Hubot
+ssb   4096R/<span class="caps">42B317FD4BA89E7A</span>&nbsp;2016-03-10</p>
+</li>
+<li>
+<p>To set your <span class="caps">GPG</span> signing key in Git, paste the text below, substituting in the <span class="caps">GPG</span> key <span class="caps">ID</span> you&#8217;d like to use. In this example, the <span class="caps">GPG</span> key <span class="caps">ID</span> is <code>3AA5C34371567BD2</code>:</p>
+<p>:::bash
+$ git config &#8212;global user.signingkey <span class="caps">3AA5C34371567BD2</span></p>
+</li>
 </ol>
-<div class="highlight"><pre><span class="code-line"><span></span><code>$ gpg --list-secret-keys --keyid-format LONG</span>
-<span class="code-line">/Users/hubot/.gnupg/secring.gpg</span>
-<span class="code-line">------------------------------------</span>
-<span class="code-line">sec   4096R/3AA5C34371567BD2 <span class="m">2016</span>-03-10 <span class="o">[</span>expires: <span class="m">2017</span>-03-10<span class="o">]</span></span>
-<span class="code-line">uid                          Hubot</span>
-<span class="code-line">ssb   4096R/42B317FD4BA89E7A <span class="m">2016</span>-03-10</span>
-<span class="code-line"></code></pre></div>
-
-<ol>
-<li>To set your <span class="caps">GPG</span> signing key in Git, paste the text below, substituting in the <span class="caps">GPG</span> key <span class="caps">ID</span> you&#8217;d like to use. In this example, the <span class="caps">GPG</span> key <span class="caps">ID</span> is <code>3AA5C34371567BD2</code>:</li>
-</ol>
-<div class="highlight"><pre><span class="code-line"><span></span><code>$ git config --global user.signingkey 3AA5C34371567BD2</span>
-<span class="code-line"></code></pre></div>
 
 
              

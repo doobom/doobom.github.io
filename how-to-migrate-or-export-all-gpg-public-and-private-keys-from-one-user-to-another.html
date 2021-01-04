@@ -113,13 +113,17 @@
 <p>As the original user, use the following command to export all public keys to a base64-encoded text&nbsp;file:</p>
 <p>:::bash
 gpg -a &#8212;export&nbsp;&gt;mypubkeys.asc</p>
-<p>Use the following command to export all encrypted private keys (which will also include corresponding public keys) to a text&nbsp;file:</p>
-<p>:::bash
-gpg -a &#8212;export-secret-keys&nbsp;&gt;myprivatekeys.asc</p>
-<p>Optionally export gpg&#8217;s trustdb to a text&nbsp;file:</p>
-<p>:::bash
-gpg &#8212;export-ownertrust&nbsp;&gt;otrust.txt</p>
 </li>
+</ol>
+<p>Use the following command to export all encrypted private keys (which will also include corresponding public keys) to a text&nbsp;file:</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code>gpg -a --export-secret-keys &gt;myprivatekeys.asc</span>
+<span class="code-line"></code></pre></div>
+
+<p>Optionally export gpg&#8217;s trustdb to a text&nbsp;file:</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code>gpg --export-ownertrust &gt;otrust.txt</span>
+<span class="code-line"></code></pre></div>
+
+<ol>
 <li>
 <p>Transfer those files to a place that the new user can read, keeping in mind that it&#8217;s bad practice to share private keys (e.g., via email or in a world-readable directory like <code>/tmp</code>), despite the fact that they are encrypted and require the passphrase to be&nbsp;used</p>
 </li>
@@ -130,15 +134,16 @@ gpg &#8212;import myprivatekeys.asc
 gpg &#8212;import mypubkeys.asc
 gpg -K
 gpg&nbsp;-k</p>
+</li>
+</ol>
 <p>Optionally import the trustdb file as&nbsp;well:</p>
-<p>:::bash
-gpg &#8212;import-ownertrust&nbsp;otrust.txt</p>
-</li>
-<li>
-<p>As the new user, test encryption and decryption with <code>gpg -er USERID</code> and <code>gpg -d</code> commands
+<div class="highlight"><pre><span class="code-line"><span></span><code>gpg --import-ownertrust otrust.txt</span>
+<span class="code-line"></code></pre></div>
+
+<ol>
+<li>As the new user, test encryption and decryption with <code>gpg -er USERID</code> and <code>gpg -d</code> commands
 Keep in mind that decryption and signing will likely fail unless the user running <code>gpg</code> owns the terminal it is running on
-(Translation: don&#8217;t <code>su</code> over to the new user; login directly via ssh or&nbsp;console)</p>
-</li>
+(Translation: don&#8217;t <code>su</code> over to the new user; login directly via ssh or&nbsp;console)</li>
 </ol>
 <h2 id="telling-git-about-your-gpg-key">Telling Git about your <span class="caps">GPG</span> key<a class="headerlink" href="#telling-git-about-your-gpg-key" title="Permanent link"> </a></h2>
 <blockquote>

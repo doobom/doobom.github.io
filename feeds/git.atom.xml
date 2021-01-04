@@ -10,13 +10,17 @@
 &lt;p&gt;As the original user, use the following command to export all public keys to a base64-encoded text&amp;nbsp;file:&lt;/p&gt;
 &lt;p&gt;:::bash
 gpg -a &amp;#8212;export&amp;nbsp;&amp;gt;mypubkeys.asc&lt;/p&gt;
-&lt;p&gt;Use the following command to export all encrypted private keys (which will also include corresponding public keys) to a text&amp;nbsp;file:&lt;/p&gt;
-&lt;p&gt;:::bash
-gpg -a &amp;#8212;export-secret-keys&amp;nbsp;&amp;gt;myprivatekeys.asc&lt;/p&gt;
-&lt;p&gt;Optionally export gpg&amp;#8217;s trustdb to a text&amp;nbsp;file:&lt;/p&gt;
-&lt;p&gt;:::bash
-gpg &amp;#8212;export-ownertrust&amp;nbsp;&amp;gt;otrust.txt&lt;/p&gt;
 &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Use the following command to export all encrypted private keys (which will also include corresponding public keys) to a text&amp;nbsp;file:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;gpg -a --export-secret-keys &amp;gt;myprivatekeys.asc&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Optionally export gpg&amp;#8217;s trustdb to a text&amp;nbsp;file:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;gpg --export-ownertrust &amp;gt;otrust.txt&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;Transfer those files to a place that the new user can read, keeping in mind that it&amp;#8217;s bad practice to share private keys (e.g., via email or in a world-readable directory like &lt;code&gt;/tmp&lt;/code&gt;), despite the fact that they are encrypted and require the passphrase to be&amp;nbsp;used&lt;/p&gt;
 &lt;/li&gt;
@@ -27,15 +31,16 @@ gpg &amp;#8212;import myprivatekeys.asc
 gpg &amp;#8212;import mypubkeys.asc
 gpg -K
 gpg&amp;nbsp;-k&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;Optionally import the trustdb file as&amp;nbsp;well:&lt;/p&gt;
-&lt;p&gt;:::bash
-gpg &amp;#8212;import-ownertrust&amp;nbsp;otrust.txt&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;As the new user, test encryption and decryption with &lt;code&gt;gpg -er USERID&lt;/code&gt; and &lt;code&gt;gpg -d&lt;/code&gt; commands
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;gpg --import-ownertrust otrust.txt&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+&lt;li&gt;As the new user, test encryption and decryption with &lt;code&gt;gpg -er USERID&lt;/code&gt; and &lt;code&gt;gpg -d&lt;/code&gt; commands
 Keep in mind that decryption and signing will likely fail unless the user running &lt;code&gt;gpg&lt;/code&gt; owns the terminal it is running on
-(Translation: don&amp;#8217;t &lt;code&gt;su&lt;/code&gt; over to the new user; login directly via ssh or&amp;nbsp;console)&lt;/p&gt;
-&lt;/li&gt;
+(Translation: don&amp;#8217;t &lt;code&gt;su&lt;/code&gt; over to the new user; login directly via ssh or&amp;nbsp;console)&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id="telling-git-about-your-gpg-key"&gt;Telling Git about your &lt;span class="caps"&gt;GPG&lt;/span&gt; key&lt;a class="headerlink" href="#telling-git-about-your-gpg-key" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;blockquote&gt;

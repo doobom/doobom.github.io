@@ -105,18 +105,18 @@
             <p>今天坐动车的时候，无意间看到一个 安卓 手机上的类 linux 的启动器，各种炫吧，然后看了介绍，有广告，就这样拾起了很久没用的 <a href="https://github.com/fAndreuzzi/TUI-ConsoleLauncher">T-<span class="caps">UI</span></a>，看到了以前设置的快捷键有个 google assistant&nbsp;。</p>
 <p>怎么折腾就是启动不起来，因为现在是一个 google 应用，包含了 助理 的功能，google 包名是 <code>com.google.android.googlequicksearchbox</code>， 直接包名只能启动 google 搜索，试了一下类名 <code>com.google.android.apps.gsa.assistant.handoff.AssistantHandoffActivity</code>，当然是失败了。</p>
 <p>google 了一下，这里给出了答案： <a href="https://automagic4android.com/forum/viewtopic.php?t=7082#p19629">How to launch Google&nbsp;assistant</a></p>
-<div class="highlight"><pre><span class="code-line"><span></span><code><span class="o">#</span><span class="n">Try</span> <span class="n">one</span> <span class="k">of</span> <span class="n">this</span> <span class="n">actions</span><span class="p">:</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="c1">#Try one of this actions:</span></span>
 <span class="code-line"></span>
-<span class="code-line"><span class="o">#</span><span class="k">Execute</span> <span class="n">Root</span> <span class="n">command</span> <span class="o">&gt;</span> <span class="n">Command</span></span>
-<span class="code-line"><span class="n">am</span> <span class="k">start</span> <span class="o">-</span><span class="n">n</span> <span class="ss">&quot;com.google.android.googlequicksearchbox/com.google.android.apps.gsa.staticplugins.opa.OpaActivity&quot;</span></span>
+<span class="code-line"><span class="c1">#Execute Root command &gt; Command</span></span>
+<span class="code-line">am start -n <span class="s2">&quot;com.google.android.googlequicksearchbox/com.google.android.apps.gsa.staticplugins.opa.OpaActivity&quot;</span></span>
 <span class="code-line"></span>
-<span class="code-line"><span class="o">#</span><span class="k">or</span><span class="p">:</span></span>
-<span class="code-line"><span class="o">#</span><span class="k">Execute</span> <span class="n">Root</span> <span class="n">command</span> <span class="o">&gt;</span> <span class="n">Command</span></span>
-<span class="code-line"><span class="k">input</span> <span class="n">keyevent</span> <span class="mi">219</span></span>
+<span class="code-line"><span class="c1">#or:</span></span>
+<span class="code-line"><span class="c1">#Execute Root command &gt; Command</span></span>
+<span class="code-line">input keyevent <span class="m">219</span></span>
 <span class="code-line"></span>
-<span class="code-line"><span class="o">#</span><span class="k">or</span><span class="p">:</span></span>
-<span class="code-line"><span class="o">#</span><span class="k">Start</span> <span class="n">Activity</span> <span class="o">&gt;</span> <span class="n">Action</span></span>
-<span class="code-line"><span class="n">android</span><span class="p">.</span><span class="n">intent</span><span class="p">.</span><span class="n">action</span><span class="p">.</span><span class="n">VOICE_COMMAND</span></span>
+<span class="code-line"><span class="c1">#or:</span></span>
+<span class="code-line"><span class="c1">#Start Activity &gt; Action</span></span>
+<span class="code-line">android.intent.action.VOICE_COMMAND</span>
 <span class="code-line"></code></pre></div>
 
 <p>关键的是要 <span class="caps">ROOT</span> ，然尔我的手机并没有，如果运行会提示没有用户权限 <code>android.permission.INTERACT_ACROSS_USERS_FULL</code>。</p>
@@ -273,6 +273,7 @@
 <li><a href="https://doobom.me/send-mail-via-smtp-in-telnet" title="Telnet 中使用 smtp 发送邮件">Telnet 中使用 smtp 发送邮件</a></li>
 <li><a href="https://doobom.me/linux-stop-cont-ps" title="LINUX 暂停、继续进程">LINUX 暂停、继续进程</a></li>
 <li><a href="https://doobom.me/get-string-in-shell-via-grep-sed-awk" title="使用 grep/sed/awk 提取字符串">使用 grep/sed/awk 提取字符串</a></li>
+<li><a href="https://doobom.me/loop-through-an-array-of-strings-and-parse-json-in-bash" title="Loop Through An Array Of Strings And Parse Json In Bash">Loop Through An Array Of Strings And Parse Json In Bash</a></li>
 </ul>
 <hr />
 </section>
@@ -280,6 +281,7 @@
             <nav>
             <ul class="articles-timeline">
                 <li class="previous-article">« <a href="https://doobom.me/how-to-migrate-or-export-all-gpg-public-and-private-keys-from-one-user-to-another" title="Previous: How To Migrate Or Export All Gpg Public And Private Keys From One User To Another">How To Migrate Or Export All Gpg Public And Private Keys From One User To Another</a></li>
+                <li class="next-article"><a href="https://doobom.me/loop-through-an-array-of-strings-and-parse-json-in-bash" title="Next: Loop Through An Array Of Strings And Parse Json In Bash">Loop Through An Array Of Strings And Parse Json In Bash</a> »</li>
             </ul>
             </nav>
             </aside>
@@ -302,7 +304,7 @@
                     <span class="superscript">1</span>
 </a></li>
                 <li><a href="https://doobom.me/tags#shell-ref">shell
-                    <span class="superscript">4</span>
+                    <span class="superscript">5</span>
 </a></li>
                 <li><a href="https://doobom.me/tags#t-ui-ref">t-ui
                     <span class="superscript">1</span>

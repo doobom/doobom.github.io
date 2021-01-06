@@ -12,27 +12,27 @@
 
         <meta name="author" content="doobom" />
 
-        <meta name="description" content="使用 grep/sed/awk 提取字符串
+        <meta name="description" content="Loop through an array of strings in Bash? Parse json with default bash only?
 " />
         <meta name="twitter:creator" content="@d8boom">
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary">
 
-<meta name="keywords" content="shell, grep, sed, awk, Shell, " />
+<meta name="keywords" content="shell, array, json, bash, Shell, " />
 
-<meta property="og:title" content="使用 grep/sed/awk 提取字符串 "/>
-<meta property="og:url" content="https://doobom.me/get-string-in-shell-via-grep-sed-awk" />
-<meta property="og:description" content="使用 grep/sed/awk 提取字符串" />
+<meta property="og:title" content="Loop Through An Array Of Strings And Parse Json In Bash "/>
+<meta property="og:url" content="https://doobom.me/loop-through-an-array-of-strings-and-parse-json-in-bash" />
+<meta property="og:description" content="Loop through an array of strings in Bash? Parse json with default bash only?" />
 <meta property="og:site_name" content="oops: run" />
 <meta property="og:article:author" content="doobom" />
-<meta property="og:article:published_time" content="2019-07-17T10:23:00+08:00" />
-<meta property="og:article:modified_time" content="2019-07-17T10:23:00+08:00" />
-<meta name="twitter:title" content="使用 grep/sed/awk 提取字符串 ">
-<meta name="twitter:description" content="使用 grep/sed/awk 提取字符串">
+<meta property="og:article:published_time" content="2021-01-06T22:24:42+08:00" />
+<meta property="og:article:modified_time" content="2021-01-06T22:24:42+08:00" />
+<meta name="twitter:title" content="Loop Through An Array Of Strings And Parse Json In Bash ">
+<meta name="twitter:description" content="Loop through an array of strings in Bash? Parse json with default bash only?">
 <meta property="og:image" content="https://doobom.me/theme/images/apple-touch-icon-152x152.png" />
 <meta name="twitter:image" content="https://doobom.me/theme/images/apple-touch-icon-152x152.png" >
 
-        <title>使用 grep/sed/awk 提取字符串  · oops: run
+        <title>Loop Through An Array Of Strings And Parse Json In Bash  · oops: run
 </title>
         <link rel="shortcut icon" href="https://doobom.me/theme/images/favicon.ico" type="image/x-icon" />
         <link rel="icon" href="https://doobom.me/theme/images/apple-touch-icon-152x152.png" type="image/png" />
@@ -92,8 +92,8 @@
 <div class="row-fluid">
     <header class="page-header span10 offset2">
         <h1>
-            <a href="https://doobom.me/get-string-in-shell-via-grep-sed-awk">
-                使用 grep/sed/awk&nbsp;提取字符串
+            <a href="https://doobom.me/loop-through-an-array-of-strings-and-parse-json-in-bash">
+                Loop Through An Array Of Strings And Parse Json In&nbsp;Bash
             </a>
         </h1>
     </header>
@@ -102,61 +102,101 @@
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
             
-            <blockquote>
-<p>原文: <a href="http://curryhuang.com/2015/07/18/extract-string-by-grep-sed-awk/">http://curryhuang.com/2015/07/18/extract-string-by-grep-sed-awk/</a></p>
+            <h2 id="loop-through-an-array-of-strings-in-bash">Loop through an array of strings in Bash?<a class="headerlink" href="#loop-through-an-array-of-strings-in-bash" title="Permanent link"> </a></h2>
+<blockquote>
+<p>来自： <a href="https://stackoverflow.com/questions/8880603/loop-through-an-array-of-strings-in-bash">Stack&nbsp;Overflow</a></p>
 </blockquote>
-<p>最近需要对日志进行分析，顺便学习了一下以前一直都没弄得太明白的awk和sed。</p>
-<h2 id="_1">任务描述<a class="headerlink" href="#_1" title="Permanent link"> </a></h2>
-<p>日志是一个 tsv 文件，这里以 sample.log 为例，每一行大致长成下面这样，需要查看某个 api 的最长 10 次查询时间。根据记录格式，需要提取最后一个字段 <code>ts=</code> 之后的字符串，然后进行排序，排序和求 <code>top</code> 比较容易，<code>sort -nr | head -n 10</code> 即可，比较麻烦的是从字符串中提取数字。</p>
-<div class="highlight"><pre><span class="code-line"><span></span><code><span class="o">[</span><span class="m">2015</span>-07-18 <span class="m">11</span>:00:01,807<span class="o">]</span><span class="se">\t</span><span class="o">[</span>service_name<span class="o">]</span><span class="se">\t</span><span class="o">[</span>INFO<span class="o">]</span><span class="se">\t</span><span class="o">[</span><span class="m">172</span>.0.0.1<span class="o">]</span><span class="se">\t</span><span class="o">[</span>api/mock_api1<span class="o">]</span><span class="se">\t</span><span class="o">[</span><span class="nv">ts</span><span class="o">=</span><span class="m">239</span><span class="o">]</span></span>
+<p>You can use it like&nbsp;this:</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="c1">## declare an array variable</span></span>
+<span class="code-line"><span class="nb">declare</span> -a <span class="nv">arr</span><span class="o">=(</span><span class="s2">&quot;element1&quot;</span> <span class="s2">&quot;element2&quot;</span> <span class="s2">&quot;element3&quot;</span><span class="o">)</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1">## now loop through the above array</span></span>
+<span class="code-line"><span class="k">for</span> i in <span class="s2">&quot;</span><span class="si">${</span><span class="nv">arr</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span></span>
+<span class="code-line"><span class="k">do</span></span>
+<span class="code-line">   <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$i</span><span class="s2">&quot;</span></span>
+<span class="code-line">   <span class="c1"># or do whatever with individual element of the array</span></span>
+<span class="code-line"><span class="k">done</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># You can access them using echo &quot;${arr[0]}&quot;, &quot;${arr[1]}&quot; also</span></span>
 <span class="code-line"></code></pre></div>
 
-<h2 id="_2">解决方案<a class="headerlink" href="#_2" title="Permanent link"> </a></h2>
-<p>Google 了一番以后，发现 grep/sed/awk&nbsp;均可以，下面分别说一下每一种方案。</p>
-<p><em>以下方案均在CentOS6上测试通过</em></p>
-<h3 id="grep">grep<a class="headerlink" href="#grep" title="Permanent link"> </a></h3>
-<div class="highlight"><pre><span class="code-line"><span></span><code>grep <span class="s2">&quot;api/mock_api1&quot;</span> sample.log <span class="p">|</span><span class="se">\</span></span>
-<span class="code-line">grep -Eo <span class="s1">&#39;\[ts=[0-9]+\]&#39;</span> <span class="p">|</span><span class="se">\</span></span>
-<span class="code-line">grep -Eo <span class="s1">&#39;[0-9]+&#39;</span></span>
+<p>Also works for multi-line array&nbsp;declaration</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="nb">declare</span> -a <span class="nv">arr</span><span class="o">=(</span><span class="s2">&quot;element1&quot;</span></span>
+<span class="code-line">                <span class="s2">&quot;element2&quot;</span> <span class="s2">&quot;element3&quot;</span></span>
+<span class="code-line">                <span class="s2">&quot;element4&quot;</span></span>
+<span class="code-line">                <span class="o">)</span></span>
 <span class="code-line"></code></pre></div>
 
-<p>grep 参数说明：
-<code>E</code> 使用正则表达式
-<code>o</code> 只返回匹配的部分</p>
-<p>分两部匹配，第一步提取出<code>[ts=xxxx]</code>，第二步提取出数字</p>
-<h3 id="sed">sed<a class="headerlink" href="#sed" title="Permanent link"> </a></h3>
-<div class="highlight"><pre><span class="code-line"><span></span><code>grep <span class="s2">&quot;api/mock_api1&quot;</span> sample.log <span class="p">|</span><span class="se">\</span></span>
-<span class="code-line">grep -Eo <span class="s1">&#39;\[ts=[0-9]+\]&#39;</span> <span class="p">|</span><span class="se">\</span></span>
-<span class="code-line">sed -r <span class="s1">&#39;s/\[ts=([0-9]+)\]/\1/g&#39;</span></span>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that the double quotes around <code>"${arr[@]}"</code> are really important. Without them, the for loop will break up the array by substrings separated by any spaces within the strings instead of by whole string elements within the array. ie: if you had <code>declare -a arr=("element 1" "element 2" "element 3")</code>, then <code>for i in ${arr[@]}</code> would mistakenly iterate 6 times since each string becomes 2 substrings separated by the space in the string, whereas <code>for i in "${arr[@]}"</code> would iterate 3 times, correctly, as desired, maintaining each string as a single unit despite having a space in&nbsp;it.</p>
+</div>
+<h2 id="parse-json-with-default-bash-only">Parse json with default bash only?<a class="headerlink" href="#parse-json-with-default-bash-only" title="Permanent link"> </a></h2>
+<blockquote>
+<p>来自： <a href="https://askubuntu.com/questions/1167287/parse-json-with-default-bash-only">ask&nbsp;ubuntu</a></p>
+</blockquote>
+<p>A: &#8230;an example&nbsp;json:-</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="p">{</span></span>
+<span class="code-line">     <span class="nt">&quot;people&quot;</span><span class="p">:[</span></span>
+<span class="code-line">                 <span class="p">{</span></span>
+<span class="code-line">                     <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;4568734&quot;</span><span class="p">,</span></span>
+<span class="code-line">                     <span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;suneel&quot;</span></span>
+<span class="code-line">                 <span class="p">},</span></span>
+<span class="code-line">                 <span class="p">{</span></span>
+<span class="code-line">                     <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;3678976&quot;</span><span class="p">,</span></span>
+<span class="code-line">                     <span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;adi&quot;</span></span>
+<span class="code-line">                  <span class="p">}</span></span>
+<span class="code-line">             <span class="p">]</span></span>
+<span class="code-line">   <span class="p">}</span></span>
 <span class="code-line"></code></pre></div>
 
-<p>sed参数说明：
-<code>r</code> 使用正则表达式</p>
-<p>使用 <code>sed</code> 也需要通过 <code>grep</code> 先匹配出最后一个字段，再使用 <code>sed</code> 提取数字部分，<code>\1</code>表示正则表达式中的分组1</p>
-<h3 id="gawk">gawk<a class="headerlink" href="#gawk" title="Permanent link"> </a></h3>
-<div class="highlight"><pre><span class="code-line"><span></span><code>grep <span class="s2">&quot;api/mock_api1&quot;</span> sample.log <span class="p">|</span><span class="se">\</span></span>
-<span class="code-line">gawk -F<span class="s1">&#39;\t&#39;</span> <span class="s1">&#39;match($6, /\[ts=([0-9]+)\]/, arr) { print arr[1] }&#39;</span></span>
+<p>if say &#8216;name&#8217; then i want array(&#8220;suneel&#8221;&nbsp;&#8220;adi&#8221;)</p>
+<p>Note: No use of external tool and with just bash&nbsp;commands.</p>
+<p>Q: A bash function like below can be&nbsp;used:</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="k">function</span> jsonValue<span class="o">()</span> <span class="o">{</span></span>
+<span class="code-line">    <span class="nv">KEY</span><span class="o">=</span><span class="nv">$1</span></span>
+<span class="code-line">    <span class="nv">num</span><span class="o">=</span><span class="nv">$2</span></span>
+<span class="code-line">    awk -F<span class="s2">&quot;[,:}]&quot;</span> <span class="s1">&#39;{for(i=1;i&lt;=NF;i++){if($i~/&#39;</span><span class="nv">$KEY</span><span class="s1">&#39;\042/){print $(i+1)}}}&#39;</span> <span class="p">|</span> tr -d <span class="s1">&#39;&quot;&#39;</span> <span class="p">|</span> sed -n <span class="si">${</span><span class="nv">num</span><span class="si">}</span>p</span>
+<span class="code-line"><span class="o">}</span></span>
 <span class="code-line"></code></pre></div>
 
-<p>gawk 参数说明：
-<code>F</code> 指定分隔符，这里指定为tab
-<code>match</code> 的函数参数分别为：待匹配字符串，模式，匹配后的字符串分组</p>
-<p><code>awk</code> 比较强大，可以直接提取出字段信息，这里使用的是 <code>gawk</code>，<code>gawk</code> 兼容 <code>awk</code> 语法，经测试，同样的语法 <code>awk</code> 无法满足需求，应该是 <code>gawk</code> 和 <code>awk</code> 实现有细微区别。</p>
-<h2 id="_3">总结<a class="headerlink" href="#_3" title="Permanent link"> </a></h2>
-<p>如果仅仅是提取一个字段信息，三个工具都可以满足需求，相比起来，awk的功能更强大，完成字符串提取，<code>grep</code> 和 <code>sed</code> 的能力更多依赖正则表达式，如果需要同时处理一行记录中的多个字段，比如找出访问请求最长的 10 个 ip，<code>grep</code> 和 <code>sed</code> 就需要很复杂的正则表达式去匹配。</p>
+<p>I&#8217;ve saved this function as <code>jsonVal</code> and then sourced this file using <code>source jsonVal</code>. You can very well use it within your&nbsp;script.</p>
+<p>It expects two arguments. First argument is the property name. If you need all values, skip second argument. If specific value is needed, you can add the second argument as shown&nbsp;below.</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="o">[</span>root@localhost Desktop<span class="o">]</span><span class="c1"># cat data.json | jsonValue id</span></span>
+<span class="code-line"><span class="m">4568734</span></span>
+<span class="code-line"><span class="m">3678976</span></span>
+<span class="code-line"><span class="o">[</span>root@localhost Desktop<span class="o">]</span><span class="c1"># cat data.json | jsonValue id 1</span></span>
+<span class="code-line"><span class="m">4568734</span></span>
+<span class="code-line"><span class="o">[</span>root@localhost Desktop<span class="o">]</span><span class="c1"># cat data.json | jsonValue id 2</span></span>
+<span class="code-line"><span class="m">3678976</span></span>
+<span class="code-line"><span class="o">[</span>root@localhost Desktop<span class="o">]</span><span class="c1"># cat data.json | jsonValue name</span></span>
+<span class="code-line">suneel</span>
+<span class="code-line">adi</span>
+<span class="code-line"><span class="o">[</span>root@localhost Desktop<span class="o">]</span><span class="c1"># cat data.json | jsonValue name 1</span></span>
+<span class="code-line">suneel</span>
+<span class="code-line"><span class="o">[</span>root@localhost Desktop<span class="o">]</span><span class="c1"># cat data.json | jsonValue name 2</span></span>
+<span class="code-line">adi</span>
+<span class="code-line"><span class="o">[</span>root@localhost Desktop<span class="o">]</span><span class="c1">#</span></span>
+<span class="code-line"></code></pre></div>
+
+<p>Hope this&nbsp;helps.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If a value contains <code>:</code> <code>,</code> <code>}</code> this seems to break :( &#8212; @Phill&nbsp;有中文似乎也会出问题。</p>
+</div>
 
 
              
 
 
 <div class="applause_button">
-    <applause-button url=https://doobom.me/get-string-in-shell-via-grep-sed-awk> </applause-button>
+    <applause-button url=https://doobom.me/loop-through-an-array-of-strings-and-parse-json-in-bash> </applause-button>
 </div>
 
  
                 <p id="post-share-links" style="text-align:left">
     Like this post? Share on:
-      <a href="https://twitter.com/intent/tweet?text=%E4%BD%BF%E7%94%A8%20grep/sed/awk%C2%A0%E6%8F%90%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2&url=https%3A//doobom.me/get-string-in-shell-via-grep-sed-awk&via=d8boom&hashtags=shell,grep,sed,awk" target="_blank" rel="nofollow noopener noreferrer" title="Share on Twitter"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
+      <a href="https://twitter.com/intent/tweet?text=Loop%20Through%20An%20Array%20Of%20Strings%20And%20Parse%20Json%20In%C2%A0Bash&url=https%3A//doobom.me/loop-through-an-array-of-strings-and-parse-json-in-bash&via=d8boom&hashtags=shell,array,json,bash" target="_blank" rel="nofollow noopener noreferrer" title="Share on Twitter"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
 <path style="fill:#03A9F4;" d="M512,97.248c-19.04,8.352-39.328,13.888-60.48,16.576c21.76-12.992,38.368-33.408,46.176-58.016
 	c-20.288,12.096-42.688,20.64-66.56,25.408C411.872,60.704,384.416,48,354.464,48c-58.112,0-104.896,47.168-104.896,104.992
 	c0,8.32,0.704,16.32,2.432,23.936c-87.264-4.256-164.48-46.08-216.352-109.792c-9.056,15.712-14.368,33.696-14.368,53.056
@@ -166,14 +206,14 @@
 	C46.496,446.88,101.6,464,161.024,464c193.152,0,298.752-160,298.752-298.688c0-4.64-0.16-9.12-0.384-13.568
 	C480.224,136.96,497.728,118.496,512,97.248z"></path>
 </svg></a>
-       <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//doobom.me/get-string-in-shell-via-grep-sed-awk" target="_blank" rel="nofollow noopener noreferrer" title="Share on Facebook"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
+       <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//doobom.me/loop-through-an-array-of-strings-and-parse-json-in-bash" target="_blank" rel="nofollow noopener noreferrer" title="Share on Facebook"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
 <path style="fill:#1976D2;" d="M448,0H64C28.704,0,0,28.704,0,64v384c0,35.296,28.704,64,64,64h384c35.296,0,64-28.704,64-64V64
 	C512,28.704,483.296,0,448,0z"></path>
 <path style="fill:#FAFAFA;" d="M432,256h-80v-64c0-17.664,14.336-16,32-16h32V96h-64l0,0c-53.024,0-96,42.976-96,96v64h-64v80h64
 	v176h96V336h48L432,256z"></path>
 </svg></a>
-       <a href="https://news.ycombinator.com/submitlink?t=%E4%BD%BF%E7%94%A8%20grep/sed/awk%C2%A0%E6%8F%90%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2&u=https%3A//doobom.me/get-string-in-shell-via-grep-sed-awk" target="_blank" rel="nofollow noopener noreferrer" title="Share on Hacker-News"><svg id="Layer_1" version="1.1" viewBox="0 0 512 512" width="31" height="31" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"><defs id="defs12"></defs><g id="g3045"><path d="m -0.003935,-0.0039375 512.007865,0 0,512.0078775 -512.007865,0 z" id="path3032" style="fill:#f68423;fill-opacity:1;fill-rule:nonzero;stroke:none"></path><path d="m 108.74016,65.990163 122.49212,242.503937 0,137.51574 49.8189,0 0,-137.51574 122.20866,-242.503937 -54.1063,0 -93.11811,182.586607 -89.5748,-182.586607 -57.72047,0 z" id="path3034" style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"></path></g></svg></a>
-       <a href="https://www.reddit.com/submit?url=https%3A//doobom.me/get-string-in-shell-via-grep-sed-awk&title=%E4%BD%BF%E7%94%A8%20grep/sed/awk%C2%A0%E6%8F%90%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2" target="_blank" rel="nofollow noopener noreferrer" title="Share on reddit"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 514.24 514.24" style="enable-background:new 0 0 514.24 514.24;" xml:space="preserve" width="31" height="31">
+       <a href="https://news.ycombinator.com/submitlink?t=Loop%20Through%20An%20Array%20Of%20Strings%20And%20Parse%20Json%20In%C2%A0Bash&u=https%3A//doobom.me/loop-through-an-array-of-strings-and-parse-json-in-bash" target="_blank" rel="nofollow noopener noreferrer" title="Share on Hacker-News"><svg id="Layer_1" version="1.1" viewBox="0 0 512 512" width="31" height="31" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"><defs id="defs12"></defs><g id="g3045"><path d="m -0.003935,-0.0039375 512.007865,0 0,512.0078775 -512.007865,0 z" id="path3032" style="fill:#f68423;fill-opacity:1;fill-rule:nonzero;stroke:none"></path><path d="m 108.74016,65.990163 122.49212,242.503937 0,137.51574 49.8189,0 0,-137.51574 122.20866,-242.503937 -54.1063,0 -93.11811,182.586607 -89.5748,-182.586607 -57.72047,0 z" id="path3034" style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"></path></g></svg></a>
+       <a href="https://www.reddit.com/submit?url=https%3A//doobom.me/loop-through-an-array-of-strings-and-parse-json-in-bash&title=Loop%20Through%20An%20Array%20Of%20Strings%20And%20Parse%20Json%20In%C2%A0Bash" target="_blank" rel="nofollow noopener noreferrer" title="Share on reddit"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 514.24 514.24" style="enable-background:new 0 0 514.24 514.24;" xml:space="preserve" width="31" height="31">
 <g>
 	<polygon style="fill:#FAFAFA;" points="192,289.121 176,289.089 176,289.121 	"></polygon>
 	<polygon style="fill:#FAFAFA;" points="336,289.121 352,289.121 336,289.089 	"></polygon>
@@ -194,7 +234,7 @@
 	<circle style="fill:#FAFAFA;" cx="336" cy="289.121" r="32"></circle>
 </g>
 </svg></a>
-       <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//doobom.me/get-string-in-shell-via-grep-sed-awk&title=%E4%BD%BF%E7%94%A8%20grep/sed/awk%C2%A0%E6%8F%90%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2&summary=%E4%BD%BF%E7%94%A8%20grep/sed/awk%C2%A0%E6%8F%90%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2&source=https%3A//doobom.me/get-string-in-shell-via-grep-sed-awk" target="_blank" rel="nofollow noopener noreferrer" title="Share on linkedin"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
+       <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//doobom.me/loop-through-an-array-of-strings-and-parse-json-in-bash&title=Loop%20Through%20An%20Array%20Of%20Strings%20And%20Parse%20Json%20In%C2%A0Bash&summary=Loop%20through%20an%20array%20of%20strings%20in%20Bash%3F%20Parse%20json%20with%20default%20bash%C2%A0only%3F&source=https%3A//doobom.me/loop-through-an-array-of-strings-and-parse-json-in-bash" target="_blank" rel="nofollow noopener noreferrer" title="Share on linkedin"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
 <g>
 	<rect y="160" style="fill:#1976D2;" width="114.496" height="352"></rect>
 	<path style="fill:#1976D2;" d="M426.368,164.128c-1.216-0.384-2.368-0.8-3.648-1.152c-1.536-0.352-3.072-0.64-4.64-0.896
@@ -203,7 +243,7 @@
 	<circle style="fill:#1976D2;" cx="56" cy="56" r="56"></circle>
 </g>
 </svg></a>
-       <a href="mailto:?subject=%E4%BD%BF%E7%94%A8%20grep/sed/awk%C2%A0%E6%8F%90%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2&amp;body=https%3A//doobom.me/get-string-in-shell-via-grep-sed-awk" target="_blank" rel="nofollow noopener noreferrer" title="Share via Email"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
+       <a href="mailto:?subject=Loop%20Through%20An%20Array%20Of%20Strings%20And%20Parse%20Json%20In%C2%A0Bash&amp;body=https%3A//doobom.me/loop-through-an-array-of-strings-and-parse-json-in-bash" target="_blank" rel="nofollow noopener noreferrer" title="Share via Email"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
 <path style="fill:#1E88E5;" d="M480,432H32c-17.664,0-32-14.336-32-32V112c0-17.664,14.336-32,32-32h448c17.664,0,32,14.336,32,32
 	v288C512,417.664,497.664,432,480,432z"></path>
 <path style="fill:#2196F3;" d="M480,432H32c-17.952,0-32-14.048-32-32c0-5.088,2.432-9.888,6.528-12.896l240-160
@@ -240,8 +280,8 @@
                 <a class="accordion-toggle disqus-comment-count comment-count collapsed"
                    data-toggle="collapse"
                    data-parent="#accordion2"
-                   data-disqus-identifier="https://doobom.me/get-string-in-shell-via-grep-sed-awk"
-                   href="https://doobom.me/get-string-in-shell-via-grep-sed-awk#comment_thread"
+                   data-disqus-identifier="https://doobom.me/loop-through-an-array-of-strings-and-parse-json-in-bash"
+                   href="https://doobom.me/loop-through-an-array-of-strings-and-parse-json-in-bash#comment_thread"
                    id="comment-accordion-toggle">
                     Comments
                 </a>
@@ -259,8 +299,8 @@
         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
     }());
 
-    var disqus_identifier = 'https://doobom.me/get-string-in-shell-via-grep-sed-awk';
-    var disqus_url = 'https://doobom.me/get-string-in-shell-via-grep-sed-awk';
+    var disqus_identifier = 'https://doobom.me/loop-through-an-array-of-strings-and-parse-json-in-bash';
+    var disqus_url = 'https://doobom.me/loop-through-an-array-of-strings-and-parse-json-in-bash';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -288,35 +328,34 @@
 <ul class="related-posts-list">
 <li><a href="https://doobom.me/send-mail-via-smtp-in-telnet" title="Telnet 中使用 smtp 发送邮件">Telnet 中使用 smtp 发送邮件</a></li>
 <li><a href="https://doobom.me/linux-stop-cont-ps" title="LINUX 暂停、继续进程">LINUX 暂停、继续进程</a></li>
+<li><a href="https://doobom.me/get-string-in-shell-via-grep-sed-awk" title="使用 grep/sed/awk 提取字符串">使用 grep/sed/awk 提取字符串</a></li>
 <li><a href="https://doobom.me/android-shell-launch-with-activity" title="用类名启动应用 Google Assistant">用类名启动应用 Google Assistant</a></li>
-<li><a href="https://doobom.me/loop-through-an-array-of-strings-and-parse-json-in-bash" title="Loop Through An Array Of Strings And Parse Json In Bash">Loop Through An Array Of Strings And Parse Json In Bash</a></li>
 </ul>
 <hr />
 </section>
             <aside>
             <nav>
             <ul class="articles-timeline">
-                <li class="previous-article">« <a href="https://doobom.me/get-url-info-via-javascript" title="Previous: 如何用 js 准确获取当前页面url网址信息">如何用 js 准确获取当前页面url网址信息</a></li>
-                <li class="next-article"><a href="https://doobom.me/mariadb-master-slave-server-sync" title="Next: MariaDB 主从数据库同步">MariaDB 主从数据库同步</a> »</li>
+                <li class="previous-article">« <a href="https://doobom.me/android-shell-launch-with-activity" title="Previous: 用类名启动应用 Google Assistant">用类名启动应用 Google Assistant</a></li>
             </ul>
             </nav>
             </aside>
         </div>
         <section id="article-sidebar" class="span2">
             <h4>Published</h4>
-            <time itemprop="dateCreated" datetime="2019-07-17T10:23:00+08:00">2019-07-17</time>
+            <time itemprop="dateCreated" datetime="2021-01-06T22:24:42+08:00">2021-01-06</time>
 
             <h4>Category</h4>
             <a class="category-link" href="https://doobom.me/categories#shell-ref">Shell</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
-                <li><a href="https://doobom.me/tags#awk-ref">awk
+                <li><a href="https://doobom.me/tags#array-ref">array
                     <span class="superscript">1</span>
 </a></li>
-                <li><a href="https://doobom.me/tags#grep-ref">grep
+                <li><a href="https://doobom.me/tags#bash-ref">bash
                     <span class="superscript">1</span>
 </a></li>
-                <li><a href="https://doobom.me/tags#sed-ref">sed
+                <li><a href="https://doobom.me/tags#json-ref">json
                     <span class="superscript">1</span>
 </a></li>
                 <li><a href="https://doobom.me/tags#shell-ref">shell

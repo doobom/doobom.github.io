@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="https://doobom.me/theme/css/elegant.prod.9e9d5ce754.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="https://doobom.me/theme/css/custom.css" media="screen">
+
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+
+        <meta name="author" content="doobom" />
+
+        <meta name="description" content="小米 9se 刷最新的 miui12，并刷入 谷歌全家桶，再打开 Google Now 的折腾经历
+" />
+        <meta name="twitter:creator" content="@d8boom">
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="miui, mi9se, android, android11, google, twrp, magisk, recovery, android, " />
+
+<meta property="og:title" content="小米9se 刷机并解锁 Google Now "/>
+<meta property="og:url" content="https://doobom.me/mi9se-flash-miui12-enable-google-now" />
+<meta property="og:description" content="小米 9se 刷最新的 miui12，并刷入 谷歌全家桶，再打开 Google Now 的折腾经历" />
+<meta property="og:site_name" content="oops: run" />
+<meta property="og:article:author" content="doobom" />
+<meta property="og:article:published_time" content="2021-01-13T22:45:05+08:00" />
+<meta property="og:article:modified_time" content="2021-01-13T22:45:05+08:00" />
+<meta name="twitter:title" content="小米9se 刷机并解锁 Google Now ">
+<meta name="twitter:description" content="小米 9se 刷最新的 miui12，并刷入 谷歌全家桶，再打开 Google Now 的折腾经历">
+<meta property="og:image" content="https://doobom.me/theme/images/apple-touch-icon-152x152.png" />
+<meta name="twitter:image" content="https://doobom.me/theme/images/apple-touch-icon-152x152.png" >
+
+        <title>小米9se 刷机并解锁 Google Now  · oops: run
+</title>
+        <link rel="shortcut icon" href="https://doobom.me/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="https://doobom.me/theme/images/apple-touch-icon-152x152.png" type="image/png" />
+        <link rel="apple-touch-icon" href="https://doobom.me/theme/images/apple-touch-icon.png"  type="image/png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="https://doobom.me/theme/images/apple-touch-icon-57x57.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="https://doobom.me/theme/images/apple-touch-icon-72x72.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="https://doobom.me/theme/images/apple-touch-icon-76x76.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="https://doobom.me/theme/images/apple-touch-icon-114x114.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="https://doobom.me/theme/images/apple-touch-icon-120x120.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="https://doobom.me/theme/images/apple-touch-icon-144x144.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="https://doobom.me/theme/images/apple-touch-icon-152x152.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="https://doobom.me/theme/images/apple-touch-icon-180x180.png" type="image/png" />
+        <link href="https://doobom.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="oops: run - Full Atom Feed" />
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-132322603-1', 'auto');
+    ga('send', 'pageview');
+</script>
+
+
+    </head>
+    <body>
+        <div id="content">
+            <div class="navbar navbar-static-top">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="brand" href="https://doobom.me/"><span class=site-name>oops: run</span></a>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav pull-right top-menu">
+                                <li >
+                                    <a href=
+                                       https://doobom.me
+                                    >Home</a>
+                                </li>
+                                <li ><a href="https://doobom.me/categories">Categories</a></li>
+                                <li ><a href="https://doobom.me/tags">Tags</a></li>
+                                <li ><a href="https://doobom.me/archives">Archives</a></li>
+                                <li><form class="navbar-search" action="https://doobom.me/search" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span1"></div>
+                    <div class="span10">
+<article itemscope>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+        <h1>
+            <a href="https://doobom.me/mi9se-flash-miui12-enable-google-now">
+                小米9se 刷机并解锁 Google&nbsp;Now
+            </a>
+        </h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+            
+            <p>事情起因是这样子的，本来吧，我只是想重置一下手机的，当然并不是在设置菜单里面点击恢复出产设置，或是清除数据什么的，做为~资深玩家~的菜鸡，当然是去到 Recovery 里面清，所以不小心勾上了&nbsp;System，行吧，没了。</p>
+<p>即然都这样子了，那。。。那就来一发吧。</p>
+<p>首先下载了国际版的 9se 的线刷固件，然后下了最新版的 <a href="https://twrp.me">twrp</a> ，不过吧，<a href="https://xiaomi.eu">xiaomi.eu</a> 发布的固件呼声也很高嘛，所以一起下了个最新版的周更版固件，当然还下了其它的一些，最新周更版的是 miui12,android11 的，gapps 也是必不可少的嘛，刷了安卓，没有刷 gapp 是没有灵魂的，没有 root 也是没有灵魂的，所以下了 magisk v21，没有 google now&nbsp;怎么行？</p>
+<h2 id="1">折腾 1:<a class="headerlink" href="#1" title="Permanent link"> </a></h2>
+<p>我目前用的是苹果电脑，所以得安装 <span class="caps">ADB</span> 吧，根据 <a href="https://stackoverflow.com/questions/31374085/installing-adb-on-macos">Installing <span class="caps">ADB</span> on macOS</a>&nbsp;所说的也就完事了：</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="c1">#Install the homebrew package manager</span></span>
+<span class="code-line">/bin/bash -c <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh<span class="k">)</span><span class="s2">&quot;</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1">#Install adb</span></span>
+<span class="code-line">brew install android-platform-tools</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1">#Start using adb</span></span>
+<span class="code-line">adb devices</span>
+<span class="code-line"></code></pre></div>
+
+<p>用小米工具线刷 rom ,这个吧就是等他一会儿就好了，然后重启，因为刷了原版 rom , 所以 recovery&nbsp;必定是回到了自带了，必须干掉是吧。</p>
+<p>然后刷&nbsp;twrp:</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code>fastboot flash recovery twrp-3.5.0.img</span>
+<span class="code-line"></code></pre></div>
+
+<p>网上说的各种姿势防止回到 原厂&nbsp;recovery：</p>
+<ol>
+<li>用上面的命令完了后再用下面命令重启</li>
+</ol>
+<div class="highlight"><pre><span class="code-line"><span></span><code>fastboot boot twrp-3.5.0.img</span>
+<span class="code-line"></code></pre></div>
+
+<p>然而，我的手机会重启到系统，并不会重启到&nbsp;recovery，所以失败了</p>
+<ol>
+<li>
+<p>刷完 twrp 用 音量+ 和 电源键 长按进入 recovery，然后用 twrp 的安装功能再刷一次 <code>twrp-3.5.0.img</code> 然而我重启了之后依然是回到了原产。</p>
+</li>
+<li>
+<p>我改一下刷机包，线刷的时候直接刷 twrp&nbsp;试试，然而还是失败了。</p>
+</li>
+</ol>
+<p>所以一度想要放弃 android 11 ，我以为吧，是固件的锅，最后想起以前下载的旧版，针对 mi9se 做的 twrp , 刷了之后发现里面有一个 boot 签名的功能，果断运行一下，还真给固定了，所以是 boot 没有重签，导致系统验证恢复到 原厂 recovery, 然后再刷 3.5.0 的 twrp&nbsp;就好了。</p>
+<h2 id="2">折腾 2<a class="headerlink" href="#2" title="Permanent link"> </a></h2>
+<p>当然是把 <span class="caps">GAPPS</span> 给刷进去，我下载的是 <a href="https://www.cyanogenmods.org/android-11-gapps-download/">NikGApps</a> 完整版的，<a href="https://opengapps.org/">opengapps</a> 没有 android 11 的，嗯，刷不进去，提示空间不足，首先我想到的是不安装一些吧。但是失败了，行吧，那就删 system&nbsp;里面的我觉得不要的软件吧。</p>
+<p>为此我还整的一个 shell&nbsp;脚本用来删不要的软件，过程很是酸爽啊。</p>
+<p>以下：</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="ch">#!/sbin/sh</span></span>
+<span class="code-line"><span class="nb">echo</span> <span class="s2">&quot;********* Starting REMOVE&quot;</span></span>
+<span class="code-line"><span class="c1"># 要删除的软件列表</span></span>
+<span class="code-line"><span class="nv">appsList</span><span class="o">=(</span><span class="s2">&quot;Browser&quot;</span> <span class="s2">&quot;Calculator&quot;</span> <span class="s2">&quot;Calendar&quot;</span> <span class="s2">&quot;CleanMaster&quot;</span> <span class="s2">&quot;DeskClock&quot;</span> <span class="s2">&quot;DocumentsUIGoogle&quot;</span> <span class="s2">&quot;Email&quot;</span> <span class="s2">&quot;FileExplorer&quot;</span> <span class="s2">&quot;Health&quot;</span> <span class="s2">&quot;InCallUI&quot;</span> <span class="s2">&quot;MiDrive&quot;</span> <span class="s2">&quot;MiGalleryLockscreen&quot;</span> <span class="s2">&quot;MiMover&quot;</span> <span class="s2">&quot;MiuiBugReport&quot;</span> <span class="s2">&quot;MiuiCompass&quot;</span> <span class="s2">&quot;MiuiGallery&quot;</span> <span class="s2">&quot;MiuiScanner&quot;</span> <span class="s2">&quot;MiuiScreenRecorder&quot;</span> <span class="s2">&quot;MiuiVideoGlobal&quot;</span> <span class="s2">&quot;Music&quot;</span> <span class="s2">&quot;NextPay&quot;</span> <span class="s2">&quot;Notes&quot;</span> <span class="s2">&quot;PeelMiRemote&quot;</span> <span class="s2">&quot;PersonalAssistant&quot;</span> <span class="s2">&quot;QuickSearchBox&quot;</span> <span class="s2">&quot;SoundRecorder&quot;</span> <span class="s2">&quot;SuperWallpaperEarth&quot;</span> <span class="s2">&quot;SuperWallpaperGeometry&quot;</span> <span class="s2">&quot;SuperWallpaperMars&quot;</span> <span class="s2">&quot;SuperWallpaperSaturn&quot;</span> <span class="s2">&quot;SuperWallpaperSnowmountain&quot;</span> <span class="s2">&quot;MiService&quot;</span> <span class="s2">&quot;Weather&quot;</span> <span class="s2">&quot;wps-lite&quot;</span> <span class="s2">&quot;MiuiWallpaper&quot;</span> <span class="s2">&quot;LiveWallpapersPicker&quot;</span> <span class="s2">&quot;WallpaperBackup&quot;</span><span class="o">)</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># 这几个软件如果删了就没有壁纸功能了，设置了也没有用</span></span>
+<span class="code-line"><span class="c1">#&quot;MiuiWallpaper&quot; &quot;LiveWallpapersPicker&quot; &quot;WallpaperBackup&quot;)</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="k">for</span> i in <span class="s2">&quot;</span><span class="si">${</span><span class="nv">appsList</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span></span>
+<span class="code-line"><span class="k">do</span></span>
+<span class="code-line">    <span class="k">if</span> <span class="o">[</span> -d <span class="s2">&quot;/system/priv-app/</span><span class="nv">$i</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span></span>
+<span class="code-line">        <span class="nb">echo</span> <span class="s2">&quot;* Remove App: /system/priv-app/</span><span class="nv">$i</span><span class="s2">&quot;</span></span>
+<span class="code-line">        rm -rf /system/priv-app/<span class="nv">$i</span></span>
+<span class="code-line">    <span class="k">elif</span> <span class="o">[</span> -d <span class="s2">&quot;/system/app/</span><span class="nv">$i</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span></span>
+<span class="code-line">        <span class="nb">echo</span> <span class="s2">&quot;* Remove App: /system/app/</span><span class="nv">$i</span><span class="s2">&quot;</span></span>
+<span class="code-line">        rm -rf /system/app/<span class="nv">$i</span></span>
+<span class="code-line">    <span class="k">elif</span> <span class="o">[</span> -d <span class="s2">&quot;/data/app/</span><span class="nv">$i</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span></span>
+<span class="code-line">        <span class="nb">echo</span> <span class="s2">&quot;* Remove App: /data/app/</span><span class="nv">$i</span><span class="s2">&quot;</span></span>
+<span class="code-line">        rm -rf /data/app/<span class="nv">$i</span></span>
+<span class="code-line">    <span class="k">else</span></span>
+<span class="code-line">        <span class="nb">echo</span> <span class="s2">&quot;- Not Found </span><span class="nv">$i</span><span class="s2"> in /system/app/ or /system/priv-app/ or /data/app/&quot;</span></span>
+<span class="code-line">    <span class="k">fi</span></span>
+<span class="code-line"><span class="k">done</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="k">if</span> <span class="o">[</span> -d <span class="s2">&quot;/system/media/wallpaper/wallpaper_group&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span></span>
+<span class="code-line">    <span class="nb">echo</span> <span class="s2">&quot;* Remove Wallpaper&quot;</span></span>
+<span class="code-line">    rm -rf /system/media/wallpaper/wallpaper_group</span>
+<span class="code-line"><span class="k">fi</span></span>
+<span class="code-line"><span class="k">if</span> <span class="o">[</span> -d <span class="s2">&quot;/system/media/audio/ringtones/&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span></span>
+<span class="code-line">    <span class="nb">echo</span> <span class="s2">&quot;* Remove ringtones&quot;</span></span>
+<span class="code-line">    rm -rf /system/media/audio/ringtones/*</span>
+<span class="code-line"><span class="k">fi</span></span>
+<span class="code-line"><span class="k">if</span> <span class="o">[</span> -d <span class="s2">&quot;/data/preloads/&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span></span>
+<span class="code-line">    <span class="nb">echo</span> <span class="s2">&quot;* Remove Preload Apps&quot;</span></span>
+<span class="code-line">    rm -rf /data/preloads/*</span>
+<span class="code-line"><span class="k">fi</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="nb">echo</span> <span class="s2">&quot;********* REMOVE DONE&quot;</span></span>
+<span class="code-line"></code></pre></div>
+
+<p>最后看了一下这些我不要的软件，1.2+G&nbsp;啊。这下就可以轻松的上全家桶了。</p>
+<h2 id="3">折腾 3<a class="headerlink" href="#3" title="Permanent link"> </a></h2>
+<p>来点有 灵魂 的 root 吧，magisk&nbsp;还是很轻松的就刷进去了，并且运行良好，没啥毛病。</p>
+<p>没插卡的时候 google now 正常，记得以前看过，只要禁用 google play service 的电话权限就可以了，但是吧，设置里面找不到。行吧，以前旧版 安卓 似乎修改 <code>build.prop</code> 也是可以的。</p>
+<p>android 11 的 <code>build.prop</code> 好几个位置都有，<code>system</code>, <code>product</code>, <code>vendor</code>, <code>system_ext</code> 里面都有。所以我全都把下面几个改了：</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="nb">echo</span> <span class="s2">&quot;********* Modify Build.prop&quot;</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="nb">echo</span> <span class="s2">&quot;* modify build.prop&quot;</span></span>
+<span class="code-line">sed -ie <span class="s1">&#39;s/^ro\.product\.system\.model.*/ro\.product\.system\.model\=Pixel\ 5\ XL/g&#39;</span> /system/build.prop</span>
+<span class="code-line">sed -ie <span class="s1">&#39;s/^ro\.opa.eligible_device.*//g&#39;</span> /system/build.prop</span>
+<span class="code-line"><span class="nb">echo</span> <span class="s1">&#39;ro.opa.eligible_device=true&#39;</span> &gt;&gt; /system/build.prop</span>
+<span class="code-line">sed -ie <span class="s1">&#39;s/^ro\.product\.system\.brand.*/ro\.product\.system\.brand\=google/g&#39;</span> /system/build.prop</span>
+<span class="code-line">sed -ie <span class="s1">&#39;s/^ro\.product\.system\.manufacturer.*/ro\.product\.system\.manufacturer\=Google/g&#39;</span> /system/build.prop</span>
+<span class="code-line">sed -ie <span class="s1">&#39;s/^ro\.product\.manufacturer.*/ro\.product\.manufacturer\=Google/g&#39;</span> /system/build.prop</span>
+<span class="code-line"></span>
+<span class="code-line">sed -ie <span class="s1">&#39;s/^ro\.product\.product\.model.*/ro\.product\.product\.model\=Pixel\ 5\ XL/g&#39;</span> /system/product/build.prop</span>
+<span class="code-line">sed -ie <span class="s1">&#39;s/^ro\.product\.product\.manufacturer.*/ro\.product\.product\.manufacturer\=Google/g&#39;</span> /system/product/build.prop</span>
+<span class="code-line">sed -ie <span class="s1">&#39;s/^ro\.product\.product\.brand.*/ro\.product\.product\.brand\=google/g&#39;</span> /system/product/build.prop</span>
+<span class="code-line"></span>
+<span class="code-line">sed -ie <span class="s1">&#39;s/^ro\.product\.system_ext\.model.*/ro\.product\.system_ext\.model\=Pixel\ 5\ XL/g&#39;</span> /system/system_ext/build.prop</span>
+<span class="code-line">sed -ie <span class="s1">&#39;s/^ro\.product\.system_ext\.manufacturer.*/ro\.product\.system_ext\.manufacturer\=Google/g&#39;</span> /system/system_ext/build.prop</span>
+<span class="code-line">sed -ie <span class="s1">&#39;s/^ro\.product\.system_ext\.brand.*/ro\.product\.system_ext\.brand\=google/g&#39;</span> /system/system_ext/build.prop</span>
+<span class="code-line"></span>
+<span class="code-line">sed -ie <span class="s1">&#39;s/^ro\.product\.odm\.model.*/ro\.product\.odm\.model\=Pixel\ 5\ XL/g&#39;</span> /vendor/odm/etc/build.prop</span>
+<span class="code-line">sed -ie <span class="s1">&#39;s/^ro\.product\.odm\.manufacturer.*/ro\.product\.odm\.manufacturer\=Google/g&#39;</span> /vendor/odm/etc/build.prop</span>
+<span class="code-line">sed -ie <span class="s1">&#39;s/^ro\.product\.odm\.brand.*/ro\.product\.odm\.brand\=google/g&#39;</span> /vendor/odm/etc/build.prop</span>
+<span class="code-line"></span>
+<span class="code-line">sed -ie <span class="s1">&#39;s/^ro\.product\.vendor\.model.*/ro\.product\.vendor\.model\=Pixel\ 5\ XL/g&#39;</span> /vendor/build.prop</span>
+<span class="code-line">sed -ie <span class="s1">&#39;s/^ro\.product\.vendor\.manufacturer.*/ro\.product\.vendor\.manufacturer\=Google/g&#39;</span> /vendor/build.prop</span>
+<span class="code-line">sed -ie <span class="s1">&#39;s/^ro\.product\.vendor\.brand.*/ro\.product\.vendor\.brand\=google/g&#39;</span> /vendor/build.prop</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="nb">echo</span> <span class="s2">&quot;********* DONE&quot;</span></span>
+<span class="code-line"></code></pre></div>
+
+<p>重启了以后似乎并不起作用，好吧，换一个，毕竟我们是有 root&nbsp;的人。</p>
+<p>钛备份，幸运破解器 都只能查权限并不能修改，另一软件 <span class="caps">APP</span> <span class="caps">OPS</span>&nbsp;可以改，但是也没起作用，重启一下权限又回去了。</p>
+<p>用 <span class="caps">ADB</span>&nbsp;修改应用权限提示出错了。</p>
+<p>然后就开始浏览一下系统目录看看能不能发现什么猫腻，果然发现了 <code>premissions</code> 的目录，打开一看还真是应用权限的描述文件，下手试试吧。</p>
+<p>依然是&nbsp;shell:</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="nb">echo</span> <span class="s2">&quot;********* Modify Product Premissions&quot;</span></span>
+<span class="code-line"><span class="nv">permDir</span><span class="o">=</span><span class="s2">&quot;/system/product/etc/permissions&quot;</span></span>
+<span class="code-line"><span class="nv">permFile</span><span class="o">=(</span><span class="s2">&quot;com.google.android.gms.xml&quot;</span> <span class="s2">&quot;com.google.android.googlequicksearchbox.xml&quot;</span> <span class="s2">&quot;com.android.vending.xml&quot;</span><span class="o">)</span></span>
+<span class="code-line"><span class="k">for</span> i in <span class="s2">&quot;</span><span class="si">${</span><span class="nv">permFile</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span></span>
+<span class="code-line"><span class="k">do</span></span>
+<span class="code-line">    <span class="k">if</span> <span class="o">[</span> -f <span class="s2">&quot;</span><span class="nv">$permDir</span><span class="s2">/</span><span class="nv">$i</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span></span>
+<span class="code-line">        <span class="nb">echo</span> <span class="s2">&quot;* modify: </span><span class="nv">$i</span><span class="s2">&quot;</span></span>
+<span class="code-line">        sed -ie <span class="s1">&#39;s/&lt;permission name=&quot;android.permission.READ_PHONE_STATE&quot; \/&gt;/&lt;deny-permission name=&quot;android.permission.READ_PHONE_STATE&quot; \/&gt;/g&#39;</span> <span class="nv">$permDir</span>/<span class="nv">$i</span></span>
+<span class="code-line">        sed -ie <span class="s1">&#39;s/&lt;permission name=&quot;android.permission.READ_PRIVILEGED_PHONE_STATE&quot; \/&gt;/&lt;deny-permission name=&quot;android.permission.READ_PRIVILEGED_PHONE_STATE&quot; \/&gt;/g&#39;</span> <span class="nv">$permDir</span>/<span class="nv">$i</span></span>
+<span class="code-line">    <span class="k">else</span></span>
+<span class="code-line">        <span class="nb">echo</span> <span class="s2">&quot;- Not Found file: </span><span class="nv">$permDir</span><span class="s2">/</span><span class="nv">$i</span><span class="s2">&quot;</span></span>
+<span class="code-line">    <span class="k">fi</span></span>
+<span class="code-line"><span class="k">done</span></span>
+<span class="code-line"></code></pre></div>
+
+<p>重启一下，居然出来了，但是 google&nbsp;这应用没显示，行吧，我清除数据，出来了。</p>
+<p>今天下午开了一下又来了，这下我不敢清数据了，万一又不行了。所以我又加了下面的，还没用就是了。</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="n">perFile</span><span class="o">=</span><span class="ss">&quot;/system/product/etc/default-permissions/nikgapps-permissions.xml&quot;</span></span>
+<span class="code-line"><span class="k">if</span> <span class="p">[</span> <span class="o">-</span><span class="n">f</span> <span class="ss">&quot;$perFile&quot;</span> <span class="p">];</span> <span class="k">then</span></span>
+<span class="code-line">    <span class="n">echo</span> <span class="ss">&quot;* modify: $perFile&quot;</span></span>
+<span class="code-line">    <span class="n">sed</span> <span class="o">-</span><span class="n">ie</span> <span class="s1">&#39;18,45s/&lt;permission name=&quot;android.permission.READ_PHONE_STATE&quot;/&lt;deny-permission name=&quot;android.permission.READ_PHONE_STATE&quot;/g&#39;</span> <span class="err">$</span><span class="n">perFile</span></span>
+<span class="code-line">    <span class="n">sed</span> <span class="o">-</span><span class="n">ie</span> <span class="s1">&#39;18,45s/&lt;permission name=&quot;android.permission.READ_PRIVILEGED_PHONE_STATE&quot;/&lt;deny-permission name=&quot;android.permission.READ_PRIVILEGED_PHONE_STATE&quot;/g&#39;</span> <span class="err">$</span><span class="n">perFile</span></span>
+<span class="code-line">    <span class="n">sed</span> <span class="o">-</span><span class="n">ie</span> <span class="s1">&#39;185,259s/&lt;permission name=&quot;android.permission.READ_PHONE_STATE&quot;/&lt;deny-permission name=&quot;android.permission.READ_PHONE_STATE&quot;/g&#39;</span> <span class="err">$</span><span class="n">perFile</span></span>
+<span class="code-line">    <span class="n">sed</span> <span class="o">-</span><span class="n">ie</span> <span class="s1">&#39;185,259s/&lt;permission name=&quot;android.permission.READ_PRIVILEGED_PHONE_STATE&quot;/&lt;deny-permission name=&quot;android.permission.READ_PRIVILEGED_PHONE_STATE&quot;/g&#39;</span> <span class="err">$</span><span class="n">perFile</span></span>
+<span class="code-line"><span class="k">else</span></span>
+<span class="code-line">    <span class="n">echo</span> <span class="ss">&quot;- Not Found file: $perFile&quot;</span></span>
+<span class="code-line"><span class="n">fi</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="n">echo</span> <span class="ss">&quot;********* DONE&quot;</span></span>
+<span class="code-line"></code></pre></div>
+
+<p>希望是有用的吧。</p>
+<p>附一张截图：</p>
+<p>提示截图应用中止了，算了不管了。</p>
+<p>毕竟现在天冷。</p>
+
+
+             
+
+
+<div class="applause_button">
+    <applause-button url=https://doobom.me/mi9se-flash-miui12-enable-google-now> </applause-button>
+</div>
+
+ 
+                <p id="post-share-links" style="text-align:left">
+    Like this post? Share on:
+      <a href="https://twitter.com/intent/tweet?text=%E5%B0%8F%E7%B1%B39se%20%E5%88%B7%E6%9C%BA%E5%B9%B6%E8%A7%A3%E9%94%81%20Google%C2%A0Now&url=https%3A//doobom.me/mi9se-flash-miui12-enable-google-now&via=d8boom&hashtags=miui,mi9se,android,android11,google,twrp,magisk,recovery" target="_blank" rel="nofollow noopener noreferrer" title="Share on Twitter"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
+<path style="fill:#03A9F4;" d="M512,97.248c-19.04,8.352-39.328,13.888-60.48,16.576c21.76-12.992,38.368-33.408,46.176-58.016
+	c-20.288,12.096-42.688,20.64-66.56,25.408C411.872,60.704,384.416,48,354.464,48c-58.112,0-104.896,47.168-104.896,104.992
+	c0,8.32,0.704,16.32,2.432,23.936c-87.264-4.256-164.48-46.08-216.352-109.792c-9.056,15.712-14.368,33.696-14.368,53.056
+	c0,36.352,18.72,68.576,46.624,87.232c-16.864-0.32-33.408-5.216-47.424-12.928c0,0.32,0,0.736,0,1.152
+	c0,51.008,36.384,93.376,84.096,103.136c-8.544,2.336-17.856,3.456-27.52,3.456c-6.72,0-13.504-0.384-19.872-1.792
+	c13.6,41.568,52.192,72.128,98.08,73.12c-35.712,27.936-81.056,44.768-130.144,44.768c-8.608,0-16.864-0.384-25.12-1.44
+	C46.496,446.88,101.6,464,161.024,464c193.152,0,298.752-160,298.752-298.688c0-4.64-0.16-9.12-0.384-13.568
+	C480.224,136.96,497.728,118.496,512,97.248z"></path>
+</svg></a>
+       <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//doobom.me/mi9se-flash-miui12-enable-google-now" target="_blank" rel="nofollow noopener noreferrer" title="Share on Facebook"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
+<path style="fill:#1976D2;" d="M448,0H64C28.704,0,0,28.704,0,64v384c0,35.296,28.704,64,64,64h384c35.296,0,64-28.704,64-64V64
+	C512,28.704,483.296,0,448,0z"></path>
+<path style="fill:#FAFAFA;" d="M432,256h-80v-64c0-17.664,14.336-16,32-16h32V96h-64l0,0c-53.024,0-96,42.976-96,96v64h-64v80h64
+	v176h96V336h48L432,256z"></path>
+</svg></a>
+       <a href="https://news.ycombinator.com/submitlink?t=%E5%B0%8F%E7%B1%B39se%20%E5%88%B7%E6%9C%BA%E5%B9%B6%E8%A7%A3%E9%94%81%20Google%C2%A0Now&u=https%3A//doobom.me/mi9se-flash-miui12-enable-google-now" target="_blank" rel="nofollow noopener noreferrer" title="Share on Hacker-News"><svg id="Layer_1" version="1.1" viewBox="0 0 512 512" width="31" height="31" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"><defs id="defs12"></defs><g id="g3045"><path d="m -0.003935,-0.0039375 512.007865,0 0,512.0078775 -512.007865,0 z" id="path3032" style="fill:#f68423;fill-opacity:1;fill-rule:nonzero;stroke:none"></path><path d="m 108.74016,65.990163 122.49212,242.503937 0,137.51574 49.8189,0 0,-137.51574 122.20866,-242.503937 -54.1063,0 -93.11811,182.586607 -89.5748,-182.586607 -57.72047,0 z" id="path3034" style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"></path></g></svg></a>
+       <a href="https://www.reddit.com/submit?url=https%3A//doobom.me/mi9se-flash-miui12-enable-google-now&title=%E5%B0%8F%E7%B1%B39se%20%E5%88%B7%E6%9C%BA%E5%B9%B6%E8%A7%A3%E9%94%81%20Google%C2%A0Now" target="_blank" rel="nofollow noopener noreferrer" title="Share on reddit"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 514.24 514.24" style="enable-background:new 0 0 514.24 514.24;" xml:space="preserve" width="31" height="31">
+<g>
+	<polygon style="fill:#FAFAFA;" points="192,289.121 176,289.089 176,289.121 	"></polygon>
+	<polygon style="fill:#FAFAFA;" points="336,289.121 352,289.121 336,289.089 	"></polygon>
+</g>
+<path style="fill:#FF9800;" d="M514.24,241.121c0-35.296-28.704-64-64-64c-14.112,0-27.52,4.608-38.464,12.96
+	c-35.712-24.8-82.496-39.584-132.256-43.328l26.848-62.976l78.112,18.24c2.496,24.16,22.72,43.104,47.52,43.104
+	c26.464,0,48-21.536,48-48s-21.536-48-48-48c-16.768,0-31.52,8.672-40.096,21.76l-91.296-21.344
+	c-7.744-1.76-15.328,2.176-18.4,9.312l-37.12,87.04c-53.728,1.856-104.928,16.992-143.584,43.36
+	C90.976,181.441,77.92,177.121,64,177.121c-35.296,0-64,28.704-64,64c0,23.392,12.768,44.544,32.352,55.392
+	c-0.256,2.816-0.352,5.696-0.352,8.608c0,88.224,100.48,160,224,160c123.488,0,224-71.776,224-160c0-2.496-0.096-4.96-0.256-7.424
+	C500.608,287.073,514.24,265.409,514.24,241.121z"></path>
+<g>
+	<circle style="fill:#FAFAFA;" cx="432" cy="97.121" r="16"></circle>
+	<circle style="fill:#FAFAFA;" cx="176" cy="289.121" r="32"></circle>
+	<path style="fill:#FAFAFA;" d="M329.888,395.265c-22.08,15.968-48,23.968-73.888,23.968s-51.808-8-73.888-23.968
+		c-7.168-5.184-8.768-15.2-3.584-22.336s15.2-8.736,22.336-3.584c32.992,23.84,77.28,23.904,110.272,0
+		c7.136-5.152,17.12-3.616,22.336,3.584C338.656,380.097,337.024,390.081,329.888,395.265z"></path>
+	<circle style="fill:#FAFAFA;" cx="336" cy="289.121" r="32"></circle>
+</g>
+</svg></a>
+       <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//doobom.me/mi9se-flash-miui12-enable-google-now&title=%E5%B0%8F%E7%B1%B39se%20%E5%88%B7%E6%9C%BA%E5%B9%B6%E8%A7%A3%E9%94%81%20Google%C2%A0Now&summary=%E5%B0%8F%E7%B1%B3%209se%20%E5%88%B7%E6%9C%80%E6%96%B0%E7%9A%84%20miui12%EF%BC%8C%E5%B9%B6%E5%88%B7%E5%85%A5%20%E8%B0%B7%E6%AD%8C%E5%85%A8%E5%AE%B6%E6%A1%B6%EF%BC%8C%E5%86%8D%E6%89%93%E5%BC%80%20Google%20Now%C2%A0%E7%9A%84%E6%8A%98%E8%85%BE%E7%BB%8F%E5%8E%86&source=https%3A//doobom.me/mi9se-flash-miui12-enable-google-now" target="_blank" rel="nofollow noopener noreferrer" title="Share on linkedin"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
+<g>
+	<rect y="160" style="fill:#1976D2;" width="114.496" height="352"></rect>
+	<path style="fill:#1976D2;" d="M426.368,164.128c-1.216-0.384-2.368-0.8-3.648-1.152c-1.536-0.352-3.072-0.64-4.64-0.896
+		c-6.08-1.216-12.736-2.08-20.544-2.08l0,0l0,0c-66.752,0-109.088,48.544-123.04,67.296V160H160v352h114.496V320
+		c0,0,86.528-120.512,123.04-32c0,79.008,0,224,0,224H512V274.464C512,221.28,475.552,176.96,426.368,164.128z"></path>
+	<circle style="fill:#1976D2;" cx="56" cy="56" r="56"></circle>
+</g>
+</svg></a>
+       <a href="mailto:?subject=%E5%B0%8F%E7%B1%B39se%20%E5%88%B7%E6%9C%BA%E5%B9%B6%E8%A7%A3%E9%94%81%20Google%C2%A0Now&amp;body=https%3A//doobom.me/mi9se-flash-miui12-enable-google-now" target="_blank" rel="nofollow noopener noreferrer" title="Share via Email"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
+<path style="fill:#1E88E5;" d="M480,432H32c-17.664,0-32-14.336-32-32V112c0-17.664,14.336-32,32-32h448c17.664,0,32,14.336,32,32
+	v288C512,417.664,497.664,432,480,432z"></path>
+<path style="fill:#2196F3;" d="M480,432H32c-17.952,0-32-14.048-32-32c0-5.088,2.432-9.888,6.528-12.896l240-160
+	c2.816-2.08,6.144-3.104,9.472-3.104s6.656,1.024,9.472,3.104l240,160C509.568,390.112,512,394.912,512,400
+	C512,417.952,497.952,432,480,432z"></path>
+<path style="fill:#64B5F6;" d="M480,80H32C14.048,80,0,94.048,0,112c0,5.088,2.432,9.888,6.528,12.896L246.656,297.28
+	c5.568,4,13.088,4,18.656,0L505.44,124.896c4.128-3.008,6.56-7.808,6.56-12.896C512,94.048,497.952,80,480,80z"></path>
+</svg></a>
+
+                <hr />
+    <div class="author-blurb">
+        <a href="https://doobom.github.io/" target="_blank" rel="nofollow noopener noreferrer">
+            <img src=/images/avatars/ce6eb1b67b2cc18c608d69e8849079cc.jpeg alt="doobom Avatar" title="doobom">
+            <span class="author-name">doobom</span>
+        </a>
+        is write a bug.
+    </div>
+
+            
+
+
+
+
+
+
+
+<section>
+    <h6 style="display:none;">Comments</h6>
+    <p id="comment-message">So what do you think? Did I miss something? Is any part unclear? Leave your comments below. </p>
+
+    <div class="accordion" id="accordion2">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle disqus-comment-count comment-count collapsed"
+                   data-toggle="collapse"
+                   data-parent="#accordion2"
+                   data-disqus-identifier="https://doobom.me/mi9se-flash-miui12-enable-google-now"
+                   href="https://doobom.me/mi9se-flash-miui12-enable-google-now#comment_thread"
+                   id="comment-accordion-toggle">
+                    Comments
+                </a>
+            </div>
+            <div id="comment_thread" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <div class="comments">
+                        <div id="disqus_thread"></div>
+                        <script>
+    var disqus_shortname = 'doobom';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+
+    var disqus_identifier = 'https://doobom.me/mi9se-flash-miui12-enable-google-now';
+    var disqus_url = 'https://doobom.me/mi9se-flash-miui12-enable-google-now';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+            <hr/>
+<section>
+    <h2>Keep Reading</h2>
+<ul class="related-posts-list">
+<li><a href="https://doobom.me/android-shell-launch-with-activity" title="用类名启动应用 Google Assistant">用类名启动应用 Google Assistant</a></li>
+</ul>
+<hr />
+</section>
+            <aside>
+            <nav>
+            <ul class="articles-timeline">
+                <li class="previous-article">« <a href="https://doobom.me/loop-through-an-array-of-strings-and-parse-json-in-bash" title="Previous: Loop Through An Array Of Strings And Parse Json In Bash">Loop Through An Array Of Strings And Parse Json In Bash</a></li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section id="article-sidebar" class="span2">
+            <h4>Published</h4>
+            <time itemprop="dateCreated" datetime="2021-01-13T22:45:05+08:00">2021-01-13</time>
+
+            <h4>Category</h4>
+            <a class="category-link" href="https://doobom.me/categories#android-ref">android</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="https://doobom.me/tags#android-ref">android
+                    <span class="superscript">2</span>
+</a></li>
+                <li><a href="https://doobom.me/tags#android11-ref">android11
+                    <span class="superscript">1</span>
+</a></li>
+                <li><a href="https://doobom.me/tags#google-ref">google
+                    <span class="superscript">2</span>
+</a></li>
+                <li><a href="https://doobom.me/tags#magisk-ref">magisk
+                    <span class="superscript">1</span>
+</a></li>
+                <li><a href="https://doobom.me/tags#mi9se-ref">mi9se
+                    <span class="superscript">1</span>
+</a></li>
+                <li><a href="https://doobom.me/tags#miui-ref">miui
+                    <span class="superscript">1</span>
+</a></li>
+                <li><a href="https://doobom.me/tags#recovery-ref">recovery
+                    <span class="superscript">1</span>
+</a></li>
+                <li><a href="https://doobom.me/tags#twrp-ref">twrp
+                    <span class="superscript">1</span>
+</a></li>
+            </ul>
+<h4>Stay in Touch</h4>
+<div id="sidebar-social-link">
+    <a href="https://github.com/doobom" title="doobom's github profile" target="_blank" rel="nofollow noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="GitHub" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#1B1817"/><path fill="#fff" d="M335 499c14 0 12 17 12 17H165s-2-17 12-17c13 0 16-6 16-12l-1-50c-71 16-86-28-86-28-12-30-28-37-28-37-24-16 1-16 1-16 26 2 40 26 40 26 22 39 59 28 74 22 2-17 9-28 16-35-57-6-116-28-116-126 0-28 10-51 26-69-3-6-11-32 3-67 0 0 21-7 70 26 42-12 86-12 128 0 49-33 70-26 70-26 14 35 6 61 3 67 16 18 26 41 26 69 0 98-60 120-117 126 10 8 18 24 18 48l-1 70c0 6 3 12 16 12z"/></svg>
+    </a>
+    <a href="https://doobom.me/feeds/all.atom.xml" title="" target="_blank" rel="nofollow noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="RSS" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#f80"/><circle cx="145" cy="367" r="35" fill="#fff"/><path fill="none" stroke="#fff" stroke-width="60" d="M109 241c89 0 162 73 162 162M109 127c152 0 276 124 276 276"/></svg>
+    </a>
+    <a href="https://twitter.com/d8boom" title="twitter" target="_blank" rel="nofollow noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="Twitter" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#1da1f3"/><path fill="#fff" d="M437 152a72 72 0 0 1-40 12 72 72 0 0 0 32-40 72 72 0 0 1-45 17 72 72 0 0 0-122 65 200 200 0 0 1-145-74 72 72 0 0 0 22 94 72 72 0 0 1-32-7 72 72 0 0 0 56 69 72 72 0 0 1-32 1 72 72 0 0 0 67 50 200 200 0 0 1-105 29 200 200 0 0 0 309-179 200 200 0 0 0 35-37"/></svg>
+    </a>
+</div>
+            
+
+
+
+<!-- Begin MailChimp Signup Form -->
+<div id="mc-embed-signup">
+<form action="https://run.us4.list-manage.com/subscribe/post?u=1fd2b4e2122c947a7de2b8b83&amp;id=d95df12a8a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+<h4>Get New Release Alert</h4>
+<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Enter your email..." required>
+<div class="clear"><input type="submit" value="Notify me" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+</form>
+</div>
+<!--End mc_embed_signup-->
+
+
+
+
+            
+
+
+
+        </section>
+</div>
+</article>
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides.
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>                    </div>
+                    <div class="span1"></div>
+                </div>
+            </div>
+        </div>
+<footer>
+    <div>
+        Content licensed under <a rel="license nofollow noopener noreferrer"
+    href="http://creativecommons.org/licenses/by/4.0/" target="_blank">
+    Creative Commons Attribution 4.0 International License</a>.
+    </div>
+
+    <div>
+        <span class="site-name">oops: run</span> - keep running...
+    </div>
+
+
+
+    <div id="fpowered">
+        Powered by: <a href="http://getpelican.com/" title="Pelican Home Page" target="_blank" rel="nofollow noopener noreferrer">Pelican</a>
+        Theme: <a href="https://elegant.oncrashreboot.com/" title="Theme Elegant Home Page" target="_blank" rel="nofollow noopener noreferrer">Elegant</a>
+        Hosted on:
+        <a href="https://github.com" target="_blank" rel="nofollow noopener noreferrer">
+            GitHub
+        </a>
+    </div>
+</footer>            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script src="https://doobom.me/theme/js/elegant.prod.9e9d5ce754.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    <script>
+    (function () {
+        if (window.location.hash.match(/^#comment-\d+$/)) {
+            $('#comment_thread').collapse('show');
+        }
+    })();
+    window.onhashchange=function(){
+        if (window.location.hash.match(/^#comment-\d+$/))
+            window.location.reload(true);
+    }
+    $('#comment_thread').on('shown', function () {
+        var link = document.getElementById('comment-accordion-toggle');
+        var old_innerHTML = link.innerHTML;
+        $(link).fadeOut(200, function() {
+            $(this).text('Click here to hide comments').fadeIn(200);
+        });
+        $('#comment_thread').on('hidden', function () {
+            $(link).fadeOut(200, function() {
+                $(this).text(old_innerHTML).fadeIn(200);
+            });
+        })
+    })
+</script>
+
+    </body>
+    <!-- Theme: Elegant built for Pelican
+        License : MIT -->
+</html>

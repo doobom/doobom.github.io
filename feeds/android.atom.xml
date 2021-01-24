@@ -1,5 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>oops: run - android</title><link href="https://doobom.me/" rel="alternate"></link><link href="https://doobom.me/feeds/android.atom.xml" rel="self"></link><id>https://doobom.me/</id><updated>2021-01-20T21:12:54+08:00</updated><subtitle>keep running...</subtitle><entry><title>小米 9se 手机自定义启动画面 splash/logo</title><link href="https://doobom.me/mi9se-splash-logo-image-modify" rel="alternate"></link><published>2021-01-20T21:12:54+08:00</published><updated>2021-01-20T21:12:54+08:00</updated><author><name>doobom</name></author><id>tag:doobom.me,2021-01-20:/mi9se-splash-logo-image-modify</id><summary type="html">&lt;p&gt;折腾一下 小米 9se 的 splash, 就是刚启动开机时显示的那个 logo&amp;nbsp;画面&lt;/p&gt;</summary><content type="html">&lt;p&gt;网上一直找不到 mi9se 的 splash 的做法，找了好一会儿找到红米4 的 splash 脚本，毕竟太老估计没参考价值，然后在 &lt;span class="caps"&gt;XDA&lt;/span&gt; 上找到了 mi9 的： &lt;a href="https://forum.xda-developers.com/t/mi-9-splash-boot-image-creation-script.3952572/"&gt;Mi 9 Splash / Boot Image creation script.&lt;/a&gt; ,&amp;nbsp;嗯，看来有戏。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>oops: run - android</title><link href="https://doobom.me/" rel="alternate"></link><link href="https://doobom.me/feeds/android.atom.xml" rel="self"></link><id>https://doobom.me/</id><updated>2021-01-22T21:45:30+08:00</updated><subtitle>keep running...</subtitle><entry><title>How To Use Crontab In Android?</title><link href="https://doobom.me/how-to-use-crontab-in-android" rel="alternate"></link><published>2021-01-22T21:45:30+08:00</published><updated>2021-01-22T21:45:30+08:00</updated><author><name>doobom</name></author><id>tag:doobom.me,2021-01-22:/how-to-use-crontab-in-android</id><summary type="html">&lt;p&gt;在安卓(android) 上打开 计划任务 的功能，就是&amp;nbsp;crontab&lt;/p&gt;</summary><content type="html">&lt;p&gt;首先，你得 root ,&amp;nbsp;如果没有，那没戏了。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以下原文： &lt;a href="https://stackoverflow.com/questions/16747880/how-to-use-crontab-in-android"&gt;How to use crontab in&amp;nbsp;Android?&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Requirements&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Root access: for superuser commads like reboot, or init.d config. Crond can still run under normal user&amp;nbsp;privs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Busybox: for &amp;#8216;crond&amp;#8217;&amp;nbsp;service&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;(Optional) init.d support: to start &amp;#8216;crond&amp;#8217; service at boot. Or start via Magisk post-fs-data.d&amp;nbsp;script.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Creating&amp;nbsp;cronjob&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Create the cronjob file in directory &lt;code&gt;/data/crontab/&lt;/code&gt; (it could be any accessible directory even in sdcard) with filename &amp;#8216;&lt;code&gt;root&lt;/code&gt;&lt;span class="quo"&gt;&amp;#8216;&lt;/span&gt;. Write your cronjob inside the file&amp;nbsp;&amp;#8216;root&amp;#8217;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;53 * * * * reboot&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; /data/crontab/root&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Test without&amp;nbsp;rebooting&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Now open any terminal emulator in device and run the following&amp;nbsp;commands..&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;su -&lt;/span&gt;
+&lt;span class="code-line"&gt;crond -b -c /data/crontab&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now the crond service will start, to check type &lt;code&gt;pgrep -l crond&lt;/code&gt; or &lt;code&gt;ps | grep crond&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Start crond at&amp;nbsp;boot&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;create a file at &lt;code&gt;/system/etc/init.d&lt;/code&gt; with executable&amp;nbsp;permission:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;crond -b -c /data/crontab&amp;#39;&lt;/span&gt; &amp;gt; /system/etc/init.d/crond&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;chmod +x /system/etc/init.d/crond&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Example&amp;nbsp;cronjobs&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="m"&gt;53&lt;/span&gt; * * * * reboot&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Will reboot your device on 53rd minute of every&amp;nbsp;hour.&lt;/p&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="admonition-title"&gt;Note&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;If you modify crontab, remember to restart crond daemon after killing the existing&amp;nbsp;one.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If the crond is not obeying your timezone, you might need to update the tzdata in your&amp;nbsp;device.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Better to test with &lt;code&gt;*/1 * * * *&lt;/code&gt; to see if it is&amp;nbsp;working.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;p&gt;因为我没在 &lt;code&gt;/system/etc&lt;/code&gt; 目录下找到 &lt;code&gt;init.d&lt;/code&gt; ,&amp;nbsp;因此我是这么着的：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;crond -b -c /data/crontab&amp;#39;&lt;/span&gt; &amp;gt; /data/adb/service.d/crond&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;chmod +x /data/adb/service.d/crond&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;本来吧，我是准备把 &lt;code&gt;crontab&lt;/code&gt; 目录放到 &lt;span class="caps"&gt;SD&lt;/span&gt;&amp;nbsp;卡上的，试了一下，启动的时候识别不到，因此放弃了。&lt;/p&gt;
+&lt;p&gt;所以，如果你有什么需要在启动的时候运行的话，可以把脚本放在 &lt;code&gt;/data/adb/service.d&lt;/code&gt; 或是 &lt;code&gt;/data/adb/post-fs-data.d&lt;/code&gt; 目录里面就可以了。&lt;/p&gt;
+&lt;p&gt;具体可以参考： &lt;a href="https://github.com/topjohnwu/Magisk/blob/master/docs/guides.md#boot-scripts"&gt;Magisk: Developer&amp;nbsp;Guides&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;还有一个详细介绍 Crond 的: &lt;a href="https://www.cyberciti.biz/faq/how-do-i-add-jobs-to-cron-under-linux-or-unix-oses/"&gt;How To Add Jobs To cron Under Linux or &lt;span class="caps"&gt;UNIX&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;用 &lt;code&gt;termux&lt;/code&gt; 实现应该也是可以的，具体没有试，可以参考： &lt;a href="https://www.reddit.com/r/termux/comments/i27szk/how_do_i_crontab_on_termux/"&gt;How do I Crontab on&amp;nbsp;Termux..&lt;/a&gt;&lt;/p&gt;</content><category term="android"></category><category term="android"></category><category term="crond"></category><category term="crontab"></category></entry><entry><title>小米 9se 手机自定义启动画面 splash/logo</title><link href="https://doobom.me/mi9se-splash-logo-image-modify" rel="alternate"></link><published>2021-01-20T21:12:54+08:00</published><updated>2021-01-20T21:12:54+08:00</updated><author><name>doobom</name></author><id>tag:doobom.me,2021-01-20:/mi9se-splash-logo-image-modify</id><summary type="html">&lt;p&gt;折腾一下 小米 9se 的 splash, 就是刚启动开机时显示的那个 logo&amp;nbsp;画面&lt;/p&gt;</summary><content type="html">&lt;p&gt;网上一直找不到 mi9se 的 splash 的做法，找了好一会儿找到红米4 的 splash 脚本，毕竟太老估计没参考价值，然后在 &lt;span class="caps"&gt;XDA&lt;/span&gt; 上找到了 mi9 的： &lt;a href="https://forum.xda-developers.com/t/mi-9-splash-boot-image-creation-script.3952572/"&gt;Mi 9 Splash / Boot Image creation script.&lt;/a&gt; ,&amp;nbsp;嗯，看来有戏。&lt;/p&gt;
 &lt;p&gt;首先&lt;/p&gt;
 &lt;p&gt;把 &lt;code&gt;logo&lt;/code&gt; 分区 &lt;code&gt;dd&lt;/code&gt; 下来，毕竟我是有 root 的人，我记得以前都是在 &lt;code&gt;splash&lt;/code&gt; 分区的，我也一起 &lt;code&gt;dd&lt;/code&gt; 了，根据上面 &lt;span class="caps"&gt;XDA&lt;/span&gt; 的文，不在 &lt;code&gt;splash&lt;/code&gt; 分区，我也看了 &lt;code&gt;splash.img&lt;/code&gt;, 都是填充的 &lt;code&gt;00&lt;/code&gt; ：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;su&lt;/span&gt;

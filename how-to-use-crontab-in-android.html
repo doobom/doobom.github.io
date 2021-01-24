@@ -12,27 +12,27 @@
 
         <meta name="author" content="doobom" />
 
-        <meta name="description" content="怎么用类名启动 Google 助理，因为一个 Google 已经包含了
+        <meta name="description" content="在安卓(android) 上打开 计划任务 的功能，就是 crontab
 " />
         <meta name="twitter:creator" content="@d8boom">
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary">
 
-<meta name="keywords" content="shell, android, t-ui, google, assistant, Shell, " />
+<meta name="keywords" content="android, crond, crontab, android, " />
 
-<meta property="og:title" content="用类名启动应用 Google Assistant "/>
-<meta property="og:url" content="https://doobom.me/android-shell-launch-with-activity" />
-<meta property="og:description" content="怎么用类名启动 Google 助理，因为一个 Google 已经包含了" />
+<meta property="og:title" content="How To Use Crontab In Android? "/>
+<meta property="og:url" content="https://doobom.me/how-to-use-crontab-in-android" />
+<meta property="og:description" content="在安卓(android) 上打开 计划任务 的功能，就是 crontab" />
 <meta property="og:site_name" content="oops: run" />
 <meta property="og:article:author" content="doobom" />
-<meta property="og:article:published_time" content="2021-01-05T21:52:27+08:00" />
-<meta property="og:article:modified_time" content="2021-01-05T21:52:27+08:00" />
-<meta name="twitter:title" content="用类名启动应用 Google Assistant ">
-<meta name="twitter:description" content="怎么用类名启动 Google 助理，因为一个 Google 已经包含了">
+<meta property="og:article:published_time" content="2021-01-22T21:45:30+08:00" />
+<meta property="og:article:modified_time" content="2021-01-22T21:45:30+08:00" />
+<meta name="twitter:title" content="How To Use Crontab In Android? ">
+<meta name="twitter:description" content="在安卓(android) 上打开 计划任务 的功能，就是 crontab">
 <meta property="og:image" content="https://doobom.me/theme/images/apple-touch-icon-152x152.png" />
 <meta name="twitter:image" content="https://doobom.me/theme/images/apple-touch-icon-152x152.png" >
 
-        <title>用类名启动应用 Google Assistant  · oops: run
+        <title>How To Use Crontab In Android?  · oops: run
 </title>
         <link rel="shortcut icon" href="https://doobom.me/theme/images/favicon.ico" type="image/x-icon" />
         <link rel="icon" href="https://doobom.me/theme/images/apple-touch-icon-152x152.png" type="image/png" />
@@ -92,8 +92,8 @@
 <div class="row-fluid">
     <header class="page-header span10 offset2">
         <h1>
-            <a href="https://doobom.me/android-shell-launch-with-activity">
-                用类名启动应用 Google&nbsp;Assistant
+            <a href="https://doobom.me/how-to-use-crontab-in-android">
+                How To Use Crontab In&nbsp;Android?
             </a>
         </h1>
     </header>
@@ -102,45 +102,85 @@
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
             
-            <p>今天坐动车的时候，无意间看到一个 安卓 手机上的类 linux 的启动器，各种炫吧，然后看了介绍，有广告，就这样拾起了很久没用的 <a href="https://github.com/fAndreuzzi/TUI-ConsoleLauncher">T-<span class="caps">UI</span></a>，看到了以前设置的快捷键有个 google assistant&nbsp;。</p>
-<p>怎么折腾就是启动不起来，因为现在是一个 google 应用，包含了 助理 的功能，google 包名是 <code>com.google.android.googlequicksearchbox</code>， 直接包名只能启动 google 搜索，试了一下类名 <code>com.google.android.apps.gsa.assistant.handoff.AssistantHandoffActivity</code>，当然是失败了。</p>
-<p>google 了一下，这里给出了答案： <a href="https://automagic4android.com/forum/viewtopic.php?t=7082#p19629">How to launch Google&nbsp;assistant</a></p>
-<div class="highlight"><pre><span class="code-line"><span></span><code><span class="c1">#Try one of this actions:</span></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="c1">#Execute Root command &gt; Command</span></span>
-<span class="code-line">am start -n <span class="s2">&quot;com.google.android.googlequicksearchbox/com.google.android.apps.gsa.staticplugins.opa.OpaActivity&quot;</span></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="c1">#or:</span></span>
-<span class="code-line"><span class="c1">#Execute Root command &gt; Command</span></span>
-<span class="code-line">input keyevent <span class="m">219</span></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="c1">#or:</span></span>
-<span class="code-line"><span class="c1">#Start Activity &gt; Action</span></span>
-<span class="code-line">android.intent.action.VOICE_COMMAND</span>
+            <p>首先，你得 root ,&nbsp;如果没有，那没戏了。</p>
+<blockquote>
+<p>以下原文： <a href="https://stackoverflow.com/questions/16747880/how-to-use-crontab-in-android">How to use crontab in&nbsp;Android?</a></p>
+</blockquote>
+<p><strong>Requirements</strong></p>
+<ul>
+<li>
+<p>Root access: for superuser commads like reboot, or init.d config. Crond can still run under normal user&nbsp;privs.</p>
+</li>
+<li>
+<p>Busybox: for &#8216;crond&#8217;&nbsp;service</p>
+</li>
+<li>
+<p>(Optional) init.d support: to start &#8216;crond&#8217; service at boot. Or start via Magisk post-fs-data.d&nbsp;script.</p>
+</li>
+</ul>
+<p><strong>Creating&nbsp;cronjob</strong></p>
+<p>Create the cronjob file in directory <code>/data/crontab/</code> (it could be any accessible directory even in sdcard) with filename &#8216;<code>root</code><span class="quo">&#8216;</span>. Write your cronjob inside the file&nbsp;&#8216;root&#8217;.</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="nb">echo</span> <span class="s1">&#39;53 * * * * reboot&#39;</span> &gt;&gt; /data/crontab/root</span>
 <span class="code-line"></code></pre></div>
 
-<p>关键的是要 <span class="caps">ROOT</span> ，然尔我的手机并没有，如果运行会提示没有用户权限 <code>android.permission.INTERACT_ACROSS_USERS_FULL</code>。</p>
-<p>这边有说明 <a href="https://bugjia.net/200213/161125.html">Bug+: 拒绝权限：这需要android.permission.INTERACT_ACROSS_USERS_FULL</a> ，文中说最佳答案 <a href="https://stackoverflow.com/a/19756762/713354">android.permission.INTERACT_ACROSS_USERS_FULL is a signature level permission</a>&nbsp;.</p>
-<blockquote>
-<p>您的应用程序将无法使用它,除非它具有与系统相同的签名.</p>
-<p>除非您是创建者或系统构建者,或者与他们合作以使他们愿意用其证书签署apk,否则您将无法实现.换句话说,对于大多数开发人员来说这是不可行的.
-</p>
-</blockquote>
-<p>所以我放弃了，安装了单独的 <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.googleassistant&amp;hl=en&amp;gl=US">Google Assistant</a>&nbsp;应用.</p>
-<p>毕竟还要折腾其它的。</p>
+<p><strong>Test without&nbsp;rebooting</strong></p>
+<p>Now open any terminal emulator in device and run the following&nbsp;commands..</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code>su -</span>
+<span class="code-line">crond -b -c /data/crontab</span>
+<span class="code-line"></code></pre></div>
+
+<p>Now the crond service will start, to check type <code>pgrep -l crond</code> or <code>ps | grep crond</code></p>
+<p><strong>Start crond at&nbsp;boot</strong></p>
+<p>create a file at <code>/system/etc/init.d</code> with executable&nbsp;permission:</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="nb">echo</span> <span class="s1">&#39;crond -b -c /data/crontab&#39;</span> &gt; /system/etc/init.d/crond</span>
+<span class="code-line"></span>
+<span class="code-line">chmod +x /system/etc/init.d/crond</span>
+<span class="code-line"></code></pre></div>
+
+<p><strong>Example&nbsp;cronjobs</strong></p>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="m">53</span> * * * * reboot</span>
+<span class="code-line"></code></pre></div>
+
+<p>Will reboot your device on 53rd minute of every&nbsp;hour.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol>
+<li>
+<p>If you modify crontab, remember to restart crond daemon after killing the existing&nbsp;one.</p>
+</li>
+<li>
+<p>If the crond is not obeying your timezone, you might need to update the tzdata in your&nbsp;device.</p>
+</li>
+<li>
+<p>Better to test with <code>*/1 * * * *</code> to see if it is&nbsp;working.</p>
+</li>
+</ol>
+</div>
+<hr />
+<p>因为我没在 <code>/system/etc</code> 目录下找到 <code>init.d</code> ,&nbsp;因此我是这么着的：</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="nb">echo</span> <span class="s1">&#39;crond -b -c /data/crontab&#39;</span> &gt; /data/adb/service.d/crond</span>
+<span class="code-line"></span>
+<span class="code-line">chmod +x /data/adb/service.d/crond</span>
+<span class="code-line"></code></pre></div>
+
+<p>本来吧，我是准备把 <code>crontab</code> 目录放到 <span class="caps">SD</span>&nbsp;卡上的，试了一下，启动的时候识别不到，因此放弃了。</p>
+<p>所以，如果你有什么需要在启动的时候运行的话，可以把脚本放在 <code>/data/adb/service.d</code> 或是 <code>/data/adb/post-fs-data.d</code> 目录里面就可以了。</p>
+<p>具体可以参考： <a href="https://github.com/topjohnwu/Magisk/blob/master/docs/guides.md#boot-scripts">Magisk: Developer&nbsp;Guides</a></p>
+<p>还有一个详细介绍 Crond 的: <a href="https://www.cyberciti.biz/faq/how-do-i-add-jobs-to-cron-under-linux-or-unix-oses/">How To Add Jobs To cron Under Linux or <span class="caps">UNIX</span></a></p>
+<p>用 <code>termux</code> 实现应该也是可以的，具体没有试，可以参考： <a href="https://www.reddit.com/r/termux/comments/i27szk/how_do_i_crontab_on_termux/">How do I Crontab on&nbsp;Termux..</a></p>
 
 
              
 
 
 <div class="applause_button">
-    <applause-button url=https://doobom.me/android-shell-launch-with-activity> </applause-button>
+    <applause-button url=https://doobom.me/how-to-use-crontab-in-android> </applause-button>
 </div>
 
  
                 <p id="post-share-links" style="text-align:left">
     Like this post? Share on:
-      <a href="https://twitter.com/intent/tweet?text=%E7%94%A8%E7%B1%BB%E5%90%8D%E5%90%AF%E5%8A%A8%E5%BA%94%E7%94%A8%20Google%C2%A0Assistant&url=https%3A//doobom.me/android-shell-launch-with-activity&via=d8boom&hashtags=shell,android,t-ui,google,assistant" target="_blank" rel="nofollow noopener noreferrer" title="Share on Twitter"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
+      <a href="https://twitter.com/intent/tweet?text=How%20To%20Use%20Crontab%20In%C2%A0Android%3F&url=https%3A//doobom.me/how-to-use-crontab-in-android&via=d8boom&hashtags=android,crond,crontab" target="_blank" rel="nofollow noopener noreferrer" title="Share on Twitter"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
 <path style="fill:#03A9F4;" d="M512,97.248c-19.04,8.352-39.328,13.888-60.48,16.576c21.76-12.992,38.368-33.408,46.176-58.016
 	c-20.288,12.096-42.688,20.64-66.56,25.408C411.872,60.704,384.416,48,354.464,48c-58.112,0-104.896,47.168-104.896,104.992
 	c0,8.32,0.704,16.32,2.432,23.936c-87.264-4.256-164.48-46.08-216.352-109.792c-9.056,15.712-14.368,33.696-14.368,53.056
@@ -150,14 +190,14 @@
 	C46.496,446.88,101.6,464,161.024,464c193.152,0,298.752-160,298.752-298.688c0-4.64-0.16-9.12-0.384-13.568
 	C480.224,136.96,497.728,118.496,512,97.248z"></path>
 </svg></a>
-       <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//doobom.me/android-shell-launch-with-activity" target="_blank" rel="nofollow noopener noreferrer" title="Share on Facebook"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
+       <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//doobom.me/how-to-use-crontab-in-android" target="_blank" rel="nofollow noopener noreferrer" title="Share on Facebook"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
 <path style="fill:#1976D2;" d="M448,0H64C28.704,0,0,28.704,0,64v384c0,35.296,28.704,64,64,64h384c35.296,0,64-28.704,64-64V64
 	C512,28.704,483.296,0,448,0z"></path>
 <path style="fill:#FAFAFA;" d="M432,256h-80v-64c0-17.664,14.336-16,32-16h32V96h-64l0,0c-53.024,0-96,42.976-96,96v64h-64v80h64
 	v176h96V336h48L432,256z"></path>
 </svg></a>
-       <a href="https://news.ycombinator.com/submitlink?t=%E7%94%A8%E7%B1%BB%E5%90%8D%E5%90%AF%E5%8A%A8%E5%BA%94%E7%94%A8%20Google%C2%A0Assistant&u=https%3A//doobom.me/android-shell-launch-with-activity" target="_blank" rel="nofollow noopener noreferrer" title="Share on Hacker-News"><svg id="Layer_1" version="1.1" viewBox="0 0 512 512" width="31" height="31" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"><defs id="defs12"></defs><g id="g3045"><path d="m -0.003935,-0.0039375 512.007865,0 0,512.0078775 -512.007865,0 z" id="path3032" style="fill:#f68423;fill-opacity:1;fill-rule:nonzero;stroke:none"></path><path d="m 108.74016,65.990163 122.49212,242.503937 0,137.51574 49.8189,0 0,-137.51574 122.20866,-242.503937 -54.1063,0 -93.11811,182.586607 -89.5748,-182.586607 -57.72047,0 z" id="path3034" style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"></path></g></svg></a>
-       <a href="https://www.reddit.com/submit?url=https%3A//doobom.me/android-shell-launch-with-activity&title=%E7%94%A8%E7%B1%BB%E5%90%8D%E5%90%AF%E5%8A%A8%E5%BA%94%E7%94%A8%20Google%C2%A0Assistant" target="_blank" rel="nofollow noopener noreferrer" title="Share on reddit"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 514.24 514.24" style="enable-background:new 0 0 514.24 514.24;" xml:space="preserve" width="31" height="31">
+       <a href="https://news.ycombinator.com/submitlink?t=How%20To%20Use%20Crontab%20In%C2%A0Android%3F&u=https%3A//doobom.me/how-to-use-crontab-in-android" target="_blank" rel="nofollow noopener noreferrer" title="Share on Hacker-News"><svg id="Layer_1" version="1.1" viewBox="0 0 512 512" width="31" height="31" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"><defs id="defs12"></defs><g id="g3045"><path d="m -0.003935,-0.0039375 512.007865,0 0,512.0078775 -512.007865,0 z" id="path3032" style="fill:#f68423;fill-opacity:1;fill-rule:nonzero;stroke:none"></path><path d="m 108.74016,65.990163 122.49212,242.503937 0,137.51574 49.8189,0 0,-137.51574 122.20866,-242.503937 -54.1063,0 -93.11811,182.586607 -89.5748,-182.586607 -57.72047,0 z" id="path3034" style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"></path></g></svg></a>
+       <a href="https://www.reddit.com/submit?url=https%3A//doobom.me/how-to-use-crontab-in-android&title=How%20To%20Use%20Crontab%20In%C2%A0Android%3F" target="_blank" rel="nofollow noopener noreferrer" title="Share on reddit"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 514.24 514.24" style="enable-background:new 0 0 514.24 514.24;" xml:space="preserve" width="31" height="31">
 <g>
 	<polygon style="fill:#FAFAFA;" points="192,289.121 176,289.089 176,289.121 	"></polygon>
 	<polygon style="fill:#FAFAFA;" points="336,289.121 352,289.121 336,289.089 	"></polygon>
@@ -178,7 +218,7 @@
 	<circle style="fill:#FAFAFA;" cx="336" cy="289.121" r="32"></circle>
 </g>
 </svg></a>
-       <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//doobom.me/android-shell-launch-with-activity&title=%E7%94%A8%E7%B1%BB%E5%90%8D%E5%90%AF%E5%8A%A8%E5%BA%94%E7%94%A8%20Google%C2%A0Assistant&summary=%E6%80%8E%E4%B9%88%E7%94%A8%E7%B1%BB%E5%90%8D%E5%90%AF%E5%8A%A8%20Google%20%E5%8A%A9%E7%90%86%EF%BC%8C%E5%9B%A0%E4%B8%BA%E4%B8%80%E4%B8%AA%20Google%C2%A0%E5%B7%B2%E7%BB%8F%E5%8C%85%E5%90%AB%E4%BA%86&source=https%3A//doobom.me/android-shell-launch-with-activity" target="_blank" rel="nofollow noopener noreferrer" title="Share on linkedin"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
+       <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//doobom.me/how-to-use-crontab-in-android&title=How%20To%20Use%20Crontab%20In%C2%A0Android%3F&summary=%E5%9C%A8%E5%AE%89%E5%8D%93%28android%29%20%E4%B8%8A%E6%89%93%E5%BC%80%20%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%20%E7%9A%84%E5%8A%9F%E8%83%BD%EF%BC%8C%E5%B0%B1%E6%98%AF%C2%A0crontab&source=https%3A//doobom.me/how-to-use-crontab-in-android" target="_blank" rel="nofollow noopener noreferrer" title="Share on linkedin"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
 <g>
 	<rect y="160" style="fill:#1976D2;" width="114.496" height="352"></rect>
 	<path style="fill:#1976D2;" d="M426.368,164.128c-1.216-0.384-2.368-0.8-3.648-1.152c-1.536-0.352-3.072-0.64-4.64-0.896
@@ -187,7 +227,7 @@
 	<circle style="fill:#1976D2;" cx="56" cy="56" r="56"></circle>
 </g>
 </svg></a>
-       <a href="mailto:?subject=%E7%94%A8%E7%B1%BB%E5%90%8D%E5%90%AF%E5%8A%A8%E5%BA%94%E7%94%A8%20Google%C2%A0Assistant&amp;body=https%3A//doobom.me/android-shell-launch-with-activity" target="_blank" rel="nofollow noopener noreferrer" title="Share via Email"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
+       <a href="mailto:?subject=How%20To%20Use%20Crontab%20In%C2%A0Android%3F&amp;body=https%3A//doobom.me/how-to-use-crontab-in-android" target="_blank" rel="nofollow noopener noreferrer" title="Share via Email"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
 <path style="fill:#1E88E5;" d="M480,432H32c-17.664,0-32-14.336-32-32V112c0-17.664,14.336-32,32-32h448c17.664,0,32,14.336,32,32
 	v288C512,417.664,497.664,432,480,432z"></path>
 <path style="fill:#2196F3;" d="M480,432H32c-17.952,0-32-14.048-32-32c0-5.088,2.432-9.888,6.528-12.896l240-160
@@ -224,8 +264,8 @@
                 <a class="accordion-toggle disqus-comment-count comment-count collapsed"
                    data-toggle="collapse"
                    data-parent="#accordion2"
-                   data-disqus-identifier="https://doobom.me/android-shell-launch-with-activity"
-                   href="https://doobom.me/android-shell-launch-with-activity#comment_thread"
+                   data-disqus-identifier="https://doobom.me/how-to-use-crontab-in-android"
+                   href="https://doobom.me/how-to-use-crontab-in-android#comment_thread"
                    id="comment-accordion-toggle">
                     Comments
                 </a>
@@ -243,8 +283,8 @@
         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
     }());
 
-    var disqus_identifier = 'https://doobom.me/android-shell-launch-with-activity';
-    var disqus_url = 'https://doobom.me/android-shell-launch-with-activity';
+    var disqus_identifier = 'https://doobom.me/how-to-use-crontab-in-android';
+    var disqus_url = 'https://doobom.me/how-to-use-crontab-in-android';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -270,44 +310,35 @@
 <section>
     <h2>Keep Reading</h2>
 <ul class="related-posts-list">
-<li><a href="https://doobom.me/send-mail-via-smtp-in-telnet" title="Telnet 中使用 smtp 发送邮件">Telnet 中使用 smtp 发送邮件</a></li>
-<li><a href="https://doobom.me/linux-stop-cont-ps" title="LINUX 暂停、继续进程">LINUX 暂停、继续进程</a></li>
-<li><a href="https://doobom.me/get-string-in-shell-via-grep-sed-awk" title="使用 grep/sed/awk 提取字符串">使用 grep/sed/awk 提取字符串</a></li>
-<li><a href="https://doobom.me/loop-through-an-array-of-strings-and-parse-json-in-bash" title="Loop Through An Array Of Strings And Parse Json In Bash">Loop Through An Array Of Strings And Parse Json In Bash</a></li>
+<li><a href="https://doobom.me/android-shell-launch-with-activity" title="用类名启动应用 Google Assistant">用类名启动应用 Google Assistant</a></li>
 <li><a href="https://doobom.me/mi9se-flash-miui12-enable-google-now" title="小米9se 刷机并解锁 Google Now">小米9se 刷机并解锁 Google Now</a></li>
+<li><a href="https://doobom.me/mi9se-splash-logo-image-modify" title="小米 9se 手机自定义启动画面 splash/logo">小米 9se 手机自定义启动画面 splash/logo</a></li>
 </ul>
 <hr />
 </section>
             <aside>
             <nav>
             <ul class="articles-timeline">
-                <li class="previous-article">« <a href="https://doobom.me/how-to-migrate-or-export-all-gpg-public-and-private-keys-from-one-user-to-another" title="Previous: How To Migrate Or Export All Gpg Public And Private Keys From One User To Another">How To Migrate Or Export All Gpg Public And Private Keys From One User To Another</a></li>
-                <li class="next-article"><a href="https://doobom.me/loop-through-an-array-of-strings-and-parse-json-in-bash" title="Next: Loop Through An Array Of Strings And Parse Json In Bash">Loop Through An Array Of Strings And Parse Json In Bash</a> »</li>
+                <li class="previous-article">« <a href="https://doobom.me/mi9se-splash-logo-image-modify" title="Previous: 小米 9se 手机自定义启动画面 splash/logo">小米 9se 手机自定义启动画面 splash/logo</a></li>
             </ul>
             </nav>
             </aside>
         </div>
         <section id="article-sidebar" class="span2">
             <h4>Published</h4>
-            <time itemprop="dateCreated" datetime="2021-01-05T21:52:27+08:00">2021-01-05</time>
+            <time itemprop="dateCreated" datetime="2021-01-22T21:45:30+08:00">2021-01-22</time>
 
             <h4>Category</h4>
-            <a class="category-link" href="https://doobom.me/categories#shell-ref">Shell</a>
+            <a class="category-link" href="https://doobom.me/categories#android-ref">android</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
                 <li><a href="https://doobom.me/tags#android-ref">android
                     <span class="superscript">4</span>
 </a></li>
-                <li><a href="https://doobom.me/tags#assistant-ref">assistant
+                <li><a href="https://doobom.me/tags#crond-ref">crond
                     <span class="superscript">1</span>
 </a></li>
-                <li><a href="https://doobom.me/tags#google-ref">google
-                    <span class="superscript">2</span>
-</a></li>
-                <li><a href="https://doobom.me/tags#shell-ref">shell
-                    <span class="superscript">5</span>
-</a></li>
-                <li><a href="https://doobom.me/tags#t-ui-ref">t-ui
+                <li><a href="https://doobom.me/tags#crontab-ref">crontab
                     <span class="superscript">1</span>
 </a></li>
             </ul>

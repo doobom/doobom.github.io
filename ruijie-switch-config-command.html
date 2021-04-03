@@ -259,20 +259,16 @@
 <p>b). 扩展 <span class="caps">ACL</span></p>
 <p><code>(config)#ip access-list extended listname</code> //定义命名扩展列表，命名为 <code>listname</code> ,<code>extended</code> 为扩展</p>
 <p><code>(config-ext-nacl)#deny tcp 192.168.30.0 0.0.0.255 192.168.10.0 0.0.0.255 eq www</code>   //拒绝源地址为 <code>192.168.30.0</code> 网段的 <span class="caps">IP</span> 访问目的地址为 <code>192.168.10.0</code> 网段的 <span class="caps">WWW</span> 服务</p>
-<p>!!! Note　　
-    <code>deny</code>：拒绝通过，可选：<code>deny</code>(拒绝通过)、<code>permit</code>(允许通过)</p>
-<div class="highlight"><pre><span class="code-line"><span></span><code><span class="ss">`tcp`</span><span class="p">:</span> <span class="err">协议名称，协议可以是</span> <span class="ss">`udp`</span><span class="p">,</span> <span class="ss">`ip`</span><span class="err">，</span><span class="ss">`eigrp`</span><span class="p">,</span> <span class="ss">`gre`</span><span class="p">,</span> <span class="ss">`icmp`</span><span class="p">,</span> <span class="ss">`igmp`</span><span class="p">,</span> <span class="ss">`igrp`</span> <span class="err">等等。</span></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="ss">`192.168.10.0 0.0.0.255`</span><span class="err">：源地址及源地址通配符</span></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="ss">`192.168.30.0 0.0.0.255`</span><span class="err">：目的地址及目的地址通配符</span></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="ss">`eq`</span><span class="err">：操作符（</span> <span class="ss">`lt`</span> <span class="o">-</span> <span class="err">小于，</span><span class="ss">`eq`</span> <span class="o">-</span> <span class="err">等于，</span><span class="ss">`gt`</span> <span class="o">-</span> <span class="err">大于，</span><span class="ss">`neg`</span> <span class="o">-</span> <span class="err">不等于，</span><span class="ss">`range`</span> <span class="o">-</span> <span class="err">包含）</span></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="ss">`www`</span><span class="err">：端口号，可使用名称或具体编号</span></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="err">可以使用的协议名称（或编号）和端口名称（或编号）请打</span> <span class="ss">`?`</span> <span class="err">查询。</span></span>
-<span class="code-line"></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>deny</code>：拒绝通过，可选：<code>deny</code>(拒绝通过)、<code>permit</code>(允许通过)</p>
+<p><code>tcp</code>: 协议名称，协议可以是 <code>udp</code>, <code>ip</code>，<code>eigrp</code>, <code>gre</code>, <code>icmp</code>, <code>igmp</code>, <code>igrp</code> 等等。</p>
+<p><code>192.168.10.0 0.0.0.255</code>：源地址及源地址通配符</p>
+<p><code>192.168.30.0 0.0.0.255</code>：目的地址及目的地址通配符</p>
+<p><code>eq</code>：操作符（ <code>lt</code> - 小于，<code>eq</code> - 等于，<code>gt</code> - 大于，<code>neg</code> - 不等于，<code>range</code> - 包含）</p>
+<p><code>www</code>：端口号，可使用名称或具体编号</p>
+<p>可以使用的协议名称（或编号）和端口名称（或编号）请打 <code>?</code> 查询。</p>
+</div>
 <p><code>(config-ext-nacl)#permit ip any any</code>   //允许其它通过</p>
 <p><code>(config-ext-nacl)#end</code>      //返回</p>
 <p><code>(config)#interface vlan 10</code>     //进入端口配置模式</p>

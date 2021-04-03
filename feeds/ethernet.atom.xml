@@ -117,8 +117,8 @@
 &lt;p&gt;&lt;code&gt;(config)# ip route 172.16.1.0 255.255.255.0 172.16.2.1&lt;/code&gt;   //配置静态路由&lt;/p&gt;
 &lt;div class="admonition note"&gt;
 &lt;p class="admonition-title"&gt;Note&lt;/p&gt;
-&lt;/div&gt;
 &lt;p&gt;注： &lt;code&gt;172.16.1.0 255.255.255.0&lt;/code&gt;   为目标网络的网络号及子网掩码&lt;/p&gt;
+&lt;/div&gt;
 &lt;p&gt;&lt;code&gt;172.16.2.1&lt;/code&gt; 为下一跳的地址，也可用接口表示,如 &lt;code&gt;ip route 172.16.1.0 255.255.255.0 serial 1/2&lt;/code&gt; ( &lt;code&gt;172.16.2.0&lt;/code&gt; 所接的端口)&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;(config)# router rip&lt;/code&gt;     //开启 &lt;span class="caps"&gt;RIP&lt;/span&gt; 协议进程&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;(config-router)# network 172.16.1.0&lt;/code&gt;     //申明本设备的直连网段信息&lt;/p&gt;

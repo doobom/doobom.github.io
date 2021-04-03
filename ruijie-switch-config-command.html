@@ -232,8 +232,8 @@
 <p><code>(config)# ip route 172.16.1.0 255.255.255.0 172.16.2.1</code>   //配置静态路由</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-</div>
 <p>注： <code>172.16.1.0 255.255.255.0</code>   为目标网络的网络号及子网掩码</p>
+</div>
 <p><code>172.16.2.1</code> 为下一跳的地址，也可用接口表示,如 <code>ip route 172.16.1.0 255.255.255.0 serial 1/2</code> ( <code>172.16.2.0</code> 所接的端口)</p>
 <p><code>(config)# router rip</code>     //开启 <span class="caps">RIP</span> 协议进程</p>
 <p><code>(config-router)# network 172.16.1.0</code>     //申明本设备的直连网段信息</p>

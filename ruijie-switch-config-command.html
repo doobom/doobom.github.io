@@ -213,13 +213,10 @@
 <p><code>(config)# interface fastethernet 0/1</code>      //进入一个端口</p>
 <p><code>(config-if)# switchport port-security</code>     //开启该端口的安全功能</p>
 <p>*. 配置最大连接数限制</p>
-<div class="highlight"><pre><span class="code-line"><span></span><code><span class="ss">`(config-if)# switchport port-secruity maxmum 1`</span> <span class="o">//</span><span class="err">配置端口的最大连接数为</span> <span class="ss">`1`</span><span class="err">，最大连接数为</span> <span class="ss">`128`</span></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="ss">`(config-if)# switchport port-secruity violation shutdown`</span>  <span class="o">//</span><span class="err">配置安全违例的处理方式为</span> <span class="ss">`shutdown`</span><span class="err">，可选为</span> <span class="ss">`protect`</span> <span class="p">(</span><span class="err">当安全地址数满后，将未知名地址丢弃</span><span class="p">)</span><span class="err">、</span><span class="ss">`restrict`</span> <span class="p">(</span><span class="err">当违例时，发送一个</span> <span class="n">Trap</span> <span class="err">通知</span><span class="p">)</span><span class="err">、</span><span class="ss">`shutdown`</span> <span class="p">(</span><span class="err">当违例时将端口关闭，并发送</span> <span class="n">Trap</span> <span class="err">通知，可在全局模式下用</span> <span class="ss">`errdisable recovery`</span> <span class="err">来恢复</span><span class="p">)</span></span>
-<span class="code-line"></code></pre></div>
+<p><code>(config-if)# switchport port-secruity maxmum 1</code> //配置端口的最大连接数为 <code>1</code>，最大连接数为 <code>128</code></p>
+<p><code>(config-if)# switchport port-secruity violation shutdown</code>  //配置安全违例的处理方式为 <code>shutdown</code>，可选为 <code>protect</code> (当安全地址数满后，将未知名地址丢弃)、<code>restrict</code> (当违例时，发送一个 Trap 通知)、<code>shutdown</code> (当违例时将端口关闭，并发送 Trap 通知，可在全局模式下用 <code>errdisable recovery</code> 来恢复)</p>
 <p>*. <span class="caps">IP</span> 和 <span class="caps">MAC</span> 地址绑定</p>
-<div class="highlight"><pre><span class="code-line"><span></span><code><span class="err">`(config-if)#switchport port-security mac-address xxxx.xxxx.xxxx ip-address 172.16.1.1` //接口配置模式下配置 MAC 地址 `xxxx.xxxx.xxxx` 和 IP `172.16.1.1` 进行绑定( MAC 地址注意用小写)</span></span>
-<span class="code-line"></code></pre></div>
+<p><code>(config-if)#switchport port-security mac-address xxxx.xxxx.xxxx ip-address 172.16.1.1</code> //接口配置模式下配置 <span class="caps">MAC</span> 地址 <code>xxxx.xxxx.xxxx</code> 和 <span class="caps">IP</span> <code>172.16.1.1</code> 进行绑定( <span class="caps">MAC</span> 地址注意用小写)</p>
 <ol>
 <li>三层路由功能(针对三层交换机)</li>
 </ol>
@@ -233,8 +230,10 @@
 <li>三层交换机路由协议</li>
 </ol>
 <p><code>(config)# ip route 172.16.1.0 255.255.255.0 172.16.2.1</code>   //配置静态路由</p>
-<p>!!! Note
-      注： <code>172.16.1.0 255.255.255.0</code>   为目标网络的网络号及子网掩码</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>注： <code>172.16.1.0 255.255.255.0</code>   为目标网络的网络号及子网掩码</p>
 <p><code>172.16.2.1</code> 为下一跳的地址，也可用接口表示,如 <code>ip route 172.16.1.0 255.255.255.0 serial 1/2</code> ( <code>172.16.2.0</code> 所接的端口)</p>
 <p><code>(config)# router rip</code>     //开启 <span class="caps">RIP</span> 协议进程</p>
 <p><code>(config-router)# network 172.16.1.0</code>     //申明本设备的直连网段信息</p>
@@ -248,54 +247,37 @@
 </ol>
 <p>交换机采用命名的访问控制列表；分标准( stand )和扩展( extended )两种</p>
 <p>*. 标准 <span class="caps">ACL</span></p>
-<div class="highlight"><pre><span class="code-line"><span></span><code><span class="ss">`(config)#ip access-list stand listname`</span> <span class="o">//</span><span class="err">定义命名标准列表，命名为</span> <span class="ss">`listname`</span><span class="err">，</span><span class="ss">`stand`</span> <span class="err">为标准列表</span></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="ss">`(config-std-nacl)#deny 192.168.30.0 0.0.0.255`</span> <span class="o">//</span><span class="err">拒绝来</span> <span class="ss">`自192.168.30.0`</span> <span class="err">网段的</span> <span class="n">IP</span> <span class="err">流量通过</span></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="o">!!!</span> <span class="n">Note</span></span>
-<span class="code-line">    <span class="err">注：</span><span class="ss">`deny`</span><span class="err">：拒绝通过；可选：</span><span class="ss">`deny`</span> <span class="p">(</span><span class="err">拒绝通过</span><span class="p">)</span><span class="err">、</span><span class="ss">`permit`</span> <span class="p">(</span><span class="err">允许通过</span><span class="p">)</span></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="ss">`192.168.30.0 0.0.0.255`</span><span class="err">：源地址及源地址通配符；可使用</span> <span class="ss">`any`</span> <span class="err">表示任何</span> <span class="n">IP</span></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="ss">`(config-std-nacl)#permit any`</span></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="ss">`(config-std-nacl)#end`</span>   <span class="o">//</span><span class="err">返回</span></span>
-<span class="code-line"></code></pre></div>
+<p><code>(config)#ip access-list stand listname</code> //定义命名标准列表，命名为 <code>listname</code>，<code>stand</code> 为标准列表</p>
+<p><code>(config-std-nacl)#deny 192.168.30.0 0.0.0.255</code> //拒绝来 <code>自192.168.30.0</code> 网段的 <span class="caps">IP</span> 流量通过</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>注：<code>deny</code>：拒绝通过；可选：<code>deny</code> (拒绝通过)、<code>permit</code> (允许通过)</p>
+</div>
+<p><code>192.168.30.0 0.0.0.255</code>：源地址及源地址通配符；可使用 <code>any</code> 表示任何 <span class="caps">IP</span></p>
+<p><code>(config-std-nacl)#permit any</code></p>
+<p><code>(config-std-nacl)#end</code>   //返回</p>
 <p>*. 扩展 <span class="caps">ACL</span></p>
-<div class="highlight"><pre><span class="code-line"><span></span><code><span class="ss">`(config)#ip access-list extended listname`</span> <span class="o">//</span><span class="err">定义命名扩展列表，命名为</span> <span class="ss">`listname`</span> <span class="p">,</span><span class="ss">`extended`</span> <span class="err">为扩展</span></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="ss">`(config-ext-nacl)#deny tcp 192.168.30.0 0.0.0.255 192.168.10.0 0.0.0.255 eq www`</span>   <span class="o">//</span><span class="err">拒绝源地址为</span> <span class="ss">`192.168.30.0`</span> <span class="err">网段的</span> <span class="n">IP</span> <span class="err">访问目的地址为</span> <span class="ss">`192.168.10.0`</span> <span class="err">网段的</span> <span class="n">WWW</span> <span class="err">服务</span></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="o">!!!</span> <span class="n">Note</span></span>
-<span class="code-line">    <span class="ss">`deny`</span><span class="err">：拒绝通过，可选：</span><span class="ss">`deny`</span><span class="p">(</span><span class="err">拒绝通过</span><span class="p">)</span><span class="err">、</span><span class="ss">`permit`</span><span class="p">(</span><span class="err">允许通过</span><span class="p">)</span></span>
-<span class="code-line"></span>
-<span class="code-line">    <span class="ss">`tcp`</span><span class="p">:</span> <span class="err">协议名称，协议可以是</span> <span class="ss">`udp`</span><span class="p">,</span> <span class="ss">`ip`</span><span class="err">，</span><span class="ss">`eigrp`</span><span class="p">,</span> <span class="ss">`gre`</span><span class="p">,</span> <span class="ss">`icmp`</span><span class="p">,</span> <span class="ss">`igmp`</span><span class="p">,</span> <span class="ss">`igrp`</span> <span class="err">等等。</span></span>
-<span class="code-line"></span>
-<span class="code-line">    <span class="ss">`192.168.10.0 0.0.0.255`</span><span class="err">：源地址及源地址通配符</span></span>
-<span class="code-line"></span>
-<span class="code-line">    <span class="ss">`192.168.30.0 0.0.0.255`</span><span class="err">：目的地址及目的地址通配符</span></span>
-<span class="code-line"></span>
-<span class="code-line">    <span class="ss">`eq`</span><span class="err">：操作符（</span> <span class="ss">`lt`</span> <span class="o">-</span> <span class="err">小于，</span><span class="ss">`eq`</span> <span class="o">-</span> <span class="err">等于，</span><span class="ss">`gt`</span> <span class="o">-</span> <span class="err">大于，</span><span class="ss">`neg`</span> <span class="o">-</span> <span class="err">不等于，</span><span class="ss">`range`</span> <span class="o">-</span> <span class="err">包含）</span></span>
-<span class="code-line"></span>
-<span class="code-line">    <span class="ss">`www`</span><span class="err">：端口号，可使用名称或具体编号</span></span>
-<span class="code-line"></span>
-<span class="code-line">    <span class="err">可以使用的协议名称（或编号）和端口名称（或编号）请打</span> <span class="ss">`?`</span> <span class="err">查询。</span></span>
-<span class="code-line"></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="ss">`(config-ext-nacl)#permit ip any any`</span>   <span class="o">//</span><span class="err">允许其它通过</span></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="ss">`(config-ext-nacl)#end`</span>      <span class="o">//</span><span class="err">返回</span></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="ss">`(config)#interface vlan 10`</span>     <span class="o">//</span><span class="err">进入端口配置模式</span></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="ss">`(config-if)# ip access-group listname in`</span>   <span class="o">//</span><span class="err">访问控制列表在端口下</span> <span class="ss">`in`</span> <span class="err">方向应用；可选：</span> <span class="ss">`in`</span><span class="p">(</span><span class="err">入栈</span><span class="p">)</span><span class="err">、</span><span class="ss">`out`</span><span class="p">(</span><span class="err">出栈</span><span class="p">)</span></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="ss">`(config-if)#end`</span>     <span class="o">//</span><span class="err">返回</span></span>
-<span class="code-line"></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="o">!!!</span> <span class="n">Note</span></span>
-<span class="code-line">    <span class="err">注：配置</span><span class="n">ACL时</span><span class="err">，若只想对其中部分</span><span class="n">IP进行限制访问时</span><span class="err">，必须配置允许其流量通过，否则设备只会对限制</span><span class="n">IP进行处理</span><span class="err">，不会对非限制</span><span class="n">IP进行允许通过处理</span><span class="err">。</span></span>
-<span class="code-line"></code></pre></div>
+<p><code>(config)#ip access-list extended listname</code> //定义命名扩展列表，命名为 <code>listname</code> ,<code>extended</code> 为扩展</p>
+<p><code>(config-ext-nacl)#deny tcp 192.168.30.0 0.0.0.255 192.168.10.0 0.0.0.255 eq www</code>   //拒绝源地址为 <code>192.168.30.0</code> 网段的 <span class="caps">IP</span> 访问目的地址为 <code>192.168.10.0</code> 网段的 <span class="caps">WWW</span> 服务</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>deny</code>：拒绝通过，可选：<code>deny</code>(拒绝通过)、<code>permit</code>(允许通过)</p>
+<p><code>tcp</code>: 协议名称，协议可以是 <code>udp</code>, <code>ip</code>，<code>eigrp</code>, <code>gre</code>, <code>icmp</code>, <code>igmp</code>, <code>igrp</code> 等等。</p>
+<p><code>192.168.10.0 0.0.0.255</code>：源地址及源地址通配符</p>
+<p><code>192.168.30.0 0.0.0.255</code>：目的地址及目的地址通配符</p>
+<p><code>eq</code>：操作符（ <code>lt</code> - 小于，<code>eq</code> - 等于，<code>gt</code> - 大于，<code>neg</code> - 不等于，<code>range</code> - 包含）</p>
+<p><code>www</code>：端口号，可使用名称或具体编号</p>
+<p>可以使用的协议名称（或编号）和端口名称（或编号）请打 <code>?</code> 查询。</p>
+</div>
+<p><code>(config-ext-nacl)#permit ip any any</code>   //允许其它通过</p>
+<p><code>(config-ext-nacl)#end</code>      //返回</p>
+<p><code>(config)#interface vlan 10</code>     //进入端口配置模式</p>
+<p><code>(config-if)# ip access-group listname in</code>   //访问控制列表在端口下 <code>in</code> 方向应用；可选： <code>in</code>(入栈)、<code>out</code>(出栈)</p>
+<p><code>(config-if)#end</code>     //返回</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>注：配置ACL时，若只想对其中部分IP进行限制访问时，必须配置允许其流量通过，否则设备只会对限制IP进行处理，不会对非限制IP进行允许通过处理。</p>
+</div>
 <h2 id="_2">二、功能配置命令示例<a class="headerlink" href="#_2" title="Permanent link"> </a></h2>
 <ol>
 <li>交换机密码</li>
@@ -364,7 +346,7 @@
 <li>VLAN配置</li>
 </ol>
 <p>建立 <span class="caps">VLAN</span> 100
-  <code>Switch (config)#vlan 100</code></p>
+<code>Switch (config)#vlan 100</code></p>
 <p>该VLAN名称为 <code>ruijie</code></p>
 <p><code>Switch (config)#name ruijie</code></p>
 <p>将交换机接口划入 <span class="caps">VLAN</span> 中：</p>

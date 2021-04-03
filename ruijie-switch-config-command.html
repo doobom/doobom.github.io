@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="https://doobom.me/theme/css/elegant.prod.9e9d5ce754.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="https://doobom.me/theme/css/custom.css" media="screen">
+
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+
+        <meta name="author" content="doobom" />
+
+        <meta name="description" content="锐捷交换机的配置命令大全
+" />
+        <meta name="twitter:creator" content="@d8boom">
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="ethernet, switch, ruijie, ethernet, " />
+
+<meta property="og:title" content="锐捷交换机的配置命令大全 "/>
+<meta property="og:url" content="https://doobom.me/ruijie-switch-config-command" />
+<meta property="og:description" content="锐捷交换机的配置命令大全" />
+<meta property="og:site_name" content="oops: run" />
+<meta property="og:article:author" content="doobom" />
+<meta property="og:article:published_time" content="2021-04-03T16:52:52+08:00" />
+<meta property="og:article:modified_time" content="2021-04-03T16:53:08+08:00" />
+<meta name="twitter:title" content="锐捷交换机的配置命令大全 ">
+<meta name="twitter:description" content="锐捷交换机的配置命令大全">
+<meta property="og:image" content="https://doobom.me/theme/images/apple-touch-icon-152x152.png" />
+<meta name="twitter:image" content="https://doobom.me/theme/images/apple-touch-icon-152x152.png" >
+
+        <title>锐捷交换机的配置命令大全  · oops: run
+</title>
+        <link rel="shortcut icon" href="https://doobom.me/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="https://doobom.me/theme/images/apple-touch-icon-152x152.png" type="image/png" />
+        <link rel="apple-touch-icon" href="https://doobom.me/theme/images/apple-touch-icon.png"  type="image/png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="https://doobom.me/theme/images/apple-touch-icon-57x57.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="https://doobom.me/theme/images/apple-touch-icon-72x72.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="https://doobom.me/theme/images/apple-touch-icon-76x76.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="https://doobom.me/theme/images/apple-touch-icon-114x114.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="https://doobom.me/theme/images/apple-touch-icon-120x120.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="https://doobom.me/theme/images/apple-touch-icon-144x144.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="https://doobom.me/theme/images/apple-touch-icon-152x152.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="https://doobom.me/theme/images/apple-touch-icon-180x180.png" type="image/png" />
+        <link href="https://doobom.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="oops: run - Full Atom Feed" />
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-132322603-1', 'auto');
+    ga('send', 'pageview');
+</script>
+
+
+    </head>
+    <body>
+        <div id="content">
+            <div class="navbar navbar-static-top">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="brand" href="https://doobom.me/"><span class=site-name>oops: run</span></a>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav pull-right top-menu">
+                                <li >
+                                    <a href=
+                                       https://doobom.me
+                                    >Home</a>
+                                </li>
+                                <li ><a href="https://doobom.me/categories">Categories</a></li>
+                                <li ><a href="https://doobom.me/tags">Tags</a></li>
+                                <li ><a href="https://doobom.me/archives">Archives</a></li>
+                                <li><form class="navbar-search" action="https://doobom.me/search" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span1"></div>
+                    <div class="span10">
+<article itemscope>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+        <h1>
+            <a href="https://doobom.me/ruijie-switch-config-command">
+                锐捷交换机的配置命令大全
+            </a>
+        </h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+    <div class="span2 table-of-content">
+        <nav>
+        <h4>Contents</h4>
+        <div class="toc">
+<ul>
+<li><a href="#_1">一、基础配置命令</a></li>
+<li><a href="#_2">二、功能配置命令示例</a></li>
+<li><a href="#_3">附：</a></li>
+</ul>
+</div>
+        </nav>
+    </div>
+    <div class="span8 article-content">
+            
+            
+<blockquote>
+<p>原文： <a href="http://mepconsultants.net/nd.jsp?id=2475">锐捷交换机的配置命令大全</a></p>
+</blockquote>
+<h2 id="_1">一、基础配置命令<a class="headerlink" href="#_1" title="Permanent link"> </a></h2>
+<ol>
+<li>准备命令</li>
+</ol>
+<p><code>&gt;Enable</code> 进入特权模式
+<code>#Exit</code>   返回上一级操作模式
+<code>#End</code>   返回到特权模式
+<code>#write memory</code> 或 <code>copy running-config startup-config</code>   保存配置文件
+<code>#del flash:config.text</code>   删除配置文件(交换机及1700系列路由器)
+<code>#erase startup-config</code>   删除配置文件(2500系列路由器)
+<code>#del flash:vlan.dat</code>   删除Vlan配置信息（交换机）
+<code>#Configure terminal</code> 进入全局配置模式
+<code>(config)# hostname switchA</code>   配置设备名称为 <code>switchA</code>
+<code>(config)#banner motd &amp;</code>      配置每日提示信息 &amp;为终止符
+<code>(config)#enable secret level 1 0 star</code>   配置远程登陆密码为star
+<code>(config)#enable secret level 15 0 star</code>  配置特权密码为star
+<code>Level 1</code> 为普通用户级别，可选为 <code>1~15</code>，<code>15</code> 为最高权限级别；<code>0</code> 表示密码不加密
+<code>(config)#enable services web-server</code> 开启交换机WEB管理功能
+<code>Services</code> 可选以下：<code>web-server</code> (WEB管理)、<code>telnet-server</code> (远程登陆)等</p>
+<ol>
+<li>查看信息</li>
+</ol>
+<p><code>#show running-config</code>       //查看当前生效的配置信息
+<code>#show interface fastethernet 0/3</code>   //查看 <code>F0/3</code> 端口信息
+<code>#show interface serial 1/2</code>      //查看S1/2端口信息
+<code>#show interface</code>                //查看所有端口信息
+<code>#show ip interface brief</code>          //以简洁方式汇总查看所有端口信息
+<code>#show ip interface</code>         //查看所有端口信息
+<code>#show version</code>               //查看版本信息
+<code>#show mac-address-table</code>       //查看交换机当前MAC地址表信息
+<code>#show running-config</code>       //查看当前生效的配置信息
+<code>#show vlan</code>                 //查看所有VLAN信息
+<code>#show vlan id 10</code>          //查看某一VLAN (如VLAN10)的信息
+<code>#show interface fastethernet 0/1</code>   //查看某一端口模式(如 <code>F 0/1</code>)
+<code>#show aggregateport 1 summary</code>    //查看聚合端口AG1的信息
+<code>#show spanning-tree</code>      //查看生成树配置信息
+<code>#show spanning-tree interface fastethernet 0/1</code>   //查看该端口的生成树状态
+<code>#show port-security</code>     //查看交换机的端口安全配置信息
+<code>#show port-security address</code>    //查看地址安全绑定配置信息
+<code>#show ip access-lists listname</code>   //查看名为 <code>listname</code> 的列表的配置信息
+　</p>
+<ol>
+<li>端口的基本配置</li>
+</ol>
+<p><code>(config)#Interface fastethernet 0/3</code>     //进入 <code>F0/3</code> 的端口配置模式
+<code>(config)#interface range fa 0/1-2,0/5,0/7-9</code>   //进入 <code>F0/1</code>、<code>F0/2</code>、<code>F0/5</code>、<code>F0/7</code>、<code>F0/8</code>、<code>F0/9</code> 的端口配置模式
+<code>(config-if)#speed 10</code>   //配置端口速率为 <code>10M</code>, 可选 <code>10</code>, <code>100</code>, <code>auto</code>
+<code>(config-if)#duplex full</code>    //配置端口为全双工模式,可选 <code>full</code>(全双工),<code>half</code>(半双式),<code>auto</code>(自适应)
+<code>(config-if)#no shutdown</code>     //开启该端口
+<code>(config-if)#switchport access vlan 10</code>   //将该端口划入 <span class="caps">VLAN10</span> 中,用于 <span class="caps">VLAN</span>
+<code>(config-if)#switchport mode trunk</code>   //将该端口设为 <code>trunk</code> 模式,可选模式为<code>access</code> , <code>trunk</code>
+<code>(config-if)#port-group 1</code>     //将该端口划入聚合端口 <code>AG1</code> 中,用于聚合端口</p>
+<ol>
+<li>聚合端口的创建</li>
+</ol>
+<p><code>(config)# interface aggregateport 1</code>    //创建聚合接口 <code>AG1</code>
+<code>(config-if)# switchport mode trunk</code>    //配置并保证AG1为 <code>trunk</code> 模式
+<code>(config)#int f0/23-24</code>
+<code>(config-if-range)#port-group 1</code>        //将端口（端口组）划入聚合端口 <code>AG1</code> 中</p>
+<ol>
+<li>生成树</li>
+</ol>
+<p>配置多生成树协议:</p>
+<p><code>switch(config)#spanning-tree</code>             //开启生成树协议
+<code>switch(config)#spanning-tree mst configuration</code>     //建立多生成树协议
+<code>switch(config-mst)#name ruijie</code>               //命名为 <code>ruijie</code>
+<code>switch(config-mst)#revision 1</code>   //设定校订本为 <code>1</code>
+<code>switch(config-mst)#instance 0 vlan 10,20</code>      //建立实例 <code>0</code>
+<code>switch(config-mst)#instance 1 vlan 30,40</code>      //建立实例 <code>1</code>
+<code>switch(config)#spanning-tree mst 0 priority 4096</code>   //设置优先级为 <code>4096</code>
+<code>switch(config)#spanning-tree mst 1 priority 8192</code>   //设置优先级为 <code>8192</code>
+<code>switch(config)#interface vlan 10</code>
+<code>switch(config-if)#vrrp 1 ip 192.168.10.1</code> //此为 <code>vlan 10</code> 的 <span class="caps">IP</span> 地址
+<code>switch(config)#interface vlan 20</code>
+<code>switch(config-if)#vrrp 1 ip 192.168.20.1</code> //此为 <code>vlan 20</code> 的 <span class="caps">IP</span> 地址
+<code>switch(config)#interface vlan 30</code>
+<code>switch(config-if)#vrrp 2 ip 192.168.30.1</code> //此为 <code>vlan 30</code> 的 <span class="caps">IP</span> 地址(另一三层交换机)
+<code>switch(config)#interface vlan 40</code>
+<code>switch(config-if)#vrrp 2 ip 192.168.40.1</code> //此为 <code>vlan 40</code> 的 <span class="caps">IP</span> 地址(另一三层交换机)</p>
+<ol>
+<li>VLAN的基本配置</li>
+</ol>
+<p><code>(config)#vlan 10</code>    //创建 <code>VLAN10</code>
+<code>(config-vlan)#name vlanname</code> // 命名 <span class="caps">VLAN</span> 为 <code>vlanname</code>
+<code>(config-if)#switchport access vlan 10</code>   //将该端口划入 <span class="caps">VLAN10</span> 中
+某端口的接口配置模式下进行
+<code>(config)#interface vlan 10</code>    //进入 <code>VLAN 10</code> 的虚拟端口配置模式
+<code>(config-if)# ip address 192.168.1.1 255.255.255.0</code>   //为 <code>VLAN10</code> 的虚拟端口配置 <span class="caps">IP</span> 及掩码，二层交换机只能配置一个 <span class="caps">IP</span> ，此 <span class="caps">IP</span> 是作为管理 <span class="caps">IP</span> 使用，例如，使用 Telnet 的方式登录的 <span class="caps">IP</span> 地址
+<code>(config-if)# no shutdown</code>     //启用该端口</p>
+<ol>
+<li>端口安全</li>
+</ol>
+<p><code>(config)# interface fastethernet 0/1</code>      //进入一个端口
+<code>(config-if)# switchport port-security</code>     //开启该端口的安全功能</p>
+<p>a). 配置最大连接数限制</p>
+<p><code>(config-if)# switchport port-secruity maxmum 1</code> //配置端口的最大连接数为 <code>1</code>，最大连接数为 <code>128</code>
+<code>(config-if)# switchport port-secruity violation shutdown</code>
+//配置安全违例的处理方式为 <code>shutdown</code>，可选为 <code>protect</code> (当安全地址数满后，将未知名地址丢弃)、<code>restrict</code> (当违例时，发送一个 Trap 通知)、<code>shutdown</code> (当违例时将端口关闭，并发送 Trap 通知，可在全局模式下用 <code>errdisable recovery</code> 来恢复)</p>
+<p>b). <span class="caps">IP</span> 和 <span class="caps">MAC</span> 地址绑定</p>
+<p><code>(config-if)#switchport port-security mac-address xxxx.xxxx.xxxx ip-address 172.16.1.1</code>
+//接口配置模式下配置 <span class="caps">MAC</span> 地址 <code>xxxx.xxxx.xxxx</code> 和 <span class="caps">IP</span> <code>172.16.1.1</code> 进行绑定( <span class="caps">MAC</span> 地址注意用小写)</p>
+<ol>
+<li>三层路由功能(针对三层交换机)</li>
+</ol>
+<p><code>(config)# ip routing</code>       //开启三层交换机的路由功能
+<code>(config)# interface fastethernet 0/1</code>
+<code>(config-if)# no switchport</code>    //开启端口的三层路由功能(这样就可以为某一端口配置 <span class="caps">IP</span> )
+<code>(config-if)# ip address 192.168.1.1 255.255.255.0</code>
+<code>(config-if)# no shutdown</code>
+　　</p>
+<ol>
+<li>三层交换机路由协议</li>
+</ol>
+<p><code>(config)# ip route 172.16.1.0 255.255.255.0 172.16.2.1</code>   //配置静态路由</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>注： <code>172.16.1.0 255.255.255.0</code>   为目标网络的网络号及子网掩码</p>
+</div>
+<p><code>172.16.2.1</code> 为下一跳的地址，也可用接口表示,如 <code>ip route 172.16.1.0 255.255.255.0 serial 1/2</code> ( <code>172.16.2.0</code> 所接的端口)</p>
+<p><code>(config)# router rip</code>     //开启 <span class="caps">RIP</span> 协议进程
+<code>(config-router)# network 172.16.1.0</code>     //申明本设备的直连网段信息
+<code>(config-router)# version 2</code>        //开启 <span class="caps">RIP</span> V2，可选为 <code>version 1</code> (<span class="caps">RIPV1</span>)、<code>version 2</code> (<span class="caps">RIPV2</span>)
+<code>(config-router)# no auto-summary</code>   //关闭路由信息的自动汇总功能(只有在 <span class="caps">RIPV2</span> 支持)</p>
+<p><code>(config)# router ospf</code>   //开启 <span class="caps">OSPF</span> 路由协议进程（针对 1762，无需使用进程 <span class="caps">ID</span>）
+<code>(config)# router ospf 1</code>    //开启 <span class="caps">OSPF</span> 路由协议进程（针对 2501，需要加 <span class="caps">OSPF</span> 进程 <span class="caps">ID</span>）
+<code>(config-router)# network 192.168.1.0 0.0.0.255 area 0</code> //申明直连网段信息，并分配区域号( area0 为骨干区域)</p>
+<ol>
+<li><span class="caps">IP</span> <span class="caps">ACL</span>：</li>
+</ol>
+<p>交换机采用命名的访问控制列表；分标准( stand )和扩展( extended )两种</p>
+<p>a). 标准 <span class="caps">ACL</span></p>
+<p><code>(config)#ip access-list stand listname</code> //定义命名标准列表，命名为 <code>listname</code>，<code>stand</code> 为标准列表
+<code>(config-std-nacl)#deny 192.168.30.0 0.0.0.255</code> //拒绝来 <code>自192.168.30.0</code> 网段的 <span class="caps">IP</span> 流量通过</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>注：<code>deny</code>：拒绝通过；可选：<code>deny</code> (拒绝通过)、<code>permit</code> (允许通过)</p>
+</div>
+<p><code>192.168.30.0 0.0.0.255</code>：源地址及源地址通配符；可使用 <code>any</code> 表示任何 <span class="caps">IP</span></p>
+<p><code>(config-std-nacl)#permit any</code>
+<code>(config-std-nacl)#end</code>   //返回</p>
+<p>b). 扩展 <span class="caps">ACL</span></p>
+<p><code>(config)#ip access-list extended listname</code> //定义命名扩展列表，命名为 <code>listname</code> ,<code>extended</code> 为扩展
+<code>(config-ext-nacl)#deny tcp 192.168.30.0 0.0.0.255 192.168.10.0 0.0.0.255 eq www</code>   //拒绝源地址为 <code>192.168.30.0</code> 网段的 <span class="caps">IP</span> 访问目的地址为 <code>192.168.10.0</code> 网段的 <span class="caps">WWW</span> 服务</p>
+<p>!!! Note　　
+    <code>deny</code>：拒绝通过，可选：<code>deny</code>(拒绝通过)、<code>permit</code>(允许通过)
+    <code>tcp</code>: 协议名称，协议可以是 <code>udp</code>, <code>ip</code>，<code>eigrp</code>, <code>gre</code>, <code>icmp</code>, <code>igmp</code>, <code>igrp</code> 等等。
+    <code>192.168.10.0 0.0.0.255</code>：源地址及源地址通配符
+    <code>192.168.30.0 0.0.0.255</code>：目的地址及目的地址通配符
+    <code>eq</code>：操作符（ <code>lt</code> - 小于，<code>eq</code> - 等于，<code>gt</code> - 大于，<code>neg</code> - 不等于，<code>range</code> - 包含）
+    <code>www</code>：端口号，可使用名称或具体编号 可以使用的协议名称（或编号）和端口名称（或编号）请打？查询。</p>
+<p><code>(config-ext-nacl)#permit ip any any</code>   //允许其它通过
+<code>(config-ext-nacl)#end</code>      //返回
+<code>(config)#interface vlan 10</code>     //进入端口配置模式
+<code>(config-if)# ip access-group listname in</code>   //访问控制列表在端口下 <code>in</code> 方向应用；可选： <code>in</code>(入栈)、<code>out</code>(出栈)
+<code>(config-if)#end</code>     //返回</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>注：配置ACL时，若只想对其中部分IP进行限制访问时，必须配置允许其流量通过，否则设备只会对限制IP进行处理，不会对非限制IP进行允许通过处理。</p>
+</div>
+<h2 id="_2">二、功能配置命令示例<a class="headerlink" href="#_2" title="Permanent link"> </a></h2>
+<ol>
+<li>交换机密码</li>
+</ol>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="o">(</span>config<span class="o">)</span><span class="c1">#enable secret level 1 0 100</span></span>
+<span class="code-line"><span class="o">(</span>config<span class="o">)</span><span class="c1">#enable secret level 15 0 100</span></span>
+<span class="code-line"></code></pre></div>
+<ol>
+<li>远程登入密码</li>
+</ol>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="o">(</span>config<span class="o">)</span><span class="c1">#line vty 0 4</span></span>
+<span class="code-line"><span class="o">(</span>config-line<span class="o">)</span><span class="c1">#password 100</span></span>
+<span class="code-line"><span class="o">(</span>config-line<span class="o">)</span><span class="c1">#end</span></span>
+<span class="code-line"></code></pre></div>
+<ol>
+<li>交换机管理 <span class="caps">IP</span></li>
+</ol>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="o">(</span>config<span class="o">)</span><span class="c1">#interface vlan 1</span></span>
+<span class="code-line"><span class="o">(</span>config-if<span class="o">)</span><span class="c1">#ip address 192.168.1.10 255.255.255.0</span></span>
+<span class="code-line"><span class="o">(</span>config-if<span class="o">)</span><span class="c1">#no shutdown</span></span>
+<span class="code-line"></code></pre></div>
+<ol>
+<li>修改交换机老化时间</li>
+</ol>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="o">(</span>config<span class="o">)</span><span class="c1">#mac-address-table aging-time 20</span></span>
+<span class="code-line"><span class="o">(</span>config<span class="o">)</span><span class="c1">#end</span></span>
+<span class="code-line"></code></pre></div>
+<ol>
+<li>添删 vlan</li>
+</ol>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="o">(</span>config<span class="o">)</span><span class="c1">#vlan 888</span></span>
+<span class="code-line"><span class="o">(</span>config-vlan<span class="o">)</span><span class="c1">#name a888</span></span>
+<span class="code-line"><span class="o">(</span>config<span class="o">)</span><span class="c1">#no vlan 888</span></span>
+<span class="code-line"></code></pre></div>
+<ol>
+<li>添加 access 口</li>
+</ol>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="o">(</span>config<span class="o">)</span><span class="c1">#interface gigabitEthernet 0/10</span></span>
+<span class="code-line"><span class="o">(</span>config-if<span class="o">)</span><span class="c1">#switchport mode access</span></span>
+<span class="code-line"><span class="o">(</span>config-if<span class="o">)</span><span class="c1">#switchport access vlan 10</span></span>
+<span class="code-line"></code></pre></div>
+<ol>
+<li>切换 assess trunk</li>
+</ol>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="o">(</span>config-if<span class="o">)</span><span class="c1">#switchport mode access</span></span>
+<span class="code-line"><span class="o">(</span>config-if<span class="o">)</span><span class="c1">#switchport mode trunk</span></span>
+<span class="code-line"></code></pre></div>
+<ol>
+<li>指定特定一个 native vlan</li>
+</ol>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="o">(</span>config-if<span class="o">)</span><span class="c1">#switchport trunk native vlan 10</span></span>
+<span class="code-line"></code></pre></div>
+<ol>
+<li>配置网关</li>
+</ol>
+<div class="highlight"><pre><span class="code-line"><span></span><code>switch<span class="o">(</span>config<span class="o">)</span><span class="c1">#ip default-gateway 192.168.1.254</span></span>
+<span class="code-line"></code></pre></div>
+<ol>
+<li>显示接口详细信息的命令</li>
+</ol>
+<div class="highlight"><pre><span class="code-line"><span></span><code>show interfaces gigabitEthernet <span class="m">4</span>/1 counters</span>
+<span class="code-line"></code></pre></div>
+<ol>
+<li>接口配置</li>
+</ol>
+<div class="highlight"><pre><span class="code-line"><span></span><code>Switch<span class="o">(</span>config<span class="o">)</span><span class="c1">#interface gigabitethernet 0/1</span></span>
+<span class="code-line"></code></pre></div>
+<ol>
+<li>把接口工作模式改为光口。</li>
+</ol>
+<div class="highlight"><pre><span class="code-line"><span></span><code>Switch<span class="o">(</span>config-if<span class="o">)</span><span class="c1">#medium-type fiber</span></span>
+<span class="code-line"></code></pre></div>
+<ol>
+<li>把接口工作模式改为电口。</li>
+</ol>
+<div class="highlight"><pre><span class="code-line"><span></span><code>Switch<span class="o">(</span>config-if<span class="o">)</span><span class="c1">#medium-type copper</span></span>
+<span class="code-line"></code></pre></div>
+<ol>
+<li>VLAN配置</li>
+</ol>
+<p>建立 <span class="caps">VLAN</span> 100
+<code>Switch (config)#vlan 100</code></p>
+<p>该VLAN名称为 <code>ruijie</code>
+<code>Switch (config)#name ruijie</code></p>
+<p>将交换机接口划入 <span class="caps">VLAN</span> 中：
+<code>range</code> 表示选取了系列端口 <code>1-48</code>，这个对多个端口进行相同配置时非常有用。
+<code>Switch (config)#interface range f 0/1-48</code></p>
+<p>将接口划到 <span class="caps">VLAN</span> 100 中。
+<code>Switch (config-if-range)#switchport access vlan 100</code></p>
+<p>将接口划回到默认 <span class="caps">VLAN</span> 1 中，即端口初始配置。
+<code>Switch (config-if-range)#no switchport access vlan</code>
+<code>Switch(config)#interface fastEthernet 0/1</code></p>
+<p>该端口工作在 <code>access</code> 模式下
+<code>Switch(config-if)#switchport mode access</code></p>
+<p>该端口工作在 <code>trunk</code> 模式下
+<code>Switch(config-if)#switchport mode trunk</code>
+<code>Switch(config)#interface fastEthernet 0/2</code></p>
+<p>路由配置：添加一条路由。
+<code>switch (config)#ip route 目的地址 掩码 下一跳</code>
+<code>switch (config)#ip route 210.10.10.0 255.255.255.0 218.8.8.8</code></p>
+<h2 id="_3">附：<a class="headerlink" href="#_3" title="Permanent link"> </a></h2>
+<ul>
+<li><a href="https://kerwin.gitbook.io/ruijie/" target:_blank="target:_blank">锐捷产品手册</a></li>
+<li><a href="http://bbs.ruijie.com.cn/thread-34794-1-1.html" target:_blank="target:_blank">Web登录密码修改方法</a></li>
+</ul>
+
+
+             
+
+
+<div class="applause_button">
+    <applause-button url=https://doobom.me/ruijie-switch-config-command> </applause-button>
+</div>
+
+ 
+                <p id="post-share-links" style="text-align:left">
+    Like this post? Share on:
+      <a href="https://twitter.com/intent/tweet?text=%E9%94%90%E6%8D%B7%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8&url=https%3A//doobom.me/ruijie-switch-config-command&via=d8boom&hashtags=ethernet,switch,ruijie" target="_blank" rel="nofollow noopener noreferrer" title="Share on Twitter"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
+<path style="fill:#03A9F4;" d="M512,97.248c-19.04,8.352-39.328,13.888-60.48,16.576c21.76-12.992,38.368-33.408,46.176-58.016
+	c-20.288,12.096-42.688,20.64-66.56,25.408C411.872,60.704,384.416,48,354.464,48c-58.112,0-104.896,47.168-104.896,104.992
+	c0,8.32,0.704,16.32,2.432,23.936c-87.264-4.256-164.48-46.08-216.352-109.792c-9.056,15.712-14.368,33.696-14.368,53.056
+	c0,36.352,18.72,68.576,46.624,87.232c-16.864-0.32-33.408-5.216-47.424-12.928c0,0.32,0,0.736,0,1.152
+	c0,51.008,36.384,93.376,84.096,103.136c-8.544,2.336-17.856,3.456-27.52,3.456c-6.72,0-13.504-0.384-19.872-1.792
+	c13.6,41.568,52.192,72.128,98.08,73.12c-35.712,27.936-81.056,44.768-130.144,44.768c-8.608,0-16.864-0.384-25.12-1.44
+	C46.496,446.88,101.6,464,161.024,464c193.152,0,298.752-160,298.752-298.688c0-4.64-0.16-9.12-0.384-13.568
+	C480.224,136.96,497.728,118.496,512,97.248z"></path>
+</svg></a>
+       <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//doobom.me/ruijie-switch-config-command" target="_blank" rel="nofollow noopener noreferrer" title="Share on Facebook"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
+<path style="fill:#1976D2;" d="M448,0H64C28.704,0,0,28.704,0,64v384c0,35.296,28.704,64,64,64h384c35.296,0,64-28.704,64-64V64
+	C512,28.704,483.296,0,448,0z"></path>
+<path style="fill:#FAFAFA;" d="M432,256h-80v-64c0-17.664,14.336-16,32-16h32V96h-64l0,0c-53.024,0-96,42.976-96,96v64h-64v80h64
+	v176h96V336h48L432,256z"></path>
+</svg></a>
+       <a href="https://news.ycombinator.com/submitlink?t=%E9%94%90%E6%8D%B7%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8&u=https%3A//doobom.me/ruijie-switch-config-command" target="_blank" rel="nofollow noopener noreferrer" title="Share on Hacker-News"><svg id="Layer_1" version="1.1" viewBox="0 0 512 512" width="31" height="31" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"><defs id="defs12"></defs><g id="g3045"><path d="m -0.003935,-0.0039375 512.007865,0 0,512.0078775 -512.007865,0 z" id="path3032" style="fill:#f68423;fill-opacity:1;fill-rule:nonzero;stroke:none"></path><path d="m 108.74016,65.990163 122.49212,242.503937 0,137.51574 49.8189,0 0,-137.51574 122.20866,-242.503937 -54.1063,0 -93.11811,182.586607 -89.5748,-182.586607 -57.72047,0 z" id="path3034" style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"></path></g></svg></a>
+       <a href="https://www.reddit.com/submit?url=https%3A//doobom.me/ruijie-switch-config-command&title=%E9%94%90%E6%8D%B7%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8" target="_blank" rel="nofollow noopener noreferrer" title="Share on reddit"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 514.24 514.24" style="enable-background:new 0 0 514.24 514.24;" xml:space="preserve" width="31" height="31">
+<g>
+	<polygon style="fill:#FAFAFA;" points="192,289.121 176,289.089 176,289.121 	"></polygon>
+	<polygon style="fill:#FAFAFA;" points="336,289.121 352,289.121 336,289.089 	"></polygon>
+</g>
+<path style="fill:#FF9800;" d="M514.24,241.121c0-35.296-28.704-64-64-64c-14.112,0-27.52,4.608-38.464,12.96
+	c-35.712-24.8-82.496-39.584-132.256-43.328l26.848-62.976l78.112,18.24c2.496,24.16,22.72,43.104,47.52,43.104
+	c26.464,0,48-21.536,48-48s-21.536-48-48-48c-16.768,0-31.52,8.672-40.096,21.76l-91.296-21.344
+	c-7.744-1.76-15.328,2.176-18.4,9.312l-37.12,87.04c-53.728,1.856-104.928,16.992-143.584,43.36
+	C90.976,181.441,77.92,177.121,64,177.121c-35.296,0-64,28.704-64,64c0,23.392,12.768,44.544,32.352,55.392
+	c-0.256,2.816-0.352,5.696-0.352,8.608c0,88.224,100.48,160,224,160c123.488,0,224-71.776,224-160c0-2.496-0.096-4.96-0.256-7.424
+	C500.608,287.073,514.24,265.409,514.24,241.121z"></path>
+<g>
+	<circle style="fill:#FAFAFA;" cx="432" cy="97.121" r="16"></circle>
+	<circle style="fill:#FAFAFA;" cx="176" cy="289.121" r="32"></circle>
+	<path style="fill:#FAFAFA;" d="M329.888,395.265c-22.08,15.968-48,23.968-73.888,23.968s-51.808-8-73.888-23.968
+		c-7.168-5.184-8.768-15.2-3.584-22.336s15.2-8.736,22.336-3.584c32.992,23.84,77.28,23.904,110.272,0
+		c7.136-5.152,17.12-3.616,22.336,3.584C338.656,380.097,337.024,390.081,329.888,395.265z"></path>
+	<circle style="fill:#FAFAFA;" cx="336" cy="289.121" r="32"></circle>
+</g>
+</svg></a>
+       <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//doobom.me/ruijie-switch-config-command&title=%E9%94%90%E6%8D%B7%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8&summary=%E9%94%90%E6%8D%B7%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8&source=https%3A//doobom.me/ruijie-switch-config-command" target="_blank" rel="nofollow noopener noreferrer" title="Share on linkedin"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
+<g>
+	<rect y="160" style="fill:#1976D2;" width="114.496" height="352"></rect>
+	<path style="fill:#1976D2;" d="M426.368,164.128c-1.216-0.384-2.368-0.8-3.648-1.152c-1.536-0.352-3.072-0.64-4.64-0.896
+		c-6.08-1.216-12.736-2.08-20.544-2.08l0,0l0,0c-66.752,0-109.088,48.544-123.04,67.296V160H160v352h114.496V320
+		c0,0,86.528-120.512,123.04-32c0,79.008,0,224,0,224H512V274.464C512,221.28,475.552,176.96,426.368,164.128z"></path>
+	<circle style="fill:#1976D2;" cx="56" cy="56" r="56"></circle>
+</g>
+</svg></a>
+       <a href="mailto:?subject=%E9%94%90%E6%8D%B7%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8&amp;body=https%3A//doobom.me/ruijie-switch-config-command" target="_blank" rel="nofollow noopener noreferrer" title="Share via Email"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="31" height="31">
+<path style="fill:#1E88E5;" d="M480,432H32c-17.664,0-32-14.336-32-32V112c0-17.664,14.336-32,32-32h448c17.664,0,32,14.336,32,32
+	v288C512,417.664,497.664,432,480,432z"></path>
+<path style="fill:#2196F3;" d="M480,432H32c-17.952,0-32-14.048-32-32c0-5.088,2.432-9.888,6.528-12.896l240-160
+	c2.816-2.08,6.144-3.104,9.472-3.104s6.656,1.024,9.472,3.104l240,160C509.568,390.112,512,394.912,512,400
+	C512,417.952,497.952,432,480,432z"></path>
+<path style="fill:#64B5F6;" d="M480,80H32C14.048,80,0,94.048,0,112c0,5.088,2.432,9.888,6.528,12.896L246.656,297.28
+	c5.568,4,13.088,4,18.656,0L505.44,124.896c4.128-3.008,6.56-7.808,6.56-12.896C512,94.048,497.952,80,480,80z"></path>
+</svg></a>
+
+                <hr />
+    <div class="author-blurb">
+        <a href="https://doobom.github.io/" target="_blank" rel="nofollow noopener noreferrer">
+            <img src=/images/avatars/ce6eb1b67b2cc18c608d69e8849079cc.jpeg alt="doobom Avatar" title="doobom">
+            <span class="author-name">doobom</span>
+        </a>
+        is write a bug.
+    </div>
+
+            
+
+
+
+
+
+
+
+<section>
+    <h6 style="display:none;">Comments</h6>
+    <p id="comment-message">So what do you think? Did I miss something? Is any part unclear? Leave your comments below. </p>
+
+    <div class="accordion" id="accordion2">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle disqus-comment-count comment-count collapsed"
+                   data-toggle="collapse"
+                   data-parent="#accordion2"
+                   data-disqus-identifier="https://doobom.me/ruijie-switch-config-command"
+                   href="https://doobom.me/ruijie-switch-config-command#comment_thread"
+                   id="comment-accordion-toggle">
+                    Comments
+                </a>
+            </div>
+            <div id="comment_thread" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <div class="comments">
+                        <div id="disqus_thread"></div>
+                        <script>
+    var disqus_shortname = 'doobom';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+
+    var disqus_identifier = 'https://doobom.me/ruijie-switch-config-command';
+    var disqus_url = 'https://doobom.me/ruijie-switch-config-command';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+            <hr/>
+            <aside>
+            <nav>
+            <ul class="articles-timeline">
+                <li class="previous-article">« <a href="https://doobom.me/random-string-number-in-shell" title="Previous: shell 生成指定范围随机数与随机字符串">shell 生成指定范围随机数与随机字符串</a></li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section id="article-sidebar" class="span2">
+            <h4>Published</h4>
+            <time itemprop="dateCreated" datetime="2021-04-03T16:52:52+08:00">2021-04-03</time>
+
+            <h4>Category</h4>
+            <a class="category-link" href="https://doobom.me/categories#ethernet-ref">ethernet</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="https://doobom.me/tags#ethernet-ref">ethernet
+                    <span class="superscript">1</span>
+</a></li>
+                <li><a href="https://doobom.me/tags#ruijie-ref">ruijie
+                    <span class="superscript">1</span>
+</a></li>
+                <li><a href="https://doobom.me/tags#switch-ref">switch
+                    <span class="superscript">1</span>
+</a></li>
+            </ul>
+<h4>Stay in Touch</h4>
+<div id="sidebar-social-link">
+    <a href="https://github.com/doobom" title="doobom's github profile" target="_blank" rel="nofollow noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="GitHub" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#1B1817"/><path fill="#fff" d="M335 499c14 0 12 17 12 17H165s-2-17 12-17c13 0 16-6 16-12l-1-50c-71 16-86-28-86-28-12-30-28-37-28-37-24-16 1-16 1-16 26 2 40 26 40 26 22 39 59 28 74 22 2-17 9-28 16-35-57-6-116-28-116-126 0-28 10-51 26-69-3-6-11-32 3-67 0 0 21-7 70 26 42-12 86-12 128 0 49-33 70-26 70-26 14 35 6 61 3 67 16 18 26 41 26 69 0 98-60 120-117 126 10 8 18 24 18 48l-1 70c0 6 3 12 16 12z"/></svg>
+    </a>
+    <a href="https://doobom.me/feeds/all.atom.xml" title="" target="_blank" rel="nofollow noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="RSS" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#f80"/><circle cx="145" cy="367" r="35" fill="#fff"/><path fill="none" stroke="#fff" stroke-width="60" d="M109 241c89 0 162 73 162 162M109 127c152 0 276 124 276 276"/></svg>
+    </a>
+    <a href="https://twitter.com/d8boom" title="twitter" target="_blank" rel="nofollow noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="Twitter" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#1da1f3"/><path fill="#fff" d="M437 152a72 72 0 0 1-40 12 72 72 0 0 0 32-40 72 72 0 0 1-45 17 72 72 0 0 0-122 65 200 200 0 0 1-145-74 72 72 0 0 0 22 94 72 72 0 0 1-32-7 72 72 0 0 0 56 69 72 72 0 0 1-32 1 72 72 0 0 0 67 50 200 200 0 0 1-105 29 200 200 0 0 0 309-179 200 200 0 0 0 35-37"/></svg>
+    </a>
+</div>
+            
+
+
+
+<!-- Begin MailChimp Signup Form -->
+<div id="mc-embed-signup">
+<form action="https://run.us4.list-manage.com/subscribe/post?u=1fd2b4e2122c947a7de2b8b83&amp;id=d95df12a8a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+<h4>Get New Release Alert</h4>
+<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Enter your email..." required>
+<div class="clear"><input type="submit" value="Notify me" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+</form>
+</div>
+<!--End mc_embed_signup-->
+
+
+
+
+            
+
+
+
+        </section>
+</div>
+</article>
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides.
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>                    </div>
+                    <div class="span1"></div>
+                </div>
+            </div>
+        </div>
+<footer>
+    <div>
+        Content licensed under <a rel="license nofollow noopener noreferrer"
+    href="http://creativecommons.org/licenses/by/4.0/" target="_blank">
+    Creative Commons Attribution 4.0 International License</a>.
+    </div>
+
+    <div>
+        <span class="site-name">oops: run</span> - keep running...
+    </div>
+
+
+
+    <div id="fpowered">
+        Powered by: <a href="http://getpelican.com/" title="Pelican Home Page" target="_blank" rel="nofollow noopener noreferrer">Pelican</a>
+        Theme: <a href="https://elegant.oncrashreboot.com/" title="Theme Elegant Home Page" target="_blank" rel="nofollow noopener noreferrer">Elegant</a>
+        Hosted on:
+        <a href="https://github.com" target="_blank" rel="nofollow noopener noreferrer">
+            GitHub
+        </a>
+    </div>
+</footer>            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script src="https://doobom.me/theme/js/elegant.prod.9e9d5ce754.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    <script>
+    (function () {
+        if (window.location.hash.match(/^#comment-\d+$/)) {
+            $('#comment_thread').collapse('show');
+        }
+    })();
+    window.onhashchange=function(){
+        if (window.location.hash.match(/^#comment-\d+$/))
+            window.location.reload(true);
+    }
+    $('#comment_thread').on('shown', function () {
+        var link = document.getElementById('comment-accordion-toggle');
+        var old_innerHTML = link.innerHTML;
+        $(link).fadeOut(200, function() {
+            $(this).text('Click here to hide comments').fadeIn(200);
+        });
+        $('#comment_thread').on('hidden', function () {
+            $(link).fadeOut(200, function() {
+                $(this).text(old_innerHTML).fadeIn(200);
+            });
+        })
+    })
+</script>
+
+    </body>
+    <!-- Theme: Elegant built for Pelican
+        License : MIT -->
+</html>

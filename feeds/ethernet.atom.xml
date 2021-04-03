@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>oops: run - ethernet</title><link href="https://doobom.me/" rel="alternate"></link><link href="https://doobom.me/feeds/ethernet.atom.xml" rel="self"></link><id>https://doobom.me/</id><updated>2021-04-03T16:53:08+08:00</updated><subtitle>keep running...</subtitle><entry><title>锐捷交换机的配置命令大全</title><link href="https://doobom.me/ruijie-switch-config-command" rel="alternate"></link><published>2021-04-03T16:52:52+08:00</published><updated>2021-04-03T16:53:08+08:00</updated><author><name>doobom</name></author><id>tag:doobom.me,2021-04-03:/ruijie-switch-config-command</id><summary type="html">&lt;p&gt;锐捷交换机的配置命令大全&lt;/p&gt;</summary><content type="html">
+&lt;blockquote&gt;
+&lt;p&gt;原文： &lt;a href="http://mepconsultants.net/nd.jsp?id=2475"&gt;锐捷交换机的配置命令大全&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="_1"&gt;一、基础配置命令&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;准备命令&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;&amp;gt;Enable&lt;/code&gt; 进入特权模式
+&lt;code&gt;#Exit&lt;/code&gt;   返回上一级操作模式
+&lt;code&gt;#End&lt;/code&gt;   返回到特权模式
+&lt;code&gt;#write memory&lt;/code&gt; 或 &lt;code&gt;copy running-config startup-config&lt;/code&gt;   保存配置文件
+&lt;code&gt;#del flash:config.text&lt;/code&gt;   删除配置文件(交换机及1700系列路由器)
+&lt;code&gt;#erase startup-config&lt;/code&gt;   删除配置文件(2500系列路由器)
+&lt;code&gt;#del flash:vlan.dat&lt;/code&gt;   删除Vlan配置信息（交换机）
+&lt;code&gt;#Configure terminal&lt;/code&gt; 进入全局配置模式
+&lt;code&gt;(config)# hostname switchA&lt;/code&gt;   配置设备名称为 &lt;code&gt;switchA&lt;/code&gt;
+&lt;code&gt;(config)#banner motd &amp;amp;&lt;/code&gt;      配置每日提示信息 &amp;amp;为终止符
+&lt;code&gt;(config)#enable secret level 1 0 star&lt;/code&gt;   配置远程登陆密码为star
+&lt;code&gt;(config)#enable secret level 15 0 star&lt;/code&gt;  配置特权密码为star
+&lt;code&gt;Level 1&lt;/code&gt; 为普通用户级别，可选为 &lt;code&gt;1~15&lt;/code&gt;，&lt;code&gt;15&lt;/code&gt; 为最高权限级别；&lt;code&gt;0&lt;/code&gt; 表示密码不加密
+&lt;code&gt;(config)#enable services web-server&lt;/code&gt; 开启交换机WEB管理功能
+&lt;code&gt;Services&lt;/code&gt; 可选以下：&lt;code&gt;web-server&lt;/code&gt; (WEB管理)、&lt;code&gt;telnet-server&lt;/code&gt; (远程登陆)等&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;查看信息&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;#show running-config&lt;/code&gt;       //查看当前生效的配置信息
+&lt;code&gt;#show interface fastethernet 0/3&lt;/code&gt;   //查看 &lt;code&gt;F0/3&lt;/code&gt; 端口信息
+&lt;code&gt;#show interface serial 1/2&lt;/code&gt;      //查看S1/2端口信息
+&lt;code&gt;#show interface&lt;/code&gt;                //查看所有端口信息
+&lt;code&gt;#show ip interface brief&lt;/code&gt;          //以简洁方式汇总查看所有端口信息
+&lt;code&gt;#show ip interface&lt;/code&gt;         //查看所有端口信息
+&lt;code&gt;#show version&lt;/code&gt;               //查看版本信息
+&lt;code&gt;#show mac-address-table&lt;/code&gt;       //查看交换机当前MAC地址表信息
+&lt;code&gt;#show running-config&lt;/code&gt;       //查看当前生效的配置信息
+&lt;code&gt;#show vlan&lt;/code&gt;                 //查看所有VLAN信息
+&lt;code&gt;#show vlan id 10&lt;/code&gt;          //查看某一VLAN (如VLAN10)的信息
+&lt;code&gt;#show interface fastethernet 0/1&lt;/code&gt;   //查看某一端口模式(如 &lt;code&gt;F 0/1&lt;/code&gt;)
+&lt;code&gt;#show aggregateport 1 summary&lt;/code&gt;    //查看聚合端口AG1的信息
+&lt;code&gt;#show spanning-tree&lt;/code&gt;      //查看生成树配置信息
+&lt;code&gt;#show spanning-tree interface fastethernet 0/1&lt;/code&gt;   //查看该端口的生成树状态
+&lt;code&gt;#show port-security&lt;/code&gt;     //查看交换机的端口安全配置信息
+&lt;code&gt;#show port-security address&lt;/code&gt;    //查看地址安全绑定配置信息
+&lt;code&gt;#show ip access-lists listname&lt;/code&gt;   //查看名为 &lt;code&gt;listname&lt;/code&gt; 的列表的配置信息
+　&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;端口的基本配置&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;(config)#Interface fastethernet 0/3&lt;/code&gt;     //进入 &lt;code&gt;F0/3&lt;/code&gt; 的端口配置模式
+&lt;code&gt;(config)#interface range fa 0/1-2,0/5,0/7-9&lt;/code&gt;   //进入 &lt;code&gt;F0/1&lt;/code&gt;、&lt;code&gt;F0/2&lt;/code&gt;、&lt;code&gt;F0/5&lt;/code&gt;、&lt;code&gt;F0/7&lt;/code&gt;、&lt;code&gt;F0/8&lt;/code&gt;、&lt;code&gt;F0/9&lt;/code&gt; 的端口配置模式
+&lt;code&gt;(config-if)#speed 10&lt;/code&gt;   //配置端口速率为 &lt;code&gt;10M&lt;/code&gt;, 可选 &lt;code&gt;10&lt;/code&gt;, &lt;code&gt;100&lt;/code&gt;, &lt;code&gt;auto&lt;/code&gt;
+&lt;code&gt;(config-if)#duplex full&lt;/code&gt;    //配置端口为全双工模式,可选 &lt;code&gt;full&lt;/code&gt;(全双工),&lt;code&gt;half&lt;/code&gt;(半双式),&lt;code&gt;auto&lt;/code&gt;(自适应)
+&lt;code&gt;(config-if)#no shutdown&lt;/code&gt;     //开启该端口
+&lt;code&gt;(config-if)#switchport access vlan 10&lt;/code&gt;   //将该端口划入 &lt;span class="caps"&gt;VLAN10&lt;/span&gt; 中,用于 &lt;span class="caps"&gt;VLAN&lt;/span&gt;
+&lt;code&gt;(config-if)#switchport mode trunk&lt;/code&gt;   //将该端口设为 &lt;code&gt;trunk&lt;/code&gt; 模式,可选模式为&lt;code&gt;access&lt;/code&gt; , &lt;code&gt;trunk&lt;/code&gt;
+&lt;code&gt;(config-if)#port-group 1&lt;/code&gt;     //将该端口划入聚合端口 &lt;code&gt;AG1&lt;/code&gt; 中,用于聚合端口&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;聚合端口的创建&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;(config)# interface aggregateport 1&lt;/code&gt;    //创建聚合接口 &lt;code&gt;AG1&lt;/code&gt;
+&lt;code&gt;(config-if)# switchport mode trunk&lt;/code&gt;    //配置并保证AG1为 &lt;code&gt;trunk&lt;/code&gt; 模式
+&lt;code&gt;(config)#int f0/23-24&lt;/code&gt;
+&lt;code&gt;(config-if-range)#port-group 1&lt;/code&gt;        //将端口（端口组）划入聚合端口 &lt;code&gt;AG1&lt;/code&gt; 中&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;生成树&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;配置多生成树协议:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;switch(config)#spanning-tree&lt;/code&gt;             //开启生成树协议
+&lt;code&gt;switch(config)#spanning-tree mst configuration&lt;/code&gt;     //建立多生成树协议
+&lt;code&gt;switch(config-mst)#name ruijie&lt;/code&gt;               //命名为 &lt;code&gt;ruijie&lt;/code&gt;
+&lt;code&gt;switch(config-mst)#revision 1&lt;/code&gt;   //设定校订本为 &lt;code&gt;1&lt;/code&gt;
+&lt;code&gt;switch(config-mst)#instance 0 vlan 10,20&lt;/code&gt;      //建立实例 &lt;code&gt;0&lt;/code&gt;
+&lt;code&gt;switch(config-mst)#instance 1 vlan 30,40&lt;/code&gt;      //建立实例 &lt;code&gt;1&lt;/code&gt;
+&lt;code&gt;switch(config)#spanning-tree mst 0 priority 4096&lt;/code&gt;   //设置优先级为 &lt;code&gt;4096&lt;/code&gt;
+&lt;code&gt;switch(config)#spanning-tree mst 1 priority 8192&lt;/code&gt;   //设置优先级为 &lt;code&gt;8192&lt;/code&gt;
+&lt;code&gt;switch(config)#interface vlan 10&lt;/code&gt;
+&lt;code&gt;switch(config-if)#vrrp 1 ip 192.168.10.1&lt;/code&gt; //此为 &lt;code&gt;vlan 10&lt;/code&gt; 的 &lt;span class="caps"&gt;IP&lt;/span&gt; 地址
+&lt;code&gt;switch(config)#interface vlan 20&lt;/code&gt;
+&lt;code&gt;switch(config-if)#vrrp 1 ip 192.168.20.1&lt;/code&gt; //此为 &lt;code&gt;vlan 20&lt;/code&gt; 的 &lt;span class="caps"&gt;IP&lt;/span&gt; 地址
+&lt;code&gt;switch(config)#interface vlan 30&lt;/code&gt;
+&lt;code&gt;switch(config-if)#vrrp 2 ip 192.168.30.1&lt;/code&gt; //此为 &lt;code&gt;vlan 30&lt;/code&gt; 的 &lt;span class="caps"&gt;IP&lt;/span&gt; 地址(另一三层交换机)
+&lt;code&gt;switch(config)#interface vlan 40&lt;/code&gt;
+&lt;code&gt;switch(config-if)#vrrp 2 ip 192.168.40.1&lt;/code&gt; //此为 &lt;code&gt;vlan 40&lt;/code&gt; 的 &lt;span class="caps"&gt;IP&lt;/span&gt; 地址(另一三层交换机)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;VLAN的基本配置&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;(config)#vlan 10&lt;/code&gt;    //创建 &lt;code&gt;VLAN10&lt;/code&gt;
+&lt;code&gt;(config-vlan)#name vlanname&lt;/code&gt; // 命名 &lt;span class="caps"&gt;VLAN&lt;/span&gt; 为 &lt;code&gt;vlanname&lt;/code&gt;
+&lt;code&gt;(config-if)#switchport access vlan 10&lt;/code&gt;   //将该端口划入 &lt;span class="caps"&gt;VLAN10&lt;/span&gt; 中
+某端口的接口配置模式下进行
+&lt;code&gt;(config)#interface vlan 10&lt;/code&gt;    //进入 &lt;code&gt;VLAN 10&lt;/code&gt; 的虚拟端口配置模式
+&lt;code&gt;(config-if)# ip address 192.168.1.1 255.255.255.0&lt;/code&gt;   //为 &lt;code&gt;VLAN10&lt;/code&gt; 的虚拟端口配置 &lt;span class="caps"&gt;IP&lt;/span&gt; 及掩码，二层交换机只能配置一个 &lt;span class="caps"&gt;IP&lt;/span&gt; ，此 &lt;span class="caps"&gt;IP&lt;/span&gt; 是作为管理 &lt;span class="caps"&gt;IP&lt;/span&gt; 使用，例如，使用 Telnet 的方式登录的 &lt;span class="caps"&gt;IP&lt;/span&gt; 地址
+&lt;code&gt;(config-if)# no shutdown&lt;/code&gt;     //启用该端口&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;端口安全&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;(config)# interface fastethernet 0/1&lt;/code&gt;      //进入一个端口
+&lt;code&gt;(config-if)# switchport port-security&lt;/code&gt;     //开启该端口的安全功能&lt;/p&gt;
+&lt;p&gt;a). 配置最大连接数限制&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;(config-if)# switchport port-secruity maxmum 1&lt;/code&gt; //配置端口的最大连接数为 &lt;code&gt;1&lt;/code&gt;，最大连接数为 &lt;code&gt;128&lt;/code&gt;
+&lt;code&gt;(config-if)# switchport port-secruity violation shutdown&lt;/code&gt;
+//配置安全违例的处理方式为 &lt;code&gt;shutdown&lt;/code&gt;，可选为 &lt;code&gt;protect&lt;/code&gt; (当安全地址数满后，将未知名地址丢弃)、&lt;code&gt;restrict&lt;/code&gt; (当违例时，发送一个 Trap 通知)、&lt;code&gt;shutdown&lt;/code&gt; (当违例时将端口关闭，并发送 Trap 通知，可在全局模式下用 &lt;code&gt;errdisable recovery&lt;/code&gt; 来恢复)&lt;/p&gt;
+&lt;p&gt;b). &lt;span class="caps"&gt;IP&lt;/span&gt; 和 &lt;span class="caps"&gt;MAC&lt;/span&gt; 地址绑定&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;(config-if)#switchport port-security mac-address xxxx.xxxx.xxxx ip-address 172.16.1.1&lt;/code&gt;
+//接口配置模式下配置 &lt;span class="caps"&gt;MAC&lt;/span&gt; 地址 &lt;code&gt;xxxx.xxxx.xxxx&lt;/code&gt; 和 &lt;span class="caps"&gt;IP&lt;/span&gt; &lt;code&gt;172.16.1.1&lt;/code&gt; 进行绑定( &lt;span class="caps"&gt;MAC&lt;/span&gt; 地址注意用小写)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;三层路由功能(针对三层交换机)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;(config)# ip routing&lt;/code&gt;       //开启三层交换机的路由功能
+&lt;code&gt;(config)# interface fastethernet 0/1&lt;/code&gt;
+&lt;code&gt;(config-if)# no switchport&lt;/code&gt;    //开启端口的三层路由功能(这样就可以为某一端口配置 &lt;span class="caps"&gt;IP&lt;/span&gt; )
+&lt;code&gt;(config-if)# ip address 192.168.1.1 255.255.255.0&lt;/code&gt;
+&lt;code&gt;(config-if)# no shutdown&lt;/code&gt;
+　　&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;三层交换机路由协议&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;(config)# ip route 172.16.1.0 255.255.255.0 172.16.2.1&lt;/code&gt;   //配置静态路由&lt;/p&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="admonition-title"&gt;Note&lt;/p&gt;
+&lt;p&gt;注： &lt;code&gt;172.16.1.0 255.255.255.0&lt;/code&gt;   为目标网络的网络号及子网掩码&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;172.16.2.1&lt;/code&gt; 为下一跳的地址，也可用接口表示,如 &lt;code&gt;ip route 172.16.1.0 255.255.255.0 serial 1/2&lt;/code&gt; ( &lt;code&gt;172.16.2.0&lt;/code&gt; 所接的端口)&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;(config)# router rip&lt;/code&gt;     //开启 &lt;span class="caps"&gt;RIP&lt;/span&gt; 协议进程
+&lt;code&gt;(config-router)# network 172.16.1.0&lt;/code&gt;     //申明本设备的直连网段信息
+&lt;code&gt;(config-router)# version 2&lt;/code&gt;        //开启 &lt;span class="caps"&gt;RIP&lt;/span&gt; V2，可选为 &lt;code&gt;version 1&lt;/code&gt; (&lt;span class="caps"&gt;RIPV1&lt;/span&gt;)、&lt;code&gt;version 2&lt;/code&gt; (&lt;span class="caps"&gt;RIPV2&lt;/span&gt;)
+&lt;code&gt;(config-router)# no auto-summary&lt;/code&gt;   //关闭路由信息的自动汇总功能(只有在 &lt;span class="caps"&gt;RIPV2&lt;/span&gt; 支持)&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;(config)# router ospf&lt;/code&gt;   //开启 &lt;span class="caps"&gt;OSPF&lt;/span&gt; 路由协议进程（针对 1762，无需使用进程 &lt;span class="caps"&gt;ID&lt;/span&gt;）
+&lt;code&gt;(config)# router ospf 1&lt;/code&gt;    //开启 &lt;span class="caps"&gt;OSPF&lt;/span&gt; 路由协议进程（针对 2501，需要加 &lt;span class="caps"&gt;OSPF&lt;/span&gt; 进程 &lt;span class="caps"&gt;ID&lt;/span&gt;）
+&lt;code&gt;(config-router)# network 192.168.1.0 0.0.0.255 area 0&lt;/code&gt; //申明直连网段信息，并分配区域号( area0 为骨干区域)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;span class="caps"&gt;IP&lt;/span&gt; &lt;span class="caps"&gt;ACL&lt;/span&gt;：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;交换机采用命名的访问控制列表；分标准( stand )和扩展( extended )两种&lt;/p&gt;
+&lt;p&gt;a). 标准 &lt;span class="caps"&gt;ACL&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;(config)#ip access-list stand listname&lt;/code&gt; //定义命名标准列表，命名为 &lt;code&gt;listname&lt;/code&gt;，&lt;code&gt;stand&lt;/code&gt; 为标准列表
+&lt;code&gt;(config-std-nacl)#deny 192.168.30.0 0.0.0.255&lt;/code&gt; //拒绝来 &lt;code&gt;自192.168.30.0&lt;/code&gt; 网段的 &lt;span class="caps"&gt;IP&lt;/span&gt; 流量通过&lt;/p&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="admonition-title"&gt;Note&lt;/p&gt;
+&lt;p&gt;注：&lt;code&gt;deny&lt;/code&gt;：拒绝通过；可选：&lt;code&gt;deny&lt;/code&gt; (拒绝通过)、&lt;code&gt;permit&lt;/code&gt; (允许通过)&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;192.168.30.0 0.0.0.255&lt;/code&gt;：源地址及源地址通配符；可使用 &lt;code&gt;any&lt;/code&gt; 表示任何 &lt;span class="caps"&gt;IP&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;(config-std-nacl)#permit any&lt;/code&gt;
+&lt;code&gt;(config-std-nacl)#end&lt;/code&gt;   //返回&lt;/p&gt;
+&lt;p&gt;b). 扩展 &lt;span class="caps"&gt;ACL&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;(config)#ip access-list extended listname&lt;/code&gt; //定义命名扩展列表，命名为 &lt;code&gt;listname&lt;/code&gt; ,&lt;code&gt;extended&lt;/code&gt; 为扩展
+&lt;code&gt;(config-ext-nacl)#deny tcp 192.168.30.0 0.0.0.255 192.168.10.0 0.0.0.255 eq www&lt;/code&gt;   //拒绝源地址为 &lt;code&gt;192.168.30.0&lt;/code&gt; 网段的 &lt;span class="caps"&gt;IP&lt;/span&gt; 访问目的地址为 &lt;code&gt;192.168.10.0&lt;/code&gt; 网段的 &lt;span class="caps"&gt;WWW&lt;/span&gt; 服务&lt;/p&gt;
+&lt;p&gt;!!! Note　　
+    &lt;code&gt;deny&lt;/code&gt;：拒绝通过，可选：&lt;code&gt;deny&lt;/code&gt;(拒绝通过)、&lt;code&gt;permit&lt;/code&gt;(允许通过)
+    &lt;code&gt;tcp&lt;/code&gt;: 协议名称，协议可以是 &lt;code&gt;udp&lt;/code&gt;, &lt;code&gt;ip&lt;/code&gt;，&lt;code&gt;eigrp&lt;/code&gt;, &lt;code&gt;gre&lt;/code&gt;, &lt;code&gt;icmp&lt;/code&gt;, &lt;code&gt;igmp&lt;/code&gt;, &lt;code&gt;igrp&lt;/code&gt; 等等。
+    &lt;code&gt;192.168.10.0 0.0.0.255&lt;/code&gt;：源地址及源地址通配符
+    &lt;code&gt;192.168.30.0 0.0.0.255&lt;/code&gt;：目的地址及目的地址通配符
+    &lt;code&gt;eq&lt;/code&gt;：操作符（ &lt;code&gt;lt&lt;/code&gt; - 小于，&lt;code&gt;eq&lt;/code&gt; - 等于，&lt;code&gt;gt&lt;/code&gt; - 大于，&lt;code&gt;neg&lt;/code&gt; - 不等于，&lt;code&gt;range&lt;/code&gt; - 包含）
+    &lt;code&gt;www&lt;/code&gt;：端口号，可使用名称或具体编号 可以使用的协议名称（或编号）和端口名称（或编号）请打？查询。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;(config-ext-nacl)#permit ip any any&lt;/code&gt;   //允许其它通过
+&lt;code&gt;(config-ext-nacl)#end&lt;/code&gt;      //返回
+&lt;code&gt;(config)#interface vlan 10&lt;/code&gt;     //进入端口配置模式
+&lt;code&gt;(config-if)# ip access-group listname in&lt;/code&gt;   //访问控制列表在端口下 &lt;code&gt;in&lt;/code&gt; 方向应用；可选： &lt;code&gt;in&lt;/code&gt;(入栈)、&lt;code&gt;out&lt;/code&gt;(出栈)
+&lt;code&gt;(config-if)#end&lt;/code&gt;     //返回&lt;/p&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="admonition-title"&gt;Note&lt;/p&gt;
+&lt;p&gt;注：配置ACL时，若只想对其中部分IP进行限制访问时，必须配置允许其流量通过，否则设备只会对限制IP进行处理，不会对非限制IP进行允许通过处理。&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id="_2"&gt;二、功能配置命令示例&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;交换机密码&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;(&lt;/span&gt;config&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;#enable secret level 1 0 100&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="o"&gt;(&lt;/span&gt;config&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;#enable secret level 15 0 100&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;远程登入密码&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;(&lt;/span&gt;config&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;#line vty 0 4&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="o"&gt;(&lt;/span&gt;config-line&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;#password 100&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="o"&gt;(&lt;/span&gt;config-line&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;#end&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;交换机管理 &lt;span class="caps"&gt;IP&lt;/span&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;(&lt;/span&gt;config&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;#interface vlan 1&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="o"&gt;(&lt;/span&gt;config-if&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;#ip address 192.168.1.10 255.255.255.0&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="o"&gt;(&lt;/span&gt;config-if&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;#no shutdown&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;修改交换机老化时间&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;(&lt;/span&gt;config&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;#mac-address-table aging-time 20&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="o"&gt;(&lt;/span&gt;config&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;#end&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;添删 vlan&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;(&lt;/span&gt;config&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;#vlan 888&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="o"&gt;(&lt;/span&gt;config-vlan&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;#name a888&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="o"&gt;(&lt;/span&gt;config&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;#no vlan 888&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;添加 access 口&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;(&lt;/span&gt;config&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;#interface gigabitEthernet 0/10&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="o"&gt;(&lt;/span&gt;config-if&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;#switchport mode access&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="o"&gt;(&lt;/span&gt;config-if&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;#switchport access vlan 10&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;切换 assess trunk&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;(&lt;/span&gt;config-if&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;#switchport mode access&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="o"&gt;(&lt;/span&gt;config-if&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;#switchport mode trunk&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;指定特定一个 native vlan&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;(&lt;/span&gt;config-if&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;#switchport trunk native vlan 10&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;配置网关&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;switch&lt;span class="o"&gt;(&lt;/span&gt;config&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;#ip default-gateway 192.168.1.254&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;显示接口详细信息的命令&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;show interfaces gigabitEthernet &lt;span class="m"&gt;4&lt;/span&gt;/1 counters&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;接口配置&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Switch&lt;span class="o"&gt;(&lt;/span&gt;config&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;#interface gigabitethernet 0/1&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;把接口工作模式改为光口。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Switch&lt;span class="o"&gt;(&lt;/span&gt;config-if&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;#medium-type fiber&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;把接口工作模式改为电口。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Switch&lt;span class="o"&gt;(&lt;/span&gt;config-if&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;#medium-type copper&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;VLAN配置&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;建立 &lt;span class="caps"&gt;VLAN&lt;/span&gt; 100
+&lt;code&gt;Switch (config)#vlan 100&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;该VLAN名称为 &lt;code&gt;ruijie&lt;/code&gt;
+&lt;code&gt;Switch (config)#name ruijie&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;将交换机接口划入 &lt;span class="caps"&gt;VLAN&lt;/span&gt; 中：
+&lt;code&gt;range&lt;/code&gt; 表示选取了系列端口 &lt;code&gt;1-48&lt;/code&gt;，这个对多个端口进行相同配置时非常有用。
+&lt;code&gt;Switch (config)#interface range f 0/1-48&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;将接口划到 &lt;span class="caps"&gt;VLAN&lt;/span&gt; 100 中。
+&lt;code&gt;Switch (config-if-range)#switchport access vlan 100&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;将接口划回到默认 &lt;span class="caps"&gt;VLAN&lt;/span&gt; 1 中，即端口初始配置。
+&lt;code&gt;Switch (config-if-range)#no switchport access vlan&lt;/code&gt;
+&lt;code&gt;Switch(config)#interface fastEthernet 0/1&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;该端口工作在 &lt;code&gt;access&lt;/code&gt; 模式下
+&lt;code&gt;Switch(config-if)#switchport mode access&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;该端口工作在 &lt;code&gt;trunk&lt;/code&gt; 模式下
+&lt;code&gt;Switch(config-if)#switchport mode trunk&lt;/code&gt;
+&lt;code&gt;Switch(config)#interface fastEthernet 0/2&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;路由配置：添加一条路由。
+&lt;code&gt;switch (config)#ip route 目的地址 掩码 下一跳&lt;/code&gt;
+&lt;code&gt;switch (config)#ip route 210.10.10.0 255.255.255.0 218.8.8.8&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id="_3"&gt;附：&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://kerwin.gitbook.io/ruijie/" target:_blank="target:_blank"&gt;锐捷产品手册&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://bbs.ruijie.com.cn/thread-34794-1-1.html" target:_blank="target:_blank"&gt;Web登录密码修改方法&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="ethernet"></category><category term="ethernet"></category><category term="switch"></category><category term="ruijie"></category></entry></feed>
